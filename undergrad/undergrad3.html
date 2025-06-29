@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jordan Reed - Digital Marketing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Space Grotesk', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                        'display': ['Monument Extended', 'Impact', 'sans-serif']
+                    },
+                    colors: {
+                        'void': '#0A0A0A',
+                        'steel': '#1C1C1C',
+                        'white': '#FDFDFD',
+                        'ghost': '#8B8B8B',
+                        'cyber': '#00D4FF',
+                        'neon': '#39FF14',
+                        'blood': '#FF073A'
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                        'fade-brutal': 'fadeBrutal 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                        'pulse-neon': 'pulseNeon 2s infinite',
+                        'scroll-text': 'scrollText 15s linear infinite',
+                        'grid-pulse': 'gridPulse 4s ease-in-out infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(100px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeBrutal {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes pulseNeon {
+            0%, 100% { box-shadow: 0 0 5px #00D4FF, 0 0 20px #00D4FF, 0 0 35px #00D4FF; }
+            50% { box-shadow: 0 0 10px #00D4FF, 0 0 40px #00D4FF, 0 0 80px #00D4FF; }
+        }
+        
+        @keyframes scrollText {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .brutal-hover {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .brutal-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.2);
+        }
+        
+        .text-outline {
+            -webkit-text-stroke: 2px #FDFDFD;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridPulse 4s ease-in-out infinite;
+        }
+        
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        
+        .diagonal-line {
+            background: linear-gradient(45deg, transparent 40%, #00D4FF 50%, transparent 60%);
+            height: 2px;
+        }
+    </style>
+</head>
+<body class="bg-void text-white font-sans overflow-x-hidden">
+    <!-- Fixed Navigation -->
+    <nav class="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block">
+        <div class="flex flex-col space-y-6">
+            <a href="#hero" class="w-3 h-3 bg-cyber rounded-full hover:scale-125 transition-transform"></a>
+            <a href="#work" class="w-3 h-3 bg-ghost rounded-full hover:bg-cyber hover:scale-125 transition-all"></a>
+            <a href="#about" class="w-3 h-3 bg-ghost rounded-full hover:bg-cyber hover:scale-125 transition-all"></a>
+            <a href="#skills" class="w-3 h-3 bg-ghost rounded-full hover:bg-cyber hover:scale-125 transition-all"></a>
+            <a href="#contact" class="w-3 h-3 bg-ghost rounded-full hover:bg-cyber hover:scale-125 transition-all"></a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen relative grid-pattern">
+        <!-- Large Number Background -->
+        <div class="absolute right-10 top-1/4 text-9xl font-black text-outline opacity-10 select-none">
+            25
+        </div>
+        
+        <!-- Name Vertical -->
+        <div class="absolute left-8 top-1/2 transform -translate-y-1/2">
+            <h1 class="vertical-text text-lg font-light tracking-wider text-ghost">JORDAN REED</h1>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex items-center justify-center min-h-screen px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="animate-slide-up">
+                    <h2 class="text-6xl md:text-8xl lg:text-9xl font-black leading-none mb-8">
+                        DIGITAL<br>
+                        <span class="text-cyber">MARKETING</span><br>
+                        SYSTEMS
+                    </h2>
+                    <div class="diagonal-line mb-8"></div>
+                    <p class="text-xl md:text-2xl font-light text-ghost max-w-2xl">
+                        Strategy. Storytelling. Systems.<br>
+                        Future-ready thinking for brands that matter.
+                    </p>
+                </div>
+                
+                <!-- CTA -->
+                <div class="mt-16 flex flex-col sm:flex-row gap-6">
+                    <button class="bg-cyber text-void px-12 py-4 font-bold text-lg transition-all">
+                        VIEW.WORK
+                    </button>
+                    <button class="border-2 border-white text-white px-12 py-4 font-bold text-lg brutal-hover">
+                        CONTACT.NOW
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="py-32 px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center justify-between mb-20">
+                <h2 class="text-5xl md:text-7xl font-black">WORK</h2>
+                <span class="text-cyber font-mono text-sm">// 03 PROJECTS</span>
+            </div>
+            
+            <!-- Projects Grid -->
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Project 1 -->
+                <div class="brutal-hover cursor-pointer group">
+                    <div class="bg-steel p-8 relative overflow-hidden">
+                        <div class="absolute top-4 right-4 text-cyber font-mono text-sm">01</div>
+                        <div class="aspect-video bg-void mb-6 flex items-center justify-center">
+                            <span class="text-ghost font-mono">META.INTERNSHIP.DECK</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 group-hover:text-cyber transition-colors">
+                            META GROWTH STRATEGY
+                        </h3>
+                        <p class="text-ghost mb-6">
+                            8-week internship project developing user acquisition strategies for emerging markets
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="border border-ghost px-4 py-1 text-sm font-mono">STRATEGY</span>
+                            <span class="border border-ghost px-4 py-1 text-sm font-mono">DATA.ANALYSIS</span>
+                            <span class="border border-ghost px-4 py-1 text-sm font-mono">PRESENTATION</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="brutal-hover cursor-pointer group">
+                    <div class="bg-steel p-8 relative overflow-hidden">
+                        <div class="absolute top-4 right-4 text-cyber font-mono text-sm">02</div>
+                        <div class="aspect-video bg-void mb-6 flex items-center justify-center">
+                            <span class="text-ghost font-mono">CAMPUS.CAMPAIGN</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 group-hover:text-cyber transition-colors">
+                            ECOFEST 2024 LAUNCH
+                        </h3>
+                        <p class="text-ghost mb-6">
+                            Complete brand campaign for campus sustainability event, reaching 15K+ students
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="border border-ghost px-4 py-1 text-sm font-mono">BRANDING</span>
+                            <span class="border border-ghost px-4 py-1 text-sm font-mono">SOCIAL.MEDIA</span>
+                            <span class="border border-ghost px-4 py-1 text-sm font-mono">EVENT.MARKETING</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="brutal-hover cursor-pointer group lg:col-span-2">
+                    <div class="bg-steel p-8 relative overflow-hidden">
+                        <div class="absolute top-4 right-4 text-cyber font-mono text-sm">03</div>
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <h3 class="text-4xl font-bold mb-4 group-hover:text-cyber transition-colors">
+                                    GEN Z BANKING UX
+                                </h3>
+                                <p class="text-ghost mb-6 text-lg">
+                                    Email strategy and UX copy for fintech startup targeting college students
+                                </p>
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="border border-ghost px-4 py-1 text-sm font-mono">UX.COPY</span>
+                                    <span class="border border-ghost px-4 py-1 text-sm font-mono">EMAIL.STRATEGY</span>
+                                    <span class="border border-ghost px-4 py-1 text-sm font-mono">USER.RESEARCH</span>
+                                </div>
+                            </div>
+                            <div class="aspect-video bg-void flex items-center justify-center">
+                                <span class="text-ghost font-mono text-center">
+                                    FINTECH.UX<br>
+                                    EMAIL.FLOWS
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 px-8 bg-steel">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20">
+                <div>
+                    <h2 class="text-5xl md:text-7xl font-black mb-12">ABOUT</h2>
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-cyber font-mono text-sm mb-2">// IDENTITY</h3>
+                            <p class="text-xl">Jordan Reed</p>
+                            <p class="text-ghost">UC Berkeley • Marketing Major • San Francisco</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-cyber font-mono text-sm mb-2">// FOCUS.AREAS</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="bg-void px-4 py-2 font-mono text-sm">DIGITAL.STRATEGY</span>
+                                <span class="bg-void px-4 py-2 font-mono text-sm">BRAND.SYSTEMS</span>
+                                <span class="bg-void px-4 py-2 font-mono text-sm">GROWTH.HACKING</span>
+                                <span class="bg-void px-4 py-2 font-mono text-sm">CONTENT.DESIGN</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-cyber font-mono text-sm mb-2">// TIMELINE</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center border-b border-ghost pb-2">
+                                    <span>2022</span>
+                                    <span class="text-ghost">Started at UC Berkeley</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-ghost pb-2">
+                                    <span>2024</span>
+                                    <span class="text-ghost">Meta Growth Internship</span>
+                                </div>
+                                <div class="flex justify-between items-center border-b border-cyber pb-2">
+                                    <span class="text-cyber">2025</span>
+                                    <span class="text-cyber">Available for Full-Time</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="absolute top-0 right-0 text-6xl font-black text-outline opacity-20">
+                        INFO
+                    </div>
+                    <div class="bg-void p-8 mt-12">
+                        <h3 class="text-cyber font-mono text-sm mb-4">// CURRENT.STATUS</h3>
+                        <p class="text-lg mb-6">
+                            Building the next generation of digital marketing systems. 
+                            Currently reading "No Rules Rules" by Reed Hastings and obsessing 
+                            over Figma's growth strategy documentation.
+                        </p>
+                        <div class="diagonal-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-32 px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl md:text-7xl font-black mb-20">SYSTEMS</h2>
+            
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Tools -->
+                <div class="bg-steel p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-cyber">TOOLS</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-mono">FIGMA</span>
+                            <div class="w-24 h-2 bg-void">
+                                <div class="w-20 h-2 bg-cyber"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-mono">META.ADS</span>
+                            <div class="w-24 h-2 bg-void">
+                                <div class="w-16 h-2 bg-cyber"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-mono">ANALYTICS</span>
+                            <div class="w-24 h-2 bg-void">
+                                <div class="w-20 h-2 bg-cyber"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-mono">NOTION</span>
+                            <div class="w-24 h-2 bg-void">
+                                <div class="w-24 h-2 bg-cyber"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills -->
+                <div class="bg-steel p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-cyber">SKILLS</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="font-mono">STRATEGY</span>
+                            <span class="text-cyber font-mono text-sm">EXPERT</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-mono">COPYWRITING</span>
+                            <span class="text-cyber font-mono text-sm">ADVANCED</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-mono">DATA.ANALYSIS</span>
+                            <span class="text-cyber font-mono text-sm">PROFICIENT</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-mono">BRAND.SYSTEMS</span>
+                            <span class="text-cyber font-mono text-sm">ADVANCED</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Metrics -->
+                <div class="bg-steel p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-cyber">METRICS</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="text-3xl font-black text-cyber">+500%</div>
+                            <div class="text-sm text-ghost font-mono">REACH.INCREASE</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-black text-cyber">15K+</div>
+                            <div class="text-sm text-ghost font-mono">STUDENTS.REACHED</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-black text-cyber">8</div>
+                            <div class="text-sm text-ghost font-mono">WEEKS.META</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-8 bg-steel">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-6xl md:text-8xl font-black mb-8">
+                LET'S BUILD<br>
+                <span class="text-cyber">WHAT'S NEXT</span>
+            </h2>
+            
+            <p class="text-xl text-ghost mb-16 max-w-2xl mx-auto">
+                Available for internships, freelance projects, and full-time positions 
+                in digital strategy and brand systems.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <a href="mailto:jordan@example.com" class="bg-cyber text-void p-8 brutal-hover group">
+                    <div class="text-2xl font-bold mb-2">EMAIL</div>
+                    <div class="font-mono text-sm">jordan@example.com</div>
+                </a>
+                
+                <a href="https://linkedin.com/in/jordanreed" class="bg-void border-2 border-cyber text-cyber p-8 brutal-hover group">
+                    <div class="text-2xl font-bold mb-2">LINKEDIN</div>
+                    <div class="font-mono text-sm">/jordanreed</div>
+                </a>
+                
+                <a href="#" class="bg-void border-2 border-white text-white p-8 brutal-hover group">
+                    <div class="text-2xl font-bold mb-2">RESUME</div>
+                    <div class="font-mono text-sm">notion.doc</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-8 border-t border-steel">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="text-ghost font-mono text-sm">
+                © 2025 JORDAN.REED • DESIGNED.WITH.INTENTION
+            </div>
+            <div class="text-ghost font-mono text-sm mt-4 md:mt-0">
+                BUILT.FOR.THE.FUTURE
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update navigation dots based on scroll position
+        const sections = document.querySelectorAll('section');
+        const navDots = document.querySelectorAll('nav a');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navDots.forEach(dot => {
+                dot.classList.remove('bg-cyber');
+                dot.classList.add('bg-ghost');
+                if (dot.getAttribute('href').slice(1) === current) {
+                    dot.classList.remove('bg-ghost');
+                    dot.classList.add('bg-cyber');
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-slide-up, .animate-fade-brutal').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

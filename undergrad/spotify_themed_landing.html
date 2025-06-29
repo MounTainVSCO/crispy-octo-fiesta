@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria Lopez - Digital Strategy & Creative Marketing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .spotify-green { color: #1DB954; }
+        .spotify-green-bg { background-color: #1DB954; }
+        .spotify-dark { background-color: #121212; }
+        .spotify-card { background-color: #181818; }
+        .spotify-hover { background-color: #282828; }
+        
+        /* Background Decorations */
+        .bg-decoration {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .floating-circle {
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(29, 185, 84, 0.1), rgba(29, 185, 84, 0.05));
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-circle:nth-child(2) { animation-delay: -2s; }
+        .floating-circle:nth-child(3) { animation-delay: -4s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(29, 185, 84, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(29, 185, 84, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .gradient-orb {
+            background: radial-gradient(circle, rgba(29, 185, 84, 0.15) 0%, transparent 70%);
+            filter: blur(40px);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        
+        .music-waves {
+            position: absolute;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(29, 185, 84, 0.05) 25%, 
+                rgba(29, 185, 84, 0.1) 50%, 
+                rgba(29, 185, 84, 0.05) 75%, 
+                transparent 100%);
+            animation: wave 8s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: scaleY(1) translateX(-50px); }
+            50% { transform: scaleY(1.5) translateX(50px); }
+        }
+        
+        /* Existing animations */
+        .now-playing {
+            animation: marquee 25s linear infinite;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .glow-hover:hover {
+            box-shadow: 0 0 30px rgba(29, 185, 84, 0.4);
+            transform: translateY(-4px);
+            transition: all 0.3s ease;
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #1DB954, #1ed760);
+            transform-origin: left;
+            transition: transform 0.1s ease;
+            z-index: 1000;
+        }
+        
+        .equalizer {
+            display: flex;
+            align-items: end;
+            gap: 3px;
+            height: 30px;
+        }
+        
+        .bar {
+            width: 4px;
+            background: linear-gradient(to top, #1DB954, #1ed760);
+            border-radius: 2px;
+            animation: bounce 1.5s ease-in-out infinite;
+        }
+        
+        .bar:nth-child(1) { animation-delay: 0s; height: 100%; }
+        .bar:nth-child(2) { animation-delay: 0.1s; height: 70%; }
+        .bar:nth-child(3) { animation-delay: 0.2s; height: 90%; }
+        .bar:nth-child(4) { animation-delay: 0.3s; height: 60%; }
+        .bar:nth-child(5) { animation-delay: 0.4s; height: 80%; }
+        .bar:nth-child(6) { animation-delay: 0.5s; height: 95%; }
+        .bar:nth-child(7) { animation-delay: 0.6s; height: 75%; }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.2); }
+        }
+        
+        .play-button {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #1DB954;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(29, 185, 84, 0.3);
+        }
+        
+        .play-button:hover {
+            background: #1ed760;
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(29, 185, 84, 0.5);
+        }
+        
+        .play-button::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 12px solid #000;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            margin-left: 2px;
+        }
+        
+        .skill-meter {
+            height: 6px;
+            background: #282828;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1DB954, #1ed760);
+            border-radius: 3px;
+            animation: fillUp 2s ease-out;
+        }
+        
+        @keyframes fillUp {
+            from { width: 0; }
+        }
+        
+        .experience-timeline {
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #1DB954, rgba(29, 185, 84, 0.3));
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 12px;
+            width: 18px;
+            height: 18px;
+            background: #1DB954;
+            border-radius: 50%;
+            border: 3px solid #121212;
+            z-index: 1;
+        }
+        
+        .glassmorphism {
+            background: rgba(24, 24, 24, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(29, 185, 84, 0.1);
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 20px rgba(29, 185, 84, 0.5);
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #1DB954, transparent);
+            margin: 4rem 0;
+        }
+    </style>
+</head>
+<body class="spotify-dark text-white overflow-x-hidden relative">
+    <!-- Background Decorations -->
+    <div class="fixed inset-0 grid-pattern opacity-30"></div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-circle bg-decoration w-64 h-64 -top-32 -left-32"></div>
+    <div class="floating-circle bg-decoration w-96 h-96 top-1/4 -right-48"></div>
+    <div class="floating-circle bg-decoration w-48 h-48 bottom-1/4 left-1/4"></div>
+    
+    <!-- Gradient Orbs -->
+    <div class="gradient-orb bg-decoration w-[500px] h-[500px] top-0 right-0"></div>
+    <div class="gradient-orb bg-decoration w-[300px] h-[300px] bottom-0 left-0"></div>
+    <div class="gradient-orb bg-decoration w-[400px] h-[400px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+    
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Now Playing Bar -->
+    <div class="fixed top-4 left-0 right-0 z-50 overflow-hidden">
+        <div class="now-playing text-sm spotify-green font-medium whitespace-nowrap">
+            ♪ Currently vibing: Academic Projects × Club Leadership × Internship Applications × Always Learning Something New ♪
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-6 pt-16 relative">
+        <div class="music-waves top-1/4"></div>
+        <div class="text-center max-w-4xl mx-auto relative z-10">
+            <div class="equalizer mb-8 justify-center">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black mb-4 tracking-tight text-glow">
+                Maria Lopez
+            </h1>
+            <div class="h-1 w-32 spotify-green-bg mx-auto mb-6 shadow-lg"></div>
+            <h2 class="text-2xl md:text-3xl font-light mb-6 text-gray-300">
+                Marketing Student & Future Brand Strategist
+            </h2>
+            <p class="text-lg spotify-green font-medium mb-8">
+                Junior @ UCLA • Seeking Summer 2025 Marketing Internships
+            </p>
+            <div class="flex items-center justify-center gap-4 mb-8">
+                <button class="play-button"></button>
+                <span class="text-sm text-gray-400">Press play to explore my universe</span>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-3 gap-8 max-w-md mx-auto glassmorphism rounded-lg p-6">
+                <div class="text-center">
+                    <div class="text-2xl font-bold spotify-green">3.8</div>
+                    <div class="text-xs text-gray-400">GPA</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold spotify-green">8+</div>
+                    <div class="text-xs text-gray-400">Projects</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold spotify-green">2</div>
+                    <div class="text-xs text-gray-400">Internships</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section class="py-20 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center">
+                Experience & <span class="spotify-green">Leadership</span>
+            </h2>
+            
+            <div class="experience-timeline max-w-4xl mx-auto">
+                <div class="timeline-line"></div>
+                
+                <!-- Experience Item 1 -->
+                <div class="relative pl-16 pb-12">
+                    <div class="timeline-dot" style="top: 1.5rem;"></div>
+                    <div class="glassmorphism rounded-lg p-6 glow-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold">Marketing Intern</h3>
+                                <p class="spotify-green font-medium">Local Coffee Collective</p>
+                            </div>
+                            <span class="text-sm text-gray-400">Summer 2024</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            Managed Instagram account (2.5K followers), created weekly content calendars, 
+                            and designed promotional materials that increased foot traffic by 30% during my internship.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-gray-700 px-3 py-1 rounded-full">Instagram</span>
+                            <span class="text-xs bg-gray-700 px-3 py-1 rounded-full">Canva</span>
+                            <span class="text-xs bg-gray-700 px-3 py-1 rounded-full">Content Planning</span>
+                            <span class="text-xs bg-gray-700 px-3 py-1 rounded-full">Customer Insights</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 2 -->
+                <div class="relative pl-16 pb-12">
+                    <div class="timeline-dot" style="top: 1.5rem;"></div>
+                    <div class="glassmorphism rounded-lg p-6 glow-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold">Social Media Lead</h3>
+                                <p class="spotify-green font-medium">UCLA Marketing Club</p>
+                            </div>
+                            <span class="text-sm text-gray-400">2024 - Present</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            Lead a team of 4 students managing club social media, organized campus marketing events, 
+                            and grew Instagram following from 500 to 1.8K through strategic content and partnerships.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-gray-700 px-3 py-1 rounded-full">Team Leadership</span>
+                            <span class="text-xs bg-gray-700 px-3 py-1 rounded-full">Event Planning</span>
+                            <span class="text-xs bg-gray-700 px-3 py-1 rounded-full">Partnership Building</span>
+                            <span class="text-xs bg-gray-700 px-3 py-1 rounded-full">Growth Strategy</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Item 3 -->
+                <div class="relative pl-16 pb-12">
+                    <div class="timeline-dot" style="top: 1.5rem;"></div>
+                    <div class="glassmorphism rounded-lg p-6 glow-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold">Campus Brand Ambassador</h3>
+                                <p class="spotify-green font-medium">Various Brands</p>
+                            </div>
+                            <span class="text-sm text-gray-400">2023 - Present</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            Represented 3+ brands on campus (skincare, food delivery, study apps), 
+                            coordinated promotional events, and tracked campaign performance through unique promo codes.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs bg-gray-700 px-3 py-1 rounded-full">Brand Representation</span>
+                            <span class="text-xs bg-gray-700 px-3 py-1 rounded-full">Event Coordination</span>
+                            <span class="text-xs bg-gray-700 px-3 py-1 rounded-full">Performance Tracking</span>
+                            <span class="text-xs bg-gray-700 px-3 py-1 rounded-full">Campus Outreach</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- Projects Grid -->
+    <section class="py-20 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center">
+                Academic <span class="spotify-green">Projects</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="glassmorphism rounded-lg p-6 glow-hover cursor-pointer relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-green-400 to-transparent opacity-20 rounded-full"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold">Campus Sustainability Campaign</h3>
+                        <div class="play-button w-8 h-8">
+                            <div class="play-button::before w-2 h-2"></div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-4 text-sm">
+                        <strong>Class:</strong> Marketing Communications<br>
+                        Created integrated marketing campaign to increase recycling on campus. 
+                        Included social media strategy, poster design, and student survey analysis.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs spotify-green font-medium">#marketingresearch</span>
+                        <span class="text-xs spotify-green font-medium">#campaignstrategy</span>
+                        <span class="text-xs spotify-green font-medium">#socialimpact</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm font-bold spotify-green">A+ Grade</div>
+                        <div class="text-xs text-gray-500">Fall 2024</div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="glassmorphism rounded-lg p-6 glow-hover cursor-pointer relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-400 to-transparent opacity-20 rounded-full"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold">Gen-Z Coffee Brand Concept</h3>
+                        <div class="play-button w-8 h-8"></div>
+                    </div>
+                    <p class="text-gray-400 mb-4 text-sm">
+                        <strong>Class:</strong> Brand Management<br>
+                        Developed complete brand strategy for hypothetical coffee company targeting college students. 
+                        Included market research, brand positioning, and go-to-market strategy.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs spotify-green font-medium">#brandstrategy</span>
+                        <span class="text-xs spotify-green font-medium">#marketresearch</span>
+                        <span class="text-xs spotify-green font-medium">#targetaudience</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm font-bold spotify-green">Group Leader</div>
+                        <div class="text-xs text-gray-500">Spring 2024</div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="glassmorphism rounded-lg p-6 glow-hover cursor-pointer relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-purple-400 to-transparent opacity-20 rounded-full"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold">Student Housing App Redesign</h3>
+                        <div class="play-button w-8 h-8"></div>
+                    </div>
+                    <p class="text-gray-400 mb-4 text-sm">
+                        <strong>Class:</strong> Digital Marketing<br>
+                        UX analysis and redesign proposal for UCLA housing portal. 
+                        Conducted user interviews, created wireframes, and presented to class.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs spotify-green font-medium">#uxdesign</span>
+                        <span class="text-xs spotify-green font-medium">#userresearch</span>
+                        <span class="text-xs spotify-green font-medium">#wireframing</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm font-bold spotify-green">Best in Class</div>
+                        <div class="text-xs text-gray-500">Fall 2023</div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="glassmorphism rounded-lg p-6 glow-hover cursor-pointer relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-pink-400 to-transparent opacity-20 rounded-full"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold">Social Media Audit Case Study</h3>
+                        <div class="play-button w-8 h-8"></div>
+                    </div>
+                    <p class="text-gray-400 mb-4 text-sm">
+                        <strong>Class:</strong> Social Media Marketing<br>
+                        Comprehensive audit of local restaurant's social media presence. 
+                        Analyzed competitors, identified gaps, and proposed content strategy improvements.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs spotify-green font-medium">#socialaudit</span>
+                        <span class="text-xs spotify-green font-medium">#competitoranalysis</span>
+                        <span class="text-xs spotify-green font-medium">#contentstrategy</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm font-bold spotify-green">Professor Favorite</div>
+                        <div class="text-xs text-gray-500">Spring 2024</div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="glassmorphism rounded-lg p-6 glow-hover cursor-pointer relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-yellow-400 to-transparent opacity-20 rounded-full"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold">Mental Health Awareness Campaign</h3>
+                        <div class="play-button w-8 h-8"></div>
+                    </div>
+                    <p class="text-gray-400 mb-4 text-sm">
+                        <strong>Personal Project</strong><br>
+                        Designed Instagram campaign for Mental Health Awareness Week. 
+                        Created 10-post series with educational content and campus resource highlights.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs spotify-green font-medium">#socialimpact</span>
+                        <span class="text-xs spotify-green font-medium">#contentcreation</span>
+                        <span class="text-xs spotify-green font-medium">#campusadvocacy</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm font-bold spotify-green">5K+ Reach</div>
+                        <div class="text-xs text-gray-500">2024</div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="glassmorphism rounded-lg p-6 glow-hover cursor-pointer relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-red-400 to-transparent opacity-20 rounded-full"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold">Roommate Finder App Mockup</h3>
+                        <div class="play-button w-8 h-8"></div>
+                    </div>
+                    <p class="text-gray-400 mb-4 text-sm">
+                        <strong>Class:</strong> Consumer Behavior<br>
+                        Designed mobile app concept to help college students find compatible roommates. 
+                        Included user personas, journey mapping, and hi-fi prototypes.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs spotify-green font-medium">#appdesign</span>
+                        <span class="text-xs spotify-green font-medium">#userpersonas</span>
+                        <span class="text-xs spotify-green font-medium">#prototyping</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm font-bold spotify-green">Figma Prototype</div>
+                        <div class="text-xs text-gray-500">Fall 2024</div>
+                    </div>
+                </div>    <div class="flex justify-between items-center">
+                        <div class="text-sm font-bold spotify-green">25K monthly readers</div>
+                        <div class="text-xs text-gray-500">2023</div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="glassmorphism rounded-lg p-6 glow-hover cursor-pointer relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-red-400 to-transparent opacity-20 rounded-full"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold">Food Truck App Concept</h3>
+                        <div class="play-button w-8 h-8"></div>
+                    </div>
+                    <p class="text-gray-400 mb-4 text-sm">
+                        Mobile app concept connecting students with campus food trucks, featuring real-time tracking, 
+                        pre-ordering, and loyalty programs. Full prototype developed.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs spotify-green font-medium">#appdesign</span>
+                        <span class="text-xs spotify-green font-medium">#wireframing</span>
+                        <span class="text-xs spotify-green font-medium">#userjourney</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm font-bold spotify-green">High-fi prototype</div>
+                        <div class="text-xs text-gray-500">2023</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- Skills Section -->
+    <section class="py-20 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center">
+                Skills & <span class="spotify-green">Expertise</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Creative Skills -->
+                <div class="glassmorphism rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-6 spotify-green">Creative & Design</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Brand Strategy</span>
+                                <span class="text-sm text-gray-400">95%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Figma/Design</span>
+                                <span class="text-sm text-gray-400">90%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Copywriting</span>
+                                <span class="text-sm text-gray-400">88%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-fill" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Adobe Creative Suite</span>
+                                <span class="text-sm text-gray-400">85%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Digital Marketing -->
+                <div class="glassmorphism rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-6 spotify-green">Digital Marketing</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Social Media Strategy</span>
+                                <span class="text-sm text-gray-400">92%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-fill" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Meta Ads Manager</span>
+                                <span class="text-sm text-gray-400">87%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-fill" style="width: 87%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Google Analytics</span>
+                                <span class="text-sm text-gray-400">80%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Email Marketing</span>
+                                <span class="text-sm text-gray-400">83%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-fill" style="width: 83%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technical Skills -->
+                <div class="glassmorphism rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-6 spotify-green">Technical & UX</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">UX Research</span>
+                                <span class="text-sm text-gray-400">78%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-fill" style="width: 78%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Prototyping</span>
+                                <span class="text-sm text-gray-400">82%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-fill" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">HTML/CSS</span>
+                                <span class="text-sm text-gray-400">75%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Data Analysis</span>
+                                <span class="text-sm text-gray-400">70%</span>
+                            </div>
+                            <div class="skill-meter">
+                                <div class="skill-fill" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tools I Love -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold mb-8 text-center">Tools I Live By</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                    <div class="glassmorphism rounded-lg p-4 text-center glow-hover">
+                        <div class="text-2xl mb-2">🎨</div>
+                        <div class="text-sm font-medium">Figma</div>
+                    </div>
+                    <div class="glassmorphism rounded-lg p-4 text-center glow-hover">
+                        <div class="text-2xl mb-2">📱</div>
+                        <div class="text-sm font-medium">Instagram</div>
+                    </div>
+                    <div class="glassmorphism rounded-lg p-4 text-center glow-hover">
+                        <div class="text-2xl mb-2">🎯</div>
+                        <div class="text-sm font-medium">Meta Ads</div>
+                    </div>
+                    <div class="glassmorphism rounded-lg p-4 text-center glow-hover">
+                        <div class="text-2xl mb-2">📊</div>
+                        <div class="text-sm font-medium">Analytics</div>
+                    </div>
+                    <div class="glassmorphism rounded-lg p-4 text-center glow-hover">
+                        <div class="text-2xl mb-2">✍️</div>
+                        <div class="text-sm font-medium">Notion</div>
+                    </div>
+                    <div class="glassmorphism rounded-lg p-4 text-center glow-hover">
+                        <div class="text-2xl mb-2">🎵</div>
+                        <div class="text-sm font-medium">Spotify</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- About Section -->
+    <section class="py-20 px-6 relative">
+        <div class="music-waves bottom-1/4"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="text-4xl font-bold mb-8">
+                About <span class="spotify-green">Me</span>
+            </h2>
+            <div class="glassmorphism rounded-lg p-8 mb-12">
+                <div class="text-lg leading-relaxed mb-8 text-gray-300">
+                    <p class="mb-6">
+                        I'm a junior at UCLA studying marketing with a passion for understanding what makes people connect with brands. 
+                        I believe great marketing isn't just about selling—it's about creating authentic relationships between 
+                        companies and the communities they serve.
+                    </p>
+                    <p class="mb-6">
+                        Whether I'm analyzing consumer behavior for a class project, leading social media strategy for my club, 
+                        or diving into case studies about successful campaigns, I'm always asking: "What would make this resonate 
+                        with real people?" I love the challenge of translating data and insights into creative ideas that actually work.
+                    </p>
+                    <p>
+                        Outside of academics, you'll find me discovering new music (currently obsessed with indie pop), 
+                        exploring LA's coffee scene for "research" purposes, or working on personal projects that help me 
+                        learn new skills. I'm always ready to bring fresh perspectives and genuine enthusiasm to any team.
+                    </p>
+                </div>
+                
+                <!-- Current Obsessions -->
+                <div class="grid md:grid-cols-3 gap-6 mt-8">
+                    <div class="text-center">
+                        <div class="text-3xl mb-3">🎧</div>
+                        <div class="font-medium spotify-green">Currently Listening</div>
+                        <div class="text-sm text-gray-400">Indie pop, bedroom pop, study playlists</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl mb-3">📚</div>
+                        <div class="font-medium spotify-green">Currently Reading</div>
+                        <div class="text-sm text-gray-400">"Contagious" by Jonah Berger</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl mb-3">🎯</div>
+                        <div class="font-medium spotify-green">Currently Learning</div>
+                        <div class="text-sm text-gray-400">Google Analytics 4 & Data Studio</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skills Playlist -->
+            <div class="text-left max-w-3xl mx-auto glassmorphism rounded-lg p-8">
+                <h3 class="text-2xl font-bold mb-6 spotify-green flex items-center">
+                    <span class="mr-3">🎵</span> My Skills Playlist
+                </h3>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-4 p-4 rounded hover:spotify-hover transition-colors group">
+                        <div class="w-8 h-8 spotify-green-bg rounded flex items-center justify-center text-black font-bold text-sm">1</div>
+                        <div class="flex-1">
+                            <div class="font-medium group-hover:spotify-green transition-colors">Marketing Strategy & Consumer Insights</div>
+                            <div class="text-sm text-gray-400">Understanding what makes people tick and turning insights into action</div>
+                        </div>
+                        <div class="text-xs text-gray-500">3:47</div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 rounded hover:spotify-hover transition-colors group">
+                        <div class="w-8 h-8 spotify-green-bg rounded flex items-center justify-center text-black font-bold text-sm">2</div>
+                        <div class="flex-1">
+                            <div class="font-medium group-hover:spotify-green transition-colors">Social Media Marketing & Community Building</div>
+                            <div class="text-sm text-gray-400">Creating content that people actually want to engage with</div>
+                        </div>
+                        <div class="text-xs text-gray-500">4:12</div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 rounded hover:spotify-hover transition-colors group">
+                        <div class="w-8 h-8 spotify-green-bg rounded flex items-center justify-center text-black font-bold text-sm">3</div>
+                        <div class="flex-1">
+                            <div class="font-medium group-hover:spotify-green transition-colors">User Experience & Research Methods</div>
+                            <div class="text-sm text-gray-400">Asking the right questions to understand user needs and pain points</div>
+                        </div>
+                        <div class="text-xs text-gray-500">5:23</div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 rounded hover:spotify-hover transition-colors group">
+                        <div class="w-8 h-8 spotify-green-bg rounded flex items-center justify-center text-black font-bold text-sm">4</div>
+                        <div class="flex-1">
+                            <div class="font-medium group-hover:spotify-green transition-colors">Creative Content & Copywriting</div>
+                            <div class="text-sm text-gray-400">Crafting messages that inform, inspire, and drive action</div>
+                        </div>
+                        <div class="text-xs text-gray-500">3:56</div>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 rounded hover:spotify-hover transition-colors group">
+                        <div class="w-8 h-8 spotify-green-bg rounded flex items-center justify-center text-black font-bold text-sm">5</div>
+                        <div class="flex-1">
+                            <div class="font-medium group-hover:spotify-green transition-colors">Data Analysis & Campaign Performance</div>
+                            <div class="text-sm text-gray-400">Turning numbers into insights and insights into better strategies</div>
+                        </div>
+                        <div class="text-xs text-gray-500">4:08</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- Testimonials -->
+    <section class="py-20 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-center">
+                What People <span class="spotify-green">Say</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glassmorphism rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 spotify-green-bg rounded-full flex items-center justify-center text-black font-bold mr-4">SC</div>
+                        <div>
+                            <div class="font-medium">Sarah Chen</div>
+                            <div class="text-sm text-gray-400">Coffee Shop Owner</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        "Maria brought such fresh energy to our team. She's not just book-smart—she really gets 
+                        how to connect with our target audience. Her Instagram content for our summer campaign was spot-on."
+                    </p>
+                </div>
+                
+                <div class="glassmorphism rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 spotify-green-bg rounded-full flex items-center justify-center text-black font-bold mr-4">MR</div>
+                        <div>
+                            <div class="font-medium">Prof. Michael Rodriguez</div>
+                            <div class="text-sm text-gray-400">Marketing Professor, UCLA</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        "Maria consistently delivers thoughtful, well-researched projects. Her consumer behavior analysis 
+                        was among the best I've seen in 15 years of teaching. She has a real talent for connecting theory to practice."
+                    </p>
+                </div>
+                
+                <div class="glassmorphism rounded-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 spotify-green-bg rounded-full flex items-center justify-center text-black font-bold mr-4">ET</div>
+                        <div>
+                            <div class="font-medium">Emma Thompson</div>
+                            <div class="text-sm text-gray-400">UCLA Marketing Club President</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        "Maria stepped up as our social media lead and completely transformed our club's presence. 
+                        She's collaborative, creative, and always brings solutions, not just problems. Any company would be lucky to have her."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <!-- Contact Section -->
+    <section class="py-20 px-6 relative">
+        <div class="music-waves top-0"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="text-4xl font-bold mb-8">
+                Let's <span class="spotify-green">Collaborate</span>
+            </h2>
+            <p class="text-xl text-gray-300 mb-12">
+                Ready to bring fresh energy, creative thinking, and genuine passion to your marketing team? 
+                Let's connect and explore how I can contribute to your next big campaign.
+            </p>
+            
+            <div class="glassmorphism rounded-lg p-8 mb-12">
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="font-bold spotify-green mb-4">What I Bring:</h3>
+                        <ul class="text-left text-gray-300 space-y-2">
+                            <li>• Fresh perspective on Gen-Z marketing</li>
+                            <li>• Strong analytical and research skills</li>
+                            <li>• Experience with social media strategy</li>
+                            <li>• Collaborative team player attitude</li>
+                            <li>• Genuine passion for learning and growth</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold spotify-green mb-4">What I'm Seeking:</h3>
+                        <ul class="text-left text-gray-300 space-y-2">
+                            <li>• Summer 2025 marketing internships</li>
+                            <li>• Brand strategy or social media roles</li>
+                            <li>• Opportunities to work on real campaigns</li>
+                            <li>• Mentorship from experienced marketers</li>
+                            <li>• Companies that value creativity & innovation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="mailto:maria.lopez@email.com" class="spotify-green-bg text-black px-8 py-4 rounded-full font-bold hover:bg-green-400 transition-all hover:scale-105 shadow-lg">
+                        📧 Drop me a line
+                    </a>
+                    <a href="#" class="border border-gray-600 px-8 py-4 rounded-full font-medium hover:border-green-400 hover:text-green-400 transition-all">
+                        📄 View Resume
+                    </a>
+                    <a href="#" class="border border-gray-600 px-8 py-4 rounded-full font-medium hover:border-green-400 hover:text-green-400 transition-all">
+                        💼 LinkedIn
+                    </a>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <p class="text-sm text-gray-500 mb-4">
+                    Made with late-night study sessions, way too much coffee, and a genuine love for great marketing ☕
+                </p>
+                <div class="text-xs text-gray-600">
+                    Currently playing: Lorde - "Solar Power" • Study mode: activated ████████░░
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto text-center text-gray-500 text-sm">
+            <p>© 2024 Maria Lopez. Designed with Spotify vibes and creative obsession.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Progress bar animation
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('progressBar').style.transform = `scaleX(${scrolled / 100})`;
+        });
+        
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add click handlers for project cards
+        document.querySelectorAll('.glow-hover').forEach(card => {
+            card.addEventListener('click', () => {
+                // In a real implementation, this would navigate to project details
+                console.log('Opening project details...');
+            });
+        });
+        
+        // Animate skill meters on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillFills = entry.target.querySelectorAll('.skill-fill');
+                    skillFills.forEach(fill => {
+                        fill.style.animation = 'fillUp 2s ease-out forwards';
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        // Observe skills section
+        const skillsSection = document.querySelector('.py-20:has(.skill-meter)');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+        
+        // Add parallax effect to floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-circle');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.1 + (index * 0.05);
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px) rotate(${scrolled * 0.05}deg)`;
+            });
+        });
+        
+        // Add hover sound effect simulation
+        document.querySelectorAll('.play-button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                // In a real implementation, you could add actual sound effects here
+                console.log('🎵 Hover sound effect');
+            });
+        });
+    </script>
+</body>
+</html>

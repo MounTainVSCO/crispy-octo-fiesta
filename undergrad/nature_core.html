@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maya Rodriguez - Digital Garden Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Literata:wght@300;400;500&display=swap');
+        
+        :root {
+            --cream: #FAF7F0;
+            --sand: #F4F1E8;
+            --sage: #A3B18A;
+            --clay: #C8A882;
+            --terracotta: #D4A574;
+            --charcoal: #4A4A4A;
+            --soft-shadow: 0 2px 20px rgba(163, 177, 138, 0.1);
+            --gentle-shadow: 0 1px 8px rgba(163, 177, 138, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .texture-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.5" fill="%23A3B18A" opacity="0.02"/><circle cx="75" cy="75" r="0.3" fill="%23A3B18A" opacity="0.02"/><circle cx="50" cy="10" r="0.4" fill="%23A3B18A" opacity="0.02"/><circle cx="10" cy="60" r="0.3" fill="%23A3B18A" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            padding: 3rem 0 5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: 'Literata', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.2s;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: var(--sage);
+            margin-bottom: 2rem;
+            font-style: italic;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 0.4s;
+        }
+
+        .hero-details {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.95rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 0.6s;
+        }
+
+        .hero-details span {
+            color: var(--clay);
+        }
+
+        .botanical-accent {
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.3;
+            width: 80px;
+            height: 80px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10 Q30 30 20 50 Q30 70 50 90 Q70 70 80 50 Q70 30 50 10 Z" fill="none" stroke="%23A3B18A" stroke-width="1.5"/><path d="M50 20 Q40 35 35 50 Q40 65 50 80" fill="none" stroke="%23A3B18A" stroke-width="1"/></svg>');
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(250, 247, 240, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(163, 177, 138, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 400;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background: var(--sand);
+            color: var(--sage);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Literata', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--charcoal);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+        }
+
+        .about-details {
+            background: var(--sand);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--gentle-shadow);
+        }
+
+        .detail-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--sage);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-value {
+            color: var(--charcoal);
+        }
+
+        .quote-callout {
+            background: linear-gradient(135deg, var(--sage), var(--clay));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            font-style: italic;
+            font-size: 1.1rem;
+            box-shadow: var(--soft-shadow);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--gentle-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(163, 177, 138, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--soft-shadow);
+        }
+
+        .project-title {
+            font-family: 'Literata', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .project-role {
+            color: var(--sage);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .project-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--sand);
+            color: var(--clay);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Knowledge Garden */
+        .knowledge-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .knowledge-entry {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--gentle-shadow);
+            border-left: 4px solid var(--sage);
+        }
+
+        .entry-title {
+            font-family: 'Literata', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .entry-date {
+            color: var(--clay);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .entry-content {
+            line-height: 1.7;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--gentle-shadow);
+            text-align: center;
+        }
+
+        .skill-category-title {
+            font-weight: 600;
+            color: var(--sage);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .skill-item {
+            background: var(--sand);
+            color: var(--charcoal);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: var(--sage);
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--sand);
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .contact-message {
+            font-family: 'Literata', serif;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-link {
+            background: white;
+            color: var(--charcoal);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: var(--gentle-shadow);
+        }
+
+        .contact-link:hover {
+            background: var(--sage);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-accent {
+            margin-top: 2rem;
+            opacity: 0.6;
+        }
+
+        .footer-accent svg {
+            width: 60px;
+            height: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-details {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-container {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Scroll-based animations */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="texture-overlay"></div>
+    
+    <header>
+        <div class="container">
+            <div class="botanical-accent"></div>
+            <h1 class="hero-title">Maya Rodriguez</h1>
+            <p class="hero-tagline">Growing brands through strategy, story, and simplicity.</p>
+            <div class="hero-details">
+                <span>Undergraduate in Marketing @ UC San Diego</span>
+                <span>•</span>
+                <span>Currently exploring: storytelling, brand voice, and campaign systems</span>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#knowledge" class="nav-link">Knowledge Garden</a>
+            <a href="#skills" class="nav-link">Skills & Tools</a>
+            <a href="#contact" class="nav-link">Connect</a>
+        </div>
+    </nav>
+
+    <section id="about" class="fade-in-section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I believe the best marketing feels like a conversation with a thoughtful friend—genuine, helpful, and rooted in understanding what people actually need. My approach blends strategic thinking with natural storytelling, creating campaigns that feel as organic as they are effective.</p>
+                    
+                    <p>When I'm not diving into consumer psychology or crafting brand narratives, you'll find me tending to my houseplants, journaling in coffee shops, or reorganizing my Notion workspace for the third time this week. I'm fascinated by how brands can create authentic connections without losing their soul in the process.</p>
+                    
+                    <div class="quote-callout">
+                        "Good marketing doesn't interrupt; it invites. It doesn't shout; it shares. It grows naturally from understanding, not assumptions."
+                    </div>
+                </div>
+                
+                <div class="about-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Current Role</div>
+                        <div class="detail-value">Student & Marketing Intern</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Focus Areas</div>
+                        <div class="detail-value">Brand Strategy, Content Creation, Consumer Psychology</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Inspired By</div>
+                        <div class="detail-value">Sustainable brands, design systems, human-centered stories</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Learning Now</div>
+                        <div class="detail-value">UX research methods, data storytelling</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="fade-in-section">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 class="project-title">Earthwise Skincare Campaign</h3>
+                    <div class="project-role">Brand Strategy & Content Creation</div>
+                    <p class="project-description">Developed a digital campaign for a local sustainable skincare brand, focusing on ingredient transparency and community education. Increased social engagement by 180% through authentic storytelling.</p>
+                    <div class="project-tags">
+                        <span class="tag">#sustainability</span>
+                        <span class="tag">#contentcreation</span>
+                        <span class="tag">#community</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Campus Mental Wellness Initiative</h3>
+                    <div class="project-role">Campaign Strategy & Creative Direction</div>
+                    <p class="project-description">Led a semester-long awareness campaign promoting mental health resources. Created a gentle, non-stigmatizing approach that resulted in 45% increase in counseling center visits.</p>
+                    <div class="project-tags">
+                        <span class="tag">#publichealth</span>
+                        <span class="tag">#strategy</span>
+                        <span class="tag">#empathy</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Local Farmers Market Rebrand</h3>
+                    <div class="project-role">Brand Identity & Community Outreach</div>
+                    <p class="project-description">Refreshed visual identity and messaging for a 20-year-old farmers market, emphasizing community connection and seasonal abundance. Vendor participation increased by 30%.</p>
+                    <div class="project-tags">
+                        <span class="tag">#branding</span>
+                        <span class="tag">#local</span>
+                        <span class="tag">#community</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Study Abroad Program Campaign</h3>
+                    <div class="project-role">Digital Marketing & Student Ambassador</div>
+                    <p class="project-description">Created peer-to-peer marketing strategy using authentic student stories and experiences. Developed content calendar resulting in highest program enrollment in three years.</p>
+                    <div class="project-tags">
+                        <span class="tag">#storytelling</span>
+                        <span class="tag">#peertopeer</span>
+                        <span class="tag">#education</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="knowledge" class="fade-in-section">
+        <div class="container">
+            <h2 class="section-title">Knowledge Garden</h2>
+            <div class="knowledge-grid">
+                <div class="knowledge-entry">
+                    <div class="entry-date">March 2024</div>
+                    <h3 class="entry-title">Why Patagonia's Voice Works (And Others Don't)</h3>
+                    <div class="entry-content">
+                        <p>Patagonia doesn't just talk about sustainability—they live it so fully that it becomes inseparable from their identity. Their marketing works because there's no gap between their values and their actions. They're not afraid to tell customers not to buy their products if they don't need them. This kind of radical authenticity creates trust that traditional marketing can't touch.</p>
+                        <p>The lesson: Brand voice isn't what you say—it's the natural expression of who you actually are.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-entry">
+                    <div class="entry-date">February 2024</div>
+                    <h3 class="entry-title">The Power of Gentle Marketing</h3>
+                    <div class="entry-content">
+                        <p>Working on the mental health campaign taught me that sometimes the most effective marketing whispers instead of shouts. We used soft colors, calm imagery, and language that felt like a caring friend—not a corporate message. The result? People actually engaged instead of scrolling past.</p>
+                        <p>There's strength in softness, especially when addressing sensitive topics or reaching audiences who are tired of being sold to.</p>
+                    </div>
+                </div>
+
+                <div class="knowledge-entry">
+                    <div class="entry-date">January 2024</div>
+                    <h3 class="entry-title">Systems Thinking in Campaign Design</h3>
+                    <div class="entry-content">
+                        <p>Every touchpoint is connected. A social media post isn't just a post—it's part of a larger ecosystem that includes your website, customer service, product experience, and even your company culture. When these elements align, marketing becomes effortless because every interaction reinforces the same story.</p>
+                        <p>I'm learning to map these connections before jumping into tactics. The campaign strategy is just the beginning; the real work is in the ecosystem design.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="fade-in-section">
+        <div class="container">
+            <h2 class="section-title">Skills & Tools</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Creative Tools</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Figma</span>
+                        <span class="skill-item">Canva</span>
+                        <span class="skill-item">Adobe Creative Suite</span>
+                        <span class="skill-item">Notion</span>
+                        <span class="skill-item">Miro</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Platforms</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Meta Ads</span>
+                        <span class="skill-item">Google Analytics</span>
+                        <span class="skill-item">Mailchimp</span>
+                        <span class="skill-item">Hootsuite</span>
+                        <span class="skill-item">WordPress</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Practices</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Brand Strategy</span>
+                        <span class="skill-item">Content Creation</span>
+                        <span class="skill-item">Campaign Planning</span>
+                        <span class="skill-item">User Research</span>
+                        <span class="skill-item">Storytelling</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Growing</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Data Visualization</span>
+                        <span class="skill-item">UX Research</span>
+                        <span class="skill-item">SEO Strategy</span>
+                        <span class="skill-item">Email Marketing</span>
+                        <span class="skill-item">A/B Testing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="contact-section">
+        <div class="container">
+            <h2 class="contact-message">Let's grow something meaningful together.</h2>
+            <div class="contact-links">
+                <a href="mailto:maya.rodriguez@ucsd.edu" class="contact-link">📧 Email</a>
+                <a href="#" class="contact-link">💼 LinkedIn</a>
+                <a href="#" class="contact-link">📄 Resume</a>
+            </div>
+            <div class="footer-accent">
+                <svg viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 15 Q25 5 40 10 T70 8 T90 12" fill="none" stroke="#A3B18A" stroke-width="1.5" opacity="0.6"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll-based animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Gentle hover effects for skill items
+        document.querySelectorAll('.skill-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-2px)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

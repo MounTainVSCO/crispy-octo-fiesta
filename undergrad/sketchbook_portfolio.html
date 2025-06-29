@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Rivera - Creative Notebook</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Inter:wght@300;400;500&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .font-handwritten { font-family: 'Kalam', cursive; }
+        .font-script { font-family: 'Caveat', cursive; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        
+        body {
+            background: #f9f9f7;
+            background-image: 
+                radial-gradient(circle at 1px 1px, rgba(0,0,0,0.15) 1px, transparent 0);
+            background-size: 20px 20px;
+        }
+        
+        .paper-texture {
+            background: linear-gradient(135deg, #fefefe 0%, #f8f8f6 100%);
+            box-shadow: 
+                0 1px 3px rgba(0,0,0,0.1),
+                0 4px 6px rgba(0,0,0,0.05),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+        }
+        
+        .sticky-note {
+            background: #fef3c7;
+            transform: rotate(-2deg);
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .sticky-note::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+            opacity: 0.3;
+        }
+        
+        .polaroid {
+            background: white;
+            padding: 10px 10px 40px 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: rotate(3deg);
+        }
+        
+        .tape {
+            background: rgba(255,255,255,0.8);
+            border: 1px solid rgba(0,0,0,0.1);
+            transform: rotate(-5deg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .doodle-arrow {
+            stroke: #ef4444;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+        }
+        
+        .marker-highlight {
+            background: linear-gradient(120deg, transparent 50%, #fef08a 50%, #fef08a 85%, transparent 85%);
+            padding: 2px 0;
+        }
+        
+        .scribble-underline {
+            position: relative;
+        }
+        
+        .scribble-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 5"><path d="M0,3 Q25,1 50,3 T100,2" stroke="%23ef4444" stroke-width="2" fill="none"/></svg>');
+            background-size: 100% 100%;
+        }
+        
+        .project-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-2px) rotate(0.5deg);
+        }
+        
+        .notebook-lines {
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 24px,
+                rgba(0,0,0,0.1) 24px,
+                rgba(0,0,0,0.1) 25px
+            );
+        }
+        
+        .margin-line {
+            border-left: 2px solid #ef4444;
+            padding-left: 20px;
+        }
+        
+        .coffee-stain {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(139,69,19,0.2) 0%, rgba(139,69,19,0.1) 50%, transparent 70%);
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    
+    <!-- Coffee Stains scattered around -->
+    <div class="coffee-stain" style="top: 15%; right: 10%;"></div>
+    <div class="coffee-stain" style="top: 60%; left: 5%; width: 25px; height: 25px;"></div>
+    
+    <!-- Main Container -->
+    <div class="max-w-4xl mx-auto p-6">
+        
+        <!-- Cover Page / Hero -->
+        <section class="paper-texture rounded-lg p-8 mb-8 relative overflow-hidden">
+            <!-- Tape in corner -->
+            <div class="tape absolute -top-2 right-8 w-16 h-6"></div>
+            
+            <div class="margin-line">
+                <h1 class="font-script text-6xl md:text-7xl text-gray-800 mb-4 transform -rotate-1">
+                    Alex Rivera
+                </h1>
+                <p class="font-handwritten text-xl text-gray-600 mb-8 transform rotate-1">
+                    Ideas in progress. Campaigns in motion.
+                </p>
+                
+                <!-- Sticky note -->
+                <div class="sticky-note inline-block p-3 mb-6 font-handwritten text-sm">
+                    Undergrad marketer with a<br>
+                    notebook full of weird,<br>
+                    strategic ideas ✨
+                </div>
+                
+                <!-- Doodle Arrow -->
+                <div class="relative inline-block">
+                    <svg class="absolute -right-8 -top-4 w-12 h-8" viewBox="0 0 48 32">
+                        <path class="doodle-arrow" d="M2,16 Q20,8 40,16 L35,12 M40,16 L35,20"/>
+                    </svg>
+                    <button class="font-handwritten text-lg text-gray-700 underline hover:text-red-500 transition-colors">
+                        View Projects
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="paper-texture rounded-lg p-8 mb-8 relative">
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- Polaroid Photo -->
+                <div class="polaroid w-32 h-40 flex-shrink-0">
+                    <div class="w-full h-24 bg-gradient-to-br from-blue-200 to-purple-200 rounded mb-2 flex items-center justify-center text-4xl">
+                        📸
+                    </div>
+                    <p class="font-handwritten text-xs text-center">Me @ 2am with ideas</p>
+                </div>
+                
+                <!-- Bio -->
+                <div class="notebook-lines py-4 flex-1">
+                    <h2 class="font-script text-3xl text-gray-800 mb-4 scribble-underline">About Me</h2>
+                    <p class="font-sans text-gray-700 leading-relaxed mb-6">
+                        I'm Alex, a marketing student who thinks in sticky notes, metaphors, and late-night idea dumps. 
+                        Currently studying at UC Berkeley, but learning most of my stuff from failed experiments and 
+                        <span class="marker-highlight">really good campaigns</span> that make me jealous.
+                    </p>
+                    
+                    <!-- Sidebar list -->
+                    <div class="bg-gray-50 p-4 rounded border-l-4 border-yellow-400">
+                        <h3 class="font-handwritten text-lg mb-2">Things I Like:</h3>
+                        <ul class="font-sans text-sm text-gray-600 space-y-1">
+                            <li>☕ Coffee (obviously)</li>
+                            <li>📱 Well-timed memes</li>
+                            <li>💭 Campaigns that make people feel things</li>
+                            <li>🎯 Strategy that doesn't suck</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="mb-8">
+            <h2 class="font-script text-4xl text-gray-800 mb-8 text-center transform rotate-1">
+                The Scrapbook Spread
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Project 1 -->
+                <div class="project-card paper-texture rounded-lg p-6 relative">
+                    <div class="tape absolute -top-1 left-4 w-12 h-4"></div>
+                    
+                    <h3 class="font-script text-2xl text-gray-800 mb-3">Campus Food Truck Rebrand</h3>
+                    
+                    <!-- Mockup sketch -->
+                    <div class="bg-gray-100 h-32 rounded mb-4 flex items-center justify-center border-2 border-dashed border-gray-300">
+                        <span class="font-handwritten text-gray-500">sketch of logo goes here →</span>
+                    </div>
+                    
+                    <!-- Scribbled notes -->
+                    <div class="font-handwritten text-sm text-gray-600 space-y-2">
+                        <p>• What it was: Sad food truck needed personality</p>
+                        <p>• What I did: Logo, social strategy, menu redesign</p>
+                        <p>• What I learned: <span class="marker-highlight">Students will wait for good branding</span></p>
+                    </div>
+                    
+                    <div class="flex space-x-2 mt-4">
+                        <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs font-sans">#branding</span>
+                        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-sans">#socialstrategy</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card paper-texture rounded-lg p-6 relative transform rotate-1">
+                    <div class="tape absolute -top-1 right-4 w-12 h-4"></div>
+                    
+                    <h3 class="font-script text-2xl text-gray-800 mb-3">Mental Health Awareness Week</h3>
+                    
+                    <div class="bg-green-50 h-32 rounded mb-4 p-4 flex flex-col justify-center border border-green-200">
+                        <p class="font-handwritten text-green-700 text-center">"You're not broken,<br>you're just loading..."</p>
+                        <p class="font-sans text-xs text-green-600 text-center mt-2">Campaign tagline ↑</p>
+                    </div>
+                    
+                    <div class="font-handwritten text-sm text-gray-600 space-y-2">
+                        <p>• Led campus-wide campaign</p>
+                        <p>• Created Instagram series + wellness fair</p>
+                        <p>• Result: 500+ students engaged</p>
+                        <p class="text-red-600">• <s>First draft was too preachy</s></p>
+                    </div>
+                    
+                    <div class="flex space-x-2 mt-4">
+                        <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded-full text-xs font-sans">#socialimpact</span>
+                        <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs font-sans">#copywriting</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card paper-texture rounded-lg p-6 relative">
+                    <h3 class="font-script text-2xl text-gray-800 mb-3">Freelance Email Newsletter</h3>
+                    
+                    <!-- Post-it note overlay -->
+                    <div class="sticky-note absolute top-2 right-2 p-2 text-xs font-handwritten">
+                        Client loved it!<br>
+                        +40% opens 📈
+                    </div>
+                    
+                    <div class="bg-blue-50 h-32 rounded mb-4 p-4 border border-blue-200">
+                        <div class="space-y-2">
+                            <div class="bg-blue-200 h-3 w-3/4 rounded"></div>
+                            <div class="bg-blue-200 h-3 w-1/2 rounded"></div>
+                            <div class="bg-blue-200 h-3 w-2/3 rounded"></div>
+                        </div>
+                        <p class="font-handwritten text-blue-700 text-xs mt-2">Email template wireframe</p>
+                    </div>
+                    
+                    <div class="font-handwritten text-sm text-gray-600 space-y-2">
+                        <p>• Monthly newsletter for local bookstore</p>
+                        <p>• Focus: community events + book recs</p>
+                        <p>• Learned: Subject lines = everything</p>
+                    </div>
+                    
+                    <div class="flex space-x-2 mt-4">
+                        <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-sans">#emailmarketing</span>
+                        <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs font-sans">#freelance</span>
+                    </div>
+                </div>
+
+                <!-- Idea Dumps Teaser -->
+                <div class="project-card paper-texture rounded-lg p-6 relative transform -rotate-1">
+                    <h3 class="font-script text-2xl text-gray-800 mb-3">Random Idea Dumps</h3>
+                    
+                    <div class="space-y-3 font-handwritten text-sm text-gray-600">
+                        <p class="border-l-2 border-yellow-400 pl-3">
+                            "What I'd do with a campus brand budget"
+                        </p>
+                        <p class="border-l-2 border-green-400 pl-3">
+                            "My top 3 brand crushes right now"
+                        </p>
+                        <p class="border-l-2 border-blue-400 pl-3">
+                            "Notes from a failed email campaign<br>(and why it was worth it)"
+                        </p>
+                    </div>
+                    
+                    <button class="mt-4 font-handwritten text-red-600 hover:text-red-700 underline">
+                        Read more random thoughts →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Tools -->
+        <section class="paper-texture rounded-lg p-8 mb-8">
+            <h2 class="font-script text-3xl text-gray-800 mb-6 text-center scribble-underline">
+                My Creative Inventory
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="font-handwritten text-lg text-gray-700 mb-3">🖊️ Pens (Tools)</h3>
+                    <div class="space-y-2 font-sans text-sm">
+                        <div class="flex justify-between items-center">
+                            <span>Canva</span>
+                            <div class="w-20 h-2 bg-gray-200 rounded overflow-hidden">
+                                <div class="w-4/5 h-full bg-green-400"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Figma</span>
+                            <div class="w-20 h-2 bg-gray-200 rounded overflow-hidden">
+                                <div class="w-3/5 h-full bg-blue-400"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Mailchimp</span>
+                            <div class="w-20 h-2 bg-gray-200 rounded overflow-hidden">
+                                <div class="w-4/5 h-full bg-yellow-400"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Meta Ads</span>
+                            <div class="w-20 h-2 bg-gray-200 rounded overflow-hidden">
+                                <div class="w-2/5 h-full bg-red-400"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-handwritten text-lg text-gray-700 mb-3">📝 Paper (Skills)</h3>
+                    <ul class="font-sans text-sm space-y-1 text-gray-600">
+                        <li>✓ Brand Strategy</li>
+                        <li>✓ Social Media Planning</li>
+                        <li>✓ Copywriting</li>
+                        <li>✓ Email Marketing</li>
+                        <li>⟳ Video Editing (learning)</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-handwritten text-lg text-gray-700 mb-3">🧠 Brain Stuff</h3>
+                    <div class="space-y-2">
+                        <div class="sticky-note p-2 text-xs font-handwritten inline-block">
+                            Idea generation<br>
+                            (sometimes too many)
+                        </div>
+                        <div class="bg-green-100 p-2 rounded text-xs font-sans inline-block ml-2">
+                            Strategic thinking
+                        </div>
+                        <div class="bg-blue-100 p-2 rounded text-xs font-sans inline-block">
+                            Problem solving
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="paper-texture rounded-lg p-8 text-center relative">
+            <div class="tape absolute -top-1 left-1/2 transform -translate-x-1/2 w-16 h-4"></div>
+            
+            <h2 class="font-script text-4xl text-gray-800 mb-4 transform rotate-1">
+                Found something you liked?
+            </h2>
+            <p class="font-handwritten text-lg text-gray-600 mb-6">
+                Let's make something together.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <button class="sticky-note px-4 py-2 font-handwritten hover:transform hover:rotate-0 transition-transform">
+                    alex.rivera@email.com
+                </button>
+                <a href="#" class="bg-blue-100 px-4 py-2 rounded-full font-sans text-sm hover:bg-blue-200 transition-colors">
+                    LinkedIn
+                </a>
+                <a href="#" class="bg-green-100 px-4 py-2 rounded-full font-sans text-sm hover:bg-green-200 transition-colors">
+                    Resume PDF
+                </a>
+            </div>
+            
+            <!-- Doodle -->
+            <div class="mt-6 flex justify-center">
+                <svg class="w-24 h-16 text-red-400" viewBox="0 0 96 64" fill="none">
+                    <path d="M10,32 Q30,10 50,32 T90,32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="20" cy="20" r="3" fill="currentColor"/>
+                    <circle cx="70" cy="25" r="2" fill="currentColor"/>
+                    <path d="M75,40 L80,45 L85,40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Add some interactive hover effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const randomRotate = Math.random() * 2 - 1; // Random between -1 and 1
+                card.style.transform = `translateY(-2px) rotate(${randomRotate}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // Sticky note email copy functionality
+        document.querySelector('.sticky-note').addEventListener('click', function() {
+            const email = 'alex.rivera@email.com';
+            navigator.clipboard.writeText(email).then(() => {
+                // Create temporary notification
+                const notification = document.createElement('div');
+                notification.textContent = 'Email copied! 📧';
+                notification.className = 'fixed top-4 right-4 bg-yellow-300 border-2 border-yellow-400 px-4 py-2 rounded font-handwritten text-sm z-50 transform rotate-2';
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 2500);
+            });
+        });
+    </script>
+</body>
+</html>

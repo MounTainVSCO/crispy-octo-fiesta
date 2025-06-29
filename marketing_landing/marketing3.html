@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah Chen - Strategic Marketing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: '#9CAF88',
+                        forest: '#6B7F5A',
+                        terracotta: '#D4A574',
+                        taupe: '#C7B299',
+                        ivory: '#FAF8F5',
+                        stone: '#8B8680'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, #FAF8F5 0%, #F0EDE7 100%);
+        }
+        .organic-shape {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #6B7F5A, #9CAF88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nature-texture {
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(156, 175, 136, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(212, 165, 116, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(199, 178, 153, 0.03) 0%, transparent 50%);
+        }
+        .leaf-icon {
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+    </style>
+</head>
+<body class="bg-ivory text-gray-800 font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 border-b border-sage/20">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-semibold text-forest">SC</div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#work" class="text-stone hover:text-forest transition-colors">Work</a>
+                <a href="#about" class="text-stone hover:text-forest transition-colors">About</a>
+                <a href="#insights" class="text-stone hover:text-forest transition-colors">Insights</a>
+                <a href="#services" class="text-stone hover:text-forest transition-colors">Services</a>
+                <a href="#contact" class="text-stone hover:text-forest transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+                <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+                    <span class="text-gradient">Strategic Marketing</span><br>
+                    <span class="text-forest">Rooted in Story</span><br>
+                    <span class="text-stone">& Authenticity</span>
+                </h1>
+                <p class="text-xl text-stone mb-8 leading-relaxed">
+                    I help conscious brands grow through storytelling that connects, campaigns that resonate, and strategies that bloom naturally from authentic purpose.
+                </p>
+                <button class="bg-forest text-white px-8 py-4 rounded-full font-semibold hover:bg-sage transition-all duration-300 hover:shadow-lg">
+                    Let's Collaborate →
+                </button>
+            </div>
+            <div class="order-1 md:order-2 flex justify-center">
+                <div class="w-80 h-80 organic-shape bg-gradient-to-br from-sage to-forest overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b332c633?w=400&h=400&fit=crop&crop=face" 
+                         alt="Sarah Chen" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Showcase -->
+    <section id="work" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-forest mb-4">Selected Work</h2>
+                <p class="text-xl text-stone max-w-2xl mx-auto">
+                    Strategic campaigns that grew from authentic brand stories
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="hover-lift bg-ivory rounded-3xl overflow-hidden">
+                    <div class="h-64 bg-gradient-to-br from-sage to-forest relative">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop" 
+                             alt="EcoBloom Campaign" class="w-full h-full object-cover opacity-80">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold text-forest mb-2">EcoBloom Skincare</h3>
+                        <p class="text-stone mb-4">Brand Strategy, Campaign Direction</p>
+                        <p class="text-gray-600">340% growth in 6 months through authentic storytelling and community-first social strategy.</p>
+                    </div>
+                </div>
+                
+                <div class="hover-lift bg-ivory rounded-3xl overflow-hidden">
+                    <div class="h-64 bg-gradient-to-br from-terracotta to-taupe relative">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" 
+                             alt="Mindful Living Campaign" class="w-full h-full object-cover opacity-80">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold text-forest mb-2">Mindful Living Co.</h3>
+                        <p class="text-stone mb-4">Content Strategy, Email Campaigns</p>
+                        <p class="text-gray-600">Transformed newsletter into their #1 revenue driver with nature-inspired storytelling.</p>
+                    </div>
+                </div>
+                
+                <div class="hover-lift bg-ivory rounded-3xl overflow-hidden">
+                    <div class="h-64 bg-gradient-to-br from-forest to-stone relative">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop" 
+                             alt="Sustainable Spaces Campaign" class="w-full h-full object-cover opacity-80">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold text-forest mb-2">Sustainable Spaces</h3>
+                        <p class="text-stone mb-4">Brand Voice, Social Strategy</p>
+                        <p class="text-gray-600">Repositioned architecture firm as thought leaders in regenerative design.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 nature-texture">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-forest mb-6">Growing Brands with Purpose</h2>
+                    <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+                        <p>
+                            My approach to marketing mirrors what I've learned from spending time in nature: 
+                            authentic growth happens when you nurture the right conditions, stay patient with the process, 
+                            and trust in the power of genuine connection.
+                        </p>
+                        <p>
+                            For the past 8 years, I've helped conscious brands tell their stories in ways that resonate 
+                            deeply with their communities. I believe the best campaigns don't feel like marketing at all—
+                            they feel like conversations with a trusted friend.
+                        </p>
+                        <blockquote class="text-2xl font-light text-forest italic border-l-4 border-sage pl-6">
+                            "Strategy without story is just noise. Story without strategy is just hope. 
+                            Together, they create movements."
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="w-96 h-96 rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1441123100240-f9f3f77ed41b?w=500&h=500&fit=crop" 
+                             alt="Sarah in nature" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights Section -->
+    <section id="insights" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-forest mb-4">Insights & Stories</h2>
+                <p class="text-xl text-stone max-w-2xl mx-auto">
+                    Thoughts on marketing, storytelling, and what nature teaches us about authentic growth
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <article class="bg-ivory rounded-3xl overflow-hidden hover-lift">
+                    <div class="h-48 bg-gradient-to-br from-sage/20 to-forest/20 flex items-center justify-center">
+                        <div class="w-16 h-16 bg-sage rounded-full flex items-center justify-center leaf-icon">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-forest mb-2">The Seasons of Brand Growth</h3>
+                        <p class="text-gray-600 mb-4">Why rushing your marketing is like planting seeds in winter—and what to do instead.</p>
+                        <a href="#" class="text-sage font-medium hover:text-forest transition-colors">Read more →</a>
+                    </div>
+                </article>
+                
+                <article class="bg-ivory rounded-3xl overflow-hidden hover-lift">
+                    <div class="h-48 bg-gradient-to-br from-terracotta/20 to-taupe/20 flex items-center justify-center">
+                        <div class="w-16 h-16 bg-terracotta rounded-full flex items-center justify-center leaf-icon">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-forest mb-2">The Art of Listening</h3>
+                        <p class="text-gray-600 mb-4">How forest bathing taught me to hear what my audience really needs.</p>
+                        <a href="#" class="text-sage font-medium hover:text-forest transition-colors">Read more →</a>
+                    </div>
+                </article>
+                
+                <article class="bg-ivory rounded-3xl overflow-hidden hover-lift">
+                    <div class="h-48 bg-gradient-to-br from-forest/20 to-stone/20 flex items-center justify-center">
+                        <div class="w-16 h-16 bg-forest rounded-full flex items-center justify-center leaf-icon">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,18.5L21,9L19.59,7.59L12,15.17L4.41,7.59L3,9L12,18.5Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-forest mb-2">Authentic vs. Perfect</h3>
+                        <p class="text-gray-600 mb-4">Why your brand's imperfections might be its greatest strength.</p>
+                        <a href="#" class="text-sage font-medium hover:text-forest transition-colors">Read more →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 nature-texture">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-forest mb-4">How I Can Help</h2>
+                <p class="text-xl text-stone max-w-2xl mx-auto">
+                    Strategic marketing services that honor your brand's authentic voice
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-sage rounded-full flex items-center justify-center mx-auto mb-6 leaf-icon">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9,5V9H21V7.5H11V5H9M9,19V15H21V16.5H11V19H9M3,8.5A1.5,1.5 0 0,1 4.5,7A1.5,1.5 0 0,1 6,8.5A1.5,1.5 0 0,1 4.5,10A1.5,1.5 0 0,1 3,8.5M3,15.5A1.5,1.5 0 0,1 4.5,14A1.5,1.5 0 0,1 6,15.5A1.5,1.5 0 0,1 4.5,17A1.5,1.5 0 0,1 3,15.5Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-forest mb-3">Brand Strategy</h3>
+                    <p class="text-gray-600">Uncover your authentic brand story and position it for meaningful growth.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-terracotta rounded-full flex items-center justify-center mx-auto mb-6 leaf-icon">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.1,10L4,18V8H21A2,2 0 0,0 19,6H12L10,4H4A2,2 0 0,0 2,6V18A2,2 0 0,0 4,20H19C19.9,20 20.7,19.4 20.9,18.5L23.2,10H6.1Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-forest mb-3">Content Strategy</h3>
+                    <p class="text-gray-600">Create content that connects deeply and drives authentic engagement.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-forest rounded-full flex items-center justify-center mx-auto mb-6 leaf-icon">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,23A1,1 0 0,1 11,22V19H7A2,2 0 0,1 5,17V7A2,2 0 0,1 7,5H21A2,2 0 0,1 23,7V17A2,2 0 0,1 21,19H16.9L13.2,22.71C12.9,22.89 12.6,23 12.3,23H12M3,15H1V3A2,2 0 0,1 3,1H19V3H3V15Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-forest mb-3">Social Strategy</h3>
+                    <p class="text-gray-600">Build communities that feel more like conversations with friends.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-taupe rounded-full flex items-center justify-center mx-auto mb-6 leaf-icon">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-forest mb-3">Email Campaigns</h3>
+                    <p class="text-gray-600">Turn your newsletter into your most profitable marketing channel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-forest mb-4">Kind Words</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-ivory rounded-3xl p-8 nature-texture">
+                    <p class="text-lg text-gray-700 mb-6 italic">
+                        "Sarah doesn't just create campaigns—she creates movements. Her approach to storytelling 
+                        transformed how we connect with our community. Our engagement rates tripled, but more 
+                        importantly, we finally felt like ourselves as a brand."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-sage rounded-full mr-4"></div>
+                        <div>
+                            <p class="font-semibold text-forest">Maya Rodriguez</p>
+                            <p class="text-stone">Founder, EcoBloom Skincare</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-ivory rounded-3xl p-8 nature-texture">
+                    <p class="text-lg text-gray-700 mb-6 italic">
+                        "Working with Sarah was like having a wise friend who happens to be a marketing genius. 
+                        She helped us find our voice and our people. The results speak for themselves—40% revenue 
+                        growth in the first quarter alone."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-terracotta rounded-full mr-4"></div>
+                        <div>
+                            <p class="font-semibold text-forest">James Chen</p>
+                            <p class="text-stone">CEO, Mindful Living Co.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section id="contact" class="py-20 hero-bg">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-5xl font-bold text-forest mb-6">Ready to grow something meaningful together?</h2>
+            <p class="text-xl text-stone mb-8 max-w-2xl mx-auto">
+                Let's have a conversation about your brand's story and how we can help it flourish 
+                in ways that feel authentic and sustainable.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <button class="bg-forest text-white px-8 py-4 rounded-full font-semibold hover:bg-sage transition-all duration-300 hover:shadow-lg">
+                    Start a Conversation
+                </button>
+                <button class="border-2 border-forest text-forest px-8 py-4 rounded-full font-semibold hover:bg-forest hover:text-white transition-all duration-300">
+                    View Portfolio PDF
+                </button>
+            </div>
+            
+            <div class="flex justify-center space-x-6 text-stone">
+                <a href="#" class="hover:text-forest transition-colors">LinkedIn</a>
+                <a href="#" class="hover:text-forest transition-colors">Instagram</a>
+                <a href="#" class="hover:text-forest transition-colors">Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-forest text-white py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sage mb-4">© 2025 Sarah Chen. All rights reserved.</p>
+            <p class="text-sage/70">Crafted with intention and a deep love for authentic storytelling.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-white/95');
+                nav.classList.remove('bg-white/80');
+            } else {
+                nav.classList.add('bg-white/80');
+                nav.classList.remove('bg-white/95');
+            }
+        });
+    </script>
+</body>
+</html>

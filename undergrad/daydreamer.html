@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Martinez - Digital Daydreamer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400;500&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        .font-sans { font-family: 'DM Sans', sans-serif; }
+        .font-rounded { font-family: 'Quicksand', sans-serif; }
+        
+        body {
+            background: linear-gradient(135deg, #fef7ff 0%, #f0f9ff 50%, #f7fee7 100%);
+            overflow-x: hidden;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #a78bfa 0%, #fb7185 50%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dream-bubble {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.6s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dream-bubble::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.6s ease;
+        }
+        
+        .dream-bubble:hover::before {
+            transform: scale(1);
+        }
+        
+        .dream-bubble:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-delayed {
+            animation: float 6s ease-in-out infinite;
+            animation-delay: -3s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #fbbf24 0%, transparent 70%);
+            border-radius: 50%;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        .cloud-bg {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><path d="M0,10 Q10,0 20,10 T40,10 T60,10 T80,10 T100,10 L100,20 L0,20 Z" fill="rgba(255,255,255,0.3)"/></svg>');
+            background-size: 200px 40px;
+            animation: drift 20s linear infinite;
+        }
+        
+        @keyframes drift {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 200px; }
+        }
+        
+        .soft-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .mood-tag {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(251, 113, 133, 0.1) 100%);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+        
+        .doodle {
+            stroke: #a78bfa;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            opacity: 0.6;
+        }
+        
+        .music-note {
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .typing-cursor {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    
+    <!-- Floating Sparkles -->
+    <div class="sparkle" style="top: 10%; left: 80%; animation-delay: 0s;"></div>
+    <div class="sparkle" style="top: 20%; left: 15%; animation-delay: 1s;"></div>
+    <div class="sparkle" style="top: 60%; left: 85%; animation-delay: 2s;"></div>
+    <div class="sparkle" style="top: 80%; left: 20%; animation-delay: 0.5s;"></div>
+    
+    <!-- Cloud Background -->
+    <div class="cloud-bg fixed top-0 left-0 w-full h-full pointer-events-none opacity-30"></div>
+    
+    <!-- Main Container -->
+    <div class="relative z-10">
+        
+        <!-- Welcome Panel -->
+        <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+            <div class="text-center px-6 relative z-10">
+                <div class="floating mb-8">
+                    <h1 class="font-serif text-6xl md:text-8xl gradient-text mb-6 font-light">
+                        Luna Martinez
+                    </h1>
+                    <p class="font-rounded text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                        Exploring the overlap between stories, strategy, and stillness<span class="typing-cursor">|</span>
+                    </p>
+                </div>
+                
+                <!-- Floating Doodles -->
+                <svg class="absolute top-20 right-10 w-16 h-16 floating-delayed" viewBox="0 0 64 64">
+                    <path class="doodle" d="M10,30 Q20,10 30,30 T50,30"/>
+                    <circle class="doodle" cx="35" cy="15" r="3"/>
+                </svg>
+                
+                <svg class="absolute bottom-20 left-10 w-20 h-20 floating" viewBox="0 0 80 80">
+                    <path class="doodle" d="M20,40 Q40,20 60,40 Q40,60 20,40"/>
+                    <path class="doodle" d="M40,20 L40,60 M20,40 L60,40"/>
+                </svg>
+                
+                <!-- Scroll Indicator -->
+                <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+                    <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                        <div class="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="py-20 px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="glass-card rounded-3xl p-8 md:p-12 fade-in">
+                    <h2 class="font-serif text-4xl md:text-5xl text-gray-800 mb-8 text-center">
+                        A Note from Me to You
+                    </h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-8 items-start">
+                        <div class="md:col-span-2">
+                            <p class="font-sans text-lg leading-relaxed text-gray-700 mb-6">
+                                Hi, I'm Luna — a marketing student with a soft spot for strategy, storytelling, 
+                                and anything that makes people feel seen. I believe the best campaigns whisper 
+                                rather than shout, and that creativity flourishes in calm spaces.
+                            </p>
+                            <p class="font-sans text-lg leading-relaxed text-gray-700">
+                                I'm currently studying Brand Communications at UCLA, interning at a sustainable 
+                                beauty startup, and building things that matter. My work lives at the 
+                                intersection of purpose and aesthetics.
+                            </p>
+                        </div>
+                        
+                        <!-- Mood Board Sidebar -->
+                        <div class="space-y-4">
+                            <div class="mood-tag rounded-2xl p-4">
+                                <h3 class="font-rounded font-medium text-purple-700 mb-2">Current Mood</h3>
+                                <p class="font-sans text-sm text-gray-600">Focused & dreamy ☁️</p>
+                            </div>
+                            
+                            <div class="mood-tag rounded-2xl p-4">
+                                <h3 class="font-rounded font-medium text-purple-700 mb-2">Current Obsessions</h3>
+                                <ul class="font-sans text-sm text-gray-600 space-y-1">
+                                    <li>• Typography with personality</li>
+                                    <li>• Brand voices that feel human</li>
+                                    <li>• Coffee shops with good lighting</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mood-tag rounded-2xl p-4">
+                                <h3 class="font-rounded font-medium text-purple-700 mb-2">Favorite Quote</h3>
+                                <p class="font-sans text-sm text-gray-600 italic">
+                                    "Simplicity is the ultimate sophistication."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="py-20 px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="font-serif text-4xl md:text-5xl text-gray-800 mb-12 text-center fade-in">
+                    Captured Moments
+                </h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="dream-bubble rounded-3xl p-6 fade-in">
+                        <div class="aspect-video bg-gradient-to-br from-purple-200 to-pink-200 rounded-2xl mb-4 flex items-center justify-center">
+                            <span class="text-4xl">🌸</span>
+                        </div>
+                        <h3 class="font-serif text-2xl text-gray-800 mb-2">EcoFest Rebrand</h3>
+                        <p class="font-rounded text-sm text-gray-600 lowercase mb-4">
+                            a soft launch with a strong voice
+                        </p>
+                        <p class="font-sans text-gray-700 text-sm leading-relaxed">
+                            Reimagined the visual identity for our campus sustainability festival, 
+                            focusing on gentle activism and community connection.
+                        </p>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="dream-bubble rounded-3xl p-6 fade-in">
+                        <div class="aspect-video bg-gradient-to-br from-blue-200 to-cyan-200 rounded-2xl mb-4 flex items-center justify-center">
+                            <span class="text-4xl">📱</span>
+                        </div>
+                        <h3 class="font-serif text-2xl text-gray-800 mb-2">Social Strategy for Campus Art Show</h3>
+                        <p class="font-rounded text-sm text-gray-600 lowercase mb-4">
+                            quiet promotion that created buzz
+                        </p>
+                        <p class="font-sans text-gray-700 text-sm leading-relaxed">
+                            Developed an Instagram strategy that felt more like storytelling than marketing, 
+                            resulting in record attendance.
+                        </p>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="dream-bubble rounded-3xl p-6 fade-in">
+                        <div class="aspect-video bg-gradient-to-br from-green-200 to-emerald-200 rounded-2xl mb-4 flex items-center justify-center">
+                            <span class="text-4xl">✉️</span>
+                        </div>
+                        <h3 class="font-serif text-2xl text-gray-800 mb-2">Mindful Beauty Email Series</h3>
+                        <p class="font-rounded text-sm text-gray-600 lowercase mb-4">
+                            newsletters that feel like love letters
+                        </p>
+                        <p class="font-sans text-gray-700 text-sm leading-relaxed">
+                            Created a weekly email series for a beauty startup that treated self-care 
+                            as a practice, not a performance.
+                        </p>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="dream-bubble rounded-3xl p-6 fade-in">
+                        <div class="aspect-video bg-gradient-to-br from-yellow-200 to-orange-200 rounded-2xl mb-4 flex items-center justify-center">
+                            <span class="text-4xl">☕</span>
+                        </div>
+                        <h3 class="font-serif text-2xl text-gray-800 mb-2">Local Coffee Shop Campaign</h3>
+                        <p class="font-rounded text-sm text-gray-600 lowercase mb-4">
+                            community over competition
+                        </p>
+                        <p class="font-sans text-gray-700 text-sm leading-relaxed">
+                            Helped a small coffee shop tell their story through gentle branding 
+                            and authentic social content.
+                        </p>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="dream-bubble rounded-3xl p-6 fade-in">
+                        <div class="aspect-video bg-gradient-to-br from-purple-200 to-indigo-200 rounded-2xl mb-4 flex items-center justify-center">
+                            <span class="text-4xl">📝</span>
+                        </div>
+                        <h3 class="font-serif text-2xl text-gray-800 mb-2">Wellness Brand Voice Guide</h3>
+                        <p class="font-rounded text-sm text-gray-600 lowercase mb-4">
+                            words that heal and inspire
+                        </p>
+                        <p class="font-sans text-gray-700 text-sm leading-relaxed">
+                            Developed a comprehensive voice and tone guide for a mental health app, 
+                            emphasizing empathy and empowerment.
+                        </p>
+                    </div>
+
+                    <!-- Thoughts Preview -->
+                    <div class="dream-bubble rounded-3xl p-6 fade-in bg-gradient-to-br from-pink-100 to-purple-100">
+                        <div class="text-center">
+                            <div class="text-6xl mb-4">💭</div>
+                            <h3 class="font-serif text-2xl text-gray-800 mb-4">Thoughts & Musings</h3>
+                            <div class="space-y-2 text-left">
+                                <p class="font-sans text-sm text-gray-600">
+                                    "What I Learned From Writing 50 Instagram Captions in One Night"
+                                </p>
+                                <p class="font-sans text-sm text-gray-600">
+                                    "Why Soft Branding Still Has Impact"
+                                </p>
+                                <p class="font-sans text-sm text-gray-600">
+                                    "Calm is a Strategy"
+                                </p>
+                            </div>
+                            <button class="mt-4 font-rounded text-purple-600 hover:text-purple-700 text-sm underline">
+                                Read more thoughts →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="py-20 px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="font-serif text-4xl md:text-5xl text-gray-800 mb-12 text-center fade-in">
+                    What I Work With
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="glass-card rounded-3xl p-6 fade-in soft-shadow">
+                        <h3 class="font-rounded font-medium text-purple-700 mb-4 text-lg">Things I Use Often</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 rounded-full bg-purple-300"></div>
+                                <span class="font-sans text-gray-700">Canva & Figma</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 rounded-full bg-pink-300"></div>
+                                <span class="font-sans text-gray-700">Mailchimp</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 rounded-full bg-blue-300"></div>
+                                <span class="font-sans text-gray-700">Notion</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 rounded-full bg-green-300"></div>
+                                <span class="font-sans text-gray-700">Google Analytics</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-3xl p-6 fade-in soft-shadow">
+                        <h3 class="font-rounded font-medium text-purple-700 mb-4 text-lg">Things I'm Learning</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 rounded-full bg-yellow-300"></div>
+                                <span class="font-sans text-gray-700">Meta Ads Manager</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 rounded-full bg-orange-300"></div>
+                                <span class="font-sans text-gray-700">UX Writing</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 rounded-full bg-teal-300"></div>
+                                <span class="font-sans text-gray-700">Adobe Creative Suite</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 rounded-full bg-indigo-300"></div>
+                                <span class="font-sans text-gray-700">Data Visualization</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-3xl p-6 fade-in soft-shadow">
+                        <h3 class="font-rounded font-medium text-purple-700 mb-4 text-lg">Things That Inspire My Work</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <span class="text-lg">🌿</span>
+                                <span class="font-sans text-gray-700">Nature & natural light</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-lg">🎵</span>
+                                <span class="font-sans text-gray-700">Lo-fi music & rhythm</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-lg">📚</span>
+                                <span class="font-sans text-gray-700">Poetry & storytelling</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-lg">☁️</span>
+                                <span class="font-sans text-gray-700">Soft lighting & calm spaces</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="py-20 px-6">
+            <div class="max-w-2xl mx-auto text-center">
+                <div class="glass-card rounded-3xl p-8 md:p-12 fade-in">
+                    <h2 class="font-serif text-4xl md:text-5xl text-gray-800 mb-6">
+                        Let's Connect
+                    </h2>
+                    <p class="font-rounded text-lg text-gray-600 mb-8">
+                        Let's create something slow and meaningful together.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-8">
+                        <a href="mailto:luna.martinez@email.com" class="glass-card px-6 py-3 rounded-full font-sans text-gray-700 hover:text-purple-700 transition-colors">
+                            luna.martinez@email.com
+                        </a>
+                        <a href="#" class="glass-card px-6 py-3 rounded-full font-sans text-gray-700 hover:text-purple-700 transition-colors">
+                            LinkedIn
+                        </a>
+                        <a href="#" class="glass-card px-6 py-3 rounded-full font-sans text-gray-700 hover:text-purple-700 transition-colors">
+                            Resume
+                        </a>
+                    </div>
+                    
+                    <!-- Music Note Doodle -->
+                    <div class="flex justify-center space-x-4 text-purple-400">
+                        <span class="music-note text-2xl" style="animation-delay: 0s;">♪</span>
+                        <span class="music-note text-xl" style="animation-delay: 0.5s;">♫</span>
+                        <span class="music-note text-2xl" style="animation-delay: 1s;">♪</span>
+                    </div>
+                    
+                    <p class="font-rounded text-sm text-gray-500 mt-6">
+                        Thanks for stopping by ✨
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Typing effect for the subtitle
+        const typingText = document.querySelector('.typing-cursor').previousSibling;
+        const originalText = typingText.textContent;
+        typingText.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                typingText.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        
+        setTimeout(typeWriter, 1000);
+
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect to floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelectorAll('.floating, .floating-delayed');
+            
+            parallax.forEach(element => {
+                const speed = 0.5;
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

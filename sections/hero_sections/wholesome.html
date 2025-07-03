@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wholesome & Hirable - Hero Section</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    colors: {
+                        'sage': {
+                            50: '#f6f7f4',
+                            100: '#e8ebe4',
+                            200: '#d1d8ca',
+                            300: '#b0bda5',
+                            400: '#8c9d7c',
+                            500: '#6f7f5f'
+                        },
+                        'peach': {
+                            50: '#fef7f3',
+                            100: '#fdede3',
+                            200: '#fad8c6',
+                            300: '#f6b896',
+                            400: '#f19066',
+                        },
+                        'warm-beige': {
+                            50: '#faf9f7',
+                            100: '#f4f1eb',
+                            200: '#e8e1d5',
+                            300: '#d9ccb8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #faf9f7 0%, #f4f1eb 25%, #e8e1d5 75%, #d1d8ca 100%);
+        }
+        
+        .profile-image {
+            background: linear-gradient(45deg, #f6b896, #8c9d7c);
+            animation: gentle-pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes gentle-pulse {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 1; }
+        }
+        
+        .breathing-space {
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="font-inter">
+    <div class="gradient-bg breathing-space flex items-center justify-center px-6 lg:px-12">
+        <div class="max-w-7xl w-full">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <!-- Left Column - Text Content -->
+                <div class="space-y-8 lg:space-y-10">
+                    <!-- Main Tagline -->
+                    <div class="space-y-2">
+                        <h1 class="text-3xl md:text-4xl lg:text-5xl leading-relaxed text-gray-800 font-light">
+                            I like making people's lives easier.
+                        </h1>
+                        <p class="text-3xl md:text-4xl lg:text-5xl leading-relaxed text-gray-800 font-light">
+                            Sometimes that means <span class="font-medium text-sage-500">design</span>. 
+                            Sometimes that means <span class="font-medium text-sage-500">listening</span>.
+                        </p>
+                        <p class="text-3xl md:text-4xl lg:text-5xl leading-relaxed text-gray-800 font-medium">
+                            Always means trying.
+                        </p>
+                    </div>
+                    
+                    <!-- Subtext -->
+                    <p class="text-lg md:text-xl text-gray-600 font-light max-w-lg leading-relaxed">
+                        I believe the best solutions come from understanding people first, 
+                        then building something that genuinely helps.
+                    </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="px-8 py-4 bg-sage-400 hover:bg-sage-500 text-white rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            Let's Talk
+                        </button>
+                        <button class="px-8 py-4 border-2 border-sage-300 text-sage-600 hover:border-sage-400 hover:text-sage-700 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105">
+                            View Work
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Right Column - Profile Image -->
+                <div class="flex justify-center lg:justify-end">
+                    <div class="relative">
+                        <!-- Profile Image Container -->
+                        <div class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full profile-image flex items-center justify-center shadow-2xl">
+                            <!-- Placeholder Avatar -->
+                            <div class="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                                <svg class="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 text-white/80" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <!-- Decorative Elements -->
+                        <div class="absolute -top-4 -right-4 w-8 h-8 bg-peach-300 rounded-full opacity-60"></div>
+                        <div class="absolute -bottom-6 -left-6 w-6 h-6 bg-sage-300 rounded-full opacity-60"></div>
+                        <div class="absolute top-1/2 -left-8 w-4 h-4 bg-warm-beige-300 rounded-full opacity-40"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Subtle Bottom Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+                <div class="flex flex-col items-center space-y-2 opacity-60">
+                    <span class="text-sm text-gray-500 font-light">scroll to explore</span>
+                    <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+                        <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

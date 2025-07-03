@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Microcopy Museum - Maya Rodriguez</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: #faf9f7;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 120px 0 80px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            text-align: center;
+            margin: 60px 0 80px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid #d1d5db;
+            color: #6b7280;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #374151;
+            color: white;
+            border-color: #374151;
+        }
+
+        /* Exhibit Grid */
+        .exhibit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .exhibit-frame {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .exhibit-frame.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .exhibit-frame:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: #9ca3af;
+        }
+
+        .exhibit-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9ca3af;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .microcopy-display {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1rem 0 1.5rem;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #1f2937;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .microcopy-text {
+            font-weight: 500;
+        }
+
+        .context-tag {
+            position: absolute;
+            top: -8px;
+            right: 12px;
+            background: white;
+            color: #6b7280;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .tone-badge {
+            display: inline-block;
+            background: #f3f4f6;
+            color: #374151;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .supportive { background: #f5f5f5; color: #333; }
+        .playful { background: #fef3c7; color: #92400e; }
+        .formal { background: #ede9fe; color: #5b21b6; }
+        .reassuring { background: #dbeafe; color: #1e40af; }
+
+        .why-button {
+            background: transparent;
+            border: 1px solid #d1d5db;
+            color: #374151;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .why-button:hover {
+            background: #f9fafb;
+            border-color: #9ca3af;
+        }
+
+        /* Overlay Panel */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .overlay-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .overlay-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #9ca3af;
+        }
+
+        .overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .overlay-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .overlay-section h4 {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .overlay-section p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 6rem 0;
+            text-align: center;
+        }
+
+        .process-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .process-section .subtitle {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 2.5rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-step {
+            text-align: center;
+        }
+
+        .process-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-step h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+
+        .process-step p {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* Inspiration Section */
+        .inspiration-section {
+            margin: 6rem 0;
+        }
+
+        .inspiration-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .inspiration-subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 3rem;
+        }
+
+        .inspiration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .inspiration-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .inspiration-copy {
+            background: #f1f5f9;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            font-style: italic;
+            color: #1e40af;
+        }
+
+        .inspiration-source {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            margin-top: 6rem;
+        }
+
+        .contact-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            background: transparent;
+            border: 1px solid #4b5563;
+            color: #d1d5db;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #374151;
+            border-color: #6b7280;
+            color: white;
+        }
+
+        .contact-btn.primary {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            color: white;
+        }
+
+        .contact-btn.primary:hover {
+            background: #2563eb;
+            border-color: #2563eb;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .exhibit-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .overlay-content {
+                padding: 2rem;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to my Microcopy Museum</h1>
+            <p class="subtitle">UX is in the details. Here's where words make products feel human.</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Pieces</button>
+                <button class="filter-btn" data-filter="supportive">Supportive</button>
+                <button class="filter-btn" data-filter="playful">Playful</button>
+                <button class="filter-btn" data-filter="formal">Formal</button>
+                <button class="filter-btn" data-filter="reassuring">Reassuring</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Exhibit Grid -->
+    <section class="container">
+        <div class="exhibit-grid">
+            <!-- Empty State -->
+            <div class="exhibit-frame" data-tone="supportive">
+                <div class="exhibit-label">Empty State</div>
+                <span class="tone-badge supportive">Supportive</span>
+                <div class="microcopy-display">
+                    <div class="context-tag">Dashboard</div>
+                    <div class="microcopy-text">"Looks like you're all caught up — nice work!"</div>
+                </div>
+                <button class="why-button" data-piece="empty-state">Why I Wrote It</button>
+            </div>
+
+            <!-- Error Message -->
+            <div class="exhibit-frame" data-tone="reassuring">
+                <div class="exhibit-label">Error Message</div>
+                <span class="tone-badge reassuring">Reassuring</span>
+                <div class="microcopy-display">
+                    <div class="context-tag">File Upload</div>
+                    <div class="microcopy-text">"Oops! Something didn't load. Let's try that again."</div>
+                </div>
+                <button class="why-button" data-piece="error-message">Why I Wrote It</button>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="exhibit-frame" data-tone="playful">
+                <div class="exhibit-label">CTA Button</div>
+                <span class="tone-badge playful">Playful</span>
+                <div class="microcopy-display">
+                    <div class="context-tag">Onboarding</div>
+                    <div class="microcopy-text">"Let's go →"</div>
+                </div>
+                <button class="why-button" data-piece="cta-button">Why I Wrote It</button>
+            </div>
+
+            <!-- Form Instruction -->
+            <div class="exhibit-frame" data-tone="reassuring">
+                <div class="exhibit-label">Form Instruction</div>
+                <span class="tone-badge reassuring">Reassuring</span>
+                <div class="microcopy-display">
+                    <div class="context-tag">Newsletter Signup</div>
+                    <div class="microcopy-text">"We'll never spam you. Promise."</div>
+                </div>
+                <button class="why-button" data-piece="form-instruction">Why I Wrote It</button>
+            </div>
+
+            <!-- Loading State -->
+            <div class="exhibit-frame" data-tone="playful">
+                <div class="exhibit-label">Loading State</div>
+                <span class="tone-badge playful">Playful</span>
+                <div class="microcopy-display">
+                    <div class="context-tag">Data Processing</div>
+                    <div class="microcopy-text">"Crunching numbers... this won't take long!"</div>
+                </div>
+                <button class="why-button" data-piece="loading-state">Why I Wrote It</button>
+            </div>
+
+            <!-- Confirmation Message -->
+            <div class="exhibit-frame" data-tone="formal">
+                <div class="exhibit-label">Confirmation Message</div>
+                <span class="tone-badge formal">Formal</span>
+                <div class="microcopy-display">
+                    <div class="context-tag">Account Deletion</div>
+                    <div class="microcopy-text">"Your account has been successfully deleted. We're sorry to see you go."</div>
+                </div>
+                <button class="why-button" data-piece="confirmation">Why I Wrote It</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2>Behind the Glass: My Writing Process</h2>
+            <p class="subtitle">Every word solves a problem. Here's how I approach mine.</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-icon">🔍</div>
+                    <h4>Understand the Scenario</h4>
+                    <p>I start by mapping the user's emotional state and context</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">🧪</div>
+                    <h4>Test for Clarity</h4>
+                    <p>I prioritize understanding over cleverness, always</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">🤝</div>
+                    <h4>Collaborate Closely</h4>
+                    <p>I work hand-in-hand with design and development teams</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">✍️</div>
+                    <h4>Iterate with Intent</h4>
+                    <p>Every revision has a reason, backed by user feedback</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inspiration Section -->
+    <section class="inspiration-section">
+        <div class="container">
+            <h2>Copy I Wish I Wrote</h2>
+            <p class="inspiration-subtitle">Guest artists in my collection — microcopy that inspired me</p>
+            
+            <div class="inspiration-grid">
+                <div class="inspiration-card">
+                    <div class="inspiration-source">Slack — Message Scheduling</div>
+                    <div class="inspiration-copy">"I'll send this tomorrow at 9 AM"</div>
+                    <p>Brilliant use of first person. It feels like the app is your personal assistant, not a tool. The conversational tone makes scheduling feel effortless and human.</p>
+                </div>
+                
+                <div class="inspiration-card">
+                    <div class="inspiration-source">Stripe — Payment Error</div>
+                    <div class="inspiration-copy">"Your card was declined. Your bank might have more details."</div>
+                    <p>Honest without being harsh. Gives the user a clear next step without making them feel embarrassed about a declined card. Respectful and actionable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2>Let's make better words together</h2>
+            <p>Have a project that needs the right words? I'd love to help.</p>
+            
+            <div class="contact-buttons">
+                <a href="mailto:maya.rodriguez@email.com" class="contact-btn primary">Email Me</a>
+                <a href="https://linkedin.com/in/mayarodriguez" class="contact-btn">LinkedIn</a>
+                <a href="/resume.pdf" class="contact-btn">Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overlay for detailed explanations -->
+    <div class="overlay" id="overlay">
+        <div class="overlay-content">
+            <button class="overlay-close" id="closeOverlay">×</button>
+            <div id="overlayContent">
+                <!-- Content will be dynamically loaded -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Microcopy explanations data
+        const explanations = {
+            'empty-state': {
+                title: 'Empty State: All Caught Up',
+                scenario: 'User has completed all their tasks or notifications. Instead of showing a blank, lifeless screen, I wanted to acknowledge their accomplishment.',
+                constraints: 'Limited to one line of text. Needed to feel positive without being overly enthusiastic.',
+                goal: 'Make users feel accomplished rather than confused about why their dashboard is empty.',
+                alternatives: 'Considered "No new items" and "Nothing to see here" but both felt too negative.',
+                reasoning: 'Using "caught up" implies they were productive. "Nice work" adds a gentle pat on the back without being patronizing.'
+            },
+            'error-message': {
+                title: 'Error Message: Upload Failure',
+                scenario: 'File upload failed due to network issues. User is likely frustrated and wants to complete their task.',
+                constraints: 'Keep it under 60 characters for mobile display. Avoid technical jargon.',
+                goal: 'Acknowledge the problem, take responsibility, and give hope for success.',
+                alternatives: 'Tried "Upload failed" and "Error occurred" but both felt cold and blame-heavy.',
+                reasoning: '"Oops" shows we\'re human. "Let\'s try that again" frames it as a team effort, not user failure.'
+            },
+            'cta-button': {
+                title: 'CTA Button: Onboarding',
+                scenario: 'Final step of a multi-step onboarding process. User has invested time and is ready to start using the product.',
+                constraints: 'Button text needed to be 2-3 words maximum for design constraints.',
+                goal: 'Create momentum and excitement for what comes next.',
+                alternatives: 'Considered "Get Started", "Continue", and "Finish Setup".',
+                reasoning: '"Let\'s go" feels like an adventure beginning. The arrow adds visual momentum. It\'s collaborative, not commanding.'
+            },
+            'form-instruction': {
+                title: 'Form Instruction: Email Signup',
+                scenario: 'Users are hesitant to share their email address. Trust is the biggest barrier to conversion.',
+                constraints: 'Needed to fit under the email input field without cluttering the design.',
+                goal: 'Build trust and overcome privacy concerns in the fewest words possible.',
+                alternatives: 'Tried "We respect your privacy" and "No spam, ever" but both felt corporate.',
+                reasoning: '"Promise" adds human commitment. It\'s personal, direct, and feels like a handshake agreement.'
+            },
+            'loading-state': {
+                title: 'Loading State: Data Processing',
+                scenario: 'Complex calculation that takes 10-30 seconds. Users might think the app froze.',
+                constraints: 'Needed to communicate progress without being annoying if users see it repeatedly.',
+                goal: 'Keep users engaged and prevent them from refreshing or leaving.',
+                alternatives: 'Considered "Processing..." and "Please wait" but both felt passive.',
+                reasoning: '"Crunching numbers" visualizes the work happening. "Won\'t take long" sets expectation without a specific promise.'
+            },
+            'confirmation': {
+                title: 'Confirmation: Account Deletion',
+                scenario: 'User has just deleted their account. This is likely an emotional moment - they might be leaving due to bad experience or life changes.',
+                constraints: 'Needed to be professional but not cold. Cannot try to win them back here.',
+                goal: 'Confirm the action while maintaining brand relationship in case they return.',
+                alternatives: 'Considered "Account deleted" and "You have successfully deleted your account".',
+                reasoning: 'Confirms the action clearly. Shows we\'re genuinely sorry to lose them without being dramatic or manipulative.'
+            }
+        };
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const exhibits = document.querySelectorAll('.exhibit-frame');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+
+                // Filter exhibits
+                exhibits.forEach(exhibit => {
+                    if (filter === 'all' || exhibit.dataset.tone === filter) {
+                        exhibit.style.display = 'block';
+                        setTimeout(() => exhibit.classList.add('visible'), 100);
+                    } else {
+                        exhibit.classList.remove('visible');
+                        setTimeout(() => exhibit.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+
+        // Overlay functionality
+        const overlay = document.getElementById('overlay');
+        const overlayContent = document.getElementById('overlayContent');
+        const closeOverlay = document.getElementById('closeOverlay');
+
+        document.querySelectorAll('.why-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const piece = button.dataset.piece;
+                const data = explanations[piece];
+
+                if (data) {
+                    overlayContent.innerHTML = `
+                        <h3>${data.title}</h3>
+                        <div class="overlay-section">
+                            <h4>The Scenario</h4>
+                            <p>${data.scenario}</p>
+                        </div>
+                        <div class="overlay-section">
+                            <h4>Constraints</h4>
+                            <p>${data.constraints}</p>
+                        </div>
+                        <div class="overlay-section">
+                            <h4>The Goal</h4>
+                            <p>${data.goal}</p>
+                        </div>
+                        <div class="overlay-section">
+                            <h4>Alternatives Considered</h4>
+                            <p>${data.alternatives}</p>
+                        </div>
+                        <div class="overlay-section">
+                            <h4>Why This Version Shipped</h4>
+                            <p>${data.reasoning}</p>
+                        </div>
+                    `;
+                    overlay.classList.add('active');
+                }
+            });
+        });
+
+        closeOverlay.addEventListener('click', () => {
+            overlay.classList.remove('active');
+        });
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.classList.remove('active');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all exhibits
+        exhibits.forEach(exhibit => {
+            observer.observe(exhibit);
+        });
+
+        // Initialize - show all exhibits
+        setTimeout(() => {
+            exhibits.forEach(exhibit => {
+                exhibit.classList.add('visible');
+            });
+        }, 1000);
+    </script>
+</body>
+</html>

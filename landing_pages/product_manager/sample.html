@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah Chen - Product Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pm-blue': '#2563EB',
+                        'pm-blue-light': '#EFF6FF',
+                        'pm-blue-dark': '#1E40AF',
+                        'pm-gray': '#64748B',
+                        'pm-gray-light': '#F8FAFC',
+                        'pm-dark': '#0F172A',
+                        'pm-purple': '#7C3AED',
+                        'pm-green': '#059669'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in': 'fadeIn 0.8s ease-out'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --pm-blue: #2563EB;
+            --pm-blue-light: #EFF6FF;
+            --pm-blue-dark: #1E40AF;
+            --pm-gray: #64748B;
+            --pm-gray-light: #F8FAFC;
+            --pm-dark: #0F172A;
+            --pm-purple: #7C3AED;
+            --pm-accent: #6B7280;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .mesh-bg {
+            background-image: 
+                radial-gradient(at 40% 20%, hsla(228,100%,74%,0.1) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, hsla(189,100%,56%,0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, hsla(355,100%,93%,0.1) 0px, transparent 50%),
+                radial-gradient(at 80% 50%, hsla(340,100%,76%,0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(22,100%,77%,0.1) 0px, transparent 50%),
+                radial-gradient(at 80% 100%, hsla(242,100%,70%,0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 0%, hsla(343,100%,76%,0.1) 0px, transparent 50%);
+        }
+        .glass-effect {
+            backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full glass-effect z-50 border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="font-bold text-xl text-pm-dark">Sarah Chen</div>
+                <div class="hidden md:flex space-x-10">
+                    <a href="#about" class="text-pm-gray hover:text-pm-blue transition-all duration-300 font-medium relative group">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pm-blue transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#case-studies" class="text-pm-gray hover:text-pm-blue transition-all duration-300 font-medium relative group">
+                        Case Studies
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pm-blue transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#thinking" class="text-pm-gray hover:text-pm-blue transition-all duration-300 font-medium relative group">
+                        Product Thinking
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pm-blue transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="text-pm-gray hover:text-pm-blue transition-all duration-300 font-medium relative group">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-pm-blue transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-28 pb-20 overflow-hidden">
+        <!-- Background decorations -->
+        <div class="absolute inset-0 mesh-bg"></div>
+        <div class="absolute top-10 left-10 w-32 h-32 bg-pm-blue/5 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute top-40 right-20 w-48 h-48 bg-pm-purple/5 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-20 left-1/3 w-24 h-24 bg-gray-100 rounded-full blur-2xl animate-pulse-slow"></div>
+        
+        <!-- Geometric decorations -->
+        <div class="absolute top-1/4 right-12 w-6 h-6 border-2 border-pm-blue/20 rotate-45 animate-pulse-slow"></div>
+        <div class="absolute top-1/2 left-12 w-4 h-4 bg-pm-purple/20 rounded-full animate-float"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-8 h-8 border border-gray-300 rotate-12 animate-pulse-slow"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-6">
+            <div class="max-w-5xl animate-fade-in">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-pm-blue/10 text-pm-blue font-medium text-sm mb-8">
+                    <span class="w-2 h-2 bg-pm-blue rounded-full mr-2 animate-pulse"></span>
+                    Available for new opportunities
+                </div>
+                
+                <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold text-pm-dark mb-8 leading-tight">
+                    Product Manager.<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-pm-blue to-pm-purple">Problem-solver.</span><br>
+                    <span class="text-pm-gray/80 text-5xl md:text-6xl lg:text-7xl">Builder of good decisions.</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-pm-gray mb-12 max-w-3xl leading-relaxed">
+                    I lead product decisions that drive <span class="text-pm-blue font-semibold">outcomes, not just outputs</span>. 
+                    5+ years building products that users love and businesses depend on.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 mb-16">
+                    <a href="#case-studies" class="group bg-pm-blue text-white px-10 py-4 rounded-2xl font-semibold hover:bg-pm-blue-dark transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        <span class="flex items-center justify-center">
+                            View My Case Studies
+                            <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="#contact" class="group bg-white/80 backdrop-blur-sm border-2 border-pm-blue/20 text-pm-blue px-10 py-4 rounded-2xl font-semibold hover:bg-pm-blue hover:text-white transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        Let's Talk Product
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div class="text-center md:text-left group">
+                        <div class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-800 mb-2">$2.4M</div>
+                        <div class="text-pm-gray font-medium">ARR Growth Led</div>
+                        <div class="w-12 h-1 bg-gradient-to-r from-gray-600 to-gray-800 mx-auto md:mx-0 mt-2 rounded-full group-hover:w-16 transition-all duration-300"></div>
+                    </div>
+                    <div class="text-center md:text-left group">
+                        <div class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pm-purple to-pm-blue mb-2">40%</div>
+                        <div class="text-pm-gray font-medium">Avg. Conversion Lift</div>
+                        <div class="w-12 h-1 bg-gradient-to-r from-pm-purple to-pm-blue mx-auto md:mx-0 mt-2 rounded-full group-hover:w-16 transition-all duration-300"></div>
+                    </div>
+                    <div class="text-center md:text-left group">
+                        <div class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-800 mb-2">15+</div>
+                        <div class="text-pm-gray font-medium">Products Shipped</div>
+                        <div class="w-12 h-1 bg-gradient-to-r from-gray-600 to-gray-800 mx-auto md:mx-0 mt-2 rounded-full group-hover:w-16 transition-all duration-300"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Case Studies -->
+    <section id="case-studies" class="relative py-24 bg-pm-gray-light overflow-hidden">
+        <!-- Background decorations -->
+        <div class="absolute top-20 right-10 w-40 h-40 bg-pm-blue/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 left-10 w-32 h-32 bg-pm-purple/5 rounded-full blur-2xl"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-bold text-pm-dark mb-6">Featured Case Studies</h2>
+                <p class="text-xl md:text-2xl text-pm-gray max-w-3xl mx-auto leading-relaxed">Deep dives into products that moved the needle and drove real business impact</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Case Study 1 -->
+                <div class="group bg-white/80 backdrop-blur-sm border border-white/50 rounded-3xl p-8 card-hover cursor-pointer shadow-lg hover:shadow-2xl" onclick="openCaseStudy('case1')">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold text-gray-700 bg-gradient-to-r from-gray-100 to-gray-50 border border-gray-300">
+                            <span class="w-2 h-2 bg-gray-600 rounded-full mr-2"></span>
+                            Zero-to-One
+                        </span>
+                        <span class="text-sm text-pm-gray font-medium bg-pm-gray/10 px-3 py-1 rounded-full">6 months</span>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-pm-dark mb-4 group-hover:text-gray-700 transition-colors">AI-Powered Analytics Dashboard</h3>
+                    <p class="text-pm-gray mb-8 leading-relaxed">Launched new product line that became 35% of company revenue within first year</p>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="text-center p-4 bg-gradient-to-br from-pm-blue/5 to-transparent rounded-2xl">
+                            <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pm-blue to-pm-blue-dark mb-1">$850K</div>
+                            <div class="text-sm text-pm-gray font-medium">ARR in Year 1</div>
+                        </div>
+                        <div class="text-center p-4 bg-gradient-to-br from-pm-blue/5 to-transparent rounded-2xl">
+                            <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pm-blue to-pm-blue-dark mb-1">2,400+</div>
+                            <div class="text-sm text-pm-gray font-medium">Active Users</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-pm-blue font-semibold group-hover:text-pm-blue-dark transition-colors">
+                        View Full Case Study
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="group bg-white/80 backdrop-blur-sm border border-white/50 rounded-3xl p-8 card-hover cursor-pointer shadow-lg hover:shadow-2xl" onclick="openCaseStudy('case2')">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold text-gray-700 bg-gradient-to-r from-gray-100 to-gray-50 border border-gray-300">
+                            <span class="w-2 h-2 bg-gray-600 rounded-full mr-2"></span>
+                            Growth
+                        </span>
+                        <span class="text-sm text-pm-gray font-medium bg-pm-gray/10 px-3 py-1 rounded-full">4 months</span>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-pm-dark mb-4 group-hover:text-gray-700 transition-colors">Checkout Flow Optimization</h3>
+                    <p class="text-pm-gray mb-8 leading-relaxed">Redesigned conversion funnel that increased revenue by 28% without additional traffic</p>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="text-center p-4 bg-gradient-to-br from-gray-100 to-transparent rounded-2xl">
+                            <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-800 mb-1">+28%</div>
+                            <div class="text-sm text-pm-gray font-medium">Conversion Rate</div>
+                        </div>
+                        <div class="text-center p-4 bg-gradient-to-br from-gray-100 to-transparent rounded-2xl">
+                            <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-800 mb-1">-45%</div>
+                            <div class="text-sm text-pm-gray font-medium">Cart Abandonment</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-pm-blue font-semibold group-hover:text-gray-700 transition-colors">
+                        View Full Case Study
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="group bg-white/80 backdrop-blur-sm border border-white/50 rounded-3xl p-8 card-hover cursor-pointer shadow-lg hover:shadow-2xl" onclick="openCaseStudy('case3')">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold text-pm-purple bg-gradient-to-r from-pm-purple/10 to-pm-purple/5 border border-pm-purple/20">
+                            <span class="w-2 h-2 bg-pm-purple rounded-full mr-2"></span>
+                            Platform
+                        </span>
+                        <span class="text-sm text-pm-gray font-medium bg-pm-gray/10 px-3 py-1 rounded-full">8 months</span>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-pm-dark mb-4 group-hover:text-pm-purple transition-colors">API Platform Redesign</h3>
+                    <p class="text-pm-gray mb-8 leading-relaxed">Led technical product strategy that reduced integration time by 70% for enterprise clients</p>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="text-center p-4 bg-gradient-to-br from-pm-purple/5 to-transparent rounded-2xl">
+                            <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pm-purple to-violet-600 mb-1">-70%</div>
+                            <div class="text-sm text-pm-gray font-medium">Integration Time</div>
+                        </div>
+                        <div class="text-center p-4 bg-gradient-to-br from-pm-purple/5 to-transparent rounded-2xl">
+                            <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pm-purple to-violet-600 mb-1">95%</div>
+                            <div class="text-sm text-pm-gray font-medium">Developer NPS</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-pm-blue font-semibold group-hover:text-pm-purple transition-colors">
+                        View Full Case Study
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Case Study 4 -->
+                <div class="group bg-white/80 backdrop-blur-sm border border-white/50 rounded-3xl p-8 card-hover cursor-pointer shadow-lg hover:shadow-2xl" onclick="openCaseStudy('case4')">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold text-red-600 bg-gradient-to-r from-red-50 to-red-25 border border-red-200">
+                            <span class="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
+                            Crisis
+                        </span>
+                        <span class="text-sm text-pm-gray font-medium bg-pm-gray/10 px-3 py-1 rounded-full">2 months</span>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-pm-dark mb-4 group-hover:text-red-600 transition-colors">Security Incident Response</h3>
+                    <p class="text-pm-gray mb-8 leading-relaxed">Managed product response to security breach, retained 98% of customers during crisis</p>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="text-center p-4 bg-gradient-to-br from-red-50 to-transparent rounded-2xl">
+                            <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-700 mb-1">98%</div>
+                            <div class="text-sm text-pm-gray font-medium">Customer Retention</div>
+                        </div>
+                        <div class="text-center p-4 bg-gradient-to-br from-red-50 to-transparent rounded-2xl">
+                            <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-700 mb-1">72hrs</div>
+                            <div class="text-sm text-pm-gray font-medium">Recovery Time</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-pm-blue font-semibold group-hover:text-red-600 transition-colors">
+                        View Full Case Study
+                        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Thinking Section -->
+    <section id="thinking" class="relative py-24 bg-white overflow-hidden">
+        <!-- Background decorations -->
+        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-pm-gray-light to-transparent"></div>
+        <div class="absolute top-10 left-20 w-32 h-32 bg-pm-blue/5 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-20 right-20 w-40 h-40 bg-pm-purple/5 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute top-1/3 right-10 w-6 h-6 border-2 border-pm-blue/20 rotate-45"></div>
+                  <div class="absolute bottom-1/3 left-10 w-4 h-4 bg-gray-300 rounded-full"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-bold text-pm-dark mb-6">How I Think About Product</h2>
+                <p class="text-xl md:text-2xl text-pm-gray max-w-3xl mx-auto leading-relaxed">Frameworks, principles, and hard-learned lessons from building products that scale</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group bg-gradient-to-br from-white to-pm-blue/5 rounded-3xl p-8 border border-pm-blue/10 card-hover shadow-lg hover:shadow-2xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-pm-blue to-pm-blue-dark rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-pm-dark mb-4 group-hover:text-pm-blue transition-colors">Roadmap Prioritization</h3>
+                    <p class="text-pm-gray mb-6 leading-relaxed">I use a modified RICE framework that weights customer impact 2x higher than internal requests, ensuring user-first decision making.</p>
+                    <div class="flex items-center text-pm-blue font-semibold group-hover:text-pm-blue-dark transition-colors">
+                        Read more 
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                              <div class="group bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 border border-gray-200 card-hover shadow-lg hover:shadow-2xl">
+                  <div class="w-16 h-16 bg-gradient-to-br from-gray-600 to-gray-800 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-pm-dark mb-4 group-hover:text-gray-700 transition-colors">Feature Scoping</h3>
+                    <p class="text-pm-gray mb-6 leading-relaxed">Start with the problem, not the solution. Define the smallest thing that proves the hypothesis and delivers value.</p>
+                    <div class="flex items-center text-pm-blue font-semibold group-hover:text-gray-700 transition-colors">
+                        Read more 
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="group bg-gradient-to-br from-white to-pm-purple/5 rounded-3xl p-8 border border-pm-purple/10 card-hover shadow-lg hover:shadow-2xl">
+                    <div class="w-16 h-16 bg-gradient-to-br from-pm-purple to-violet-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-pm-dark mb-4 group-hover:text-pm-purple transition-colors">Stakeholder Management</h3>
+                    <p class="text-pm-gray mb-6 leading-relaxed">Say no with data, not opinions. Always provide alternatives when declining requests to maintain trust and alignment.</p>
+                    <div class="flex items-center text-pm-blue font-semibold group-hover:text-pm-purple transition-colors">
+                        Read more 
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-pm-dark mb-12">Experience</h2>
+            
+            <div class="space-y-8">
+                <div class="border-l-4 border-pm-blue pl-8">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                        <h3 class="text-2xl font-bold text-pm-dark">Senior Product Manager</h3>
+                        <span class="text-pm-gray">2022 - Present</span>
+                    </div>
+                    <div class="text-lg text-pm-blue mb-2">TechFlow Analytics</div>
+                    <p class="text-pm-gray mb-4">Led product strategy for B2B SaaS platform serving 50,000+ users. Managed $2M product budget and 15-person cross-functional team.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Product Strategy</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">B2B SaaS</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Team Leadership</span>
+                    </div>
+                    <a href="#case-studies" class="text-pm-blue font-medium">View Case Studies →</a>
+                </div>
+
+                <div class="border-l-4 border-gray-300 pl-8">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                        <h3 class="text-2xl font-bold text-pm-dark">Product Manager</h3>
+                        <span class="text-pm-gray">2020 - 2022</span>
+                    </div>
+                    <div class="text-lg text-pm-blue mb-2">StartupCo</div>
+                    <p class="text-pm-gray mb-4">Built mobile-first product from 0 to 100K users. Led growth initiatives that increased DAU by 300%.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Growth Product</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Mobile</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">0-to-1</span>
+                    </div>
+                </div>
+
+                <div class="border-l-4 border-gray-300 pl-8">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                        <h3 class="text-2xl font-bold text-pm-dark">Associate Product Manager</h3>
+                        <span class="text-pm-gray">2019 - 2020</span>
+                    </div>
+                    <div class="text-lg text-pm-blue mb-2">BigTech Corp</div>
+                    <p class="text-pm-gray mb-4">Rotational program across 3 product teams. Shipped 8 features that improved key metrics by 15% average.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Enterprise</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">A/B Testing</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-pm-dark mb-12">Skills & Expertise</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-pm-dark mb-4">Product Strategy</h3>
+                    <ul class="space-y-2 text-pm-gray">
+                        <li>Roadmap Development</li>
+                        <li>OKR/KPI Setting</li>
+                        <li>Competitive Analysis</li>
+                        <li>Market Research</li>
+                        <li>Go-to-Market</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold text-pm-dark mb-4">Execution</h3>
+                    <ul class="space-y-2 text-pm-gray">
+                        <li>Agile/Scrum</li>
+                        <li>Sprint Planning</li>
+                        <li>Backlog Management</li>
+                        <li>A/B Testing</li>
+                        <li>Release Management</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold text-pm-dark mb-4">Collaboration</h3>
+                    <ul class="space-y-2 text-pm-gray">
+                        <li>Cross-functional Leadership</li>
+                        <li>Stakeholder Management</li>
+                        <li>User Research</li>
+                        <li>Design Partnership</li>
+                        <li>Engineering Collaboration</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold text-pm-dark mb-4">Tools</h3>
+                    <ul class="space-y-2 text-pm-gray">
+                        <li>Jira, Linear, Asana</li>
+                        <li>Amplitude, Mixpanel</li>
+                        <li>Figma, Sketch</li>
+                        <li>Notion, Confluence</li>
+                        <li>SQL, Python basics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative py-24 bg-gradient-to-br from-pm-dark via-pm-dark to-pm-blue-dark text-white overflow-hidden">
+        <!-- Background decorations -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_rgba(255,255,255,0.1)_1px,_transparent_0)] bg-[length:20px_20px]"></div>
+        <div class="absolute top-20 left-20 w-40 h-40 bg-pm-blue/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute bottom-20 right-20 w-32 h-32 bg-pm-purple/10 rounded-full blur-2xl animate-float"></div>
+        <div class="absolute top-1/3 right-1/4 w-6 h-6 border-2 border-white/20 rotate-45 animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 left-1/4 w-4 h-4 bg-white/20 rounded-full animate-float"></div>
+        <div class="absolute top-1/2 left-12 w-8 h-8 border border-white/10 rotate-12"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-6 text-center">
+            <div class="mb-16">
+                <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+                    Let's talk <span class="text-transparent bg-clip-text bg-gradient-to-r from-pm-blue to-cyan-400">product</span>.
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
+                    Whether you're looking for a senior PM, consulting on product strategy, or just want to chat about building great products that users love.
+                </p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+                <a href="mailto:sarah@example.com" class="group bg-gradient-to-r from-pm-blue to-pm-blue-dark text-white px-10 py-4 rounded-2xl font-semibold hover:from-pm-blue-dark hover:to-pm-blue shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <span class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        Email Me
+                    </span>
+                </a>
+                <a href="https://linkedin.com/in/sarahchen" class="group bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white px-10 py-4 rounded-2xl font-semibold hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                    <span class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        LinkedIn
+                    </span>
+                </a>
+                <a href="#" class="group bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white px-10 py-4 rounded-2xl font-semibold hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                    <span class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        Download Resume
+                    </span>
+                </a>
+            </div>
+            
+            <div class="inline-flex items-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-gray-300">
+                <div class="w-3 h-3 bg-gray-400 rounded-full mr-3 animate-pulse"></div>
+                <p class="font-medium">Currently based in San Francisco • Open to remote opportunities</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Modal -->
+    <div id="caseStudyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-3xl font-bold text-pm-dark">AI-Powered Analytics Dashboard</h2>
+                        <button onclick="closeCaseStudy()" class="text-gray-500 hover:text-gray-700">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <div class="bg-pm-blue-light p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-pm-dark mb-4">Impact Summary</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-pm-blue">$850K</div>
+                                    <div class="text-pm-gray">ARR in Year 1</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-pm-blue">35%</div>
+                                    <div class="text-pm-gray">of Company Revenue</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-pm-blue">2,400+</div>
+                                    <div class="text-pm-gray">Active Users</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold text-pm-dark mb-4">The Problem</h3>
+                            <p class="text-pm-gray mb-4">
+                                Our enterprise clients were struggling with data analysis paralysis. They had tons of data but no actionable insights. 
+                                Manual reporting was taking their teams 15+ hours per week, and decision-making was slow.
+                            </p>
+                            <p class="text-pm-gray">
+                                Market research showed 73% of similar companies wanted AI-powered insights, but existing solutions were either 
+                                too complex or too generic. We saw an opportunity to build something specifically for our market.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold text-pm-dark mb-4">My Role & Approach</h3>
+                            <p class="text-pm-gray mb-4">
+                                I led the entire product development from concept to launch, working with a team of 8 engineers, 
+                                2 designers, and 1 data scientist. My responsibilities included:
+                            </p>
+                            <ul class="list-disc list-inside text-pm-gray space-y-2">
+                                <li>Market research and competitive analysis</li>
+                                <li>User interviews and requirements gathering</li>
+                                <li>Product roadmap and feature prioritization</li>
+                                <li>Cross-functional team coordination</li>
+                                <li>Go-to-market strategy and launch execution</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold text-pm-dark mb-4">Key Decisions & Results</h3>
+                            <p class="text-pm-gray mb-4">
+                                The biggest decision was to focus on 3 core use cases rather than trying to be everything to everyone. 
+                                This allowed us to deliver exceptional value in specific areas rather than mediocre value everywhere.
+                            </p>
+                            <p class="text-pm-gray">
+                                Launch results exceeded all expectations. Within 6 months, the dashboard became our most-used feature 
+                                and was directly responsible for closing 3 major enterprise deals worth $400K+ each.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold text-pm-dark mb-4">What I'd Do Differently</h3>
+                            <p class="text-pm-gray">
+                                I would have involved customer success earlier in the process. While the product was successful, 
+                                we could have reduced onboarding time by 30% if we had better understood the change management 
+                                challenges our clients faced when adopting new analytics tools.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Case study modal functions
+        function openCaseStudy(caseId) {
+            const modal = document.getElementById('caseStudyModal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            
+            // You can customize the modal content based on caseId here
+            // For now, it shows the default case study content
+        }
+
+        function closeCaseStudy() {
+            const modal = document.getElementById('caseStudyModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('caseStudyModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCaseStudy();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCaseStudy();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Section Components</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-inter">
+    
+    <!-- Layout 1: Clean & Professional -->
+    <div class="max-w-4xl mx-auto p-8 mb-12 bg-white border border-gray-200">
+        <div class="flex items-center gap-8">
+            <div class="w-24 h-24 bg-gray-300 rounded-full flex-shrink-0"></div>
+            <div class="flex-1">
+                <h1 class="text-3xl font-semibold text-gray-900 mb-2">Sarah Johnson</h1>
+                <p class="text-xl text-blue-600 font-medium mb-3">Senior Product Designer</p>
+                <p class="text-gray-600 leading-relaxed mb-4">Crafting user-centered experiences for B2B SaaS platforms. 8+ years turning complex problems into elegant solutions.</p>
+                <div class="flex items-center gap-6 text-sm text-gray-500">
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-map-marker-alt"></i>
+                        San Francisco, CA
+                    </span>
+                    <div class="flex gap-3">
+                        <i class="fab fa-linkedin text-blue-600 hover:text-blue-800 cursor-pointer"></i>
+                        <i class="fab fa-dribbble text-pink-500 hover:text-pink-700 cursor-pointer"></i>
+                        <i class="fas fa-envelope text-gray-600 hover:text-gray-800 cursor-pointer"></i>
+                    </div>
+                </div>
+            </div>
+            <button class="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                Let's Connect
+            </button>
+        </div>
+    </div>
+
+    <!-- Layout 2: Creative Designer Core -->
+    <div class="max-w-4xl mx-auto p-8 mb-12 bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-dashed border-purple-200">
+        <div class="text-center">
+            <div class="w-32 h-32 bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl mx-auto mb-6 flex items-center justify-center text-white text-4xl font-bold transform rotate-3">
+                MK
+            </div>
+            <h1 class="text-4xl font-bold gradient-text mb-2">Maya Krishnan</h1>
+            <p class="text-2xl text-purple-700 font-medium mb-4">✨ Visual Storyteller & Brand Designer</p>
+            <p class="text-gray-700 max-w-2xl mx-auto leading-relaxed mb-6">
+                I believe every brand has a story waiting to be told. From startups to Fortune 500s, 
+                I help companies find their voice through thoughtful design and strategic creativity.
+            </p>
+            <div class="flex justify-center items-center gap-8 mb-6">
+                <span class="text-purple-600">🌍 Mumbai, India</span>
+                <div class="flex gap-4 text-2xl">
+                    <i class="fab fa-behance text-blue-500 hover:scale-110 transition-transform cursor-pointer"></i>
+                    <i class="fab fa-instagram text-pink-500 hover:scale-110 transition-transform cursor-pointer"></i>
+                    <i class="fab fa-twitter text-blue-400 hover:scale-110 transition-transform cursor-pointer"></i>
+                </div>
+            </div>
+            <button class="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all">
+                View My Work 🎨
+            </button>
+        </div>
+    </div>
+
+    <!-- Layout 3: Futuristic & Sharp -->
+    <div class="max-w-4xl mx-auto p-8 mb-12 bg-black text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-purple-900/20"></div>
+        <div class="relative z-10">
+            <div class="grid grid-cols-3 gap-8 items-center">
+                <div class="col-span-2">
+                    <div class="text-blue-400 text-sm font-mono mb-2">PROFILE.INITIALIZE()</div>
+                    <h1 class="text-4xl font-bold mb-2">ALEX CHEN</h1>
+                    <div class="text-cyan-400 text-xl font-mono mb-4">&gt; AI ENGINEER</div>
+                    <p class="text-gray-300 leading-relaxed mb-6 font-mono text-sm">
+                        Building the future with neural networks and coffee. 
+                        Specialized in computer vision, NLP, and making machines understand humans.
+                    </p>
+                    <div class="flex items-center gap-6 text-sm">
+                        <span class="text-green-400 font-mono">LOCATION: TOKYO.JP</span>
+                        <div class="flex gap-4">
+                            <i class="fab fa-github text-gray-400 hover:text-white transition-colors cursor-pointer"></i>
+                            <i class="fab fa-linkedin text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"></i>
+                            <i class="fas fa-terminal text-green-400 hover:text-green-300 transition-colors cursor-pointer"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg neon-glow mb-6 ml-auto"></div>
+                    <button class="px-6 py-3 border border-cyan-400 text-cyan-400 rounded font-mono text-sm hover:bg-cyan-400 hover:text-black transition-all">
+                        CONNECT.EXE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout 4: Gen Z Personal Blog Vibe -->
+    <div class="max-w-4xl mx-auto p-8 mb-12 bg-gradient-to-br from-yellow-100 via-pink-100 to-purple-100 rounded-3xl">
+        <div class="text-center">
+            <div class="text-6xl mb-4">👋</div>
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">hey, i'm jamie!</h1>
+            <p class="text-lg text-purple-700 font-medium mb-4">content creator • ux designer • plant parent 🌱</p>
+            <p class="text-gray-700 max-w-xl mx-auto leading-relaxed mb-6">
+                currently designing apps that don't suck & making tiktoks about design fails. 
+                obsessed with accessibility, good coffee, and my 47 houseplants ✨
+            </p>
+            <div class="flex justify-center items-center gap-6 mb-6 flex-wrap">
+                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm">📍 brooklyn, ny</span>
+                <div class="flex gap-3 text-xl">
+                    <i class="fab fa-tiktok text-black hover:scale-110 transition-transform cursor-pointer"></i>
+                    <i class="fab fa-instagram text-pink-500 hover:scale-110 transition-transform cursor-pointer"></i>
+                    <i class="fab fa-figma text-purple-600 hover:scale-110 transition-transform cursor-pointer"></i>
+                    <i class="fas fa-envelope text-blue-500 hover:scale-110 transition-transform cursor-pointer"></i>
+                </div>
+            </div>
+            <button class="px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all">
+                let's be friends! 💕
+            </button>
+        </div>
+    </div>
+
+    <!-- Layout 5: Minimal Dev Portfolio -->
+    <div class="max-w-4xl mx-auto p-8 mb-12 bg-white border-l-4 border-green-500">
+        <div class="grid grid-cols-4 gap-8 items-start">
+            <div class="col-span-3">
+                <h1 class="text-2xl font-semibold text-gray-900 mb-1">David Kim</h1>
+                <p class="text-gray-600 mb-4">Full-Stack Developer</p>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Building scalable web applications with React, Node.js, and PostgreSQL. 
+                    Passionate about clean code, performance optimization, and developer experience.
+                </p>
+                <div class="text-sm text-gray-500 space-y-1">
+                    <p>📍 Vancouver, BC</p>
+                    <p>💼 Available for freelance projects</p>
+                </div>
+            </div>
+            <div class="text-right space-y-4">
+                <div class="w-16 h-16 bg-gray-200 rounded ml-auto"></div>
+                <div class="flex justify-end gap-3 text-gray-600">
+                    <i class="fab fa-github hover:text-black cursor-pointer"></i>
+                    <i class="fab fa-linkedin hover:text-blue-600 cursor-pointer"></i>
+                    <i class="fas fa-envelope hover:text-gray-800 cursor-pointer"></i>
+                </div>
+                <button class="px-4 py-2 border border-gray-300 text-gray-700 rounded text-sm hover:bg-gray-50 transition-colors">
+                    Resume
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout 6: Notion-style Monospaced -->
+    <div class="max-w-4xl mx-auto p-8 mb-12 bg-gray-50 border border-gray-200 font-mono">
+        <div class="space-y-4">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-blue-500 rounded flex items-center justify-center text-white font-bold text-sm">
+                    RC
+                </div>
+                <div>
+                    <h1 class="text-xl font-semibold text-gray-900">Rachel Cooper</h1>
+                    <p class="text-gray-600 text-sm">Data Scientist</p>
+                </div>
+            </div>
+            
+            <div class="space-y-2 text-sm">
+                <p><span class="text-gray-500">About:</span> <span class="text-gray-800">Turning data into insights. Python enthusiast. Coffee addict.</span></p>
+                <p><span class="text-gray-500">Location:</span> <span class="text-gray-800">Austin, TX</span></p>
+                <p><span class="text-gray-500">Focus:</span> <span class="text-gray-800">Machine Learning • Data Visualization • Analytics</span></p>
+            </div>
+            
+            <div class="pt-4 border-t border-gray-200">
+                <div class="flex items-center gap-6 text-sm">
+                    <span class="text-gray-500">Connect:</span>
+                    <div class="flex gap-4 text-gray-600">
+                        <a href="#" class="hover:text-blue-600">github.com/rcooper</a>
+                        <a href="#" class="hover:text-blue-600">linkedin.com/in/rachelc</a>
+                        <a href="#" class="hover:text-blue-600">rachel@email.com</a>
+                    </div>
+                </div>
+                <button class="mt-4 px-4 py-2 bg-gray-800 text-white text-xs rounded hover:bg-gray-700 transition-colors">
+                    [ Download CV ]
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout 7: Academic Bio Sheet -->
+    <div class="max-w-4xl mx-auto p-8 mb-12 bg-white border border-gray-300 font-serif">
+        <div class="flex gap-8">
+            <div class="w-32 h-40 bg-gray-200 flex-shrink-0"></div>
+            <div class="flex-1">
+                <h1 class="text-2xl font-semibold text-gray-900 mb-1">Dr. Michael Rodriguez</h1>
+                <p class="text-lg text-gray-700 mb-2">Associate Professor of Computer Science</p>
+                <p class="text-gray-600 text-sm mb-4">University of California, Berkeley</p>
+                
+                <p class="text-gray-800 leading-relaxed mb-4 text-sm">
+                    Dr. Rodriguez's research focuses on distributed systems, blockchain technology, and 
+                    cryptographic protocols. He has published over 50 peer-reviewed papers and serves 
+                    on the editorial board of three major computer science journals.
+                </p>
+                
+                <div class="space-y-2 text-sm text-gray-700">
+                    <p><strong>Education:</strong> Ph.D. Computer Science, MIT (2012)</p>
+                    <p><strong>Research Interests:</strong> Distributed Systems, Cryptography, Blockchain</p>
+                    <p><strong>Contact:</strong> mrodriguez@berkeley.edu</p>
+                </div>
+                
+                <div class="flex gap-4 mt-4 text-sm">
+                    <button class="px-4 py-2 border border-gray-400 text-gray-700 hover:bg-gray-50 transition-colors">
+                        Publications
+                    </button>
+                    <button class="px-4 py-2 border border-gray-400 text-gray-700 hover:bg-gray-50 transition-colors">
+                        CV
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout 8: Dark Mode Statement -->
+    <div class="max-w-4xl mx-auto p-8 mb-12 bg-gray-900 text-white">
+        <div class="text-center">
+            <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-full mx-auto mb-6"></div>
+            <h1 class="text-4xl font-bold mb-3">ELENA VASQUEZ</h1>
+            <p class="text-xl text-orange-400 font-medium mb-4">Creative Director</p>
+            <p class="text-gray-300 max-w-2xl mx-auto leading-relaxed mb-8 text-lg">
+                Leading creative teams to build brands that matter. 15 years of crafting visual 
+                identities for startups, agencies, and everything in between.
+            </p>
+            
+            <div class="flex justify-center items-center gap-8 mb-8">
+                <span class="text-gray-400">Madrid, Spain</span>
+                <div class="h-4 w-px bg-gray-600"></div>
+                <div class="flex gap-4 text-lg">
+                    <i class="fab fa-behance text-orange-400 hover:text-orange-300 transition-colors cursor-pointer"></i>
+                    <i class="fab fa-instagram text-orange-400 hover:text-orange-300 transition-colors cursor-pointer"></i>
+                    <i class="fab fa-linkedin text-orange-400 hover:text-orange-300 transition-colors cursor-pointer"></i>
+                </div>
+            </div>
+            
+            <button class="px-8 py-4 bg-orange-500 text-black font-bold rounded-lg hover:bg-orange-400 transition-colors text-lg">
+                START A PROJECT
+            </button>
+        </div>
+    </div>
+
+    <!-- Layout 9: Fun & Playful -->
+    <div class="max-w-4xl mx-auto p-8 mb-12 bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 rounded-2xl relative overflow-hidden">
+        <div class="absolute top-4 right-4 text-4xl">🎨</div>
+        <div class="absolute bottom-4 left-4 text-3xl">✨</div>
+        <div class="absolute top-1/2 right-1/4 text-2xl">🚀</div>
+        
+        <div class="relative z-10">
+            <div class="flex items-center gap-6 mb-6">
+                <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center text-2xl transform -rotate-12">
+                    🎭
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800 mb-1">Luna Park</h1>
+                    <p class="text-xl text-purple-700 font-semibold">Animator & Motion Designer</p>
+                </div>
+            </div>
+            
+            <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                I make things move and dance! 💃 From explainer videos to Instagram stories, 
+                I bring brands to life with playful animations and micro-interactions that spark joy.
+            </p>
+            
+            <div class="flex flex-wrap items-center gap-4 mb-6">
+                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                    🌎 Remote from Seoul
+                </span>
+                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                    🎬 After Effects Wizard
+                </span>
+                <span class="bg-white px-4 py-2 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+                    ☕ Powered by Matcha
+                </span>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <div class="flex gap-3 text-2xl">
+                    <i class="fab fa-vimeo text-blue-500 hover:scale-110 transition-transform cursor-pointer"></i>
+                    <i class="fab fa-instagram text-pink-500 hover:scale-110 transition-transform cursor-pointer"></i>
+                    <i class="fab fa-dribbble text-purple-500 hover:scale-110 transition-transform cursor-pointer"></i>
+                </div>
+                <button class="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all">
+                    See My Reels! 📱
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout 10: Editorial Magazine Cover -->
+    <div class="max-w-4xl mx-auto p-8 mb-12 bg-white border-2 border-black font-serif">
+        <div class="border-b-2 border-black pb-6 mb-6">
+            <div class="flex justify-between items-start">
+                <div class="flex-1">
+                    <p class="text-sm font-sans tracking-widest text-gray-600 mb-2">PORTFOLIO × 2025</p>
+                    <h1 class="text-5xl font-bold leading-tight mb-2">JAMES WRIGHT</h1>
+                    <p class="text-2xl text-gray-800 font-medium mb-4">Investigative Journalist</p>
+                </div>
+                <div class="w-24 h-24 bg-black"></div>
+            </div>
+            
+            <p class="text-lg leading-relaxed text-gray-800 mb-6 max-w-3xl">
+                Award-winning journalist covering climate change, corporate accountability, and social justice. 
+                My work has appeared in The Guardian, Washington Post, and ProPublica.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-3 gap-8 text-sm">
+            <div>
+                <p class="font-bold text-black mb-1">LOCATION</p>
+                <p class="text-gray-700">New York City</p>
+            </div>
+            <div>
+                <p class="font-bold text-black mb-1">ACCOLADES</p>
+                <p class="text-gray-700">Pulitzer Prize Finalist 2023</p>
+            </div>
+            <div>
+                <p class="font-bold text-black mb-1">CONTACT</p>
+                <div class="flex gap-4 mt-2">
+                    <i class="fab fa-twitter text-black hover:text-gray-600 cursor-pointer"></i>
+                    <i class="fas fa-envelope text-black hover:text-gray-600 cursor-pointer"></i>
+                    <i class="fab fa-linkedin text-black hover:text-gray-600 cursor-pointer"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-6 pt-6 border-t border-gray-300">
+            <button class="px-6 py-3 bg-black text-white font-sans text-sm tracking-wide hover:bg-gray-800 transition-colors">
+                READ MY STORIES
+            </button>
+        </div>
+    </div>
+
+    <!-- Layout 11: Shadcn UI Light Theme - Card Grid Layout -->
+    <div class="max-w-4xl mx-auto p-8 mb-12 bg-white border border-gray-200 rounded-lg shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Profile Card -->
+            <div class="md:col-span-2 space-y-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full border-2 border-gray-200 flex-shrink-0"></div>
+                    <div class="flex-1">
+                        <h1 class="text-2xl font-semibold text-gray-900 tracking-tight">Emma Thompson</h1>
+                        <p class="text-sm text-gray-500 mt-1">Frontend Engineer</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-sm text-gray-600">Available for new opportunities</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-md p-4 border border-gray-100">
+                    <p class="text-sm text-gray-700 leading-relaxed">
+                        Passionate about creating intuitive user experiences with React, TypeScript, and modern web technologies. 
+                        I love building accessible, performant applications that users actually enjoy using.
+                    </p>
+                </div>
+                
+                <div class="flex flex-wrap gap-2">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">React</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">TypeScript</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Next.js</span>
+                </div>
+            </div>
+            
+            <!-- Contact Card -->
+            <div class="space-y-4">
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-100">
+                    <h3 class="font-medium text-gray-900 mb-3">Contact</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-map-marker-alt text-gray-400 w-4"></i>
+                            <span class="text-gray-600">London, UK</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-gray-400 w-4"></i>
+                            <span class="text-gray-600">emma@example.com</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fab fa-github text-gray-400 w-4"></i>
+                            <span class="text-gray-600">github.com/emma</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fab fa-linkedin text-gray-400 w-4"></i>
+                            <span class="text-gray-600">linkedin.com/in/emma</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="w-full bg-gray-900 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors">
+                    Download Resume
+                </button>
+                <button class="w-full border border-gray-300 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors">
+                    Get in Touch
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout 12: Shadcn UI Dark Theme - Sidebar Layout -->
+    <div class="max-w-4xl mx-auto p-8 mb-12 bg-gray-950 border border-gray-800 rounded-lg shadow-sm text-white">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Sidebar -->
+            <div class="md:col-span-1 space-y-6">
+                <div class="text-center">
+                    <div class="w-24 h-24 bg-gray-800 rounded-full border-2 border-gray-700 mx-auto mb-4"></div>
+                    <h2 class="text-lg font-semibold text-white">Marcus Chen</h2>
+                    <p class="text-sm text-gray-400">DevOps Engineer</p>
+                </div>
+                
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 text-sm">
+                        <i class="fas fa-map-marker-alt text-gray-500 w-4"></i>
+                        <span class="text-gray-300">Singapore</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm">
+                        <i class="fas fa-briefcase text-gray-500 w-4"></i>
+                        <span class="text-gray-300">5+ years experience</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm">
+                        <i class="fas fa-clock text-gray-500 w-4"></i>
+                        <span class="text-gray-300">GMT+8</span>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-800 pt-4">
+                    <h3 class="text-sm font-medium text-white mb-3">Connect</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-3 text-sm text-gray-400 hover:text-white cursor-pointer transition-colors">
+                            <i class="fab fa-github w-4"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-gray-400 hover:text-white cursor-pointer transition-colors">
+                            <i class="fab fa-linkedin w-4"></i>
+                            <span>LinkedIn</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-gray-400 hover:text-white cursor-pointer transition-colors">
+                            <i class="fas fa-envelope w-4"></i>
+                            <span>Email</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="md:col-span-3 space-y-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-white mb-2">Building Scalable Infrastructure</h1>
+                    <p class="text-gray-400 text-lg">Kubernetes • AWS • Terraform • CI/CD</p>
+                </div>
+                
+                <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
+                    <p class="text-gray-300 leading-relaxed">
+                        Passionate about cloud infrastructure and automation. I help teams deploy faster, scale better, 
+                        and sleep soundly at night. Currently focused on Kubernetes orchestration and building 
+                        self-healing systems that just work.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-900 rounded-lg p-4 border border-gray-800">
+                        <h3 class="font-medium text-white mb-2">Expertise</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-900 text-blue-300">Kubernetes</span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-900 text-orange-300">AWS</span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-900 text-purple-300">Terraform</span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-900 text-green-300">Docker</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-900 rounded-lg p-4 border border-gray-800">
+                        <h3 class="font-medium text-white mb-2">Current Status</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-sm text-gray-300">Open to opportunities</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <span class="text-sm text-gray-300">Remote preferred</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4">
+                    <button class="bg-white text-gray-900 px-6 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">
+                        View Projects
+                    </button>
+                    <button class="border border-gray-700 text-gray-300 px-6 py-2 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors">
+                        Schedule Call
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Heat Map</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 60px 40px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #888888;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        .heat-map {
+            display: grid;
+            grid-template-columns: 120px repeat(5, 1fr);
+            gap: 2px;
+            background: #1a1a1a;
+            padding: 2px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .category-header {
+            background: #2a2a2a;
+            padding: 16px 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #ffffff;
+            border-radius: 6px;
+        }
+
+        .skill-label {
+            background: #2a2a2a;
+            padding: 16px 12px;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #cccccc;
+            border-radius: 6px;
+        }
+
+        .skill-cell {
+            background: #1a1a1a;
+            padding: 16px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            font-size: 0.8rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            cursor: default;
+            position: relative;
+        }
+
+        .skill-cell:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Skill levels - Blue spectrum */
+        .level-1 { background: #1e3a5f; color: #7db3d9; }
+        .level-2 { background: #2d5aa0; color: #a8c8e1; }
+        .level-3 { background: #3b82f6; color: #ffffff; }
+        .level-4 { background: #1d4ed8; color: #ffffff; }
+        .level-5 { background: #1e40af; color: #ffffff; }
+
+        .empty-cell {
+            background: #1a1a1a;
+        }
+
+        .legend {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            padding: 25px;
+            background: #1a1a1a;
+            border-radius: 12px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #cccccc;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000000;
+            color: #ffffff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            margin-bottom: 8px;
+            border: 1px solid #333333;
+        }
+
+        .skill-cell:hover .tooltip {
+            opacity: 1;
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid transparent;
+            border-top-color: #000000;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .heat-map {
+                grid-template-columns: 100px repeat(5, 1fr);
+                gap: 1px;
+            }
+
+            .category-header,
+            .skill-label,
+            .skill-cell {
+                padding: 12px 6px;
+                font-size: 0.75rem;
+            }
+
+            .legend {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Skill Heat Map</h1>
+        <p class="subtitle">Visual overview of technical abilities and experience levels</p>
+        
+        <div class="heat-map">
+            <!-- Headers -->
+            <div class="empty-cell"></div>
+            <div class="category-header">Design</div>
+            <div class="category-header">Code</div>
+            <div class="category-header">Strategy</div>
+            <div class="category-header">Writing</div>
+            <div class="category-header">Tools</div>
+
+            <!-- Row 1 -->
+            <div class="skill-label">UI/UX Design</div>
+            <div class="skill-cell level-5">Figma
+                <div class="tooltip">5+ years daily use</div>
+            </div>
+            <div class="skill-cell level-4">React
+                <div class="tooltip">Used in 8+ projects</div>
+            </div>
+            <div class="skill-cell level-3">Product Strategy
+                <div class="tooltip">Led 3 product launches</div>
+            </div>
+            <div class="skill-cell level-4">Copywriting
+                <div class="tooltip">Marketing & UX copy</div>
+            </div>
+            <div class="skill-cell level-5">Notion
+                <div class="tooltip">Team workspace expert</div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="skill-label">Prototyping</div>
+            <div class="skill-cell level-4">Framer
+                <div class="tooltip">Interactive prototypes</div>
+            </div>
+            <div class="skill-cell level-3">JavaScript
+                <div class="tooltip">ES6+ & frameworks</div>
+            </div>
+            <div class="skill-cell level-4">User Research
+                <div class="tooltip">20+ interviews conducted</div>
+            </div>
+            <div class="skill-cell level-3">Technical Writing
+                <div class="tooltip">API docs & guides</div>
+            </div>
+            <div class="skill-cell level-4">Linear
+                <div class="tooltip">Project management</div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="skill-label">Visual Design</div>
+            <div class="skill-cell level-3">Adobe CC
+                <div class="tooltip">Photoshop & Illustrator</div>
+            </div>
+            <div class="skill-cell level-4">TypeScript
+                <div class="tooltip">Type-safe development</div>
+            </div>
+            <div class="skill-cell level-2">Market Analysis
+                <div class="tooltip">Competitive research</div>
+            </div>
+            <div class="skill-cell level-4">Content Strategy
+                <div class="tooltip">Editorial calendars</div>
+            </div>
+            <div class="skill-cell level-3">Slack
+                <div class="tooltip">Team communication</div>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="skill-label">Animation</div>
+            <div class="skill-cell level-2">After Effects
+                <div class="tooltip">Basic motion graphics</div>
+            </div>
+            <div class="skill-cell level-3">Node.js
+                <div class="tooltip">Backend development</div>
+            </div>
+            <div class="skill-cell level-3">Growth Strategy
+                <div class="tooltip">A/B testing & metrics</div>
+            </div>
+            <div class="skill-cell level-2">SEO Writing
+                <div class="tooltip">Content optimization</div>
+            </div>
+            <div class="skill-cell level-4">GitHub
+                <div class="tooltip">Version control expert</div>
+            </div>
+
+            <!-- Row 5 -->
+            <div class="skill-label">Branding</div>
+            <div class="skill-cell level-3">Brand Systems
+                <div class="tooltip">Identity & guidelines</div>
+            </div>
+            <div class="skill-cell level-2">Python
+                <div class="tooltip">Data analysis scripts</div>
+            </div>
+            <div class="skill-cell level-1">Business Dev
+                <div class="tooltip">Partnership exploration</div>
+            </div>
+            <div class="skill-cell level-3">Email Marketing
+                <div class="tooltip">Campaign management</div>
+            </div>
+            <div class="skill-cell level-2">Analytics
+                <div class="tooltip">Google Analytics setup</div>
+            </div>
+
+            <!-- Row 6 -->
+            <div class="skill-label">User Testing</div>
+            <div class="skill-cell level-4">Maze/Hotjar
+                <div class="tooltip">Usability testing</div>
+            </div>
+            <div class="skill-cell level-3">CSS/Sass
+                <div class="tooltip">Modern styling</div>
+            </div>
+            <div class="skill-cell level-4">Roadmapping
+                <div class="tooltip">Feature prioritization</div>
+            </div>
+            <div class="skill-cell level-1">Grant Writing
+                <div class="tooltip">Some exposure</div>
+            </div>
+            <div class="skill-cell level-3">Figma Dev Mode
+                <div class="tooltip">Design handoffs</div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color level-1"></div>
+                <span>Some Exposure</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color level-2"></div>
+                <span>Learning</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color level-3"></div>
+                <span>Confident</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color level-4"></div>
+                <span>Proficient</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color level-5"></div>
+                <span>Expert Use</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

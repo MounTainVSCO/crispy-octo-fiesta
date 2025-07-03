@@ -1,0 +1,2402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Marketing Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --olive-dark: #6b6f47;
+            --olive-medium: #8a8f5a;
+            --olive-light: #a8ad7a;
+            --sage: #9ca886;
+            --cream: #f7f6f1;
+            --warm-white: #faf9f4;
+            --stone: #8b8680;
+            --charcoal: #3a3a37;
+            --muted-gold: #c4b896;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--warm-white);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 249, 244, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(139, 134, 128, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            color: var(--olive-dark);
+            text-transform: lowercase;
+        }
+
+        .nav {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--stone);
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            position: relative;
+            transition: all 0.3s ease;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--olive-dark);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--olive-medium);
+            border-radius: 1px;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+            margin-top: 80px;
+        }
+
+        .section:first-of-type {
+            margin-top: 0;
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--olive-dark);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 4rem;
+            padding-top: 100px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-title {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--olive-dark);
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--stone);
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--olive-medium);
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            box-shadow: 0 4px 15px rgba(107, 111, 71, 0.3);
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary:hover {
+            background: var(--olive-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(107, 111, 71, 0.4);
+        }
+
+        .btn-secondary {
+            color: var(--stone);
+            text-decoration: none;
+            font-weight: 400;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-secondary:hover {
+            color: var(--olive-dark);
+            border-bottom-color: var(--olive-dark);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(107, 111, 71, 0.2);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image:hover .profile-img {
+            transform: scale(1.05);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--cream);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--stone);
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(107, 111, 71, 0.1);
+        }
+
+        .stat-number {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--olive-dark);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--stone);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--sage);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 3rem;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--olive-medium);
+            border-radius: 50%;
+            border: 3px solid var(--warm-white);
+        }
+
+        .experience-header {
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--olive-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            color: var(--olive-medium);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-period {
+            color: var(--stone);
+            font-size: 0.9rem;
+        }
+
+        .experience-description {
+            color: var(--stone);
+            line-height: 1.6;
+        }
+
+        .experience-achievements {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .experience-achievements li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--stone);
+        }
+
+        .experience-achievements li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--sage);
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--cream);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(107, 111, 71, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(107, 111, 71, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 180px;
+            background: var(--cream);
+            border-bottom: 1px solid rgba(139, 134, 128, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--olive-light) 0%, var(--sage) 100%);
+            opacity: 0.1;
+        }
+
+        .project-icon {
+            font-size: 2rem;
+            color: var(--olive-medium);
+            z-index: 1;
+            position: relative;
+        }
+
+        .project-content {
+            padding: 2.5rem 2rem 2rem 2rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--olive-dark);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .project-description {
+            color: var(--stone);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-tag {
+            background: var(--cream);
+            color: var(--olive-medium);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(139, 134, 128, 0.1);
+        }
+
+        .project-link {
+            color: var(--olive-medium);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            color: var(--olive-dark);
+            transform: translateX(3px);
+        }
+
+        .project-link::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover::after {
+            transform: translateX(3px);
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .education-category {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(107, 111, 71, 0.1);
+        }
+
+        .education-category-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--olive-dark);
+            margin-bottom: 2rem;
+            text-align: center;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--cream);
+        }
+
+        .education-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--cream);
+        }
+
+        .education-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .education-header {
+            margin-bottom: 1rem;
+        }
+
+        .education-degree {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--olive-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            color: var(--olive-medium);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-details {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--stone);
+        }
+
+        .education-description {
+            color: var(--stone);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .education-achievements {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .achievement-tag {
+            background: var(--cream);
+            color: var(--olive-medium);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .certification-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--cream);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .certification-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(107, 111, 71, 0.1);
+        }
+
+        .cert-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .cert-content {
+            flex: 1;
+        }
+
+        .cert-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--olive-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-issuer {
+            font-size: 0.8rem;
+            color: var(--olive-medium);
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-year {
+            font-size: 0.75rem;
+            color: var(--stone);
+        }
+
+        /* Publications Section */
+        .publications {
+            background: var(--cream);
+        }
+
+        .publications-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .publications-intro p {
+            font-size: 1.1rem;
+            color: var(--stone);
+            line-height: 1.6;
+        }
+
+        .publications-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+        }
+
+        .publication-category {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(107, 111, 71, 0.1);
+        }
+
+        .publication-category-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--olive-dark);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--cream);
+        }
+
+        .publication-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--cream);
+        }
+
+        .publication-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .publication-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-type {
+            background: var(--olive-medium);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .publication-date {
+            color: var(--stone);
+            font-size: 0.85rem;
+        }
+
+        .publication-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--olive-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .publication-source {
+            color: var(--olive-medium);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            font-style: italic;
+        }
+
+        .publication-excerpt {
+            color: var(--stone);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .publication-link {
+            color: var(--olive-medium);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .publication-link:hover {
+            color: var(--olive-dark);
+        }
+
+        .speaking-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--cream);
+        }
+
+        .speaking-item:last-child {
+            margin-bottom: 2rem;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .speaking-event {
+            margin-bottom: 0.75rem;
+        }
+
+        .speaking-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--olive-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .speaking-venue {
+            color: var(--olive-medium);
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .speaking-location,
+        .speaking-date {
+            color: var(--stone);
+            font-size: 0.85rem;
+        }
+
+        .speaking-description {
+            color: var(--stone);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .awards-list {
+            margin-top: 1.5rem;
+        }
+
+        .award-item {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 0.5fr;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--cream);
+        }
+
+        .award-item:last-child {
+            border-bottom: none;
+        }
+
+        .award-name {
+            font-weight: 600;
+            color: var(--olive-dark);
+        }
+
+        .award-org {
+            color: var(--olive-medium);
+            font-size: 0.9rem;
+        }
+
+        .award-year {
+            color: var(--stone);
+            font-size: 0.85rem;
+            text-align: right;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(107, 111, 71, 0.1);
+        }
+
+        .skill-category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--olive-dark);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            color: var(--stone);
+            font-weight: 500;
+        }
+
+        .skill-level {
+            width: 60%;
+            height: 6px;
+            background: var(--cream);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--olive-medium);
+            border-radius: 3px;
+            transition: width 0.8s ease;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--olive-dark);
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item span {
+            margin-left: 1rem;
+            opacity: 0.9;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: inherit;
+            min-height: 44px;
+            font-size: 16px;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .btn-contact {
+            background: var(--muted-gold);
+            color: var(--olive-dark);
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-contact:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer p {
+            opacity: 0.7;
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: fixed;
+            opacity: 0.05;
+            animation: float 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element.circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--olive-medium);
+            top: 20%;
+            right: 10%;
+        }
+
+        .floating-element.square {
+            width: 60px;
+            height: 60px;
+            background: var(--sage);
+            top: 60%;
+            left: 5%;
+            border-radius: 15px;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--olive-dark);
+            cursor: pointer;
+            padding: 0.5rem;
+            min-width: 44px;
+            min-height: 44px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav.mobile-active {
+            display: flex;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--warm-white);
+            flex-direction: column;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(107, 111, 71, 0.2);
+            border-top: 1px solid rgba(139, 134, 128, 0.1);
+        }
+
+        /* Enhanced Responsive Design */
+        
+        /* Large Desktop */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1600px;
+                padding: 0 3rem;
+            }
+            
+            .hero-title {
+                font-size: 4.5rem;
+            }
+            
+            .section-title {
+                font-size: 3rem;
+            }
+        }
+
+        /* Desktop */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 2rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Tablet Landscape */
+        @media (max-width: 1024px) {
+            .hero,
+            .about-content,
+            .contact-content,
+            .education-grid,
+            .publications-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            
+            .hero-image {
+                height: 350px;
+                max-width: 450px;
+                margin: 0 auto;
+                order: -1;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+            }
+
+            .certification-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .hero-title {
+                font-size: clamp(2rem, 4vw, 3.5rem);
+                text-align: center;
+            }
+            
+            .hero-subtitle {
+                text-align: center;
+                max-width: 100%;
+            }
+            
+            .hero-cta {
+                justify-content: center;
+            }
+        }
+
+        /* Tablet Portrait */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .header-content {
+                padding: 1rem 1.5rem;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav {
+                display: none;
+                gap: 1rem;
+            }
+            
+            .nav-link {
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(139, 134, 128, 0.1);
+                font-size: 1.1rem;
+            }
+            
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+            
+            .section {
+                padding: 3rem 0;
+                margin-top: 60px;
+            }
+            
+            .section:first-of-type {
+                margin-top: 0;
+            }
+            
+            .hero {
+                padding-top: 120px;
+                gap: 2rem;
+            }
+            
+                         .hero-image {
+                 height: 300px;
+                 max-width: 350px;
+                 order: -1;
+             }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .stat {
+                padding: 1.5rem 1rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .certification-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .award-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                text-align: left;
+            }
+
+            .award-year {
+                text-align: left;
+            }
+            
+            .experience-timeline {
+                padding-left: 1.5rem;
+            }
+            
+            .experience-item {
+                padding-left: 2rem;
+            }
+            
+            .project-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .education-category,
+            .publication-category,
+            .skill-category {
+                padding: 2rem 1.5rem;
+            }
+            
+            .contact-content {
+                gap: 2rem;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+
+                 /* Mobile Landscape */
+         @media (max-width: 640px) {
+             .hero-image {
+                 order: -1;
+             }
+             
+             .hero-title {
+                 font-size: clamp(1.8rem, 6vw, 2.5rem);
+                 line-height: 1.3;
+             }
+             
+             .hero-subtitle {
+                 font-size: 1rem;
+             }
+            
+            .btn-primary,
+            .btn-secondary {
+                font-size: 0.9rem;
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .certification-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .stat {
+                padding: 1rem;
+            }
+        }
+
+        /* Mobile Portrait */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .header-content {
+                padding: 0.8rem 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .section {
+                padding: 2.5rem 0;
+            }
+            
+            .hero {
+                padding-top: 100px;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            
+                         .hero-image {
+                 height: 250px;
+                 max-width: 280px;
+                 order: -1;
+             }
+            
+            .hero-title {
+                font-size: clamp(1.5rem, 8vw, 2.2rem);
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .experience-timeline {
+                padding-left: 1rem;
+            }
+            
+            .experience-item {
+                padding-left: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            
+            .experience-title {
+                font-size: 1.1rem;
+            }
+            
+            .project-content {
+                padding: 1.5rem 1rem;
+            }
+            
+            .project-title {
+                font-size: 1.2rem;
+            }
+            
+            .project-tags {
+                gap: 0.5rem;
+            }
+            
+            .project-tag {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.8rem;
+            }
+            
+            .education-category,
+            .publication-category,
+            .skill-category {
+                padding: 1.5rem 1rem;
+            }
+            
+            .education-category-title,
+            .publication-category-title,
+            .skill-category-title {
+                font-size: 1.2rem;
+            }
+            
+            .education-degree {
+                font-size: 1.1rem;
+            }
+            
+            .contact-form {
+                padding: 1rem;
+            }
+            
+            .form-group input,
+            .form-group textarea {
+                padding: 0.7rem;
+                font-size: 1rem;
+            }
+            
+            .btn-contact {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Extra Small Devices */
+        @media (max-width: 360px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+            
+            .hero-title {
+                font-size: 1.4rem;
+                line-height: 1.4;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+            
+                         .hero-image {
+                 height: 220px;
+                 max-width: 250px;
+                 order: -1;
+             }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .stat {
+                padding: 0.8rem;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            
+            .project-content,
+            .education-category,
+            .publication-category,
+            .skill-category {
+                padding: 1rem 0.75rem;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) {
+            .project-card:hover,
+            .certification-item:hover,
+            .btn-primary:hover,
+            .btn-secondary:hover {
+                transform: none;
+            }
+            
+            .project-card,
+            .certification-item,
+            .btn-primary,
+            .btn-secondary {
+                transition: background-color 0.3s ease;
+            }
+        }
+
+        /* High DPI displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .profile-img {
+                image-rendering: -webkit-optimize-contrast;
+            }
+        }
+
+        /* Landscape orientation specific */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+                padding: 2rem 0;
+            }
+            
+            .section {
+                padding: 2rem 0;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .header,
+            .floating-element,
+            .contact-form,
+            .btn-primary,
+            .btn-secondary,
+            .btn-contact {
+                display: none;
+            }
+            
+            .section {
+                margin-top: 0;
+                padding: 1rem 0;
+                page-break-inside: avoid;
+            }
+            
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+            }
+            
+            .hero-title,
+            .section-title {
+                color: #000;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating decorative elements -->
+    <div class="floating-element circle"></div>
+    <div class="floating-element square"></div>
+    
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">a b</div>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <span>☰</span>
+            </button>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#publications" class="nav-link">Publications</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="section">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-content fade-in">
+                    <h1 class="hero-title">From marketing strategy to execution and reporting, I can do it all.</h1>
+                    <p class="hero-subtitle">
+                        Crafting compelling narratives and data-driven campaigns that connect brands with their audiences. 
+                        Let's create something remarkable together.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn-primary">View My Work</a>
+                        <a href="#contact" class="btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+                
+                <div class="hero-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Marketing professional" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Education & Certifications</h2>
+            
+            <div class="education-grid">
+                <div class="education-category fade-in">
+                    <h3 class="education-category-title">Academic Background</h3>
+                    
+                    <div class="education-item">
+                        <div class="education-header">
+                            <h4 class="education-degree">Master of Business Administration</h4>
+                            <div class="education-school">Northwestern Kellogg School of Management</div>
+                            <div class="education-details">
+                                <span class="education-year">2016 - 2018</span>
+                                <span class="education-gpa">GPA: 3.8/4.0</span>
+                            </div>
+                        </div>
+                        <div class="education-description">
+                            Concentration in Marketing and Strategy. Completed capstone project on digital transformation strategies for Fortune 500 companies. Dean's List recognition.
+                        </div>
+                        <div class="education-achievements">
+                            <span class="achievement-tag">Marketing Strategy Concentration</span>
+                            <span class="achievement-tag">Dean's List</span>
+                            <span class="achievement-tag">Case Competition Winner</span>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="education-header">
+                            <h4 class="education-degree">Bachelor of Science in Marketing</h4>
+                            <div class="education-school">University of California, Berkeley</div>
+                            <div class="education-details">
+                                <span class="education-year">2012 - 2016</span>
+                                <span class="education-gpa">Magna Cum Laude</span>
+                            </div>
+                        </div>
+                        <div class="education-description">
+                            Minor in Psychology and Data Analytics. President of Marketing Society. Completed honors thesis on consumer behavior in digital environments.
+                        </div>
+                        <div class="education-achievements">
+                            <span class="achievement-tag">Magna Cum Laude</span>
+                            <span class="achievement-tag">Marketing Society President</span>
+                            <span class="achievement-tag">Honors Thesis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education-category fade-in">
+                    <h3 class="education-category-title">Professional Certifications</h3>
+                    
+                    <div class="certification-grid">
+                        <div class="certification-item">
+                            <div class="cert-icon">🎯</div>
+                            <div class="cert-content">
+                                <h4 class="cert-name">Google Ads Certified</h4>
+                                <div class="cert-issuer">Google</div>
+                                <div class="cert-year">2024</div>
+                            </div>
+                        </div>
+
+                        <div class="certification-item">
+                            <div class="cert-icon">📊</div>
+                            <div class="cert-content">
+                                <h4 class="cert-name">Google Analytics 4 Certified</h4>
+                                <div class="cert-issuer">Google</div>
+                                <div class="cert-year">2024</div>
+                            </div>
+                        </div>
+
+                        <div class="certification-item">
+                            <div class="cert-icon">💼</div>
+                            <div class="cert-content">
+                                <h4 class="cert-name">Facebook Blueprint Certified</h4>
+                                <div class="cert-issuer">Meta</div>
+                                <div class="cert-year">2023</div>
+                            </div>
+                        </div>
+
+                        <div class="certification-item">
+                            <div class="cert-icon">🔗</div>
+                            <div class="cert-content">
+                                <h4 class="cert-name">LinkedIn Marketing Certified</h4>
+                                <div class="cert-issuer">LinkedIn</div>
+                                <div class="cert-year">2023</div>
+                            </div>
+                        </div>
+
+                        <div class="certification-item">
+                            <div class="cert-icon">📈</div>
+                            <div class="cert-content">
+                                <h4 class="cert-name">HubSpot Inbound Marketing</h4>
+                                <div class="cert-issuer">HubSpot Academy</div>
+                                <div class="cert-year">2022</div>
+                            </div>
+                        </div>
+
+                        <div class="certification-item">
+                            <div class="cert-icon">🎨</div>
+                            <div class="cert-content">
+                                <h4 class="cert-name">Content Marketing Certified</h4>
+                                <div class="cert-issuer">Content Marketing Institute</div>
+                                <div class="cert-year">2022</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="section publications">
+        <div class="container">
+            <h2 class="section-title fade-in">Publications & Thought Leadership</h2>
+            
+            <div class="publications-content">
+                <div class="publications-intro fade-in">
+                    <p>I regularly share insights on marketing strategy, digital transformation, and industry trends through various publications and speaking engagements.</p>
+                </div>
+
+                <div class="publications-grid">
+                    <div class="publication-category fade-in">
+                        <h3 class="publication-category-title">Recent Articles</h3>
+                        
+                        <div class="publication-item">
+                            <div class="publication-meta">
+                                <span class="publication-type">Article</span>
+                                <span class="publication-date">March 2025</span>
+                            </div>
+                            <h4 class="publication-title">The Future of AI-Driven Marketing Personalization</h4>
+                            <div class="publication-source">Harvard Business Review</div>
+                            <p class="publication-excerpt">
+                                Exploring how artificial intelligence is reshaping customer experience and the strategies marketers need to adopt for authentic personalization at scale.
+                            </p>
+                            <a href="#" class="publication-link">Read Article</a>
+                        </div>
+
+                        <div class="publication-item">
+                            <div class="publication-meta">
+                                <span class="publication-type">Research</span>
+                                <span class="publication-date">January 2025</span>
+                            </div>
+                            <h4 class="publication-title">B2B Marketing Attribution: A Data-Driven Approach</h4>
+                            <div class="publication-source">Marketing Science Journal</div>
+                            <p class="publication-excerpt">
+                                Comprehensive analysis of attribution models in complex B2B sales cycles, featuring case studies from 50+ enterprise marketing teams.
+                            </p>
+                            <a href="#" class="publication-link">Read Article</a>
+                        </div>
+
+                        <div class="publication-item">
+                            <div class="publication-meta">
+                                <span class="publication-type">Opinion</span>
+                                <span class="publication-date">November 2024</span>
+                            </div>
+                            <h4 class="publication-title">Why Privacy-First Marketing is the Only Path Forward</h4>
+                            <div class="publication-source">AdAge</div>
+                            <p class="publication-excerpt">
+                                A strategic perspective on building trust through transparent data practices and creating value-driven customer relationships in a privacy-conscious world.
+                            </p>
+                            <a href="#" class="publication-link">Read Article</a>
+                        </div>
+
+                        <div class="publication-item">
+                            <div class="publication-meta">
+                                <span class="publication-type">Guide</span>
+                                <span class="publication-date">September 2024</span>
+                            </div>
+                            <h4 class="publication-title">The Complete Guide to Marketing Automation ROI</h4>
+                            <div class="publication-source">Marketing Land</div>
+                            <p class="publication-excerpt">
+                                Step-by-step framework for measuring and optimizing marketing automation investments, with benchmarks from 200+ companies.
+                            </p>
+                            <a href="#" class="publication-link">Read Article</a>
+                        </div>
+                    </div>
+
+                    <div class="publication-category fade-in">
+                        <h3 class="publication-category-title">Speaking & Events</h3>
+                        
+                        <div class="speaking-item">
+                            <div class="speaking-event">
+                                <h4 class="speaking-title">Keynote: Marketing in the Age of AI</h4>
+                                <div class="speaking-venue">MarTech Conference 2025</div>
+                                <div class="speaking-location">San Francisco, CA</div>
+                                <div class="speaking-date">May 2025</div>
+                            </div>
+                            <p class="speaking-description">
+                                Delivered keynote address to 3,000+ marketing professionals on implementing AI strategies while maintaining human connection.
+                            </p>
+                        </div>
+
+                        <div class="speaking-item">
+                            <div class="speaking-event">
+                                <h4 class="speaking-title">Panel: The Future of B2B Marketing</h4>
+                                <div class="speaking-venue">SaaStr Annual</div>
+                                <div class="speaking-location">San Mateo, CA</div>
+                                <div class="speaking-date">February 2025</div>
+                            </div>
+                            <p class="speaking-description">
+                                Panelist discussion on emerging trends in B2B marketing, attribution challenges, and the evolving buyer journey.
+                            </p>
+                        </div>
+
+                        <div class="speaking-item">
+                            <div class="speaking-event">
+                                <h4 class="speaking-title">Workshop: Advanced Marketing Analytics</h4>
+                                <div class="speaking-venue">Digital Marketing Summit</div>
+                                <div class="speaking-location">New York, NY</div>
+                                <div class="speaking-date">October 2024</div>
+                            </div>
+                            <p class="speaking-description">
+                                Led hands-on workshop for 150 marketing leaders on advanced analytics techniques and data visualization strategies.
+                            </p>
+                        </div>
+
+                        <h3 class="publication-category-title">Awards & Recognition</h3>
+                        
+                        <div class="awards-list">
+                            <div class="award-item">
+                                <span class="award-name">Marketing Executive of the Year</span>
+                                <span class="award-org">Marketing Association of America</span>
+                                <span class="award-year">2024</span>
+                            </div>
+                            <div class="award-item">
+                                <span class="award-name">Top 40 Under 40 in Marketing</span>
+                                <span class="award-org">Marketing Week</span>
+                                <span class="award-year">2023</span>
+                            </div>
+                            <div class="award-item">
+                                <span class="award-name">Best Integrated Campaign</span>
+                                <span class="award-org">Digital Marketing Awards</span>
+                                <span class="award-year">2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>With over 8 years of experience in digital marketing, I specialize in creating integrated campaigns that drive meaningful engagement and measurable results. My approach combines creative storytelling with data-driven insights to deliver exceptional brand experiences.</p>
+                    
+                    <p>I believe that great marketing starts with understanding people—their needs, desires, and behaviors. This human-centered approach has helped me develop campaigns that not only achieve business objectives but also create genuine connections between brands and their audiences.</p>
+                    
+                    <p>When I'm not crafting marketing strategies, you'll find me exploring the latest industry trends, mentoring junior marketers, or experimenting with new creative formats.</p>
+                </div>
+                
+                <div class="stats fade-in">
+                    <div class="stat">
+                        <span class="stat-number">150+</span>
+                        <div class="stat-label">Campaigns Launched</div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">$2.5M+</span>
+                        <div class="stat-label">Ad Spend Managed</div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">340%</span>
+                        <div class="stat-label">Avg ROI Increase</div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">25+</span>
+                        <div class="stat-label">Brands Partnered</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item fade-in">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Senior Marketing Manager</h3>
+                        <div class="experience-company">TechFlow Solutions</div>
+                        <div class="experience-period">Jan 2022 - Present</div>
+                    </div>
+                    <div class="experience-description">
+                        Lead cross-channel marketing initiatives for B2B SaaS platform serving 10K+ enterprise clients. Manage team of 5 marketers and oversee $800K annual marketing budget.
+                    </div>
+                    <ul class="experience-achievements">
+                        <li>Increased qualified leads by 185% through integrated demand generation campaigns</li>
+                        <li>Launched customer advocacy program resulting in 40% increase in referral revenue</li>
+                        <li>Implemented marketing automation workflows that improved lead nurturing efficiency by 60%</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item fade-in">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Digital Marketing Specialist</h3>
+                        <div class="experience-company">GrowthLab Agency</div>
+                        <div class="experience-period">Mar 2020 - Dec 2021</div>
+                    </div>
+                    <div class="experience-description">
+                        Developed and executed digital marketing strategies for diverse portfolio of 15+ clients across e-commerce, healthcare, and fintech industries.
+                    </div>
+                    <ul class="experience-achievements">
+                        <li>Achieved average 240% ROAS across all paid advertising campaigns</li>
+                        <li>Created content marketing framework adopted agency-wide</li>
+                        <li>Managed social media accounts with combined following of 500K+</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item fade-in">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Marketing Coordinator</h3>
+                        <div class="experience-company">Innovate Retail Group</div>
+                        <div class="experience-period">Jun 2018 - Feb 2020</div>
+                    </div>
+                    <div class="experience-description">
+                        Supported marketing operations for omnichannel retail brand with 50+ locations. Focused on email marketing, events, and local partnerships.
+                    </div>
+                    <ul class="experience-achievements">
+                        <li>Improved email open rates by 85% through segmentation and personalization</li>
+                        <li>Coordinated 25+ in-store events driving $150K+ in direct sales</li>
+                        <li>Established influencer partnership program with 30+ local creators</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item fade-in">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Marketing Assistant</h3>
+                        <div class="experience-company">StartupHub Ventures</div>
+                        <div class="experience-period">Sep 2016 - May 2018</div>
+                    </div>
+                    <div class="experience-description">
+                        Provided marketing support for portfolio of early-stage startups. Gained experience across multiple industries and business models.
+                    </div>
+                    <ul class="experience-achievements">
+                        <li>Assisted in launching 8 successful product campaigns</li>
+                        <li>Created social media content resulting in 300% follower growth</li>
+                        <li>Conducted market research for 12+ investment opportunities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <div class="project-icon">📱</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">SaaS Launch Campaign</h3>
+                        <p class="project-description">
+                            Comprehensive go-to-market strategy for AI-powered analytics platform. Integrated content marketing, paid acquisition, and PR to achieve successful product launch.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Content Strategy</span>
+                            <span class="project-tag">Paid Ads</span>
+                            <span class="project-tag">PR</span>
+                            <span class="project-tag">Analytics</span>
+                        </div>
+                        <a href="#" class="project-link">View Case Study</a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <div class="project-icon">🛍️</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">E-commerce Rebrand</h3>
+                        <p class="project-description">
+                            Complete brand refresh and digital transformation for established retail company. Included new visual identity, website redesign, and omnichannel strategy.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Brand Strategy</span>
+                            <span class="project-tag">UX Design</span>
+                            <span class="project-tag">SEO</span>
+                            <span class="project-tag">Conversion Optimization</span>
+                        </div>
+                        <a href="#" class="project-link">View Case Study</a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <div class="project-icon">🎯</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">B2B Lead Generation</h3>
+                        <p class="project-description">
+                            Multi-channel demand generation program for enterprise software company. Combined account-based marketing with inbound strategies to drive qualified pipeline.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">ABM</span>
+                            <span class="project-tag">Lead Generation</span>
+                            <span class="project-tag">Marketing Automation</span>
+                            <span class="project-tag">Sales Enablement</span>
+                        </div>
+                        <a href="#" class="project-link">View Case Study</a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <div class="project-icon">📊</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Performance Marketing</h3>
+                        <p class="project-description">
+                            Data-driven paid advertising campaign optimization across Google, Facebook, and LinkedIn. Focused on maximizing ROAS while scaling budget efficiently.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Google Ads</span>
+                            <span class="project-tag">Facebook Ads</span>
+                            <span class="project-tag">Data Analysis</span>
+                            <span class="project-tag">A/B Testing</span>
+                        </div>
+                        <a href="#" class="project-link">View Case Study</a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <div class="project-icon">🌟</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Influencer Partnership</h3>
+                        <p class="project-description">
+                            Strategic influencer collaboration program for lifestyle brand. Built authentic partnerships with micro and macro influencers to expand brand reach and credibility.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Influencer Marketing</span>
+                            <span class="project-tag">Brand Partnerships</span>
+                            <span class="project-tag">Content Creation</span>
+                            <span class="project-tag">Community Building</span>
+                        </div>
+                        <a href="#" class="project-link">View Case Study</a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <div class="project-icon">📧</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Email Marketing Automation</h3>
+                        <p class="project-description">
+                            Comprehensive email marketing system design including welcome series, nurture campaigns, and retention flows. Implemented advanced segmentation and personalization strategies.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Email Marketing</span>
+                            <span class="project-tag">Automation</span>
+                            <span class="project-tag">Segmentation</span>
+                            <span class="project-tag">Lifecycle Marketing</span>
+                        </div>
+                        <a href="#" class="project-link">View Case Study</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3 class="skill-category-title">Strategy & Planning</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Marketing Strategy</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Brand Development</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Market Research</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Competitive Analysis</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Campaign Planning</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3 class="skill-category-title">Digital Marketing</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Google Ads</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 93%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Facebook/Meta Ads</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">LinkedIn Ads</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 87%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">SEO/SEM</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Social Media Marketing</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3 class="skill-category-title">Content & Creative</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Content Strategy</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Copywriting</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Email Marketing</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Video Marketing</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Creative Direction</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <h3 class="skill-category-title">Analytics & Tools</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Google Analytics</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Data Analysis</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Marketing Automation</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">CRM Management</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 82%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">A/B Testing</span>
+                        <div class="skill-level">
+                            <div class="skill-progress" style="width: 87%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Let's Work Together</h2>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <p>Ready to elevate your marketing strategy? I'm always excited to discuss new opportunities and collaborate on innovative campaigns that drive real results.</p>
+                    
+                    <p>Whether you're looking for strategic guidance, campaign execution, or a comprehensive marketing overhaul, let's explore how we can achieve your goals together.</p>
+                    
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>hello@marketingpro.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>San Francisco, CA</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>💼</span>
+                        <span>linkedin.com/in/marketingpro</span>
+                    </div>
+                </div>
+                
+                <form class="contact-form fade-in">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company" placeholder="Your company (optional)">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-contact">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Marketing Professional. Crafted with purpose and precision.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const nav = document.querySelector('.nav');
+        let isMenuOpen = false;
+
+        mobileMenuToggle.addEventListener('click', function() {
+            isMenuOpen = !isMenuOpen;
+            
+            if (isMenuOpen) {
+                nav.classList.add('mobile-active');
+                this.innerHTML = '<span>×</span>';
+                this.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            } else {
+                nav.classList.remove('mobile-active');
+                this.innerHTML = '<span>☰</span>';
+                this.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (isMenuOpen && !nav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                nav.classList.remove('mobile-active');
+                mobileMenuToggle.innerHTML = '<span>☰</span>';
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+                isMenuOpen = false;
+            }
+        });
+
+        // Close mobile menu on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && isMenuOpen) {
+                nav.classList.remove('mobile-active');
+                mobileMenuToggle.innerHTML = '<span>☰</span>';
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+                isMenuOpen = false;
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Close mobile menu if open
+                if (isMenuOpen) {
+                    nav.classList.remove('mobile-active');
+                    mobileMenuToggle.innerHTML = '<span>☰</span>';
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                    isMenuOpen = false;
+                }
+                
+                // Smooth scroll to section
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Parallax effect for floating elements
+        document.addEventListener('mousemove', (e) => {
+            const elements = document.querySelectorAll('.floating-element');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            elements.forEach((element, index) => {
+                const speed = (index + 1) * 0.3;
+                const xOffset = (x - 0.5) * speed * 30;
+                const yOffset = (y - 0.5) * speed * 30;
+                
+                element.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animate skill progress bars when visible
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress');
+                    progressBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 200);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-category').forEach(category => {
+            skillObserver.observe(category);
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            
+            // Simple form validation and feedback
+            if (name) {
+                alert(`Thank you, ${name}! Your message has been sent. I'll get back to you soon.`);
+                this.reset();
+            }
+        });
+
+        // Add loading animation to buttons
+        document.querySelectorAll('.btn-primary, .btn-secondary, .btn-contact').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(250, 249, 244, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(107, 111, 71, 0.1)';
+            } else {
+                header.style.background = 'rgba(250, 249, 244, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Project card hover effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add stagger animation to timeline items
+        const timelineItems = document.querySelectorAll('.experience-item');
+        timelineItems.forEach((item, index) => {
+            item.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Typing effect for hero title
+        const heroTitle = document.querySelector('.hero-title');
+        heroTitle.style.opacity = '1';
+    </script>
+</body>
+</html>

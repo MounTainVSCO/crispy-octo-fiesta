@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Chen - Thoughtfully Human</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Crimson+Text:ital,wght@0,400;1,400&display=swap');
+        
+        :root {
+            --primary-text: #1a1a1a;
+            --secondary-text: #666;
+            --accent-text: #4a4a4a;
+            --background: #fefefe;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --border: rgba(0, 0, 0, 0.08);
+            --gradient-start: #f8f9fa;
+            --gradient-end: #ffffff;
+            --hover-bg: rgba(0, 0, 0, 0.02);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-text);
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            min-height: 100vh;
+        }
+        
+        /* Header Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(254, 254, 254, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--primary-text);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--secondary-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-text);
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-text);
+            cursor: pointer;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 0 4rem;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 0 0 280px;
+        }
+        
+        .profile-photo {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--secondary-text);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--primary-text);
+            text-decoration: none;
+            border-radius: 50px;
+        }
+        
+        .cta-button:hover {
+            background: var(--hover-bg);
+            border-color: var(--accent-text);
+        }
+        
+        /* Philosophy Section */
+        .philosophy {
+            padding: 6rem 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            margin-bottom: 4rem;
+            color: var(--primary-text);
+        }
+        
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .principle-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .principle-card:hover {
+            box-shadow: var(--shadow);
+        }
+        
+        .principle-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .principle-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--primary-text);
+        }
+        
+        .principle-desc {
+            color: var(--secondary-text);
+            line-height: 1.7;
+        }
+        
+        /* Projects Section */
+        .projects {
+            padding: 6rem 0;
+        }
+        
+        .project-grid {
+            display: grid;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 3rem;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .project-card:hover {
+            box-shadow: var(--shadow);
+        }
+        
+        .project-image {
+            flex: 0 0 200px;
+            height: 150px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-text);
+            font-size: 3rem;
+        }
+        
+        .project-content {
+            flex: 1;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--primary-text);
+        }
+        
+        .project-desc {
+            color: var(--secondary-text);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .project-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            padding: 0.4rem 1rem;
+            background: var(--hover-bg);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent-text);
+            border: 1px solid var(--border);
+        }
+        
+        /* Experience Timeline */
+        .experience {
+            padding: 6rem 0;
+        }
+        
+        .timeline {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+        
+        .timeline-item {
+            padding: 2rem 0 2rem 5rem;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 2.5rem;
+            width: 10px;
+            height: 10px;
+            background: var(--primary-text);
+            border-radius: 50%;
+        }
+        
+        .timeline-date {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--secondary-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--primary-text);
+        }
+        
+        .timeline-desc {
+            color: var(--secondary-text);
+            line-height: 1.6;
+        }
+        
+        /* Skills Section */
+        .skills {
+            padding: 6rem 0;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .skills-category {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .skills-category:hover {
+            box-shadow: var(--shadow);
+        }
+        
+        .skills-category h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--primary-text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+        
+        .skill-name {
+            color: var(--primary-text);
+            font-weight: 400;
+        }
+        
+        .skill-level {
+            width: 60px;
+            height: 4px;
+            background: var(--hover-bg);
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--primary-text);
+            border-radius: 2px;
+        }
+        
+        /* Education Section */
+        .education {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, transparent 0%, var(--hover-bg) 100%);
+        }
+        
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .education-item {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .education-item:hover {
+            box-shadow: var(--shadow);
+        }
+        
+        .education-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .education-degree {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--primary-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-school {
+            color: var(--accent-text);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-date {
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 1rem;
+        }
+        
+        .education-details {
+            color: var(--secondary-text);
+            line-height: 1.6;
+        }
+        
+        .education-honors {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .honors-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .honor-tag {
+            padding: 0.3rem 0.8rem;
+            background: var(--hover-bg);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: var(--accent-text);
+        }
+        
+        /* Certifications Section */
+        .certifications {
+            padding: 6rem 0;
+        }
+        
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .certification-item {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        
+        .certification-item:hover {
+            box-shadow: var(--shadow);
+        }
+        
+        .certification-badge {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .certification-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--primary-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .certification-issuer {
+            color: var(--accent-text);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        
+        .certification-date {
+            color: var(--secondary-text);
+            font-size: 0.85rem;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .certification-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--hover-bg);
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: var(--accent-text);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Awards Section */
+        .awards {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--hover-bg) 0%, transparent 100%);
+        }
+        
+        .awards-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .award-item {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .award-item:hover {
+            box-shadow: var(--shadow);
+        }
+        
+        .award-icon {
+            flex: 0 0 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .award-content {
+            flex: 1;
+        }
+        
+        .award-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--primary-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .award-org {
+            color: var(--accent-text);
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+        }
+        
+        .award-date {
+            color: var(--secondary-text);
+            font-size: 0.85rem;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .award-desc {
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+        .publications {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--hover-bg) 0%, transparent 100%);
+        }
+        
+        .publications-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .publication-item {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .publication-item:hover {
+            box-shadow: var(--shadow);
+        }
+        
+        .publication-type {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--hover-bg);
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: var(--accent-text);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .publication-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--primary-text);
+            line-height: 1.4;
+        }
+        
+        .publication-venue {
+            color: var(--secondary-text);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .publication-date {
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            text-align: left;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--secondary-text);
+            margin-bottom: 2rem;
+        }
+        
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .highlight-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .highlight-number {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--primary-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-label {
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+        }
+        
+        /* Quote Section */
+        .quote {
+            padding: 6rem 0;
+            text-align: center;
+        }
+        
+        .quote-text {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-style: italic;
+            color: var(--accent-text);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 4rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-link {
+            color: var(--secondary-text);
+            text-decoration: none;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary-text);
+        }
+        
+        .footer-location {
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .hero-image {
+                flex: none;
+                order: -1;
+            }
+            
+            .profile-photo {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .philosophy, .projects, .experience, .skills, .quote {
+                padding: 3rem 0;
+            }
+            
+            .principle-card, .project-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .project-card {
+                flex-direction: column;
+            }
+            
+            .project-image {
+                flex: none;
+                width: 100%;
+                height: 120px;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .timeline::before {
+                left: 1rem;
+            }
+            
+            .timeline-item {
+                padding-left: 3rem;
+            }
+            
+            .timeline-item::before {
+                left: 0.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(254, 254, 254, 0.95);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                gap: 1rem;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .about-highlights {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+            
+            .education-grid,
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .award-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">Alex Chen</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-toggle">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm Alex Chen.</h1>
+                    <p class="subtitle">I build thoughtful things for complex problems, bridging the space between human insight and digital innovation.</p>
+                    <a href="#work" class="cta-button">Browse My Work</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=280&h=280&fit=crop&crop=face&auto=format" alt="Alex Chen" class="profile-photo">
+                </div>
+            </div>
+        </section>
+        
+        <!-- Philosophy Section -->
+        <section class="philosophy" id="philosophy">
+            <h2 class="section-title">Working Principles</h2>
+            <div class="principles">
+                <div class="principle-card">
+                    <span class="principle-icon">🎯</span>
+                    <h3 class="principle-title">Clarity Over Cleverness</h3>
+                    <p class="principle-desc">The best solutions feel obvious in retrospect. I believe in stripping away complexity to reveal the essential truth underneath.</p>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-icon">🌱</span>
+                    <h3 class="principle-title">Systems Thinking</h3>
+                    <p class="principle-desc">Every problem exists within a larger ecosystem. I design with interconnections in mind, considering ripple effects and unintended consequences.</p>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-icon">⚡</span>
+                    <h3 class="principle-title">Mindful Momentum</h3>
+                    <p class="principle-desc">Progress doesn't require chaos. I believe in building sustainable velocity through thoughtful iteration and purposeful constraints.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section class="projects" id="work">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image">📊</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Synthesis Platform</h3>
+                        <p class="project-desc">A research synthesis tool that helps teams transform scattered insights into coherent strategic narratives. Built for organizations drowning in data but starving for wisdom.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Product Strategy</span>
+                            <span class="skill-tag">UX Research</span>
+                            <span class="skill-tag">Information Architecture</span>
+                            <span class="skill-tag">React</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">🤖</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Conversational AI Ethics Framework</h3>
+                        <p class="project-desc">Developed guidelines and tools for responsible AI development, focusing on transparency, bias mitigation, and human-centered design principles.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">AI Ethics</span>
+                            <span class="skill-tag">Policy Design</span>
+                            <span class="skill-tag">Stakeholder Alignment</span>
+                            <span class="skill-tag">Workshop Facilitation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">🧠</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Mindful Productivity Suite</h3>
+                        <p class="project-desc">A suite of tools that help knowledge workers maintain focus and intentionality. Designed around cognitive science principles and sustainable work practices.</p>
+                        <div class="project-skills">
+                            <span class="skill-tag">Behavioral Design</span>
+                            <span class="skill-tag">Cognitive Science</span>
+                            <span class="skill-tag">Product Management</span>
+                            <span class="skill-tag">User Psychology</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Timeline -->
+        <section class="experience" id="experience">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 — Present</div>
+                    <h3 class="timeline-title">Senior Product Strategist, Anthropic</h3>
+                    <p class="timeline-desc">Leading product strategy for AI safety initiatives, focusing on human-AI collaboration patterns and responsible deployment frameworks.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 — 2023</div>
+                    <h3 class="timeline-title">Product Manager, Notion</h3>
+                    <p class="timeline-desc">Built features that helped teams think better together. Shipped collaborative AI tools and knowledge management systems used by millions.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 — 2021</div>
+                    <h3 class="timeline-title">Design Researcher, IDEO</h3>
+                    <p class="timeline-desc">Applied human-centered design to complex organizational challenges. Specialized in research synthesis and strategic foresight methodologies.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2017 — 2019</div>
+                    <h3 class="timeline-title">UX Designer, Figma</h3>
+                    <p class="timeline-desc">Designed collaborative tools for creative teams. Focused on reducing cognitive overhead in complex creative workflows.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section class="skills" id="skills">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3>🎯 Strategy & Product</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Product Strategy</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Systems Thinking</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">AI Product Development</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Go-to-Market Strategy</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 80%"></div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3>🔬 Research & Design</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">User Research</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Design Systems</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Information Architecture</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 88%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Behavioral Psychology</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 75%"></div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3>🛠️ Technical & Tools</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Figma / Design Tools</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">React / Frontend</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 70%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Data Analysis</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 80%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">API Design</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 65%"></div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3>🌍 Leadership & Communication</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Workshop Facilitation</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 92%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Strategic Communication</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 88%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Cross-functional Leadership</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Public Speaking</span>
+                            <div class="skill-level"><div class="skill-progress" style="width: 82%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Education Section -->
+        <section class="education" id="education">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+                <div class="education-grid">
+                    <div class="education-item">
+                        <div class="education-logo">🎓</div>
+                        <h3 class="education-degree">Master of Science in Human-Computer Interaction</h3>
+                        <p class="education-school">Carnegie Mellon University</p>
+                        <p class="education-date">2015 — 2017</p>
+                        <p class="education-details">Focused on cognitive psychology, design research methods, and human-AI interaction. Thesis on "Designing Transparent AI Systems for Knowledge Work."</p>
+                        <div class="education-honors">
+                            <div class="honors-list">
+                                <span class="honor-tag">Summa Cum Laude</span>
+                                <span class="honor-tag">Dean's List</span>
+                                <span class="honor-tag">HCI Research Award</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="education-logo">🏛️</div>
+                        <h3 class="education-degree">Bachelor of Arts in Psychology & Computer Science</h3>
+                        <p class="education-school">UC Berkeley</p>
+                        <p class="education-date">2011 — 2015</p>
+                        <p class="education-details">Double major combining cognitive psychology with computer science. Senior project explored decision-making biases in digital interfaces.</p>
+                        <div class="education-honors">
+                            <div class="honors-list">
+                                <span class="honor-tag">Phi Beta Kappa</span>
+                                <span class="honor-tag">Magna Cum Laude</span>
+                                <span class="honor-tag">Psychology Honors</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Certifications Section -->
+        <section class="certifications" id="certifications">
+            <div class="container">
+                <h2 class="section-title">Certifications & Training</h2>
+                <div class="certifications-grid">
+                    <div class="certification-item">
+                        <div class="certification-badge">🤖</div>
+                        <h3 class="certification-name">AI Product Management</h3>
+                        <p class="certification-issuer">Stanford AI Institute</p>
+                        <p class="certification-date">2024</p>
+                        <span class="certification-status">Current</span>
+                    </div>
+                    <div class="certification-item">
+                        <div class="certification-badge">🔒</div>
+                        <h3 class="certification-name">AI Ethics & Safety</h3>
+                        <p class="certification-issuer">MIT Professional Education</p>
+                        <p class="certification-date">2023</p>
+                        <span class="certification-status">Certified</span>
+                    </div>
+                    <div class="certification-item">
+                        <div class="certification-badge">📊</div>
+                        <h3 class="certification-name">Advanced Product Management</h3>
+                        <p class="certification-issuer">Product School</p>
+                        <p class="certification-date">2022</p>
+                        <span class="certification-status">Certified</span>
+                    </div>
+                    <div class="certification-item">
+                        <div class="certification-badge">🎯</div>
+                        <h3 class="certification-name">Design Thinking Facilitator</h3>
+                        <p class="certification-issuer">IDEO U</p>
+                        <p class="certification-date">2021</p>
+                        <span class="certification-status">Certified</span>
+                    </div>
+                    <div class="certification-item">
+                        <div class="certification-badge">📈</div>
+                        <h3 class="certification-name">Data Science for Product Managers</h3>
+                        <p class="certification-issuer">UC Berkeley Extension</p>
+                        <p class="certification-date">2020</p>
+                        <span class="certification-status">Certified</span>
+                    </div>
+                    <div class="certification-item">
+                        <div class="certification-badge">🧠</div>
+                        <h3 class="certification-name">Behavioral Economics</h3>
+                        <p class="certification-issuer">University of Chicago</p>
+                        <p class="certification-date">2019</p>
+                        <span class="certification-status">Certified</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Awards Section -->
+        <section class="awards" id="awards">
+            <div class="container">
+                <h2 class="section-title">Awards & Recognition</h2>
+                <div class="awards-grid">
+                    <div class="award-item">
+                        <div class="award-icon">🏆</div>
+                        <div class="award-content">
+                            <h3 class="award-title">AI Ethics Leadership Award</h3>
+                            <p class="award-org">Partnership on AI</p>
+                            <p class="award-date">2024</p>
+                            <p class="award-desc">Recognized for developing industry-leading frameworks for responsible AI product development.</p>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-icon">🎯</div>
+                        <div class="award-content">
+                            <h3 class="award-title">Product Innovation Excellence</h3>
+                            <p class="award-org">Product Management Alliance</p>
+                            <p class="award-date">2023</p>
+                            <p class="award-desc">Honored for breakthrough work in human-AI collaboration interfaces at Anthropic.</p>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-icon">📚</div>
+                        <div class="award-content">
+                            <h3 class="award-title">Best Research Paper</h3>
+                            <p class="award-org">CHI Conference on Human Factors</p>
+                            <p class="award-date">2024</p>
+                            <p class="award-desc">Paper on cognitive load in AI-assisted workflows received highest honors at premier HCI conference.</p>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-icon">🌟</div>
+                        <div class="award-content">
+                            <h3 class="award-title">Rising Star in Design</h3>
+                            <p class="award-org">Design+Research Conference</p>
+                            <p class="award-date">2022</p>
+                            <p class="award-desc">Selected as one of 30 emerging leaders shaping the future of design and technology.</p>
+                        </div>
+                    </div>
+                    <div class="award-item">
+                        <div class="award-icon">💡</div>
+                        <div class="award-content">
+                            <h3 class="award-title">Innovation Impact Award</h3>
+                            <p class="award-org">Notion</p>
+                            <p class="award-date">2022</p>
+                            <p class="award-desc">Internal recognition for developing AI features that improved user productivity by 40%.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Publications & Speaking -->
+        <section class="publications" id="publications">
+            <div class="container">
+                <h2 class="section-title">Publications & Speaking</h2>
+                <div class="publications-grid">
+                    <div class="publication-item">
+                        <span class="publication-type">Conference Talk</span>
+                        <h3 class="publication-title">The Future of Human-AI Collaboration: Designing for Complementary Intelligence</h3>
+                        <p class="publication-venue">Design+Research 2024, Copenhagen</p>
+                        <p class="publication-date">October 2024</p>
+                    </div>
+                    <div class="publication-item">
+                        <span class="publication-type">Article</span>
+                        <h3 class="publication-title">Beyond the Prompt: Rethinking AI Interface Design for Knowledge Workers</h3>
+                        <p class="publication-venue">Harvard Business Review</p>
+                        <p class="publication-date">September 2024</p>
+                    </div>
+                    <div class="publication-item">
+                        <span class="publication-type">Research Paper</span>
+                        <h3 class="publication-title">Cognitive Load in AI-Assisted Creative Workflows: A Mixed-Methods Study</h3>
+                        <p class="publication-venue">CHI 2024 Proceedings</p>
+                        <p class="publication-date">May 2024</p>
+                    </div>
+                    <div class="publication-item">
+                        <span class="publication-type">Workshop</span>
+                        <h3 class="publication-title">Ethical AI Product Development: A Framework for Teams</h3>
+                        <p class="publication-venue">AI Ethics Summit, San Francisco</p>
+                        <p class="publication-date">March 2024</p>
+                    </div>
+                    <div class="publication-item">
+                        <span class="publication-type">Podcast</span>
+                        <h3 class="publication-title">Building Products for the Age of AI (Guest)</h3>
+                        <p class="publication-venue">Design Better Podcast</p>
+                        <p class="publication-date">January 2024</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <h2 class="section-title">A Bit More About Me</h2>
+                <div class="about-content">
+                    <p class="about-text">
+                        I've spent the last decade at the intersection of human psychology and emerging technology, fascinated by how we can build tools that make us more thoughtful rather than more frantic. My work spans from early-stage startups to organizations shaping the future of AI, always with a focus on creating sustainable, human-centered solutions.
+                    </p>
+                    <p class="about-text">
+                        When I'm not designing products or facilitating workshops, you'll find me reading philosophy, practicing meditation, or exploring the mountains around San Francisco. I believe that our best work comes from a place of clarity and intention—principles I try to bring to everything I create.
+                    </p>
+                    <p class="about-text">
+                        I'm particularly interested in the emergent behaviors that arise when humans and AI systems work together thoughtfully, and I spend a lot of time thinking about how we can design these collaborations to amplify our collective wisdom rather than our collective anxiety.
+                    </p>
+                </div>
+                
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-number">8+</div>
+                        <div class="highlight-label">Years in Product</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-number">50M+</div>
+                        <div class="highlight-label">Users Impacted</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-number">15+</div>
+                        <div class="highlight-label">Publications</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-number">30+</div>
+                        <div class="highlight-label">Speaking Events</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Quote Section -->
+        <section class="quote">
+            <p class="quote-text">"Simplicity is a discipline."</p>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer" id="contact">
+            <div class="footer-links">
+                <a href="mailto:alex@thoughtfullyhuman.com" class="footer-link">Email</a>
+                <a href="https://linkedin.com/in/alexchen" class="footer-link">LinkedIn</a>
+                <a href="https://read.cv/alexchen" class="footer-link">Read.cv</a>
+                <a href="https://twitter.com/alexchen" class="footer-link">Twitter</a>
+                <a href="/resume.pdf" class="footer-link">Resume</a>
+            </div>
+            <p class="footer-location">San Francisco, CA • Available for consulting & speaking</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AB - Marketing Professional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(135deg, #faf9f6 0%, #f5f4f0 100%);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 60px;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 249, 246, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 20px 60px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 400;
+            color: #2c2c2c;
+            letter-spacing: 2px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav a {
+            font-family: 'Crimson Text', serif;
+            font-size: 18px;
+            color: #2c2c2c;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #8b7355;
+        }
+
+        .nav a.active {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 60px 60px;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 750px;
+            z-index: 5;
+            position: relative;
+        }
+
+        .main-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(42px, 5vw, 64px);
+            font-weight: 600;
+            color: #2c2c2c;
+            line-height: 1.2;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+        }
+
+        .main-quote .line {
+            display: block;
+        }
+
+        .sub-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 20px;
+            color: #5a5a5a;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2c2c2c;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-family: 'Crimson Text', serif;
+            font-size: 18px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .cta-button:hover {
+            background: #8b7355;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Profile Image Section */
+        .profile-section {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            height: 80vh;
+            max-height: 600px;
+            z-index: 1;
+        }
+
+        .profile-image {
+            width: 450px;
+            height: 450px;
+            border-radius: 12px;
+            background: linear-gradient(45deg, #e8e3d8, #f0ebe0);
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(250,249,246,0.8) 0%, rgba(250,249,246,0.5) 35%, transparent 100%);
+            z-index: 2;
+        }
+
+        .profile-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #d4c4a8 0%, #b8a082 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b7355;
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 60px;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 4vw, 48px);
+            font-weight: 600;
+            color: #2c2c2c;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #8b7355;
+        }
+
+        /* About Section */
+        .about {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #5a5a5a;
+            margin-bottom: 40px;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .job-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 10px;
+        }
+
+        .company {
+            font-size: 18px;
+            color: #8b7355;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .duration {
+            font-size: 16px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .job-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #5a5a5a;
+        }
+
+        /* Education Section */
+        .education {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .education-item {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .degree {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 10px;
+        }
+
+        .school {
+            font-size: 16px;
+            color: #8b7355;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .education-details {
+            margin-top: 15px;
+            padding-left: 20px;
+            border-left: 3px solid #8b7355;
+        }
+
+        .education-details p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        /* Certifications Section */
+        .certifications {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .certification-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #8b7355;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        .cert-icon {
+            margin-bottom: 20px;
+        }
+
+        .cert-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cert-logo.google {
+            background: linear-gradient(45deg, #4285f4, #34a853);
+        }
+
+        .cert-logo.google-ads {
+            background: linear-gradient(45deg, #4285f4, #ea4335);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .cert-logo.hubspot {
+            background: linear-gradient(45deg, #ff7a59, #ff5722);
+        }
+
+        .cert-logo.facebook {
+            background: linear-gradient(45deg, #1877f2, #42a5f5);
+        }
+
+        .cert-logo.hubspot-sales {
+            background: linear-gradient(45deg, #00bfa5, #4db6ac);
+            font-size: 16px;
+        }
+
+        .cert-logo.semrush {
+            background: linear-gradient(45deg, #ff6600, #ff8c00);
+        }
+
+        .cert-logo.adobe {
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            font-size: 16px;
+        }
+
+        .cert-logo.mailchimp {
+            background: linear-gradient(45deg, #ffe01b, #ffd54f);
+            color: #333;
+        }
+
+        .cert-logo.pmi {
+            background: linear-gradient(45deg, #1f4e79, #2e5984);
+            font-size: 14px;
+        }
+
+        .cert-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 8px;
+        }
+
+        .cert-issuer {
+            font-size: 16px;
+            color: #8b7355;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cert-date {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .cert-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #5a5a5a;
+            margin-bottom: 20px;
+        }
+
+        .cert-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .cert-skill {
+            background: #f0f0f0;
+            color: #2c2c2c;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cert-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #8b7355;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #5a5a5a;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        /* Skills Section */
+        .skills {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .skill-category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 20px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 8px 0;
+            color: #5a5a5a;
+            font-size: 16px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .skill-list li::before {
+            content: '•';
+            color: #8b7355;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #e8e3d8 0%, #d4c4a8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b7355;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #5a5a5a;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #8b7355;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c2c2c;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e8e3d8;
+            border-radius: 6px;
+            font-family: 'Crimson Text', serif;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8b7355;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: #2c2c2c;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Crimson Text', serif;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #8b7355;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c2c2c;
+            color: white;
+            padding: 80px 60px 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column {
+            
+        }
+
+        .footer-column-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-column-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #8b7355;
+        }
+
+        .footer-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 25px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: #3a3a3a;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #8b7355;
+            transform: translateY(-3px);
+        }
+
+        .footer-links-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links-list li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links-list a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            display: block;
+        }
+
+        .footer-links-list a:hover {
+            color: #8b7355;
+        }
+
+        .footer-links-list li:not(:has(a)) {
+            color: #ccc;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .contact-info {
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .contact-icon {
+            margin-right: 12px;
+            font-size: 16px;
+            width: 20px;
+        }
+
+        .contact-item a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #8b7355;
+        }
+
+        .contact-item span:not(.contact-icon) {
+            color: #ccc;
+        }
+
+        .footer-resume {
+            margin-top: 25px;
+        }
+
+        .resume-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #8b7355;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .resume-download:hover {
+            background: #a08464;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom-left p {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+
+        .footer-bottom-right {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-bottom-right a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-right a:hover {
+            color: #8b7355;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #2c2c2c;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .profile-image {
+                width: 350px;
+                height: 350px;
+                right: 60px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 140px 40px 60px;
+            }
+
+            .profile-section {
+                position: relative;
+                width: 100%;
+                height: auto;
+                margin-bottom: 40px;
+                transform: none;
+                top: auto;
+            }
+
+            .profile-image {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                margin: 0 auto;
+                width: 300px;
+                height: 300px;
+            }
+
+            .profile-image::before {
+                display: none;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .main-quote {
+                font-size: clamp(32px, 6vw, 48px);
+            }
+
+            .section {
+                padding: 80px 40px;
+            }
+
+            .header {
+                padding: 20px 40px;
+            }
+
+            .header.scrolled {
+                padding: 15px 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(250, 249, 246, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            .nav a {
+                padding: 15px 0;
+                text-align: center;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+            }
+
+            .header {
+                padding: 20px 30px;
+            }
+
+            .section {
+                padding: 60px 30px;
+            }
+
+            .hero {
+                padding: 120px 30px 40px;
+            }
+
+            .profile-image {
+                width: 250px;
+                height: 250px;
+            }
+
+            .main-quote {
+                font-size: clamp(28px, 7vw, 36px);
+                margin-bottom: 30px;
+            }
+
+            .sub-text {
+                font-size: 18px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                padding: 30px 20px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .footer {
+                padding: 60px 30px 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin-bottom: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .footer-bottom-right {
+                justify-content: center;
+            }
+        }
+
+        /* Smooth animations */
+        .hero-content > * {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .main-quote { animation-delay: 0.2s; }
+        .sub-text { animation-delay: 0.4s; }
+        .cta-button { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-image {
+            opacity: 0;
+            transform: translateY(-50%) scale(0.9);
+            animation: profileFadeIn 1s ease 0.3s forwards;
+        }
+
+        @keyframes profileFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(-50%) scale(1);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .profile-image {
+                animation: profileFadeInMobile 1s ease 0.3s forwards;
+            }
+
+            @keyframes profileFadeInMobile {
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="logo">Camille V.</div>
+        <nav class="nav" id="nav">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#experience" class="nav-link">Experience</a>
+            <a href="#education" class="nav-link">Education</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    </header>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1 class="main-quote">
+                    <span class="line">From marketing strategy</span>
+                    <span class="line">to execution and reporting,</span>
+                    <span class="line">I can do it all.</span>
+                </h1>
+                <p class="sub-text">I've worked with over 16 clients from different industries. Want to start a project together?</p>
+                <a href="#contact" class="cta-button">Let's Connect</a>
+            </div>
+
+            <!-- Profile Image Section -->
+            <div class="profile-section">
+                <div class="profile-image">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Professional headshot of a marketing professional" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section about" id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p class="about-text">
+                    I'm a passionate marketing professional with a proven track record of developing and implementing successful marketing strategies across various industries. With expertise in digital marketing, brand management, and campaign optimization, I help businesses achieve their growth objectives through data-driven marketing solutions.
+                </p>
+                <p class="about-text">
+                    My approach combines creative thinking with analytical insights to deliver measurable results. I believe in the power of storytelling and authentic brand connections to drive meaningful engagement and conversions.
+                </p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section" id="experience">
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="experience-item">
+                <h3 class="job-title">Senior Marketing Manager</h3>
+                <div class="company">TechCorp Solutions</div>
+                <div class="duration">2022 - Present</div>
+                <p class="job-description">
+                    Led comprehensive marketing strategies for B2B technology solutions, resulting in 45% increase in lead generation and 30% improvement in conversion rates. Managed a team of 5 marketing specialists and oversaw campaigns across multiple channels including digital advertising, content marketing, and event marketing.
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <h3 class="job-title">Marketing Specialist</h3>
+                <div class="company">Growth Marketing Agency</div>
+                <div class="duration">2020 - 2022</div>
+                <p class="job-description">
+                    Developed and executed integrated marketing campaigns for diverse client portfolio spanning healthcare, e-commerce, and professional services. Specialized in SEO optimization, social media strategy, and performance analytics, achieving average ROI improvements of 250% across client accounts.
+                </p>
+            </div>
+
+            <div class="experience-item">
+                <h3 class="job-title">Digital Marketing Coordinator</h3>
+                <div class="company">StartupX Inc.</div>
+                <div class="duration">2018 - 2020</div>
+                <p class="job-description">
+                    Coordinated multi-channel marketing initiatives for early-stage startup, including content creation, email marketing campaigns, and social media management. Contributed to 300% user growth and successful Series A funding round through strategic marketing efforts.
+                </p>
+            </div>
+        </section>
+
+                <!-- Education Section -->
+                <section class="section education" id="education">
+                    <h2 class="section-title">Education</h2>
+                    
+                    <div class="education-item">
+                        <h3 class="degree">Master of Business Administration (MBA)</h3>
+                        <div class="school">University of Marketing Excellence</div>
+                        <div class="year">2018</div>
+                        <div class="education-details">
+                            <p>Concentration: Digital Marketing & Consumer Behavior</p>
+                            <p>Thesis: "The Impact of AI on Modern Marketing Strategies"</p>
+                            <p>GPA: 3.8/4.0 | Dean's List</p>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <h3 class="degree">Bachelor of Science in Marketing</h3>
+                        <div class="school">State University</div>
+                        <div class="year">2016</div>
+                        <div class="education-details">
+                            <p>Minor: Business Analytics & Statistics</p>
+                            <p>Summa Cum Laude | Phi Beta Kappa Honor Society</p>
+                            <p>GPA: 3.9/4.0</p>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <h3 class="degree">Marketing Leadership Certificate</h3>
+                        <div class="school">Northwestern Kellogg School of Management</div>
+                        <div class="year">2020</div>
+                        <div class="education-details">
+                            <p>Executive Education Program</p>
+                            <p>Focus: Strategic Marketing & Brand Management</p>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <h3 class="degree">Digital Marketing Nanodegree</h3>
+                        <div class="school">Udacity</div>
+                        <div class="year">2019</div>
+                        <div class="education-details">
+                            <p>Comprehensive program covering SEO, SEM, Social Media, Email Marketing</p>
+                            <p>Capstone Project: Multi-channel campaign for e-commerce startup</p>
+                        </div>
+                    </div>
+                </section>
+
+        <!-- Certifications Section -->
+        <section class="section certifications" id="certifications">
+            <h2 class="section-title">Certifications & Credentials</h2>
+            
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <div class="cert-logo google">G</div>
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Google Analytics Certified</h3>
+                        <div class="cert-issuer">Google</div>
+                        <div class="cert-date">Valid: 2023 - 2025</div>
+                        <p class="cert-description">Advanced proficiency in Google Analytics 4, conversion tracking, and data analysis for marketing optimization.</p>
+                        <div class="cert-skills">
+                            <span class="cert-skill">GA4</span>
+                            <span class="cert-skill">Conversion Tracking</span>
+                            <span class="cert-skill">Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <div class="cert-logo google-ads">Ads</div>
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Google Ads Certified</h3>
+                        <div class="cert-issuer">Google</div>
+                        <div class="cert-date">Valid: 2023 - 2025</div>
+                        <p class="cert-description">Comprehensive certification covering Search, Display, Video, Shopping, and App advertising campaigns.</p>
+                        <div class="cert-skills">
+                            <span class="cert-skill">Search Ads</span>
+                            <span class="cert-skill">Display Campaigns</span>
+                            <span class="cert-skill">Video Ads</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <div class="cert-logo hubspot">H</div>
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">HubSpot Inbound Marketing</h3>
+                        <div class="cert-issuer">HubSpot Academy</div>
+                        <div class="cert-date">Valid: 2022 - 2025</div>
+                        <p class="cert-description">Expert-level certification in inbound methodology, content marketing, and lead nurturing strategies.</p>
+                        <div class="cert-skills">
+                            <span class="cert-skill">Inbound Marketing</span>
+                            <span class="cert-skill">Lead Nurturing</span>
+                            <span class="cert-skill">Content Strategy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <div class="cert-logo facebook">f</div>
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Meta Blueprint Certified</h3>
+                        <div class="cert-issuer">Meta (Facebook)</div>
+                        <div class="cert-date">Valid: 2023 - 2025</div>
+                        <p class="cert-description">Advanced certification in Facebook and Instagram advertising, including creative optimization and audience targeting.</p>
+                        <div class="cert-skills">
+                            <span class="cert-skill">Facebook Ads</span>
+                            <span class="cert-skill">Instagram Marketing</span>
+                            <span class="cert-skill">Audience Targeting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <div class="cert-logo hubspot-sales">HS</div>
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">HubSpot Sales Software</h3>
+                        <div class="cert-issuer">HubSpot Academy</div>
+                        <div class="cert-date">Valid: 2023 - 2026</div>
+                        <p class="cert-description">Proficiency in sales automation, CRM management, and sales enablement tools for marketing alignment.</p>
+                        <div class="cert-skills">
+                            <span class="cert-skill">CRM Management</span>
+                            <span class="cert-skill">Sales Automation</span>
+                            <span class="cert-skill">Lead Scoring</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <div class="cert-logo semrush">S</div>
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">SEMrush SEO Toolkit</h3>
+                        <div class="cert-issuer">SEMrush Academy</div>
+                        <div class="cert-date">Valid: 2023 - 2024</div>
+                        <p class="cert-description">Advanced SEO certification covering keyword research, competitive analysis, and technical SEO optimization.</p>
+                        <div class="cert-skills">
+                            <span class="cert-skill">SEO Strategy</span>
+                            <span class="cert-skill">Keyword Research</span>
+                            <span class="cert-skill">Technical SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <div class="cert-logo adobe">Ae</div>
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Adobe Certified Expert</h3>
+                        <div class="cert-issuer">Adobe</div>
+                        <div class="cert-date">Valid: 2022 - 2025</div>
+                        <p class="cert-description">Professional certification in Adobe Creative Suite for marketing design, including Photoshop, Illustrator, and InDesign.</p>
+                        <div class="cert-skills">
+                            <span class="cert-skill">Photoshop</span>
+                            <span class="cert-skill">Illustrator</span>
+                            <span class="cert-skill">InDesign</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <div class="cert-logo mailchimp">M</div>
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Mailchimp Email Marketing</h3>
+                        <div class="cert-issuer">Mailchimp Academy</div>
+                        <div class="cert-date">Valid: 2023 - 2024</div>
+                        <p class="cert-description">Comprehensive email marketing certification covering automation, segmentation, and campaign optimization.</p>
+                        <div class="cert-skills">
+                            <span class="cert-skill">Email Automation</span>
+                            <span class="cert-skill">List Segmentation</span>
+                            <span class="cert-skill">A/B Testing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <div class="cert-logo pmi">PMI</div>
+                    </div>
+                    <div class="cert-content">
+                        <h3 class="cert-title">Project Management Professional (PMP)</h3>
+                        <div class="cert-issuer">Project Management Institute</div>
+                        <div class="cert-date">Valid: 2021 - 2024</div>
+                        <p class="cert-description">Globally recognized certification in project management methodologies and best practices for marketing campaigns.</p>
+                        <div class="cert-skills">
+                            <span class="cert-skill">Project Management</span>
+                            <span class="cert-skill">Agile Methodology</span>
+                            <span class="cert-skill">Risk Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certification Stats -->
+            <div class="cert-stats">
+                <div class="stat-item">
+                    <div class="stat-number">12+</div>
+                    <div class="stat-label">Active Certifications</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Major Platforms</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Hours of Training</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Pass Rate</div>
+                </div>
+            </div>
+        </section>
+            <h2 class="section-title">Skills</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Digital Marketing</h3>
+                    <ul class="skill-list">
+                        <li>Search Engine Optimization (SEO)</li>
+                        <li>Pay-Per-Click Advertising (PPC)</li>
+                        <li>Social Media Marketing</li>
+                        <li>Email Marketing</li>
+                        <li>Content Marketing</li>
+                        <li>Marketing Automation</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Analytics & Tools</h3>
+                    <ul class="skill-list">
+                        <li>Google Analytics</li>
+                        <li>Google Ads</li>
+                        <li>Facebook Ads Manager</li>
+                        <li>HubSpot</li>
+                        <li>Salesforce</li>
+                        <li>Mailchimp</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Design & Creative</h3>
+                    <ul class="skill-list">
+                        <li>Adobe Creative Suite</li>
+                        <li>Canva</li>
+                        <li>Video Editing</li>
+                        <li>Brand Development</li>
+                        <li>Copywriting</li>
+                        <li>Visual Storytelling</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Strategy & Management</h3>
+                    <ul class="skill-list">
+                        <li>Marketing Strategy</li>
+                        <li>Project Management</li>
+                        <li>Team Leadership</li>
+                        <li>Budget Management</li>
+                        <li>Performance Analysis</li>
+                        <li>Client Relations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section projects" id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="E-commerce analytics dashboard showing growth metrics" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">E-commerce Growth Campaign</h3>
+                        <p class="project-description">
+                            Comprehensive digital marketing strategy for online retailer, resulting in 150% increase in online sales and 200% improvement in customer acquisition cost efficiency.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">PPC</span>
+                            <span class="tag">SEO</span>
+                            <span class="tag">Social Media</span>
+                            <span class="tag">Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="B2B marketing automation workflow diagram" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">B2B Lead Generation System</h3>
+                        <p class="project-description">
+                            Developed automated lead nurturing system for SaaS company, increasing qualified leads by 300% and reducing sales cycle by 40% through strategic content marketing and marketing automation.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Marketing Automation</span>
+                            <span class="tag">Content Strategy</span>
+                            <span class="tag">Lead Generation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Brand identity and marketing materials for healthcare startup" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Brand Relaunch Campaign</h3>
+                        <p class="project-description">
+                            Complete brand repositioning and multi-channel launch campaign for healthcare startup, achieving 500% increase in brand awareness and successful market penetration in competitive industry.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Brand Strategy</span>
+                            <span class="tag">PR</span>
+                            <span class="tag">Content Creation</span>
+                            <span class="tag">Event Marketing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+            <h2 class="section-title">Let's Work Together</h2>
+            
+            <div class="contact-content">
+                <p class="sub-text">Ready to take your marketing to the next level? I'd love to hear about your project and discuss how we can achieve your goals together.</p>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell me about your project and how I can help..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Footer Main Grid -->
+            <div class="footer-grid">
+                <!-- About Column -->
+                <div class="footer-column">
+                    <h3 class="footer-column-title">About</h3>
+                    <p class="footer-description">
+                        Marketing professional with 6+ years of experience driving growth through data-driven strategies and creative campaigns.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com/in/yourprofile" class="social-link" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com/yourhandle" class="social-link" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/yourprofile" class="social-link" aria-label="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/yourprofile" class="social-link" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Column -->
+                <div class="footer-column">
+                    <h3 class="footer-column-title">Navigation</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#certifications">Certifications</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Skills Column -->
+                <div class="footer-column">
+                    <h3 class="footer-column-title">Core Skills</h3>
+                    <ul class="footer-links-list">
+                        <li>Digital Marketing Strategy</li>
+                        <li>SEO & SEM</li>
+                        <li>Content Marketing</li>
+                        <li>Social Media Marketing</li>
+                        <li>Email Marketing</li>
+                        <li>Marketing Analytics</li>
+                        <li>Brand Management</li>
+                        <li>Campaign Optimization</li>
+                    </ul>
+                </div>
+
+                <!-- Certifications Column -->
+                <div class="footer-column">
+                    <h3 class="footer-column-title">Key Certifications</h3>
+                    <ul class="footer-links-list">
+                        <li>Google Analytics Certified</li>
+                        <li>Google Ads Certified</li>
+                        <li>HubSpot Inbound Certified</li>
+                        <li>Meta Blueprint Certified</li>
+                        <li>Adobe Certified Expert</li>
+                        <li>PMP Certified</li>
+                        <li>SEMrush SEO Certified</li>
+                        <li><a href="#certifications">View All Certifications →</a></li>
+                    </ul>
+                </div>
+
+                <!-- Publications & Resources -->
+                <div class="footer-column">
+                    <h3 class="footer-column-title">Publications</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="#" target="_blank">"Future of Digital Marketing" - Marketing Today</a></li>
+                        <li><a href="#" target="_blank">"ROI Optimization Strategies" - Business Weekly</a></li>
+                        <li><a href="#" target="_blank">"Social Media Trends 2024" - Digital Insights</a></li>
+                        <li><a href="#" target="_blank">Marketing Strategy Whitepaper</a></li>
+                        <li><a href="#" target="_blank">Case Study: E-commerce Growth</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="footer-column">
+                    <h3 class="footer-column-title">Contact Info</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <a href="mailto:hello@abmarketing.com">hello@abmarketing.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <a href="tel:+1234567890">+1 (234) 567-8900</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span>San Francisco, CA</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🌐</span>
+                            <a href="https://www.abmarketing.com">www.abmarketing.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-resume">
+                        <a href="/resume.pdf" class="resume-download" download>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                            </svg>
+                            Download Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-left">
+                    <p>&copy; 2025 AB Marketing Professional. All rights reserved.</p>
+                    <p>Designed with passion for marketing excellence.</p>
+                </div>
+                <div class="footer-bottom-right">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#sitemap">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('nav');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            nav.classList.toggle('active');
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('.nav-link, .footer-links a, .cta-button').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.getElementById('header').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                if (this.classList.contains('nav-link')) {
+                    this.classList.add('active');
+                }
+                
+                // Close mobile menu if open
+                nav.classList.remove('active');
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollPos = window.scrollY + 200;
+
+            sections.forEach(section => {
+                const top = section.offsetTop;
+                const bottom = top + section.offsetHeight;
+                const id = section.getAttribute('id');
+
+                if (scrollPos >= top && scrollPos < bottom) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+
+        // Contact form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const company = formData.get('company');
+            const message = formData.get('message');
+            
+            // Simple validation
+            if (!name || !email || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your message! I\'ll get back to you soon.');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.experience-item, .project-card, .skill-category').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.experience-item, .education-item, .skill-category, .project-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

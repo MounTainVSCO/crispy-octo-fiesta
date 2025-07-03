@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trickey - Product Manager & UX Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'ibm-mono': ['IBM Plex Mono', 'monospace'],
+                        'lato': ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-white font-lato">
+    
+    <!-- Navigation Sidebar -->
+    <nav class="fixed left-0 top-0 h-full w-20 bg-gray-800 flex flex-col items-center py-8 z-10">
+        <!-- Main Navigation -->
+        <div class="flex flex-col space-y-6">
+            <a href="https://www.trickeytrickey.com" class="nav-item group">
+                <i class="fas fa-home text-xl"></i>
+                <span class="nav-label">Home</span>
+            </a>
+            <a href="https://www.trickeytrickey.com/work.html" class="nav-item group">
+                <i class="fas fa-briefcase text-xl"></i>
+                <span class="nav-label">Work</span>
+            </a>
+            <a href="https://www.trickeytrickey.com/about.html" class="nav-item group">
+                <i class="fas fa-laugh-wink text-xl"></i>
+                <span class="nav-label">About</span>
+            </a>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="mt-auto flex flex-col space-y-4 mb-8">
+            <a href="https://www.linkedin.com/in/trickeytrickey/" class="text-blue-400 hover:text-blue-300 transition-colors">
+                <i class="fab fa-linkedin text-xl"></i>
+            </a>
+            <a href="mailto:trickeyc@umich.edu?subject=Mail from TrickeyTrickey.com" class="text-gray-400 hover:text-gray-300 transition-colors">
+                <i class="fas fa-envelope text-xl"></i>
+            </a>
+            <a href="img/Trickey_Resume_2020_lofi.pdf" class="text-yellow-400 hover:text-yellow-300 transition-colors">
+                <i class="fas fa-file-alt text-xl"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="ml-20 min-h-screen">
+        <div class="max-w-4xl mx-auto px-8 py-16">
+            
+            <!-- Profile Section -->
+            <div class="text-center mb-16">
+                <!-- Placeholder for profile picture -->
+                <div class="w-48 h-48 rounded-full mx-auto mb-8 bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center">
+                    <i class="fas fa-user text-6xl text-white"></i>
+                </div>
+                <h1 class="text-3xl font-medium mb-6">Fancy meeting you here! I'm Trickey.</h1>
+                <div class="max-w-3xl mx-auto text-xl leading-relaxed text-left">
+                    <p class="mb-6">
+                        I'm a Product Manager / UX Designer based in Denver, Colorado. Currently, I work on enterprise software and help solve a ton of complex problems that the world's largest media and production companies face on the daily. I bring brilliant products into the world through research; a deep understanding of people and their needs; and design that is not only slick, but functional and intuitive. Both in and outside of work, I strive to be a leader, to empower others, and make the world a better place than I found it.
+                    </p>
+                </div>
+                
+                <!-- Social Icons -->
+                <div class="flex justify-center space-x-6 mt-8">
+                    <a href="https://www.linkedin.com/in/trickeytrickey/" class="social-icon group bg-blue-600 hover:bg-blue-700 p-4 rounded-full transition-all duration-200 group-hover:scale-110" title="Follow me on LinkedIn">
+                        <i class="fab fa-linkedin text-2xl text-white"></i>
+                    </a>
+                    <a href="mailto:trickeyc@umich.edu?subject=Mail from TrickeyTrickey.com" class="social-icon group bg-gray-600 hover:bg-gray-700 p-4 rounded-full transition-all duration-200 group-hover:scale-110" title="Email me">
+                        <i class="fas fa-envelope text-2xl text-white"></i>
+                    </a>
+                    <a href="img/Trickey_Resume_2019.pdf" class="social-icon group bg-gray-600 hover:bg-gray-700 p-4 rounded-full transition-all duration-200 group-hover:scale-110" title="Check out my Resume">
+                        <i class="fas fa-file-alt text-2xl text-white"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Personal Philosophies Section -->
+            <section class="mb-16">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-medium mb-6">Personal Philosophies</h2>
+                    <div class="w-3/5 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto"></div>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="philosophy-item">
+                        <h3 class="text-2xl font-medium mb-4 text-left ml-[20%]">Business and User Focused</h3>
+                        <p class="text-xl leading-relaxed max-w-3xl mx-auto text-left">
+                            The key to building exceptional experiences is deeply understanding the intersection of critical business and market gaps and problems users have-- not just diving in straight to solutioning. Understanding business process and creating allies outside of the product realm is crucial for buy-in and strategic development and success of anything we build.
+                        </p>
+                    </div>
+                    
+                    <div class="philosophy-item">
+                        <h3 class="text-2xl font-medium mb-4 text-left ml-[20%]">Radically Candid</h3>
+                        <p class="text-xl leading-relaxed max-w-3xl mx-auto text-left">
+                            Taking a page from Kim Scott's book, I strive to communicate candidly and directly to everyone I work with and welcome feedback with open arms. Being honest and constructive is important for everyone to grow and develop. I don't shy away from conflict, but I don't seek it blindly.
+                        </p>
+                    </div>
+                    
+                    <div class="philosophy-item">
+                        <h3 class="text-2xl font-medium mb-4 text-left ml-[20%]">Leadership Driven</h3>
+                        <p class="text-xl leading-relaxed max-w-3xl mx-auto text-left">
+                            Great leadership equals a great experience. Even when not in leadership positions, I'm naturally driven to lead and rally others toward a common goal. I believe the key to great leadership is delegation and teamwork— I am not the superhero, my team is. Though I am a highly confident and capable producer, I want to encourage and build others up to achieve their true potential.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Toolkits and Processes Section -->
+            <section class="mb-16">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-medium mb-6">Toolkits and Processes</h2>
+                    <div class="w-3/5 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto"></div>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="philosophy-item">
+                        <h3 class="text-2xl font-medium mb-4 text-left ml-[20%]">Research, Research, Research</h3>
+                        <p class="text-xl leading-relaxed max-w-3xl mx-auto text-left">
+                            Research is the cornerstone for successful products. Be it interviews, usability testing, surveys, user groups, ethnographic studies or what have you; thorough research and feedback ensures what you are building has value, reduces frustration, and prevents crazy functionality. It takes time, but it will save so much time later down the road.
+                            <br><br>
+                            After working in startup culture, I've learned the value of rapid testing and compromise with sharp deadlines.
+                        </p>
+                    </div>
+                    
+                    <div class="philosophy-item">
+                        <h3 class="text-2xl font-medium mb-4 text-left ml-[20%]">Tools are just that— tools.</h3>
+                        <p class="text-xl leading-relaxed max-w-3xl mx-auto text-left mb-6">
+                            Though I definitely have preferred tools, I largely believe they are a means to an end. Empathy, research, feedback, and design process bring infinitely more value to outcomes than any particular tool. If for some reason you're a Microsoft Paint evangelist though— girl, bye.
+                            <br><br>
+                            Tools I'm personally a fan of: ProductBoard, Maze, Sketch, Figma, Invision, Abstract, Axure, ProtoPie, Google Suite, and MacOS.
+                        </p>
+                        
+                        <!-- Tool Icons -->
+                        <div class="flex justify-center flex-wrap gap-6 text-5xl mt-8">
+                            <i class="fab fa-product-hunt text-orange-400 hover:text-orange-300 transition-colors"></i>
+                            <i class="fab fa-sketch text-yellow-400 hover:text-yellow-300 transition-colors"></i>
+                            <i class="fab fa-invision text-pink-400 hover:text-pink-300 transition-colors"></i>
+                            <i class="fab fa-google text-blue-400 hover:text-blue-300 transition-colors"></i>
+                            <i class="fab fa-apple text-gray-400 hover:text-gray-300 transition-colors"></i>
+                            <i class="fab fa-figma text-purple-400 hover:text-purple-300 transition-colors"></i>
+                            <i class="fab fa-trello text-blue-500 hover:text-blue-400 transition-colors"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Random Factoids Section -->
+            <section class="mb-16">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-medium mb-6">Random Factoids</h2>
+                    <div class="w-3/5 h-px bg-gradient-to-r from-transparent via-white to-transparent mx-auto"></div>
+                </div>
+                
+                <p class="text-xl leading-relaxed max-w-3xl mx-auto text-left">
+                    I love learning, growing, and improving myself both mentally and physically. Currently, I'm learning Japanese in my free time and I'm getting back into running 15 miles a week. I'm also active on LinkedIn and enjoy engaging with others in design and business communities.
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <style>
+        .nav-item {
+            @apply flex flex-col items-center text-gray-400 hover:text-white transition-colors duration-200 p-2;
+        }
+        
+        .nav-label {
+            @apply text-xs font-ibm-mono font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200;
+        }
+        
+        .philosophy-item {
+            @apply mb-12;
+        }
+        
+        .social-icon {
+            @apply block;
+        }
+    </style>
+
+</body>
+</html>

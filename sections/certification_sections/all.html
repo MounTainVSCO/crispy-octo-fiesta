@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Certification Components</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 222.2 84% 4.9%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 222.2 84% 4.9%;
+            --primary: 222.2 47.4% 11.2%;
+            --primary-foreground: 210 40% 98%;
+            --secondary: 210 40% 96%;
+            --secondary-foreground: 222.2 84% 4.9%;
+            --muted: 210 40% 96%;
+            --muted-foreground: 215.4 16.3% 46.9%;
+            --accent: 210 40% 96%;
+            --accent-foreground: 222.2 84% 4.9%;
+            --destructive: 0 72.22% 50.59%;
+            --destructive-foreground: 210 40% 98%;
+            --border: 214.3 31.8% 91.4%;
+            --input: 214.3 31.8% 91.4%;
+            --ring: 222.2 84% 4.9%;
+            --radius: 0.5rem;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: hsl(var(--background));
+            color: hsl(var(--foreground));
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.5rem;
+        }
+
+        .page-description {
+            color: hsl(var(--muted-foreground));
+            font-size: 1rem;
+        }
+
+        .components-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .component-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .section-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+        }
+
+        .section-subtitle {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        /* Card Base */
+        .card {
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: calc(var(--radius) + 2px);
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        /* Badge Grid */
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .badge-card {
+            padding: 1.5rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .badge-header {
+            display: flex;
+            items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .platform-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .google { background: #4285f4; }
+        .meta { background: #1877f2; }
+        .coursera { background: #0056d3; }
+        .aws { background: #ff9900; }
+        .microsoft { background: #00a1f1; }
+
+        .badge-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .badge-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.25rem;
+            line-height: 1.25;
+        }
+
+        .badge-platform {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 0.75rem;
+        }
+
+        .badge-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-badge {
+            background: hsl(var(--secondary));
+            color: hsl(var(--secondary-foreground));
+            padding: 0.125rem 0.5rem;
+            border-radius: calc(var(--radius) - 2px);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-date {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        /* Compact List */
+        .compact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .compact-item {
+            padding: 1rem;
+            display: flex;
+            items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .compact-content {
+            display: flex;
+            items: center;
+            gap: 0.75rem;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .compact-icon {
+            width: 2rem;
+            height: 2rem;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.625rem;
+            font-weight: 600;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .compact-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .compact-title {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.125rem;
+        }
+
+        .compact-subtitle {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .compact-date {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0.5rem;
+            bottom: 0.5rem;
+            width: 1px;
+            background: hsl(var(--border));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -1.125rem;
+            top: 0.375rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background: hsl(var(--primary));
+            border: 2px solid hsl(var(--background));
+            box-shadow: 0 0 0 1px hsl(var(--border));
+        }
+
+        .timeline-content {
+            padding: 1rem;
+        }
+
+        .timeline-header {
+            display: flex;
+            items: start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-info {
+            flex: 1;
+        }
+
+        .timeline-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-platform {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .timeline-date {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .timeline-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-card {
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .stat-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            font-weight: 500;
+        }
+
+        /* Minimalist Cards */
+        .minimal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .minimal-card {
+            padding: 1.5rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .minimal-header {
+            display: flex;
+            items: start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .minimal-content {
+            flex: 1;
+        }
+
+        .minimal-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.5rem;
+            line-height: 1.25;
+        }
+
+        .minimal-description {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            line-height: 1.4;
+            margin-bottom: 0.75rem;
+        }
+
+        .minimal-footer {
+            display: flex;
+            items: center;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        /* Expandable */
+        .expandable-item {
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .expandable-item:last-child {
+            border-bottom: none;
+        }
+
+        .expandable-trigger {
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            items: center;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .expandable-trigger:hover {
+            background: hsl(var(--accent));
+        }
+
+        .expandable-info {
+            flex: 1;
+        }
+
+        .expandable-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.25rem;
+        }
+
+        .expandable-subtitle {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .expandable-icon {
+            width: 1rem;
+            height: 1rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .expandable-content {
+            padding: 0 1rem 1rem;
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+            line-height: 1.5;
+            display: none;
+        }
+
+        .expandable-content.open {
+            display: block;
+        }
+
+        .expandable-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            margin-top: 0.75rem;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            border-radius: var(--radius);
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            border: 1px solid transparent;
+            text-decoration: none;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: hsl(var(--foreground));
+            padding: 0.25rem 0.5rem;
+        }
+
+        .btn-ghost:hover {
+            background: hsl(var(--accent));
+        }
+
+        @media (max-width: 768px) {
+            .badge-grid,
+            .minimal-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .compact-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">Certifications</h1>
+            <p class="page-description">Professional development and continuous learning achievements</p>
+        </div>
+
+        <div class="components-grid">
+            <!-- Badge Grid Component -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Certificate Gallery</h2>
+                    <p class="section-subtitle">Featured certifications with detailed information</p>
+                </div>
+                
+                <div class="badge-grid">
+                    <div class="card badge-card">
+                        <div class="badge-header">
+                            <div class="platform-icon google">GCP</div>
+                            <div class="badge-content">
+                                <div class="badge-title">Google Cloud Professional Cloud Architect</div>
+                                <div class="badge-platform">Google Cloud Platform</div>
+                            </div>
+                        </div>
+                        <div class="badge-skills">
+                            <span class="skill-badge">Cloud Architecture</span>
+                            <span class="skill-badge">Kubernetes</span>
+                            <span class="skill-badge">BigQuery</span>
+                            <span class="skill-badge">Security</span>
+                        </div>
+                        <div class="badge-date">Completed March 2024</div>
+                    </div>
+
+                    <div class="card badge-card">
+                        <div class="badge-header">
+                            <div class="platform-icon meta">META</div>
+                            <div class="badge-content">
+                                <div class="badge-title">Meta Frontend Developer Professional</div>
+                                <div class="badge-platform">Meta Career Certificates</div>
+                            </div>
+                        </div>
+                        <div class="badge-skills">
+                            <span class="skill-badge">React</span>
+                            <span class="skill-badge">JavaScript</span>
+                            <span class="skill-badge">UI/UX</span>
+                            <span class="skill-badge">Testing</span>
+                        </div>
+                        <div class="badge-date">Completed January 2024</div>
+                    </div>
+
+                    <div class="card badge-card">
+                        <div class="badge-header">
+                            <div class="platform-icon aws">AWS</div>
+                            <div class="badge-content">
+                                <div class="badge-title">AWS Solutions Architect Associate</div>
+                                <div class="badge-platform">Amazon Web Services</div>
+                            </div>
+                        </div>
+                        <div class="badge-skills">
+                            <span class="skill-badge">EC2</span>
+                            <span class="skill-badge">S3</span>
+                            <span class="skill-badge">Lambda</span>
+                            <span class="skill-badge">VPC</span>
+                        </div>
+                        <div class="badge-date">Completed November 2023</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compact List Component -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Recent Achievements</h2>
+                    <p class="section-subtitle">Latest certifications and professional development</p>
+                </div>
+                
+                <div class="card">
+                    <div class="compact-list">
+                        <div class="compact-item">
+                            <div class="compact-content">
+                                <div class="compact-icon microsoft">MS</div>
+                                <div class="compact-info">
+                                    <div class="compact-title">Azure Fundamentals</div>
+                                    <div class="compact-subtitle">Microsoft Azure</div>
+                                </div>
+                            </div>
+                            <div class="compact-date">Mar 2024</div>
+                        </div>
+                        
+                        <div class="compact-item">
+                            <div class="compact-content">
+                                <div class="compact-icon google">UX</div>
+                                <div class="compact-info">
+                                    <div class="compact-title">Google UX Design Certificate</div>
+                                    <div class="compact-subtitle">Google Career Certificates</div>
+                                </div>
+                            </div>
+                            <div class="compact-date">Feb 2024</div>
+                        </div>
+                        
+                        <div class="compact-item">
+                            <div class="compact-content">
+                                <div class="compact-icon coursera">ML</div>
+                                <div class="compact-info">
+                                    <div class="compact-title">Machine Learning Specialization</div>
+                                    <div class="compact-subtitle">Stanford University - Coursera</div>
+                                </div>
+                            </div>
+                            <div class="compact-date">Jan 2024</div>
+                        </div>
+                        
+                        <div class="compact-item">
+                            <div class="compact-content">
+                                <div class="compact-icon aws">SA</div>
+                                <div class="compact-info">
+                                    <div class="compact-title">Solutions Architect Associate</div>
+                                    <div class="compact-subtitle">Amazon Web Services</div>
+                                </div>
+                            </div>
+                            <div class="compact-date">Dec 2023</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Component -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Learning Journey</h2>
+                    <p class="section-subtitle">Professional development timeline</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="card timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-info">
+                                    <div class="timeline-title">Google Cloud Professional Cloud Architect</div>
+                                    <div class="timeline-platform">Google Cloud Platform</div>
+                                </div>
+                                <div class="timeline-date">Mar 2024</div>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="skill-badge">Infrastructure</span>
+                                <span class="skill-badge">Security</span>
+                                <span class="skill-badge">Scalability</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="card timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-info">
+                                    <div class="timeline-title">Meta Frontend Developer Professional</div>
+                                    <div class="timeline-platform">Meta Career Certificates</div>
+                                </div>
+                                <div class="timeline-date">Jan 2024</div>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="skill-badge">React</span>
+                                <span class="skill-badge">JavaScript</span>
+                                <span class="skill-badge">Version Control</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="card timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-info">
+                                    <div class="timeline-title">AWS Solutions Architect Associate</div>
+                                    <div class="timeline-platform">Amazon Web Services</div>
+                                </div>
+                                <div class="timeline-date">Nov 2023</div>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="skill-badge">Cloud Computing</span>
+                                <span class="skill-badge">System Design</span>
+                                <span class="skill-badge">DevOps</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Learning Statistics</h2>
+                    <p class="section-subtitle">Professional development metrics</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="card stat-card">
+                        <div class="stat-icon">🎓</div>
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Certificates Earned</div>
+                    </div>
+                    
+                    <div class="card stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-value">240</div>
+                        <div class="stat-label">Hours of Learning</div>
+                    </div>
+                    
+                    <div class="card stat-card">
+                        <div class="stat-icon">🏢</div>
+                        <div class="stat-value">6</div>
+                        <div class="stat-label">Platforms Used</div>
+                    </div>
+                    
+                    <div class="card stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-value">2024</div>
+                        <div class="stat-label">Most Active Year</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Minimalist Cards -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Skill Development</h2>
+                    <p class="section-subtitle">Focused learning outcomes and practical applications</p>
+                </div>
+                
+                <div class="minimal-grid">
+                    <div class="card minimal-card">
+                        <div class="minimal-header">
+                            <div class="platform-icon google">UX</div>
+                            <div class="minimal-content">
+                                <div class="minimal-title">Google UX Design Professional Certificate</div>
+                                <div class="minimal-description">Comprehensive UX design program covering user research, wireframing, prototyping, and usability testing methodologies.</div>
+                                <div class="minimal-footer">
+                                    <span>Google</span>
+                                    <a href="#" class="btn btn-ghost">View Certificate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card minimal-card">
+                        <div class="minimal-header">
+                            <div class="platform-icon coursera">DS</div>
+                            <div class="minimal-content">
+                                <div class="minimal-title">IBM Data Science Professional Certificate</div>
+                                <div class="minimal-description">End-to-end data science workflow including Python programming, data analysis, machine learning, and data visualization.</div>
+                                <div class="minimal-footer">
+                                    <span>IBM via Coursera</span>
+                                    <a href="#" class="btn btn-ghost">View Certificate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card minimal-card">
+                        <div class="minimal-header">
+                            <div class="platform-icon microsoft">PM</div>
+                            <div class="minimal-content">
+                                <div class="minimal-title">Microsoft Project Management</div>
+                                <div class="minimal-description">Project lifecycle management, stakeholder communication, risk assessment, and agile methodologies using Microsoft tools.</div>
+                                <div class="minimal-footer">
+                                    <span>Microsoft Learn</span>
+                                    <a href="#" class="btn btn-ghost">View Certificate</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expandable List -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Detailed Certifications</h2>
+                    <p class="section-subtitle">Click to expand for more information</p>
+                </div>
+                
+                <div class="card">
+                    <div class="expandable-item">
+                        <button class="expandable-trigger" onclick="toggleExpand(this)">
+                            <div class="expandable-info">
+                                <div class="expandable-title">Advanced React Development</div>
+                                <div class="expandable-subtitle">Meta Professional Certificate • React ecosystem and performance optimization</div>
+                            </div>
+                            <svg class="expandable-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="expandable-content">
+                            <p>Comprehensive React development program focusing on advanced patterns, performance optimization, and modern development practices. Covered hooks, context, state management, testing strategies, and deployment workflows.</p>
+                            <div class="expandable-tags">
+                                <span class="skill-badge">React 18</span>
+                                <span class="skill-badge">TypeScript</span>
+                                <span class="skill-badge">Next.js</span>
+                                <span class="skill-badge">Testing Library</span>
+                                <span class="skill-badge">Performance</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expandable-item">
+                        <button class="expandable-trigger" onclick="toggleExpand(this)">
+                            <div class="expandable-info">
+                                <div class="expandable-title">Cloud Security Fundamentals</div>
+                                <div class="expandable-subtitle">AWS Training • Security best practices and compliance frameworks</div>
+                            </div>
+                            <svg class="expandable-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="expandable-content">
+                            <p>Deep dive into cloud security principles, identity and access management, encryption strategies, and compliance frameworks. Practical experience with AWS security services and monitoring tools.</p>
+                            <div class="expandable-tags">
+                                <span class="skill-badge">IAM</span>
+                                <span class="skill-badge">CloudTrail</span>
+                                <span class="skill-badge">GuardDuty</span>
+                                <span class="skill-badge">KMS</span>
+                                <span class="skill-badge">Compliance</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expandable-item">
+                        <button class="expandable-trigger" onclick="toggleExpand(this)">
+                            <div class="expandable-info">
+                                <div class="expandable-title">Product Management Essentials</div>
+                                <div class="expandable-subtitle">Stanford Online • Strategic product development and user-centered design</div>
+                            </div>
+                            <svg class="expandable-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="expandable-content">
+                            <p>Strategic approach to product development covering market research, user personas, roadmap planning, and cross-functional team leadership. Applied frameworks for prioritization and data-driven decision making.</p>
+                            <div class="expandable-tags">
+                                <span class="skill-badge">Strategy</span>
+                                <span class="skill-badge">Analytics</span>
+                                <span class="skill-badge">User Research</span>
+                                <span class="skill-badge">Roadmapping</span>
+                                <span class="skill-badge">Leadership</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Masonry Grid Layout -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Skills Masonry</h2>
+                    <p class="section-subtitle">Dynamic grid showcasing diverse certification areas</p>
+                </div>
+                
+                <div class="masonry-grid">
+                    <div class="masonry-item card masonry-tall">
+                        <div class="masonry-content">
+                            <div class="masonry-icon">🤖</div>
+                            <h3 class="masonry-title">AI & Machine Learning</h3>
+                            <div class="masonry-certs">
+                                <div class="masonry-cert">
+                                    <span class="cert-name">TensorFlow Developer</span>
+                                    <span class="cert-source">Google</span>
+                                </div>
+                                <div class="masonry-cert">
+                                    <span class="cert-name">ML Engineering</span>
+                                    <span class="cert-source">Stanford</span>
+                                </div>
+                                <div class="masonry-cert">
+                                    <span class="cert-name">Deep Learning</span>
+                                    <span class="cert-source">deeplearning.ai</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="masonry-item card">
+                        <div class="masonry-content">
+                            <div class="masonry-icon">☁️</div>
+                            <h3 class="masonry-title">Cloud Computing</h3>
+                            <div class="masonry-cert">
+                                <span class="cert-name">AWS Solutions Architect</span>
+                                <span class="cert-source">Amazon</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="masonry-item card">
+                        <div class="masonry-content">
+                            <div class="masonry-icon">🎨</div>
+                            <h3 class="masonry-title">Design</h3>
+                            <div class="masonry-cert">
+                                <span class="cert-name">UX Design Professional</span>
+                                <span class="cert-source">Google</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="masonry-item card masonry-wide">
+                        <div class="masonry-content">
+                            <div class="masonry-icon">📊</div>
+                            <h3 class="masonry-title">Data Science & Analytics</h3>
+                            <div class="masonry-certs">
+                                <div class="masonry-cert">
+                                    <span class="cert-name">Data Science Professional</span>
+                                    <span class="cert-source">IBM</span>
+                                </div>
+                                <div class="masonry-cert">
+                                    <span class="cert-name">Google Analytics</span>
+                                    <span class="cert-source">Google</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="masonry-item card">
+                        <div class="masonry-content">
+                            <div class="masonry-icon">🔒</div>
+                            <h3 class="masonry-title">Cybersecurity</h3>
+                            <div class="masonry-cert">
+                                <span class="cert-name">Security+</span>
+                                <span class="cert-source">CompTIA</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="masonry-item card">
+                        <div class="masonry-content">
+                            <div class="masonry-icon">📱</div>
+                            <h3 class="masonry-title">Mobile Development</h3>
+                            <div class="masonry-cert">
+                                <span class="cert-name">iOS Developer</span>
+                                <span class="cert-source">Apple</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horizontal Scroll Cards -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Recent Completions</h2>
+                    <p class="section-subtitle">Latest certifications - scroll to view all</p>
+                </div>
+                
+                <div class="scroll-container">
+                    <div class="scroll-track">
+                        <div class="scroll-card card">
+                            <div class="scroll-header">
+                                <div class="platform-icon google">GCP</div>
+                                <span class="scroll-date">Mar 2024</span>
+                            </div>
+                            <h3 class="scroll-title">Cloud Architect Professional</h3>
+                            <p class="scroll-description">Advanced cloud infrastructure design and implementation</p>
+                            <div class="scroll-skills">
+                                <span class="skill-badge">GKE</span>
+                                <span class="skill-badge">BigQuery</span>
+                            </div>
+                        </div>
+                        
+                        <div class="scroll-card card">
+                            <div class="scroll-header">
+                                <div class="platform-icon meta">META</div>
+                                <span class="scroll-date">Feb 2024</span>
+                            </div>
+                            <h3 class="scroll-title">Frontend Developer</h3>
+                            <p class="scroll-description">Modern React development and best practices</p>
+                            <div class="scroll-skills">
+                                <span class="skill-badge">React</span>
+                                <span class="skill-badge">TypeScript</span>
+                            </div>
+                        </div>
+                        
+                        <div class="scroll-card card">
+                            <div class="scroll-header">
+                                <div class="platform-icon coursera">ML</div>
+                                <span class="scroll-date">Jan 2024</span>
+                            </div>
+                            <h3 class="scroll-title">Machine Learning Specialization</h3>
+                            <p class="scroll-description">End-to-end ML pipeline development</p>
+                            <div class="scroll-skills">
+                                <span class="skill-badge">Python</span>
+                                <span class="skill-badge">TensorFlow</span>
+                            </div>
+                        </div>
+                        
+                        <div class="scroll-card card">
+                            <div class="scroll-header">
+                                <div class="platform-icon aws">AWS</div>
+                                <span class="scroll-date">Dec 2023</span>
+                            </div>
+                            <h3 class="scroll-title">Solutions Architect</h3>
+                            <p class="scroll-description">Scalable cloud architecture design</p>
+                            <div class="scroll-skills">
+                                <span class="skill-badge">EC2</span>
+                                <span class="skill-badge">Lambda</span>
+                            </div>
+                        </div>
+                        
+                        <div class="scroll-card card">
+                            <div class="scroll-header">
+                                <div class="platform-icon microsoft">AZ</div>
+                                <span class="scroll-date">Nov 2023</span>
+                            </div>
+                            <h3 class="scroll-title">Azure Fundamentals</h3>
+                            <p class="scroll-description">Microsoft cloud platform basics</p>
+                            <div class="scroll-skills">
+                                <span class="skill-badge">Azure</span>
+                                <span class="skill-badge">DevOps</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Action Layout -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Interactive Achievements</h2>
+                    <p class="section-subtitle">Hover for details and actions</p>
+                </div>
+                
+                <div class="floating-grid">
+                    <div class="floating-card card">
+                        <div class="floating-front">
+                            <div class="floating-icon">🎓</div>
+                            <h3 class="floating-title">Data Science</h3>
+                            <p class="floating-subtitle">3 Certifications</p>
+                        </div>
+                        <div class="floating-back">
+                            <div class="floating-details">
+                                <h4>Data Science Stack</h4>
+                                <ul class="floating-list">
+                                    <li>IBM Data Science Professional</li>
+                                    <li>Google Data Analytics</li>
+                                    <li>Tableau Desktop Specialist</li>
+                                </ul>
+                            </div>
+                            <a href="#" class="btn btn-primary">View All</a>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-card card">
+                        <div class="floating-front">
+                            <div class="floating-icon">💻</div>
+                            <h3 class="floating-title">Development</h3>
+                            <p class="floating-subtitle">4 Certifications</p>
+                        </div>
+                        <div class="floating-back">
+                            <div class="floating-details">
+                                <h4>Full Stack Development</h4>
+                                <ul class="floating-list">
+                                    <li>Meta Frontend Developer</li>
+                                    <li>Node.js Certification</li>
+                                    <li>MongoDB Developer</li>
+                                    <li>AWS Developer Associate</li>
+                                </ul>
+                            </div>
+                            <a href="#" class="btn btn-primary">View All</a>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-card card">
+                        <div class="floating-front">
+                            <div class="floating-icon">☁️</div>
+                            <h3 class="floating-title">Cloud & DevOps</h3>
+                            <p class="floating-subtitle">5 Certifications</p>
+                        </div>
+                        <div class="floating-back">
+                            <div class="floating-details">
+                                <h4>Cloud Infrastructure</h4>
+                                <ul class="floating-list">
+                                    <li>AWS Solutions Architect</li>
+                                    <li>Google Cloud Professional</li>
+                                    <li>Azure Fundamentals</li>
+                                    <li>Docker Certified Associate</li>
+                                    <li>Kubernetes Administrator</li>
+                                </ul>
+                            </div>
+                            <a href="#" class="btn btn-primary">View All</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Tracker Layout -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Learning Pathways</h2>
+                    <p class="section-subtitle">Track progress across different skill areas</p>
+                </div>
+                
+                <div class="pathway-container">
+                    <div class="pathway-item card">
+                        <div class="pathway-header">
+                            <div class="pathway-info">
+                                <h3 class="pathway-title">Cloud Architecture Path</h3>
+                                <p class="pathway-subtitle">4 of 6 certifications completed</p>
+                            </div>
+                            <div class="pathway-progress">
+                                <div class="progress-circle">
+                                    <svg class="progress-svg" width="60" height="60">
+                                        <circle cx="30" cy="30" r="25" stroke="hsl(var(--muted))" stroke-width="4" fill="none"/>
+                                        <circle cx="30" cy="30" r="25" stroke="hsl(var(--primary))" stroke-width="4" fill="none" 
+                                                stroke-dasharray="157" stroke-dashoffset="52" stroke-linecap="round"/>
+                                    </svg>
+                                    <span class="progress-text">67%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pathway-certs">
+                            <div class="pathway-cert completed">
+                                <span class="cert-check">✓</span>
+                                <span class="cert-name">AWS Solutions Architect</span>
+                            </div>
+                            <div class="pathway-cert completed">
+                                <span class="cert-check">✓</span>
+                                <span class="cert-name">Google Cloud Professional</span>
+                            </div>
+                            <div class="pathway-cert completed">
+                                <span class="cert-check">✓</span>
+                                <span class="cert-name">Azure Fundamentals</span>
+                            </div>
+                            <div class="pathway-cert completed">
+                                <span class="cert-check">✓</span>
+                                <span class="cert-name">Kubernetes Administrator</span>
+                            </div>
+                            <div class="pathway-cert pending">
+                                <span class="cert-check">○</span>
+                                <span class="cert-name">AWS DevOps Engineer</span>
+                            </div>
+                            <div class="pathway-cert pending">
+                                <span class="cert-check">○</span>
+                                <span class="cert-name">Terraform Associate</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pathway-item card">
+                        <div class="pathway-header">
+                            <div class="pathway-info">
+                                <h3 class="pathway-title">Data Science Path</h3>
+                                <p class="pathway-subtitle">3 of 4 certifications completed</p>
+                            </div>
+                            <div class="pathway-progress">
+                                <div class="progress-circle">
+                                    <svg class="progress-svg" width="60" height="60">
+                                        <circle cx="30" cy="30" r="25" stroke="hsl(var(--muted))" stroke-width="4" fill="none"/>
+                                        <circle cx="30" cy="30" r="25" stroke="hsl(var(--primary))" stroke-width="4" fill="none" 
+                                                stroke-dasharray="157" stroke-dashoffset="39" stroke-linecap="round"/>
+                                    </svg>
+                                    <span class="progress-text">75%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pathway-certs">
+                            <div class="pathway-cert completed">
+                                <span class="cert-check">✓</span>
+                                <span class="cert-name">IBM Data Science Professional</span>
+                            </div>
+                            <div class="pathway-cert completed">
+                                <span class="cert-check">✓</span>
+                                <span class="cert-name">Google Data Analytics</span>
+                            </div>
+                            <div class="pathway-cert completed">
+                                <span class="cert-check">✓</span>
+                                <span class="cert-name">Tableau Desktop Specialist</span>
+                            </div>
+                            <div class="pathway-cert pending">
+                                <span class="cert-check">○</span>
+                                <span class="cert-name">TensorFlow Developer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kanban Board Style -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Certification Pipeline</h2>
+                    <p class="section-subtitle">Current learning status across different stages</p>
+                </div>
+                
+                <div class="kanban-board">
+                    <div class="kanban-column">
+                        <div class="kanban-header">
+                            <h3 class="kanban-title">In Progress</h3>
+                            <span class="kanban-count">2</span>
+                        </div>
+                        <div class="kanban-cards">
+                            <div class="kanban-card card">
+                                <div class="kanban-card-header">
+                                    <div class="platform-icon aws">TF</div>
+                                    <span class="kanban-priority high">High</span>
+                                </div>
+                                <h4 class="kanban-card-title">Terraform Associate</h4>
+                                <p class="kanban-card-desc">Infrastructure as Code certification</p>
+                                <div class="kanban-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 60%"></div>
+                                    </div>
+                                    <span class="progress-label">60% Complete</span>
+                                </div>
+                                <div class="kanban-meta">
+                                    <span class="kanban-date">Due: Apr 15</span>
+                                </div>
+                            </div>
+                            
+                            <div class="kanban-card card">
+                                <div class="kanban-card-header">
+                                    <div class="platform-icon google">TF</div>
+                                    <span class="kanban-priority medium">Medium</span>
+                                </div>
+                                <h4 class="kanban-card-title">TensorFlow Developer</h4>
+                                <p class="kanban-card-desc">Machine learning framework certification</p>
+                                <div class="kanban-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 30%"></div>
+                                    </div>
+                                    <span class="progress-label">30% Complete</span>
+                                </div>
+                                <div class="kanban-meta">
+                                    <span class="kanban-date">Due: May 1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="kanban-column">
+                        <div class="kanban-header">
+                            <h3 class="kanban-title">Completed</h3>
+                            <span class="kanban-count">4</span>
+                        </div>
+                        <div class="kanban-cards">
+                            <div class="kanban-card card completed">
+                                <div class="kanban-card-header">
+                                    <div class="platform-icon google">GCP</div>
+                                    <span class="kanban-check">✓</span>
+                                </div>
+                                <h4 class="kanban-card-title">Cloud Architect Professional</h4>
+                                <p class="kanban-card-desc">Advanced cloud infrastructure design</p>
+                                <div class="kanban-meta">
+                                    <span class="kanban-date">Completed: Mar 15</span>
+                                </div>
+                            </div>
+                            
+                            <div class="kanban-card card completed">
+                                <div class="kanban-card-header">
+                                    <div class="platform-icon meta">META</div>
+                                    <span class="kanban-check">✓</span>
+                                </div>
+                                <h4 class="kanban-card-title">Frontend Developer</h4>
+                                <p class="kanban-card-desc">React and modern web development</p>
+                                <div class="kanban-meta">
+                                    <span class="kanban-date">Completed: Feb 28</span>
+                                </div>
+                            </div>
+                            
+                            <div class="kanban-card card completed">
+                                <div class="kanban-card-header">
+                                    <div class="platform-icon aws">AWS</div>
+                                    <span class="kanban-check">✓</span>
+                                </div>
+                                <h4 class="kanban-card-title">Solutions Architect</h4>
+                                <p class="kanban-card-desc">Cloud architecture and design patterns</p>
+                                <div class="kanban-meta">
+                                    <span class="kanban-date">Completed: Jan 20</span>
+                                </div>
+                            </div>
+                            
+                            <div class="kanban-card card completed">
+                                <div class="kanban-card-header">
+                                    <div class="platform-icon coursera">ML</div>
+                                    <span class="kanban-check">✓</span>
+                                </div>
+                                <h4 class="kanban-card-title">Machine Learning Specialization</h4>
+                                <p class="kanban-card-desc">Stanford's comprehensive ML course</p>
+                                <div class="kanban-meta">
+                                    <span class="kanban-date">Completed: Dec 15</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="kanban-column">
+                        <div class="kanban-header">
+                            <h3 class="kanban-title">Planned</h3>
+                            <span class="kanban-count">3</span>
+                        </div>
+                        <div class="kanban-cards">
+                            <div class="kanban-card card">
+                                <div class="kanban-card-header">
+                                    <div class="platform-icon microsoft">AZ</div>
+                                    <span class="kanban-priority low">Low</span>
+                                </div>
+                                <h4 class="kanban-card-title">Azure DevOps Engineer</h4>
+                                <p class="kanban-card-desc">Microsoft DevOps practices and tools</p>
+                                <div class="kanban-meta">
+                                    <span class="kanban-date">Start: Jun 1</span>
+                                </div>
+                            </div>
+                            
+                            <div class="kanban-card card">
+                                <div class="kanban-card-header">
+                                    <div class="platform-icon google">K8S</div>
+                                    <span class="kanban-priority medium">Medium</span>
+                                </div>
+                                <h4 class="kanban-card-title">Kubernetes Administrator</h4>
+                                <p class="kanban-card-desc">Container orchestration and management</p>
+                                <div class="kanban-meta">
+                                    <span class="kanban-date">Start: Jul 15</span>
+                                </div>
+                            </div>
+                            
+                            <div class="kanban-card card">
+                                <div class="kanban-card-header">
+                                    <div class="platform-icon aws">SEC</div>
+                                    <span class="kanban-priority high">High</span>
+                                </div>
+                                <h4 class="kanban-card-title">Security Specialty</h4>
+                                <p class="kanban-card-desc">Advanced AWS security practices</p>
+                                <div class="kanban-meta">
+                                    <span class="kanban-date">Start: Aug 1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Featured Certificate Hero -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Achievement</h2>
+                    <p class="section-subtitle">Highlighting the most recent or significant certification</p>
+                </div>
+                
+                <div class="hero-cert card">
+                    <div class="hero-background">
+                        <div class="hero-pattern"></div>
+                    </div>
+                    <div class="hero-content">
+                        <div class="hero-main">
+                            <div class="hero-badge">
+                                <div class="platform-icon google hero-icon">GCP</div>
+                                <div class="hero-info">
+                                    <h3 class="hero-title">Google Cloud Professional Cloud Architect</h3>
+                                    <p class="hero-subtitle">Advanced cloud infrastructure design and implementation</p>
+                                    <div class="hero-date">Completed March 15, 2024</div>
+                                </div>
+                            </div>
+                            <div class="hero-description">
+                                <p>Successfully demonstrated expertise in designing, developing, and managing robust, secure, scalable, and dynamic solutions to drive business objectives using Google Cloud Platform.</p>
+                            </div>
+                            <div class="hero-skills">
+                                <span class="hero-skill">Cloud Architecture</span>
+                                <span class="hero-skill">Google Kubernetes Engine</span>
+                                <span class="hero-skill">BigQuery</span>
+                                <span class="hero-skill">Cloud Security</span>
+                                <span class="hero-skill">Networking</span>
+                                <span class="hero-skill">Cost Optimization</span>
+                            </div>
+                        </div>
+                        <div class="hero-actions">
+                            <a href="#" class="btn btn-primary">View Certificate</a>
+                            <a href="#" class="btn btn-secondary">Verify Online</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleExpand(trigger) {
+            const content = trigger.nextElementSibling;
+            const icon = trigger.querySelector('.expandable-icon');
+            const isOpen = content.classList.contains('open');
+            
+            if (isOpen) {
+                content.classList.remove('open');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Smooth scroll for horizontal scroll container
+        const scrollContainer = document.querySelector('.scroll-track');
+        if (scrollContainer) {
+            scrollContainer.addEventListener('wheel', (e) => {
+                if (e.deltaY !== 0) {
+                    e.preventDefault();
+                    scrollContainer.scrollLeft += e.deltaY;
+                }
+            });
+        }
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe components for fade-in animation
+        document.querySelectorAll('.component-section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+
+    <style>
+        /* Additional styles for new components */
+        
+        /* Masonry Grid */
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-auto-rows: 120px;
+            gap: 1rem;
+        }
+
+        .masonry-item {
+            padding: 1.5rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .masonry-tall {
+            grid-row: span 2;
+        }
+
+        .masonry-wide {
+            grid-column: span 2;
+        }
+
+        .masonry-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .masonry-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .masonry-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.5rem;
+        }
+
+        .masonry-certs {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .masonry-cert {
+            display: flex;
+            flex-direction: column;
+            gap: 0.125rem;
+        }
+
+        .cert-name {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: hsl(var(--foreground));
+        }
+
+        .cert-source {
+            font-size: 0.675rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        /* Horizontal Scroll */
+        .scroll-container {
+            overflow: hidden;
+            border-radius: calc(var(--radius) + 2px);
+        }
+
+        .scroll-track {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem;
+            scrollbar-width: thin;
+            scrollbar-color: hsl(var(--muted)) transparent;
+        }
+
+        .scroll-track::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .scroll-track::-webkit-scrollbar-track {
+            background: hsl(var(--muted));
+            border-radius: 3px;
+        }
+
+        .scroll-track::-webkit-scrollbar-thumb {
+            background: hsl(var(--muted-foreground));
+            border-radius: 3px;
+        }
+
+        .scroll-card {
+            min-width: 250px;
+            padding: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .scroll-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .scroll-date {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            font-weight: 500;
+        }
+
+        .scroll-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.5rem;
+            line-height: 1.25;
+        }
+
+        .scroll-description {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .scroll-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        /* Floating Action Layout */
+        .floating-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .floating-card {
+            position: relative;
+            height: 200px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .floating-front,
+        .floating-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: transform 0.6s;
+            border-radius: calc(var(--radius) + 2px);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .floating-back {
+            transform: rotateY(180deg);
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+        }
+
+        .floating-card:hover .floating-front {
+            transform: rotateY(180deg);
+        }
+
+        .floating-card:hover .floating-back {
+            transform: rotateY(0deg);
+        }
+
+        .floating-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .floating-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .floating-subtitle {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .floating-details h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .floating-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .floating-list li {
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .floating-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Progress Tracker Layout */
+        .pathway-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .pathway-item {
+            padding: 1.5rem;
+        }
+
+        .pathway-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .pathway-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.25rem;
+        }
+
+        .pathway-subtitle {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .progress-circle {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        .progress-svg {
+            transform: rotate(-90deg);
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+        }
+
+        .pathway-certs {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .pathway-cert {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            transition: background-color 0.2s ease;
+        }
+
+        .pathway-cert.completed {
+            background: hsl(var(--secondary));
+        }
+
+        .pathway-cert.pending {
+            opacity: 0.6;
+        }
+
+        .cert-check {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .pathway-cert.completed .cert-check {
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+        }
+
+        .pathway-cert.pending .cert-check {
+            border: 1px solid hsl(var(--border));
+            color: hsl(var(--muted-foreground));
+        }
+
+        /* Kanban Board Style */
+        .kanban-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .kanban-column {
+            background: hsl(var(--muted));
+            border-radius: calc(var(--radius) + 2px);
+            padding: 1rem;
+        }
+
+        .kanban-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .kanban-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+        }
+
+        .kanban-count {
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            padding: 0.125rem 0.5rem;
+            border-radius: calc(var(--radius) - 2px);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .kanban-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .kanban-card {
+            padding: 1rem;
+            background: hsl(var(--card));
+        }
+
+        .kanban-card.completed {
+            opacity: 0.8;
+            border-left: 3px solid hsl(var(--primary));
+        }
+
+        .kanban-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .kanban-priority {
+            padding: 0.125rem 0.5rem;
+            border-radius: calc(var(--radius) - 2px);
+            font-size: 0.625rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .kanban-priority.high {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .kanban-priority.medium {
+            background: #fefbeb;
+            color: #d97706;
+        }
+
+        .kanban-priority.low {
+            background: #f0fdf4;
+            color: #16a34a;
+        }
+
+        .kanban-check {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .kanban-card-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.5rem;
+        }
+
+        .kanban-card-desc {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .kanban-progress {
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: hsl(var(--muted));
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 0.25rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: hsl(var(--primary));
+            transition: width 0.3s ease;
+        }
+
+        .progress-label {
+            font-size: 0.625rem;
+            color: hsl(var(--muted-foreground));
+            font-weight: 500;
+        }
+
+        .kanban-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .kanban-date {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        /* Hero Certificate */
+        .hero-cert {
+            position: relative;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+        }
+
+        .hero-pattern {
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 20% 20%, hsl(var(--primary)) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 80%, hsl(var(--primary)) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-main {
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-icon {
+            width: 3rem;
+            height: 3rem;
+            font-size: 1rem;
+        }
+
+        .hero-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-date {
+            font-size: 0.875rem;
+            color: hsl(var(--primary));
+            font-weight: 600;
+        }
+
+        .hero-description {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description p {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+            line-height: 1.6;
+        }
+
+        .hero-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .hero-skill {
+            background: hsl(var(--secondary));
+            color: hsl(var(--secondary-foreground));
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            padding: 0.5rem 1rem;
+        }
+
+        .btn-primary:hover {
+            background: hsl(var(--primary) / 0.9);
+        }
+
+        .btn-secondary {
+            background: hsl(var(--secondary));
+            color: hsl(var(--secondary-foreground));
+            padding: 0.5rem 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: hsl(var(--secondary) / 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .floating-grid,
+            .kanban-board {
+                grid-template-columns: 1fr;
+            }
+            
+            .pathway-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .hero-badge {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+            }
+            
+            .hero-title {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</body>
+</html>

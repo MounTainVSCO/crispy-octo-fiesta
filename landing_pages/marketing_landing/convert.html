@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Morgan - Marketing Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7f7f5;
+            --bg-tertiary: #f1f1ef;
+            --text-primary: #37352f;
+            --text-secondary: #6f6e69;
+            --text-tertiary: #979791;
+            --border-primary: #e9e9e7;
+            --border-secondary: #d9d9d6;
+            --accent-blue: #2383e2;
+            --accent-purple: #9065b0;
+            --accent-orange: #e07c24;
+            --accent-green: #448361;
+            --accent-red: #e03e3e;
+            --accent-pink: #ad1a72;
+            --notion-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --notion-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --notion-radius: 6px;
+            --notion-radius-lg: 12px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+            line-height: 1.5;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            font-size: 16px;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-primary);
+            z-index: 100;
+            margin-bottom: 1px;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent-blue);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .nav-breadcrumb {
+            color: var(--text-tertiary);
+            font-size: 14px;
+            margin-left: 8px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn {
+            padding: 6px 12px;
+            border-radius: var(--notion-radius);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.15s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-btn-primary {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .nav-btn-primary:hover {
+            background: #1a6dc7;
+        }
+
+        .nav-btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-secondary);
+        }
+
+        .nav-btn-secondary:hover {
+            background: var(--bg-tertiary);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 40px 0 32px;
+            border-bottom: 1px solid var(--border-primary);
+            margin-bottom: 40px;
+        }
+
+        .page-header-content {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .page-header-left {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .profile-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--border-primary);
+            flex-shrink: 0;
+            background: var(--bg-tertiary);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .page-header-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .page-icon {
+            font-size: 32px;
+            opacity: 0.6;
+            flex-shrink: 0;
+        }
+
+        .page-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .page-properties {
+            margin-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .property {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .property-label {
+            color: var(--text-tertiary);
+            min-width: 80px;
+        }
+
+        .property-value {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .status-tag {
+            background: #d3f8d3;
+            color: #2d6930;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Content Blocks */
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .block {
+            margin-bottom: 24px;
+        }
+
+        .block-heading {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .block-heading::before {
+            content: '';
+            width: 3px;
+            height: 20px;
+            background: var(--accent-blue);
+            border-radius: 2px;
+        }
+
+        .text-block {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--notion-radius-lg);
+            padding: 20px;
+            transition: all 0.15s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--border-secondary);
+            background: var(--bg-tertiary);
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Database/Table Style */
+        .project-database {
+            border: 1px solid var(--border-primary);
+            border-radius: var(--notion-radius-lg);
+            overflow: hidden;
+            margin-bottom: 32px;
+        }
+
+        .database-header {
+            background: var(--bg-secondary);
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-primary);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .project-row {
+            border-bottom: 1px solid var(--border-primary);
+            transition: background 0.15s ease;
+        }
+
+        .project-row:last-child {
+            border-bottom: none;
+        }
+
+        .project-row:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .project-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--notion-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .project-blue { background: #e1f0ff; }
+        .project-purple { background: #f0e7ff; }
+        .project-orange { background: #ffeee0; }
+        .project-green { background: #e7f7ed; }
+
+        .project-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .project-company {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .project-metrics {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 16px;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 4px 8px;
+            border-radius: var(--notion-radius);
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid var(--border-primary);
+        }
+
+        .tag-blue { background: #e1f0ff; color: var(--accent-blue); border-color: #b8deff; }
+        .tag-purple { background: #f0e7ff; color: var(--accent-purple); border-color: #d9c7ff; }
+        .tag-orange { background: #ffeee0; color: var(--accent-orange); border-color: #ffd8b8; }
+        .tag-green { background: #e7f7ed; color: var(--accent-green); border-color: #c5e8d1; }
+
+        /* Skills Grid */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .skill-block {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--notion-radius-lg);
+            padding: 20px;
+        }
+
+        .skill-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-emoji {
+            font-size: 18px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            padding: 4px 0;
+            color: var(--text-secondary);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-item::before {
+            content: '•';
+            color: var(--text-tertiary);
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: var(--notion-radius-lg);
+            padding: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .contact-description {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            padding: 10px 16px;
+            border-radius: var(--notion-radius);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-btn-primary {
+            background: var(--accent-blue);
+            color: white;
+            border: 1px solid var(--accent-blue);
+        }
+
+        .contact-btn-primary:hover {
+            background: #1a6dc7;
+        }
+
+        .contact-btn-secondary {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-secondary);
+        }
+
+        .contact-btn-secondary:hover {
+            background: var(--bg-tertiary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .nav-breadcrumb {
+                display: none;
+            }
+
+            .page-header-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .page-header-left {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .page-title {
+                font-size: 32px;
+            }
+
+            .page-properties {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .project-metrics {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Hover Effects */
+        .clickable {
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .clickable:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--notion-shadow-lg);
+        }
+
+        /* Selection styling */
+        ::selection {
+            background: rgba(35, 131, 226, 0.2);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-secondary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-tertiary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-left">
+                    <div class="nav-icon">AM</div>
+                    <span class="nav-title">Alex Morgan</span>
+                    <span class="nav-breadcrumb">/ Marketing Portfolio</span>
+                </div>
+                <div class="nav-right">
+                    <a href="#contact" class="nav-btn nav-btn-secondary">Contact</a>
+                    <a href="#" class="nav-btn nav-btn-primary">Resume</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="page-header-content">
+                <div class="page-header-left">
+                    <div class="profile-photo">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=face&auto=format" alt="Alex Morgan" class="profile-img">
+                    </div>
+                    <div class="page-header-text">
+                        <h1 class="page-title">Alex Morgan</h1>
+                        <p class="page-subtitle">Strategic marketing professional with 5+ years driving growth through data-informed campaigns and customer-centric strategies.</p>
+                    </div>
+                </div>
+                <span class="page-icon">📊</span>
+            </div>
+            
+            <div class="page-properties">
+                <div class="property">
+                    <span class="property-label">Status</span>
+                    <span class="status-tag">Open to work</span>
+                </div>
+                <div class="property">
+                    <span class="property-label">Location</span>
+                    <span class="property-value">San Francisco, CA</span>
+                </div>
+                <div class="property">
+                    <span class="property-label">Experience</span>
+                    <span class="property-value">5+ years</span>
+                </div>
+                <div class="property">
+                    <span class="property-label">Specialties</span>
+                    <span class="property-value">Growth Marketing, Brand Strategy</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Key Metrics -->
+        <section class="content-section">
+            <h2 class="block-heading">Key Results</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-value">$3.2M+</span>
+                    <span class="stat-label">Revenue Generated</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">165%</span>
+                    <span class="stat-label">Avg Growth Rate</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">32+</span>
+                    <span class="stat-label">Campaigns Launched</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">8</span>
+                    <span class="stat-label">Companies Helped</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section class="content-section">
+            <h2 class="block-heading">Recent Projects</h2>
+            <div class="project-database">
+                <div class="database-header">
+                    Case Studies & Campaign Results
+                </div>
+
+                <div class="project-row">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-icon project-blue">📱</div>
+                            <div>
+                                <div class="project-title">B2B SaaS Product Launch</div>
+                                <div class="project-company">TechFlow Solutions</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Developed comprehensive go-to-market strategy for productivity software targeting mid-market companies. Created messaging framework, content strategy, and multi-channel acquisition plan.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">1,847</span>
+                                <span class="metric-label">Sign-ups (30 days)</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">28%</span>
+                                <span class="metric-label">Trial conversion</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">$180K</span>
+                                <span class="metric-label">ARR generated</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag tag-blue">Product Marketing</span>
+                            <span class="tag tag-purple">Content Strategy</span>
+                            <span class="tag tag-green">Lead Generation</span>
+                            <span class="tag tag-orange">Email Marketing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-row">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-icon project-purple">🛍️</div>
+                            <div>
+                                <div class="project-title">E-commerce Retention Strategy</div>
+                                <div class="project-company">Lifestyle Brand Co.</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Redesigned customer lifecycle marketing for fashion retailer. Built segmented email flows, loyalty program, and personalized product recommendations to increase repeat purchases.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">52%</span>
+                                <span class="metric-label">CLV increase</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">34%</span>
+                                <span class="metric-label">Repeat purchase rate</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">$420K</span>
+                                <span class="metric-label">Additional revenue</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag tag-purple">Customer Journey</span>
+                            <span class="tag tag-orange">Email Marketing</span>
+                            <span class="tag tag-green">Retention</span>
+                            <span class="tag tag-blue">Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-row">
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-icon project-green">🔒</div>
+                            <div>
+                                <div class="project-title">Cybersecurity Brand Repositioning</div>
+                                <div class="project-company">SecureNet Systems</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Led brand pivot from technical features to business outcomes messaging. Developed new positioning, website, content strategy, and sales enablement materials for enterprise market.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">210%</span>
+                                <span class="metric-label">Qualified leads</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">38%</span>
+                                <span class="metric-label">Shorter sales cycle</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">$1.2M</span>
+                                <span class="metric-label">Pipeline value</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag tag-green">Brand Strategy</span>
+                            <span class="tag tag-blue">Messaging</span>
+                            <span class="tag tag-purple">Content Marketing</span>
+                            <span class="tag tag-orange">Sales Enablement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Expertise */
+        <section class="content-section">
+            <h2 class="block-heading">Core Competencies</h2>
+            <div class="skills-container">
+                <div class="skill-block">
+                    <h3 class="skill-title">
+                        <span class="skill-emoji">🎯</span>
+                        Strategy & Planning
+                    </h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Go-to-market strategy</li>
+                        <li class="skill-item">Customer research & personas</li>
+                        <li class="skill-item">Competitive analysis</li>
+                        <li class="skill-item">Marketing automation</li>
+                        <li class="skill-item">Campaign optimization</li>
+                    </ul>
+                </div>
+
+                <div class="skill-block">
+                    <h3 class="skill-title">
+                        <span class="skill-emoji">📊</span>
+                        Digital Marketing
+                    </h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Paid advertising (Google, Meta, LinkedIn)</li>
+                        <li class="skill-item">Email marketing & automation</li>
+                        <li class="skill-item">Content marketing & SEO</li>
+                        <li class="skill-item">Social media strategy</li>
+                        <li class="skill-item">Conversion optimization</li>
+                    </ul>
+                </div>
+
+                <div class="skill-block">
+                    <h3 class="skill-title">
+                        <span class="skill-emoji">⚡</span>
+                        Tools & Platforms
+                    </h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">HubSpot, Salesforce CRM</li>
+                        <li class="skill-item">Google Analytics, Mixpanel</li>
+                        <li class="skill-item">Klaviyo, Mailchimp</li>
+                        <li class="skill-item">Figma, Canva, Adobe Creative</li>
+                        <li class="skill-item">Notion, Airtable, Slack</li>
+                    </ul>
+                </div>
+
+                <div class="skill-block">
+                    <h3 class="skill-title">
+                        <span class="skill-emoji">🎨</span>
+                        Creative & Brand
+                    </h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Brand positioning & messaging</li>
+                        <li class="skill-item">Copywriting & storytelling</li>
+                        <li class="skill-item">Visual design direction</li>
+                        <li class="skill-item">Campaign creative development</li>
+                        <li class="skill-item">Brand guidelines & systems</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="content-section">
+            <h2 class="block-heading">Background</h2>
+            <div class="text-block">
+                I'm a growth-focused marketing strategist who thrives at the intersection of creativity and data. Over the past 5+ years, I've helped companies ranging from early-stage startups to established brands build marketing engines that drive sustainable growth.
+            </div>
+            <div class="text-block">
+                My approach combines strategic thinking with hands-on execution. I believe the best marketing feels effortless to customers but is built on deep customer understanding, rigorous testing, and continuous optimization. I love taking complex business challenges and turning them into clear, actionable marketing strategies.
+            </div>
+            <div class="text-block">
+                Currently seeking a senior marketing role where I can help a growing company scale their marketing efforts and build lasting customer relationships. I'm particularly interested in B2B SaaS, fintech, and consumer technology companies.
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact-section" id="contact">
+            <h2 class="contact-title">Let's connect</h2>
+            <p class="contact-description">
+                Open to discussing new opportunities, consulting projects, or just chatting about marketing strategy.
+            </p>
+            <div class="contact-buttons">
+                <a href="mailto:alex@example.com" class="contact-btn contact-btn-primary">
+                    📧 Send email
+                </a>
+                <a href="https://linkedin.com/in/alexmorgan" class="contact-btn contact-btn-secondary">
+                    💼 LinkedIn
+                </a>
+                <a href="#" class="contact-btn contact-btn-secondary">
+                    📄 Download resume
+                </a>
+                <a href="https://calendly.com/alexmorgan" class="contact-btn contact-btn-secondary">
+                    📅 Schedule call
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add click interactions to project rows
+        document.querySelectorAll('.project-row').forEach(row => {
+            row.addEventListener('click', function() {
+                // Could expand or navigate to detailed case study
+                console.log('Project clicked:', this.querySelector('.project-title').textContent);
+            });
+        });
+
+        // Add subtle hover effects
+        document.querySelectorAll('.stat-card, .skill-block, .project-row').forEach(element => {
+            element.classList.add('clickable');
+        });
+    </script>
+</body>
+</html>

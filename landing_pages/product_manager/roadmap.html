@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Chen - Product Manager Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fafafa;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        /* Sticky Navigation */
+        .nav-indicator {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            background: white;
+            padding: 15px 8px;
+            border-radius: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            border: 1px solid #e8e8e8;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d1d5db;
+            margin: 12px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-dot.active {
+            background: #6366f1;
+            transform: scale(1.2);
+        }
+
+        .nav-dot::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #1a1a1a;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-dot:hover::after {
+            opacity: 1;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #6366f1, #8b5cf6, #a855f7);
+            opacity: 0.3;
+        }
+
+        .milestone {
+            position: relative;
+            margin-bottom: 80px;
+            padding-left: 100px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .milestone.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .milestone-dot {
+            position: absolute;
+            left: 31px;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #6366f1;
+            z-index: 2;
+        }
+
+        .milestone-content {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e8e8e8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .milestone-content:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .milestone-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f3f4f6;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #6366f1;
+        }
+
+        .milestone h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .milestone p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .metrics {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .metric {
+            background: #f8fafc;
+            padding: 12px 16px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #6366f1;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .view-more {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .view-more:hover {
+            background: #5855eb;
+        }
+
+        /* Overview Section */
+        .overview {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin-bottom: 60px;
+            border-radius: 0 0 32px 32px;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+
+        .overview h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .overview .tagline {
+            font-size: 24px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .overview .bio {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* What's Next Section */
+        .whats-next {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin: 80px 0 0;
+            border-radius: 32px 32px 0 0;
+        }
+
+        .whats-next h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .whats-next p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: white;
+            color: #6366f1;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .resume-button {
+            background: #6366f1;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+
+        .resume-button:hover {
+            background: #5855eb;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-indicator {
+                display: none;
+            }
+            
+            .overview h1 {
+                font-size: 36px;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .milestone {
+                padding-left: 60px;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .milestone-dot {
+                left: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Indicator -->
+    <div class="nav-indicator">
+        <div class="nav-dot active" data-section="overview" data-label="Overview"></div>
+        <div class="nav-dot" data-section="launch1" data-label="First Launch"></div>
+        <div class="nav-dot" data-section="pivot" data-label="Strategic Pivot"></div>
+        <div class="nav-dot" data-section="growth" data-label="Growth Win"></div>
+        <div class="nav-dot" data-section="learning" data-label="Learning"></div>
+        <div class="nav-dot" data-section="next" data-label="What's Next"></div>
+    </div>
+
+    <!-- Overview Section -->
+    <section id="overview" class="overview">
+        <div class="container">
+            <div class="profile-photo">👨‍💻</div>
+            <h1>Alex Chen</h1>
+            <p class="tagline">Building things that matter. Leading with clarity.</p>
+            <p class="bio">Product Manager with 5+ years of experience turning complex problems into simple, delightful user experiences. I thrive at the intersection of user needs, business goals, and technical possibilities.</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Years in Product</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Products Launched</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Teams Led</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">2M+</span>
+                    <span class="stat-label">Users Impacted</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <div class="container">
+        <div class="timeline">
+            <!-- First Launch -->
+            <div id="launch1" class="milestone">
+                <div class="milestone-dot"></div>
+                <div class="milestone-content">
+                    <div class="milestone-badge">🚀 Launch #1</div>
+                    <h3>Onboarding Redesign @ TechFlow</h3>
+                    <p>Identified that 60% of new users were dropping off during onboarding. Led a cross-functional team of 6 to redesign the entire new user experience, focusing on progressive disclosure and just-in-time education.</p>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value">85%</div>
+                            <div class="metric-label">Completion Rate</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">-40%</div>
+                            <div class="metric-label">Drop-off</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">3 weeks</div>
+                            <div class="metric-label">Time to Ship</div>
+                        </div>
+                    </div>
+                    <button class="view-more">View Case Study</button>
+                </div>
+            </div>
+
+            <!-- Strategic Pivot -->
+            <div id="pivot" class="milestone">
+                <div class="milestone-dot"></div>
+                <div class="milestone-content">
+                    <div class="milestone-badge">🔁 Strategic Pivot</div>
+                    <h3>Shifting from Feature-Heavy to MVP-Focused</h3>
+                    <p>Recognized that our team was building features nobody wanted. Introduced lean validation processes, user interview programs, and feature flagging. Pivoted the entire product strategy from "build first, ask later" to "validate first, build smart."</p>
+                    <p><strong>Key Change:</strong> Reduced average feature development time from 3 months to 3 weeks while increasing user satisfaction scores by 40%.</p>
+                    <p><em>"Alex helped us stop building the wrong thing faster and start building the right thing sooner."</em> - Head of Engineering</p>
+                </div>
+            </div>
+
+            <!-- Growth Win -->
+            <div id="growth" class="milestone">
+                <div class="milestone-dot"></div>
+                <div class="milestone-content">
+                    <div class="milestone-badge">📈 Growth Win</div>
+                    <h3>Drove 3x Weekly Active Users in 3 Months</h3>
+                    <p><strong>Hypothesis:</strong> Users weren't returning because they couldn't see immediate value.</p>
+                    <p><strong>Experiment:</strong> Built a personalized dashboard showing user progress and achievements.</p>
+                    <p><strong>Result:</strong> Weekly active users grew from 50K to 150K. User retention improved by 65%.</p>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value">3x</div>
+                            <div class="metric-label">WAU Growth</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">65%</div>
+                            <div class="metric-label">Retention Boost</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">$2M</div>
+                            <div class="metric-label">ARR Impact</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Moment -->
+            <div id="learning" class="milestone">
+                <div class="milestone-dot"></div>
+                <div class="milestone-content">
+                    <div class="milestone-badge">📚 Learning</div>
+                    <h3>Fail Fast: The Social Feature That Didn't Land</h3>
+                    <p>Built a social collaboration feature based on competitive analysis rather than user research. Despite 2 months of development, usage was &lt;5% and user feedback was lukewarm.</p>
+                    <p><strong>What I Learned:</strong> Competitive features don't automatically translate to user value. Now I always validate demand before building, even for "obvious" features.</p>
+                    <p><strong>What I'd Do Next Time:</strong> Run user interviews, create prototypes, and test with real users before committing to development.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- What's Next -->
+    <section id="next" class="whats-next">
+        <div class="container">
+            <h2>What I'm Building Next</h2>
+            <p>I'm passionate about AI-powered product experiences and how we can use automation to eliminate friction while keeping the human connection. Currently exploring the intersection of conversational interfaces and traditional SaaS workflows.</p>
+            
+            <p><strong>Dream Role:</strong> Leading product for a growth-stage company building the future of work - where AI amplifies human creativity rather than replacing it.</p>
+            
+            <a href="mailto:alex.chen@email.com" class="cta-button">Let's Build Something Together</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h3>Alex Chen</h3>
+            <p>"Let's build something together."</p>
+            
+            <div class="social-links">
+                <a href="https://linkedin.com/in/alexchen">LinkedIn</a>
+                <a href="https://github.com/alexchen">GitHub</a>
+                <a href="https://twitter.com/alexchen">Twitter</a>
+            </div>
+            
+            <a href="/resume.pdf" class="resume-button">Download Resume</a>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Update navigation
+                    const sectionId = entry.target.id;
+                    document.querySelectorAll('.nav-dot').forEach(dot => {
+                        dot.classList.remove('active');
+                        if (dot.dataset.section === sectionId) {
+                            dot.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe all milestones and sections
+        document.querySelectorAll('.milestone, section').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navigation click handlers
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const sectionId = dot.dataset.section;
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // View more button handlers
+        document.querySelectorAll('.view-more').forEach(button => {
+            button.addEventListener('click', () => {
+                alert('This would open a detailed case study. In a real portfolio, this could link to a separate page or modal with more details.');
+            });
+        });
+
+        // Smooth scroll for CTA
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add smooth scrolling to all anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

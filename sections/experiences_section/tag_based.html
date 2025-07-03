@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filterable Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .card-enter {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        .card-enter-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.3s ease;
+        }
+        .card-exit {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .card-exit-active {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    
+    <div class="max-w-6xl mx-auto py-16 px-6">
+        
+        <div class="text-center mb-12">
+            <h1 class="text-3xl font-medium mb-4">Experience</h1>
+            <p class="text-gray-600">Filter by what interests you</p>
+        </div>
+        
+        <!-- Filter Pills -->
+        <div class="flex flex-wrap justify-center gap-2 mb-12" id="filter-container">
+            <button class="filter-pill active" data-filter="all">
+                All
+            </button>
+            <button class="filter-pill" data-filter="strategy">
+                Strategy
+            </button>
+            <button class="filter-pill" data-filter="design">
+                Design
+            </button>
+            <button class="filter-pill" data-filter="startup">
+                Startup
+            </button>
+            <button class="filter-pill" data-filter="ai">
+                AI
+            </button>
+            <button class="filter-pill" data-filter="writing">
+                Writing
+            </button>
+            <button class="filter-pill" data-filter="dev">
+                Development
+            </button>
+        </div>
+        
+        <!-- Experience Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="experience-grid">
+            
+            <!-- Card 1 -->
+            <div class="experience-card" data-tags="strategy startup ai">
+                <div class="bg-white border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-all duration-200 hover:shadow-sm">
+                    <div class="flex items-start justify-between mb-3">
+                        <div>
+                            <h3 class="font-medium text-gray-900">Senior Product Manager</h3>
+                            <p class="text-sm text-gray-600">TechFlow Inc.</p>
+                        </div>
+                        <span class="text-xs text-gray-500">2023—now</span>
+                    </div>
+                    <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+                        Led AI-powered features for 50k users. Built product strategy from 0→1.
+                    </p>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">Product Strategy</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">AI/ML</span>
+                        <span class="px-2 py-1 bg-purple-50 text-purple-700 text-xs rounded">Analytics</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="experience-card" data-tags="design startup">
+                <div class="bg-white border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-all duration-200 hover:shadow-sm">
+                    <div class="flex items-start justify-between mb-3">
+                        <div>
+                            <h3 class="font-medium text-gray-900">UX Designer</h3>
+                            <p class="text-sm text-gray-600">Creative Studios</p>
+                        </div>
+                        <span class="text-xs text-gray-500">2021—2023</span>
+                    </div>
+                    <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+                        Redesigned B2B platform. Created design system for 5 products.
+                    </p>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="px-2 py-1 bg-pink-50 text-pink-700 text-xs rounded">UI/UX</span>
+                        <span class="px-2 py-1 bg-orange-50 text-orange-700 text-xs rounded">Design Systems</span>
+                        <span class="px-2 py-1 bg-indigo-50 text-indigo-700 text-xs rounded">Figma</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="experience-card" data-tags="dev startup">
+                <div class="bg-white border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-all duration-200 hover:shadow-sm">
+                    <div class="flex items-start justify-between mb-3">
+                        <div>
+                            <h3 class="font-medium text-gray-900">Frontend Developer</h3>
+                            <p class="text-sm text-gray-600">StartupXYZ</p>
+                        </div>
+                        <span class="text-xs text-gray-500">2019—2021</span>
+                    </div>
+                    <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+                        Built React apps. Improved performance by 50% through optimization.
+                    </p>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">React</span>
+                        <span class="px-2 py-1 bg-yellow-50 text-yellow-700 text-xs rounded">JavaScript</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">TypeScript</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="experience-card" data-tags="writing strategy">
+                <div class="bg-white border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-all duration-200 hover:shadow-sm">
+                    <div class="flex items-start justify-between mb-3">
+                        <div>
+                            <h3 class="font-medium text-gray-900">Content Strategist</h3>
+                            <p class="text-sm text-gray-600">Media Corp</p>
+                        </div>
+                        <span class="text-xs text-gray-500">2020—2022</span>
+                    </div>
+                    <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+                        Managed editorial calendar. Grew organic traffic by 200%.
+                    </p>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="px-2 py-1 bg-purple-50 text-purple-700 text-xs rounded">Content Strategy</span>
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">SEO</span>
+                        <span class="px-2 py-1 bg-orange-50 text-orange-700 text-xs rounded">Analytics</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 5 -->
+            <div class="experience-card" data-tags="design ai">
+                <div class="bg-white border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-all duration-200 hover:shadow-sm">
+                    <div class="flex items-start justify-between mb-3">
+                        <div>
+                            <h3 class="font-medium text-gray-900">AI Design Consultant</h3>
+                            <p class="text-sm text-gray-600">Various Clients</p>
+                        </div>
+                        <span class="text-xs text-gray-500">2022—2024</span>
+                    </div>
+                    <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+                        Designed ML interfaces. Consulted on AI product strategy for startups.
+                    </p>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">AI/ML</span>
+                        <span class="px-2 py-1 bg-pink-50 text-pink-700 text-xs rounded">UI Design</span>
+                        <span class="px-2 py-1 bg-purple-50 text-purple-700 text-xs rounded">Consulting</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 6 -->
+            <div class="experience-card" data-tags="writing dev">
+                <div class="bg-white border border-gray-200 rounded-lg p-6 hover:border-gray-300 transition-all duration-200 hover:shadow-sm">
+                    <div class="flex items-start justify-between mb-3">
+                        <div>
+                            <h3 class="font-medium text-gray-900">Technical Writer</h3>
+                            <p class="text-sm text-gray-600">DevTools Inc</p>
+                        </div>
+                        <span class="text-xs text-gray-500">2021—2022</span>
+                    </div>
+                    <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+                        Wrote developer docs. Created tutorials for complex APIs.
+                    </p>
+                    <div class="flex flex-wrap gap-1">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">Technical Writing</span>
+                        <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">Documentation</span>
+                        <span class="px-2 py-1 bg-yellow-50 text-yellow-700 text-xs rounded">APIs</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Results counter -->
+        <div class="text-center mt-8">
+            <p class="text-sm text-gray-500" id="results-counter">
+                Showing <span id="visible-count">6</span> of <span id="total-count">6</span> experiences
+            </p>
+        </div>
+        
+    </div>
+    
+    <script>
+        const filterButtons = document.querySelectorAll('.filter-pill');
+        const experienceCards = document.querySelectorAll('.experience-card');
+        const visibleCountSpan = document.getElementById('visible-count');
+        const totalCountSpan = document.getElementById('total-count');
+        
+        // Add pill styles
+        filterButtons.forEach(button => {
+            button.className = 'filter-pill px-4 py-2 rounded-full text-sm border transition-all duration-200 cursor-pointer';
+            updatePillStyle(button, false);
+        });
+        
+        // Set initial active state
+        document.querySelector('[data-filter="all"]').classList.add('active');
+        updatePillStyle(document.querySelector('[data-filter="all"]'), true);
+        
+        function updatePillStyle(button, isActive) {
+            if (isActive) {
+                button.className = button.className.replace(/bg-\S+|text-\S+|border-\S+/g, '');
+                button.className += ' bg-gray-900 text-white border-gray-900';
+            } else {
+                button.className = button.className.replace(/bg-\S+|text-\S+|border-\S+/g, '');
+                button.className += ' bg-white text-gray-700 border-gray-200 hover:border-gray-300 hover:bg-gray-50';
+            }
+        }
+        
+        function filterExperiences(filterValue) {
+            let visibleCount = 0;
+            
+            experienceCards.forEach(card => {
+                const cardTags = card.dataset.tags.split(' ');
+                const shouldShow = filterValue === 'all' || cardTags.includes(filterValue);
+                
+                if (shouldShow) {
+                    card.style.display = 'block';
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9)';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                        card.style.transition = 'all 0.3s ease';
+                    }, 50);
+                    
+                    visibleCount++;
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9)';
+                    card.style.transition = 'all 0.3s ease';
+                    
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            // Update counter
+            setTimeout(() => {
+                visibleCountSpan.textContent = visibleCount;
+            }, 300);
+        }
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    updatePillStyle(btn, false);
+                });
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                updatePillStyle(button, true);
+                
+                // Filter experiences
+                const filterValue = button.dataset.filter;
+                filterExperiences(filterValue);
+            });
+        });
+        
+        // Set total count
+        totalCountSpan.textContent = experienceCards.length;
+    </script>
+    
+</body>
+</html>

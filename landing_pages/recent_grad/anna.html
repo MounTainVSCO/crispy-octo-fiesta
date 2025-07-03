@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna Zverkova - Product Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        'accent': '#f97316',
+                        'custom-bg': '#f5eee6',
+                        'gray-50': '#f9fafb',
+                        'gray-900': '#111827'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-custom-bg text-gray-900 font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-custom-bg/90 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-semibold">Anna Zverkova</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="mailto:zverkova.anna@gmail.com" class="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
+                        <span>Hello@LetsMeetAnna.com</span>
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-24 pb-16 bg-custom-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-2 text-gray-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span class="font-medium">London, United Kingdom</span>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <h1 class="text-6xl lg:text-7xl font-bold tracking-tight">
+                            <span class="block">Hello,</span>
+                            <span class="block">I'm Anna Zverkova</span>
+                        </h1>
+                        <p class="text-xl text-gray-600 leading-relaxed max-w-2xl">
+                            I'm a strategic product manager based in London, UK, with a proven track record of transforming customer insights into market-leading solutions. My professional journey is fueled by a genuine passion for understanding user needs and translating them into exceptional product experiences that drive business value.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="mailto:hello@indiharris.com" class="inline-flex items-center px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
+                            <span>Say hello</span>
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/zverkova-anna/" target="_blank" class="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                            <span>LinkedIn</span>
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.letsmeetanna.com/cv" class="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                            <span>CV</span>
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="relative z-10">
+                        <img src="https://cdn.prod.website-files.com/62ee439c0e99ef9fa6ee713a/62ee450358ad15232f0100cf_Anna-square.jpg" 
+                             alt="Anna Zverkova portfolio photo" 
+                             class="w-full max-w-md mx-auto rounded-2xl shadow-2xl">
+                    </div>
+                    <div class="absolute -top-4 -right-4 w-72 h-72 bg-gradient-to-br from-accent/20 to-orange-200/30 rounded-full blur-3xl -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="py-20 bg-custom-bg">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-lg font-semibold text-gray-600 mb-8">A little about me</h2>
+            <div class="prose prose-lg prose-gray max-w-none">
+                <p class="text-xl leading-relaxed text-gray-700 mb-8">
+                    Thanks for stopping by. I'm a product manager with over a decade in the financial data industry, including specialized experience developing B2B solutions at Experian. My passion lies in transforming complex commercial data into powerful, user-friendly products for insurance and financial services clients. Combining technical expertise in data engineering and API development with genuine customer empathy, I excel at delivering high-impact solutions that drive revenue and efficiency. I believe the best products emerge from a deep understanding of user needs, market insights, and collaborative innovation—all approached with the positive energy and relationship-building that have become hallmarks of my leadership style.
+                </p>
+                <div class="mt-12">
+                    <svg width="134" height="40" viewBox="0 0 134 40" class="text-gray-400">
+                        <path d="M10 30 Q 20 10, 40 20 T 80 15 Q 100 25, 124 20" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-20 bg-custom-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <!-- Current Role -->
+            <div class="grid lg:grid-cols-2 gap-12 mb-20">
+                <div class="order-2 lg:order-1">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400&fit=crop&auto=format" 
+                         alt="Office workspace" 
+                         class="w-full h-80 object-cover rounded-xl shadow-lg">
+                </div>
+                <div class="order-1 lg:order-2 space-y-6">
+                    <div class="text-gray-600 font-medium">October 2022 – Current</div>
+                    <h3 class="text-4xl font-bold">
+                        <span class="block">EXPERIAN</span>
+                        <span class="block text-accent">Product Manager</span>
+                    </h3>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Drove strategic development of commercial data offerings and products, managing comprehensive B2B data APIs spanning credit ratings, firmographics, financial, and mortgage datasets for high-profile insurance clients including AXA, RSA, Zurich, Allianz, and Direct Line.
+                    </p>
+                    <div class="space-y-4 text-gray-700">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                            <p><strong>Increased API adoption by +40%</strong> through targeted product enhancements, developing robust data integration solutions that streamlined risk assessment processes for insurance sector clients.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                            <p><strong>Productized complex commercial data offerings</strong>, creating a unified API ecosystem that improved data integrity to 99.6%, enabling more accurate business credit risk evaluations and financial modeling.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                            <p><strong>Generated $2.5M additional annual recurring revenue</strong> by developing and launching new data product modules targeting insurance market segments, addressing specific firmographic, financial, and cyber risk assessment needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Support Team Lead -->
+            <div class="grid lg:grid-cols-2 gap-12 mb-20">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop&auto=format" 
+                         alt="Team collaboration" 
+                         class="w-full h-80 object-cover rounded-xl shadow-lg">
+                </div>
+                <div class="space-y-6">
+                    <div class="text-gray-600 font-medium">January 2019 – October 2022</div>
+                    <h3 class="text-4xl font-bold">
+                        <span class="block">EXPERIAN</span>
+                        <span class="block text-accent">Product Support Team Lead</span>
+                    </h3>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Managed & trained a team of product support analysts & engineers to deliver complex data solutions in line with customer requirements on time & budget.
+                    </p>
+                    <div class="space-y-4 text-gray-700">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                            <p>Collaborated with senior management teams to prioritise business requirements and locate opportunities for process improvements.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                            <p>Owned the team backlog, prioritised stories for the development team while ensuring acceptance criteria were met without delays.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                            <p>Implemented automated data processes, services and tools to support data visualisation and cleansing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Analyst -->
+            <div class="grid lg:grid-cols-2 gap-12 mb-20">
+                <div class="order-2 lg:order-1">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format" 
+                         alt="Data analysis" 
+                         class="w-full h-80 object-cover rounded-xl shadow-lg">
+                </div>
+                <div class="order-1 lg:order-2 space-y-6">
+                    <div class="text-gray-600 font-medium">October 2016 – January 2019</div>
+                    <h3 class="text-4xl font-bold">
+                        <span class="block">EXPERIAN</span>
+                        <span class="block text-accent">Data Analyst</span>
+                    </h3>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Worked closely with project teams to deliver complex data solutions to clients. Used SQL, Bash and Python to generate reports and visualisations.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Support Data Analyst -->
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&auto=format" 
+                         alt="Support and analysis" 
+                         class="w-full h-80 object-cover rounded-xl shadow-lg">
+                </div>
+                <div class="space-y-6">
+                    <div class="text-gray-600 font-medium">February 2014 – October 2016</div>
+                    <h3 class="text-4xl font-bold">
+                        <span class="block">EXPERIAN</span>
+                        <span class="block text-accent">Support Data Analyst</span>
+                    </h3>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Worked as an analyst on a broad range of client projects. Providing support to stakeholders across the business for data analysis tasks.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-custom-bg border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-semibold text-gray-900">Anna Zverkova</span>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="mailto:hello@indiharris.com" class="inline-flex items-center px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
+                        <span>Say hello</span>
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/zverkova-anna/" target="_blank" class="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                        <span>LinkedIn</span>
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-200 text-center text-gray-600">
+                <p>© Anna Zverkova 2022</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add some subtle animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.space-y-6, .space-y-8').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

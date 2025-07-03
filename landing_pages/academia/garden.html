@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Scholar's Garden</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #fdfcf7;
+            --soft-white: #fffef9;
+            --muted-gray: #7c7c7c;
+            --warm-brown: #8b6f47;
+            --navy: #2c3e50;
+            --text-dark: #2c2c2c;
+            --text-light: #666;
+            --border-light: #e8e6e0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom, var(--cream), var(--soft-white));
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-weight: 300;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 120px 0 100px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--navy);
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            font-style: italic;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .tagline {
+            font-size: 0.9rem;
+            color: var(--muted-gray);
+            font-style: italic;
+            position: relative;
+        }
+
+        .hero .tagline::before,
+        .hero .tagline::after {
+            content: '"';
+            color: var(--warm-brown);
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 100px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.8s; }
+        .section:nth-child(6) { animation-delay: 1s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .section h2::before {
+            content: '🌱';
+            margin-right: 10px;
+        }
+
+        .section h2:nth-of-type(1)::before { content: '🌱'; }
+
+        /* Thinking About Cards */
+        .thinking-cards {
+            display: grid;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .thinking-card {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .thinking-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-color: var(--muted-gray);
+        }
+
+        .thinking-card h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .thinking-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .thinking-card .read-note {
+            color: var(--muted-gray);
+            font-size: 0.85rem;
+            margin-top: 15px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .thinking-card:hover .read-note {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Study Timeline */
+        .study-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .study-timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--muted-gray), transparent);
+        }
+
+        .study-item {
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .study-item::before {
+            content: '●';
+            position: absolute;
+            left: -24px;
+            top: 5px;
+            color: var(--muted-gray);
+            font-size: 1.2rem;
+        }
+
+        .study-item h3 {
+            font-family: 'Libre Baskerville', serif;
+            color: var(--navy);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .study-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        /* Projects */
+        .projects {
+            display: grid;
+            gap: 25px;
+        }
+
+        .project-item {
+            padding: 25px 0;
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .project-item:last-child {
+            border-bottom: none;
+        }
+
+        .project-item:hover {
+            padding-left: 15px;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .project-item h3 {
+            font-family: 'Libre Baskerville', serif;
+            color: var(--navy);
+            margin-right: 10px;
+            font-size: 1.05rem;
+        }
+
+        .in-progress {
+            font-size: 0.8rem;
+        }
+
+        .project-item p {
+            color: var(--text-light);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            font-size: 0.85rem;
+            color: var(--muted-gray);
+            font-style: italic;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            margin: 80px 0;
+        }
+
+        .contact h2::before {
+            content: '🧭';
+        }
+
+        .contact-intro {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            color: var(--muted-gray);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--border-light);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .contact-link:hover {
+            background: var(--muted-gray);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-quote {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+        }
+
+        .footer-quote::before,
+        .footer-quote::after {
+            content: '"';
+            color: var(--warm-brown);
+        }
+
+        .footer-meta {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Custom section icons */
+        .section:nth-child(2) h2::before { content: '🌱'; }
+        .section:nth-child(3) h2::before { content: '📚'; }
+        .section:nth-child(4) h2::before { content: '🛠️'; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .hero {
+                padding: 80px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                margin-bottom: 60px;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Subtle parallax effect */
+        .hero {
+            background-attachment: fixed;
+        }
+
+        /* Dark mode toggle (optional) */
+        .dark-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .dark-toggle:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Hi, I'm Sarah Chen. I study, write, and build things at the intersection of cognitive science, design ethics, and human-computer interaction.</h1>
+            <p class="subtitle">This is my garden — a place to organize what I've learned, and what I'm still exploring.</p>
+            <p class="tagline">Always a student.</p>
+        </section>
+
+        <!-- What I'm Thinking About -->
+        <section class="section">
+            <h2>What I'm Thinking About</h2>
+            <div class="thinking-cards">
+                <div class="thinking-card">
+                    <h3>"What makes good design feel moral?"</h3>
+                    <p>Exploring how interface choices carry ethical weight, and why some digital experiences feel honest while others feel manipulative.</p>
+                    <div class="read-note">Read note →</div>
+                </div>
+                <div class="thinking-card">
+                    <h3>"How do systems shape the way we think?"</h3>
+                    <p>Investigating the feedback loops between the tools we create and the cognitive patterns they reinforce in our daily lives.</p>
+                    <div class="read-note">Read note →</div>
+                </div>
+                <div class="thinking-card">
+                    <h3>"Can clarity ever be dangerous?"</h3>
+                    <p>Questioning when our pursuit of simple, clear communication might inadvertently erase important nuance and complexity.</p>
+                    <div class="read-note">Read note →</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What I've Studied -->
+        <section class="section">
+            <h2>What I've Studied</h2>
+            <div class="study-timeline">
+                <div class="study-item">
+                    <h3>M.A. in Cognitive Science — Stanford University</h3>
+                    <p>Learned how memory and attention shape the stories we tell ourselves about reality.</p>
+                </div>
+                <div class="study-item">
+                    <h3>B.A. in Psychology — UC Berkeley</h3>
+                    <p>Discovered how people make decisions, and how easily they're nudged without knowing it.</p>
+                </div>
+                <div class="study-item">
+                    <h3>UX Writing Intensive — Google</h3>
+                    <p>Fell in love with the ethics of language in product design, and the weight of every word.</p>
+                </div>
+                <div class="study-item">
+                    <h3>Design Thinking Workshop — d.school</h3>
+                    <p>Learned to prototype ideas with empathy, and that the best solutions often come from constraints.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What I'm Making -->
+        <section class="section">
+            <h2>What I'm Making</h2>
+            <div class="projects">
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>The Ethics of Invisible Design</h3>
+                        <span class="in-progress">🌱</span>
+                    </div>
+                    <p>A research paper exploring how interface design choices influence user behavior below the threshold of conscious awareness.</p>
+                    <div class="project-tech">Research paper, qualitative interviews</div>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>Mindful Metrics Dashboard</h3>
+                    </div>
+                    <p>A prototype dashboard that presents analytics data in ways that encourage thoughtful decision-making rather than reactive optimization.</p>
+                    <div class="project-tech">Figma, React, D3.js</div>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>Notes on Noticing</h3>
+                        <span class="in-progress">🌱</span>
+                    </div>
+                    <p>A weekly newsletter about the small design decisions that shape how we see and understand our digital world.</p>
+                    <div class="project-tech">Substack, weekly essays</div>
+                </div>
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>Cognitive Load Assessment Tool</h3>
+                    </div>
+                    <p>An open-source tool for researchers to measure and optimize the cognitive demands of digital interfaces.</p>
+                    <div class="project-tech">Python, Jupyter notebooks, eye-tracking data</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact">
+            <h2>Where to Find Me</h2>
+            <div class="contact-intro">
+                <p>If anything here sparked a question, let's talk.</p>
+                <p>I like long emails and short meetings.</p>
+            </div>
+            <div class="contact-links">
+                <a href="mailto:sarah.chen@email.com" class="contact-link">Email</a>
+                <a href="#" class="contact-link">LinkedIn</a>
+                <a href="#" class="contact-link">Google Scholar</a>
+                <a href="#" class="contact-link">Notes on Noticing</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-quote">I grow ideas like some people grow plants — slowly, but with care.</p>
+            <div class="footer-meta">
+                Sarah Chen © 2025 • Last updated June 2025
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll enhancement
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple dark mode toggle
+        function toggleDarkMode() {
+            const body = document.body;
+            const isDark = body.classList.contains('dark-mode');
+            
+            if (!isDark) {
+                body.style.background = 'linear-gradient(to bottom, #2c2c2c, #1a1a1a)';
+                body.style.color = '#e8e6e0';
+                document.querySelector('.dark-toggle').textContent = '☀️';
+            } else {
+                body.style.background = 'linear-gradient(to bottom, var(--cream), var(--soft-white))';
+                body.style.color = 'var(--text-dark)';
+                document.querySelector('.dark-toggle').textContent = '🌙';
+            }
+            
+            body.classList.toggle('dark-mode');
+        }
+
+        // Subtle parallax on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.thinking-card');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = (index + 1) * 0.02;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

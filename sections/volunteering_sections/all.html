@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteering Section Components</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-gray-50 font-inter">
+    
+    <!-- Volunteering 1: Impact Cards -->
+    <section class="max-w-4xl mx-auto p-8 mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Community Impact</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500 hover:shadow-lg transition-shadow">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-xl">
+                        👥
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-gray-900 mb-1">Code for Good</h3>
+                        <p class="text-sm text-blue-600 font-medium">Lead Developer</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                    Built an accessibility-focused website for local homeless shelter, improving their volunteer coordination by 60%.
+                </p>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500">2023 - Present</span>
+                    <div class="flex gap-2">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">React</span>
+                        <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Accessibility</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500 hover:shadow-lg transition-shadow">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-xl">
+                        🎓
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-gray-900 mb-1">Girls Who Code</h3>
+                        <p class="text-sm text-purple-600 font-medium">Volunteer Instructor</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                    Teaching Python and web development to 25+ high school students, helping 8 students land tech internships.
+                </p>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500">2022 - Present</span>
+                    <div class="flex gap-2">
+                        <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Teaching</span>
+                        <span class="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs rounded-full">Python</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500 hover:shadow-lg transition-shadow">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600 text-xl">
+                        🌱
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-semibold text-gray-900 mb-1">Urban Garden Project</h3>
+                        <p class="text-sm text-green-600 font-medium">Event Coordinator</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 text-sm leading-relaxed mb-3">
+                    Organized monthly community garden events, engaging 200+ neighbors in sustainable urban farming practices.
+                </p>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500">2021 - 2023</span>
+                    <div class="flex gap-2">
+                        <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Event Planning</span>
+                        <span class="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded-full">Community</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteering 2: Timeline of Service -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Journey of Service</h2>
+        <div class="relative">
+            <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-500"></div>
+            
+            <div class="space-y-8">
+                <div class="flex gap-6">
+                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
+                        2024
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <h3 class="font-semibold text-gray-900">Open Source Maintainer</h3>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Current</span>
+                        </div>
+                        <p class="text-blue-600 font-medium text-sm mb-2">React Accessibility Library</p>
+                        <p class="text-gray-700 text-sm leading-relaxed">
+                            Maintaining an open-source accessibility library with 2.5k+ GitHub stars. Created comprehensive documentation and onboarded 15+ contributors.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-6">
+                    <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
+                        2023
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm flex-1">
+                        <h3 class="font-semibold text-gray-900 mb-2">Tech Mentor</h3>
+                        <p class="text-purple-600 font-medium text-sm mb-2">ADPList & MentorCruise</p>
+                        <p class="text-gray-700 text-sm leading-relaxed">
+                            Provided 1-on-1 career guidance to 50+ junior developers transitioning into tech. 90% of mentees secured their first tech role within 6 months.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-6">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 relative z-10">
+                        2022
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm flex-1">
+                        <h3 class="font-semibold text-gray-900 mb-2">Conference Organizer</h3>
+                        <p class="text-green-600 font-medium text-sm mb-2">Local Dev Meetup</p>
+                        <p class="text-gray-700 text-sm leading-relaxed">
+                            Co-organized monthly developer meetups for 300+ local engineers. Secured speakers, managed logistics, and grew community by 200%.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteering 3: Quote + Role Pair -->
+    <section class="max-w-4xl mx-auto p-8 mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Making a Difference</h2>
+        <div class="space-y-8">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="bg-gradient-to-br from-orange-400 to-red-500 p-8 text-white">
+                        <blockquote class="text-lg font-medium leading-relaxed mb-4">
+                            "Maria's mentorship program helped our students increase their coding confidence by 85%. She's a natural teacher."
+                        </blockquote>
+                        <div>
+                            <p class="font-semibold">Jennifer Walsh</p>
+                            <p class="text-orange-100 text-sm">Program Director</p>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center text-2xl">
+                                📚
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 text-lg">Coding Bootcamp Mentor</h3>
+                                <p class="text-orange-600 font-medium">TechPath Academy</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Led weekly mentorship sessions for career-changing bootcamp students, providing technical guidance and emotional support during their learning journey.
+                        </p>
+                        <div class="flex items-center gap-4 text-sm text-gray-500">
+                            <span>2022 - Present</span>
+                            <span>•</span>
+                            <span>150+ hours contributed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-8 md:order-2">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center text-2xl">
+                                🌍
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-900 text-lg">Digital Literacy Volunteer</h3>
+                                <p class="text-blue-600 font-medium">Senior Community Center</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Taught basic computer skills and internet safety to 60+ seniors, helping them stay connected with family and access essential online services.
+                        </p>
+                        <div class="flex items-center gap-4 text-sm text-gray-500">
+                            <span>2021 - 2023</span>
+                            <span>•</span>
+                            <span>200+ hours contributed</span>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-400 to-purple-500 p-8 text-white md:order-1">
+                        <blockquote class="text-lg font-medium leading-relaxed mb-4">
+                            "Maria made learning technology fun and accessible. Our seniors gained confidence and independence thanks to her patient teaching."
+                        </blockquote>
+                        <div>
+                            <p class="font-semibold">Robert Chen</p>
+                            <p class="text-blue-100 text-sm">Center Coordinator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteering 4: Logo Wall + Descriptions -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-white rounded-lg border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">Organizations I Support</h2>
+        <p class="text-gray-600 text-center mb-8">Contributing skills and time to causes that matter</p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+            <div class="text-center group">
+                <div class="w-16 h-16 bg-red-100 rounded-lg mx-auto mb-3 flex items-center justify-center group-hover:bg-red-200 transition-colors">
+                    <i class="fas fa-heart text-red-500 text-2xl"></i>
+                </div>
+                <p class="text-sm font-medium text-gray-900">Red Cross</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-16 h-16 bg-green-100 rounded-lg mx-auto mb-3 flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                    <i class="fas fa-seedling text-green-500 text-2xl"></i>
+                </div>
+                <p class="text-sm font-medium text-gray-900">EcoAction</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-16 h-16 bg-blue-100 rounded-lg mx-auto mb-3 flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                    <i class="fas fa-graduation-cap text-blue-500 text-2xl"></i>
+                </div>
+                <p class="text-sm font-medium text-gray-900">TechEd</p>
+            </div>
+            <div class="text-center group">
+                <div class="w-16 h-16 bg-purple-100 rounded-lg mx-auto mb-3 flex items-center justify-center group-hover:bg-purple-200 transition-colors">
+                    <i class="fas fa-code text-purple-500 text-2xl"></i>
+                </div>
+                <p class="text-sm font-medium text-gray-900">OpenSource</p>
+            </div>
+        </div>
+        
+        <div class="space-y-4">
+            <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                <div class="w-8 h-8 bg-red-100 rounded flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-heart text-red-500"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-1">Emergency Response Volunteer • Red Cross</h3>
+                    <p class="text-sm text-gray-700">Provided disaster relief support during local emergencies, helping coordinate shelter operations and family reunification services.</p>
+                    <span class="text-xs text-gray-500">2020 - Present</span>
+                </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                <div class="w-8 h-8 bg-green-100 rounded flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-seedling text-green-500"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-1">Community Organizer • EcoAction</h3>
+                    <p class="text-sm text-gray-700">Organized neighborhood clean-up events and recycling drives, engaging 500+ community members in environmental initiatives.</p>
+                    <span class="text-xs text-gray-500">2021 - 2023</span>
+                </div>
+            </div>
+            
+            <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                <div class="w-8 h-8 bg-blue-100 rounded flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-graduation-cap text-blue-500"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-1">Workshop Instructor • TechEd</h3>
+                    <p class="text-sm text-gray-700">Designed and delivered coding workshops for underrepresented youth, introducing 100+ students to programming fundamentals.</p>
+                    <span class="text-xs text-gray-500">2022 - Present</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteering 5: Full-Width Highlight -->
+    <section class="max-w-4xl mx-auto p-8 mb-12">
+        <div class="bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 min-h-96">
+                <div class="p-8 lg:p-12 flex flex-col justify-center">
+                    <div class="mb-6">
+                        <h2 class="text-3xl font-bold mb-2">Featured Impact</h2>
+                        <p class="text-purple-100">Building the next generation of developers</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-semibold mb-3">Code for All Initiative</h3>
+                        <p class="text-lg text-purple-100 mb-4">Program Director & Lead Instructor</p>
+                        <p class="text-purple-50 leading-relaxed">
+                            Founded and led a nonprofit program teaching coding to underserved communities. 
+                            In two years, we've trained 200+ students, with 85% landing tech jobs or internships. 
+                            Our program has been recognized by the city and expanded to 3 additional locations.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-6 mb-6">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold">200+</div>
+                            <div class="text-sm text-purple-200">Students Trained</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold">85%</div>
+                            <div class="text-sm text-purple-200">Job Placement</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold">500+</div>
+                            <div class="text-sm text-purple-200">Volunteer Hours</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Program Development</span>
+                        <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Curriculum Design</span>
+                        <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Community Outreach</span>
+                        <span class="px-3 py-1 bg-white/20 rounded-full text-sm">Grant Writing</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 p-8 lg:p-12 flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center text-6xl mb-6 mx-auto">
+                            💻
+                        </div>
+                        <blockquote class="text-lg italic mb-4">
+                            "This program changed my life. I went from unemployed to software engineer in 8 months."
+                        </blockquote>
+                        <p class="text-purple-200">- Maria, Program Graduate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteering 6: Split Columns -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-gray-50 rounded-xl">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Volunteer Experience</h2>
+        <div class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 rounded-lg">
+                <div>
+                    <h3 class="font-semibold text-gray-900 text-lg mb-2">Youth Coding Mentor</h3>
+                    <p class="text-blue-600 font-medium mb-2">Code.org Local Chapter</p>
+                    <div class="text-sm text-gray-500 space-y-1">
+                        <p>📅 September 2022 - Present</p>
+                        <p>⏰ 4 hours/week</p>
+                        <p>👥 15 mentees</p>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Mentor high school students learning their first programming language. Lead weekly coding sessions, 
+                        help with project development, and provide career guidance for students interested in tech.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">JavaScript</span>
+                        <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded">HTML/CSS</span>
+                        <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">Mentoring</span>
+                        <span class="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded">Curriculum</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 rounded-lg">
+                <div>
+                    <h3 class="font-semibold text-gray-900 text-lg mb-2">Accessibility Advocate</h3>
+                    <p class="text-green-600 font-medium mb-2">Digital Inclusion Coalition</p>
+                    <div class="text-sm text-gray-500 space-y-1">
+                        <p>📅 January 2021 - December 2023</p>
+                        <p>⏰ 6 hours/month</p>
+                        <p>🎯 12 websites audited</p>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Conducted accessibility audits for nonprofit websites and provided recommendations for WCAG compliance. 
+                        Helped organizations improve their digital accessibility, reaching 10,000+ users with disabilities.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded">WCAG</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">Screen Readers</span>
+                        <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">UX Audit</span>
+                        <span class="px-2 py-1 bg-red-100 text-red-700 text-xs rounded">Advocacy</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 rounded-lg">
+                <div>
+                    <h3 class="font-semibold text-gray-900 text-lg mb-2">Open Source Contributor</h3>
+                    <p class="text-purple-600 font-medium mb-2">Various Projects</p>
+                    <div class="text-sm text-gray-500 space-y-1">
+                        <p>📅 2020 - Present</p>
+                        <p>⏰ 10+ hours/month</p>
+                        <p>🔧 25+ contributions</p>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Regular contributor to open source projects focused on developer tools and accessibility. 
+                        Contributed bug fixes, new features, and documentation improvements to help the broader dev community.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">React</span>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">TypeScript</span>
+                        <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded">Documentation</span>
+                        <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">Testing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteering 7: Icons and Tags -->
+    <section class="max-w-4xl mx-auto p-8 mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Service Categories</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center text-2xl">
+                        🧠
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900 text-lg">Education & Mentoring</h3>
+                        <p class="text-blue-600 text-sm">Empowering through knowledge</p>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                            <p class="font-medium text-gray-900 text-sm">Code Mentorship Program</p>
+                            <p class="text-gray-600 text-xs">50+ students guided • 2022-Present</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                            <p class="font-medium text-gray-900 text-sm">Workshop Facilitator</p>
+                            <p class="text-gray-600 text-xs">Tech literacy for seniors • 2021-2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Teaching</span>
+                    <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Mentoring</span>
+                    <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Curriculum</span>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center text-2xl">
+                        🌱
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900 text-lg">Community & Environment</h3>
+                        <p class="text-green-600 text-sm">Building sustainable communities</p>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                            <p class="font-medium text-gray-900 text-sm">Environmental Cleanup</p>
+                            <p class="text-gray-600 text-xs">200+ community events • 2020-Present</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                            <p class="font-medium text-gray-900 text-sm">Urban Garden Coordinator</p>
+                            <p class="text-gray-600 text-xs">Sustainable farming education • 2021-2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Environment</span>
+                    <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Community</span>
+                    <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Sustainability</span>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl flex items-center justify-center text-2xl">
+                        💜
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900 text-lg">Social Impact</h3>
+                        <p class="text-purple-600 text-sm">Supporting those in need</p>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                            <p class="font-medium text-gray-900 text-sm">Emergency Response</p>
+                            <p class="text-gray-600 text-xs">Disaster relief volunteer • 2020-Present</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                            <p class="font-medium text-gray-900 text-sm">Homeless Shelter Support</p>
+                            <p class="text-gray-600 text-xs">Weekly meal service • 2021-2023</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Emergency Aid</span>
+                    <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Community Service</span>
+                    <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Humanitarian</span>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center text-2xl">
+                        🚀
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900 text-lg">Tech for Good</h3>
+                        <p class="text-orange-600 text-sm">Technology with purpose</p>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                            <p class="font-medium text-gray-900 text-sm">Open Source Contributions</p>
+                            <p class="text-gray-600 text-xs">25+ projects supported • 2020-Present</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                            <p class="font-medium text-gray-900 text-sm">Nonprofit Web Development</p>
+                            <p class="text-gray-600 text-xs">Pro bono technical support • 2021-Present</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <span class="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded-full">Open Source</span>
+                    <span class="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded-full">Web Development</span>
+                    <span class="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded-full">Pro Bono</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteering 8: Call to Action -->
+    <section class="max-w-4xl mx-auto p-8 mb-12">
+        <div class="bg-gradient-to-r from-gray-900 to-gray-700 text-white rounded-xl p-8 text-center">
+            <h2 class="text-2xl font-bold mb-4">Get Involved</h2>
+            <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
+                Passionate about making a difference through technology and community service? 
+                Let's collaborate on meaningful projects that create positive impact.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-colors">
+                    Start a Project Together
+                </button>
+                <button class="px-6 py-3 border border-gray-400 hover:border-white rounded-lg font-medium transition-colors">
+                    View My Volunteer Work
+                </button>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

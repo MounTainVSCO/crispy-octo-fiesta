@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Now Playing Footer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <!-- Page content -->
+    <main class="min-h-screen pb-32">
+        <div class="max-w-4xl mx-auto px-6 py-16">
+            <div class="text-center space-y-6">
+                <h1 class="text-4xl font-bold text-gray-900">Sarah Chen</h1>
+                <p class="text-xl text-gray-600">Product Designer & Creative Developer</p>
+                <div class="grid md:grid-cols-2 gap-8 mt-12">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <h3 class="font-semibold text-gray-900 mb-2">Featured Project</h3>
+                        <p class="text-gray-600">Redesigning the checkout experience for 2M+ users</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <h3 class="font-semibold text-gray-900 mb-2">Latest Work</h3>
+                        <p class="text-gray-600">Mobile app design system for fintech startup</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 fixed bottom-0 left-0 right-0">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            
+            <!-- Main footer content -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                
+                <!-- Left section - Label with icon -->
+                <div class="flex items-center gap-2 group">
+                    <button 
+                        id="mode-switcher"
+                        class="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-2 rounded-md px-2 py-1 -ml-2"
+                    >
+                        <i data-lucide="music" class="w-4 h-4 text-gray-500 group-hover:text-gray-700 transition-colors"></i>
+                        <span class="text-sm font-medium tracking-wide" id="mode-label">Now Playing</span>
+                    </button>
+                </div>
+
+                <!-- Right section - Content -->
+                <div class="flex-1 sm:text-right">
+                    <p class="text-gray-900 font-medium text-sm sm:text-base mb-1" id="content-text">
+                        Cold Little Heart – Michael Kiwanuka
+                    </p>
+                    <p class="text-xs text-gray-500 font-normal" id="content-note">
+                        On repeat this week
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bottom meta -->
+            <div class="flex items-center justify-between text-xs text-gray-400 mt-3 pt-3 border-t border-gray-50">
+                <span>Thanks for scrolling this far</span>
+                <div class="flex items-center gap-4">
+                    <span>Updated way too often</span>
+                    <div class="flex gap-1" id="mode-indicators">
+                        <button class="mode-dot w-1.5 h-1.5 rounded-full bg-gray-400 transition-colors focus:outline-none" data-mode="0"></button>
+                        <button class="mode-dot w-1.5 h-1.5 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors focus:outline-none" data-mode="1"></button>
+                        <button class="mode-dot w-1.5 h-1.5 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors focus:outline-none" data-mode="2"></button>
+                        <button class="mode-dot w-1.5 h-1.5 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors focus:outline-none" data-mode="3"></button>
+                        <button class="mode-dot w-1.5 h-1.5 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors focus:outline-none" data-mode="4"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Alternative: Simple Static Version (uncomment to use) -->
+    <!--
+    <footer class="bg-white border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-6 py-6">
+            <div class="h-px bg-gray-100 mb-6"></div>
+            
+            <div class="flex items-center justify-between text-sm">
+                <div class="flex items-center gap-2 text-gray-600">
+                    <i data-lucide="music" class="w-4 h-4"></i>
+                    <span class="font-medium">Now Playing</span>
+                </div>
+                <div class="text-right">
+                    <p class="text-gray-900 font-medium">Cold Little Heart – Michael Kiwanuka</p>
+                    <p class="text-xs text-gray-500 mt-1">On repeat this week</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-6 pt-4 border-t border-gray-50">
+                <p class="text-xs text-gray-400">Thanks for scrolling this far</p>
+            </div>
+        </div>
+    </footer>
+    -->
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Footer interaction data
+        const modes = [
+            {
+                icon: "music",
+                label: "Now Playing",
+                content: "Cold Little Heart – Michael Kiwanuka",
+                note: "On repeat this week"
+            },
+            {
+                icon: "book-open",
+                label: "Currently Reading",
+                content: "The Design of Everyday Things",
+                note: "Chapter 3, slowly but surely"
+            },
+            {
+                icon: "wrench",
+                label: "Tool of the Week",
+                content: "Obsessed with Notion + Raycast",
+                note: "Productivity game changed"
+            },
+            {
+                icon: "film",
+                label: "Recently Watched",
+                content: "The Bear S3 – pure chaos",
+                note: "Still processing that finale"
+            },
+            {
+                icon: "coffee",
+                label: "Current Obsession",
+                content: "Third-wave coffee brewing",
+                note: "V60 > everything else"
+            }
+        ];
+
+        let currentMode = 0;
+
+        // Update footer content
+        function updateFooter(modeIndex) {
+            const mode = modes[modeIndex];
+            
+            // Update icon
+            const iconElement = document.querySelector('#mode-switcher i');
+            iconElement.setAttribute('data-lucide', mode.icon);
+            
+            // Update text content
+            document.getElementById('mode-label').textContent = mode.label;
+            document.getElementById('content-text').textContent = mode.content;
+            document.getElementById('content-note').textContent = mode.note;
+            
+            // Update indicators
+            document.querySelectorAll('.mode-dot').forEach((dot, index) => {
+                if (index === modeIndex) {
+                    dot.className = 'mode-dot w-1.5 h-1.5 rounded-full bg-gray-400 transition-colors focus:outline-none';
+                } else {
+                    dot.className = 'mode-dot w-1.5 h-1.5 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors focus:outline-none';
+                }
+            });
+            
+            // Recreate icons to update the new icon
+            lucide.createIcons();
+        }
+
+        // Mode switcher click handler
+        document.getElementById('mode-switcher').addEventListener('click', () => {
+            currentMode = (currentMode + 1) % modes.length;
+            updateFooter(currentMode);
+        });
+
+        // Dot indicators click handlers
+        document.querySelectorAll('.mode-dot').forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentMode = index;
+                updateFooter(currentMode);
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && document.activeElement.classList.contains('mode-dot')) {
+                e.preventDefault();
+                currentMode = Math.max(0, currentMode - 1);
+                updateFooter(currentMode);
+            } else if (e.key === 'ArrowRight' && document.activeElement.classList.contains('mode-dot')) {
+                e.preventDefault();
+                currentMode = Math.min(modes.length - 1, currentMode + 1);
+                updateFooter(currentMode);
+            }
+        });
+    </script>
+
+</body>
+</html>

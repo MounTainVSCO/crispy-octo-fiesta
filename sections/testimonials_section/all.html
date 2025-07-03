@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference Section Components</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-gray-50 font-inter">
+    
+    <!-- Reference 1: Simple Quote Card -->
+    <section class="max-w-4xl mx-auto p-8 mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">What People Say</h2>
+        <div class="grid gap-6">
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                <blockquote class="text-lg text-gray-700 leading-relaxed mb-4">
+                    "Sarah consistently delivered exceptional design work that elevated our entire product experience. Her attention to detail and user-centered approach made a significant impact on our conversion rates."
+                </blockquote>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-semibold">
+                        MK
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-900">Michael Kumar</p>
+                        <p class="text-sm text-gray-600">Product Manager @ Stripe</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                <blockquote class="text-lg text-gray-700 leading-relaxed mb-4">
+                    "Working with Sarah was a game-changer for our startup. She took our complex ideas and turned them into intuitive, beautiful interfaces that our users love."
+                </blockquote>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-semibold">
+                        AL
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-900">Anna Liu</p>
+                        <p class="text-sm text-gray-600">CEO @ TechFlow</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reference 2: Carousel Slider -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Client Testimonials</h2>
+        <div class="relative overflow-hidden">
+            <div class="flex gap-6 pb-4">
+                <div class="bg-white p-6 rounded-lg shadow-md min-w-80 flex-shrink-0">
+                    <div class="flex text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="text-gray-700 mb-4">
+                        "Alex delivered our mobile app ahead of schedule with incredible attention to performance and user experience."
+                    </blockquote>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-purple-100 rounded-full"></div>
+                        <div>
+                            <p class="font-semibold text-gray-900">David Chen</p>
+                            <p class="text-sm text-gray-600">Startup Founder</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md min-w-80 flex-shrink-0">
+                    <div class="flex text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="text-gray-700 mb-4">
+                        "Professional, creative, and always goes above and beyond. Our website conversion improved by 40%!"
+                    </blockquote>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full"></div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Emma Rodriguez</p>
+                            <p class="text-sm text-gray-600">Marketing Director</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md min-w-80 flex-shrink-0">
+                    <div class="flex text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="text-gray-700 mb-4">
+                        "Alex's technical expertise and communication skills made our complex project feel effortless."
+                    </blockquote>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-green-100 rounded-full"></div>
+                        <div>
+                            <p class="font-semibold text-gray-900">James Park</p>
+                            <p class="text-sm text-gray-600">CTO @ InnovateLab</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center gap-2 mt-4">
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
+                <div class="w-2 h-2 bg-gray-300 rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reference 3: Grid of Faces + Quotes -->
+    <section class="max-w-4xl mx-auto p-8 mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Testimonial Wall</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex-shrink-0"></div>
+                    <div>
+                        <blockquote class="text-gray-700 text-sm leading-relaxed mb-3">
+                            "Maya's design thinking transformed our user onboarding flow. The clarity she brought to complex workflows was remarkable."
+                        </blockquote>
+                        <div>
+                            <p class="font-semibold text-gray-900 text-sm">Lisa Thompson</p>
+                            <p class="text-xs text-gray-600">Sr. Product Manager @ Adobe</p>
+                            <p class="text-xs text-blue-600 mt-1">Collaborated 2023-2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg border-l-4 border-green-500 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex-shrink-0"></div>
+                    <div>
+                        <blockquote class="text-gray-700 text-sm leading-relaxed mb-3">
+                            "One of the most talented designers I've worked with. Maya balances creativity with strategic thinking perfectly."
+                        </blockquote>
+                        <div>
+                            <p class="font-semibold text-gray-900 text-sm">Carlos Rivera</p>
+                            <p class="text-xs text-gray-600">Design Director @ Spotify</p>
+                            <p class="text-xs text-green-600 mt-1">Former Manager</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg border-l-4 border-purple-500 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex-shrink-0"></div>
+                    <div>
+                        <blockquote class="text-gray-700 text-sm leading-relaxed mb-3">
+                            "Maya consistently delivered pixel-perfect designs that delighted users and stakeholders alike."
+                        </blockquote>
+                        <div>
+                            <p class="font-semibold text-gray-900 text-sm">Rachel Kim</p>
+                            <p class="text-xs text-gray-600">UX Researcher @ Meta</p>
+                            <p class="text-xs text-purple-600 mt-1">Cross-functional Partner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg border-l-4 border-orange-500 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex-shrink-0"></div>
+                    <div>
+                        <blockquote class="text-gray-700 text-sm leading-relaxed mb-3">
+                            "Working with Maya was a masterclass in user-centered design. Her process is thorough and results speak for themselves."
+                        </blockquote>
+                        <div>
+                            <p class="font-semibold text-gray-900 text-sm">Tom Wilson</p>
+                            <p class="text-xs text-gray-600">CEO @ StartupX</p>
+                            <p class="text-xs text-orange-600 mt-1">Client Project 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reference 4: Highlight Reel -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-gray-900 text-white rounded-xl">
+        <h2 class="text-2xl font-bold mb-8 text-center">Impact Stories</h2>
+        <div class="space-y-8">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-6 rounded-lg">
+                <blockquote class="text-xl font-medium mb-4">
+                    "David's data insights led to a <span class="text-yellow-300 font-bold">35% increase in user retention</span> within just three months."
+                </blockquote>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white/20 rounded-full"></div>
+                    <div>
+                        <p class="font-semibold">Jennifer Walsh</p>
+                        <p class="text-sm text-blue-100">VP of Growth @ TechCorp</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-green-600 to-teal-600 p-6 rounded-lg">
+                <blockquote class="text-xl font-medium mb-4">
+                    "The machine learning model David built <span class="text-yellow-300 font-bold">saved us $2M annually</span> in operational costs."
+                </blockquote>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white/20 rounded-full"></div>
+                    <div>
+                        <p class="font-semibold">Alex Morgan</p>
+                        <p class="text-sm text-green-100">Chief Data Officer @ FinanceFlow</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-pink-600 to-red-600 p-6 rounded-lg">
+                <blockquote class="text-xl font-medium mb-4">
+                    "David turned our chaotic data into <span class="text-yellow-300 font-bold">actionable business intelligence</span> that drives every major decision."
+                </blockquote>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white/20 rounded-full"></div>
+                    <div>
+                        <p class="font-semibold">Maria Santos</p>
+                        <p class="text-sm text-pink-100">CEO @ DataDriven Inc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reference 5: Speech Bubble Style -->
+    <section class="max-w-4xl mx-auto p-8 mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Team Feedback</h2>
+        <div class="space-y-6">
+            <div class="flex gap-4">
+                <div class="w-12 h-12 bg-blue-500 rounded-full flex-shrink-0"></div>
+                <div class="bg-gray-100 rounded-2xl rounded-tl-none p-4 max-w-md">
+                    <p class="text-gray-800 mb-2">
+                        "Emma's code reviews are always thorough and educational. She's helped level up our entire engineering team."
+                    </p>
+                    <p class="text-sm text-gray-600 font-medium">Sarah Kim • Senior Engineer @ Google</p>
+                </div>
+            </div>
+            
+            <div class="flex gap-4 justify-end">
+                <div class="bg-blue-500 text-white rounded-2xl rounded-tr-none p-4 max-w-md">
+                    <p class="mb-2">
+                        "Emma shipped our most complex feature ahead of schedule while maintaining 99.9% uptime. Incredible technical leadership."
+                    </p>
+                    <p class="text-sm text-blue-100 font-medium">Marcus Chen • Engineering Manager @ Stripe</p>
+                </div>
+                <div class="w-12 h-12 bg-green-500 rounded-full flex-shrink-0"></div>
+            </div>
+            
+            <div class="flex gap-4">
+                <div class="w-12 h-12 bg-purple-500 rounded-full flex-shrink-0"></div>
+                <div class="bg-gray-100 rounded-2xl rounded-tl-none p-4 max-w-md">
+                    <p class="text-gray-800 mb-2">
+                        "Working with Emma feels like having a senior architect and mentor rolled into one. Her system design skills are exceptional."
+                    </p>
+                    <p class="text-sm text-gray-600 font-medium">David Park • Principal Engineer @ Netflix</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reference 6: Notion Doc Aesthetic -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-white border border-gray-200 font-mono">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6">// Recommendations</h2>
+        <div class="space-y-6">
+            <div class="border-l-2 border-gray-300 pl-4">
+                <div class="text-sm text-gray-500 mb-2">
+                    <span class="bg-gray-100 px-2 py-1 rounded">LinkedIn Recommendation</span>
+                </div>
+                <blockquote class="text-gray-800 leading-relaxed mb-3">
+                    "I had the pleasure of working with Alex for two years at Meta. Their ability to translate complex business requirements into elegant technical solutions is unmatched. Alex consistently delivered high-quality code while mentoring junior developers."
+                </blockquote>
+                <div class="text-sm">
+                    <p class="font-medium text-gray-900">Lisa Rodriguez</p>
+                    <p class="text-gray-600">Senior Product Manager @ Meta (2022-2024)</p>
+                </div>
+            </div>
+            
+            <div class="border-l-2 border-blue-300 pl-4">
+                <div class="text-sm text-gray-500 mb-2">
+                    <span class="bg-blue-100 px-2 py-1 rounded">Performance Review</span>
+                </div>
+                <blockquote class="text-gray-800 leading-relaxed mb-3">
+                    "Alex consistently exceeds expectations. Led the migration of our legacy system to microservices, reducing response times by 60%. Exceptional technical leadership and communication skills."
+                </blockquote>
+                <div class="text-sm">
+                    <p class="font-medium text-gray-900">James Wilson</p>
+                    <p class="text-gray-600">Engineering Director @ Meta</p>
+                </div>
+            </div>
+            
+            <div class="border-l-2 border-green-300 pl-4">
+                <div class="text-sm text-gray-500 mb-2">
+                    <span class="bg-green-100 px-2 py-1 rounded">Peer Feedback</span>
+                </div>
+                <blockquote class="text-gray-800 leading-relaxed mb-3">
+                    "Alex is the engineer everyone wants on their team. They write clean, maintainable code and always consider the bigger picture. Their debugging skills saved us countless hours."
+                </blockquote>
+                <div class="text-sm">
+                    <p class="font-medium text-gray-900">Maya Patel</p>
+                    <p class="text-gray-600">Staff Engineer @ Meta</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reference 7: Magazine Feature -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-white border-2 border-black font-serif">
+        <div class="border-b-2 border-black pb-6 mb-8">
+            <h1 class="text-3xl font-bold">COLLEAGUE SPOTLIGHT</h1>
+            <p class="text-lg text-gray-600 font-sans mt-2">What industry leaders say about working with Rachel</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <div class="mb-6">
+                    <blockquote class="text-xl leading-relaxed text-gray-800 mb-4">
+                        "Rachel's strategic thinking and execution capabilities are world-class. She transformed our product roadmap and delivered three major features that directly contributed to our Series B funding."
+                    </blockquote>
+                    <div class="border-t border-gray-300 pt-4">
+                        <p class="font-bold text-black">MICHAEL TORRES</p>
+                        <p class="text-gray-600 font-sans text-sm">CEO, TechFlow Solutions</p>
+                        <p class="text-gray-500 font-sans text-xs">Series B: $25M raised</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <div class="mb-6">
+                    <blockquote class="text-xl leading-relaxed text-gray-800 mb-4">
+                        "I've worked with hundreds of product managers. Rachel stands out for her ability to balance user needs with business objectives while keeping engineering teams motivated and productive."
+                    </blockquote>
+                    <div class="border-t border-gray-300 pt-4">
+                        <p class="font-bold text-black">ANNA CHEN</p>
+                        <p class="text-gray-600 font-sans text-sm">VP Engineering, Spotify</p>
+                        <p class="text-gray-500 font-sans text-xs">Former direct report</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-t-2 border-black pt-6 mt-8">
+            <div class="grid grid-cols-3 gap-8 text-center font-sans">
+                <div>
+                    <p class="text-2xl font-bold text-black">15+</p>
+                    <p class="text-sm text-gray-600">Products Launched</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-bold text-black">50M+</p>
+                    <p class="text-sm text-gray-600">Users Impacted</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-bold text-black">98%</p>
+                    <p class="text-sm text-gray-600">Team Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reference 8: LinkedIn Export Style -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-blue-50 rounded-lg border border-blue-200">
+        <div class="flex items-center gap-3 mb-6">
+            <i class="fab fa-linkedin text-2xl text-blue-600"></i>
+            <h2 class="text-xl font-semibold text-gray-900">LinkedIn Recommendations</h2>
+        </div>
+        
+        <div class="space-y-6">
+            <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="w-14 h-14 bg-blue-600 rounded-full flex-shrink-0"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h3 class="font-semibold text-gray-900">Jennifer Walsh</h3>
+                            <span class="text-gray-500">•</span>
+                            <span class="text-blue-600 text-sm">1st</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2">Senior Product Manager at Airbnb</p>
+                        <p class="text-xs text-gray-500">February 15, 2024</p>
+                    </div>
+                </div>
+                <blockquote class="text-gray-800 leading-relaxed">
+                    I had the privilege of working directly with Jordan for 18 months at Airbnb, where they led the redesign of our host onboarding experience. Jordan's user research skills are exceptional - they conducted over 50 user interviews and turned insights into actionable design improvements that increased host conversion by 28%. What impressed me most was their ability to collaborate across teams and advocate for users while balancing business constraints. I'd work with Jordan again in a heartbeat.
+                </blockquote>
+                <div class="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
+                    <button class="text-blue-600 text-sm font-medium hover:underline">
+                        <i class="fas fa-thumbs-up mr-1"></i> Helpful
+                    </button>
+                    <span class="text-gray-400">•</span>
+                    <span class="text-sm text-gray-500">47 people found this helpful</span>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg border border-gray-200">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="w-14 h-14 bg-green-600 rounded-full flex-shrink-0"></div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-1">
+                            <h3 class="font-semibold text-gray-900">Marcus Thompson</h3>
+                            <span class="text-gray-500">•</span>
+                            <span class="text-blue-600 text-sm">1st</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2">Design Director at Figma</p>
+                        <p class="text-xs text-gray-500">January 8, 2024</p>
+                    </div>
+                </div>
+                <blockquote class="text-gray-800 leading-relaxed">
+                    Jordan was my go-to UX researcher during my time as Design Director at Figma. They have an incredible ability to uncover user insights that completely shift how we think about product problems. Jordan's research on our collaborative editing features led to a complete rethink of our information architecture, resulting in a 40% decrease in user confusion. They're methodical, empathetic, and always push the team to think more deeply about user needs.
+                </blockquote>
+                <div class="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
+                    <button class="text-blue-600 text-sm font-medium hover:underline">
+                        <i class="fas fa-thumbs-up mr-1"></i> Helpful
+                    </button>
+                    <span class="text-gray-400">•</span>
+                    <span class="text-sm text-gray-500">32 people found this helpful</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reference 9: Sticky Sidebar Quote -->
+    <section class="max-w-4xl mx-auto p-8 mb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-1">
+                <div class="bg-purple-600 text-white p-6 rounded-lg sticky top-8">
+                    <blockquote class="text-lg font-medium leading-relaxed mb-4">
+                        "Sam's ability to lead complex engineering projects while maintaining team morale is extraordinary."
+                    </blockquote>
+                    <div>
+                        <p class="font-semibold">Elena Rodriguez</p>
+                        <p class="text-purple-200 text-sm">VP Engineering @ Stripe</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-2 space-y-6">
+                <div class="bg-white p-6 rounded-lg border border-gray-200">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full"></div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Alex Kim</p>
+                            <p class="text-sm text-gray-600">Principal Engineer @ Meta</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-700 leading-relaxed">
+                        "Sam's technical architecture decisions saved us months of refactoring work. Their foresight in system design and ability to communicate complex concepts to non-technical stakeholders is remarkable."
+                    </blockquote>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg border border-gray-200">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full"></div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Maya Patel</p>
+                            <p class="text-sm text-gray-600">Senior Product Manager @ Google</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-700 leading-relaxed">
+                        "I've worked with many engineering leads, but Sam stands out for their collaborative approach and ability to deliver complex features on time. Their code quality is consistently excellent."
+                    </blockquote>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg border border-gray-200">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-full"></div>
+                        <div>
+                            <p class="font-semibold text-gray-900">David Chen</p>
+                            <p class="text-sm text-gray-600">CTO @ TechFlow</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-700 leading-relaxed">
+                        "Sam built our entire infrastructure from the ground up. Their scalability planning and performance optimization helped us handle 100x user growth without major system changes."
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reference 10: Animated Quote Reveal (Static Layout) -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-gradient-to-br from-gray-900 to-black text-white rounded-xl">
+        <h2 class="text-2xl font-bold mb-8 text-center">Featured Testimonials</h2>
+        <div class="relative min-h-64">
+            <!-- Quote 1 - Featured prominently -->
+            <div class="text-center space-y-6 opacity-100">
+                <blockquote class="text-3xl font-light leading-relaxed max-w-3xl mx-auto">
+                    "Taylor's strategic vision and execution transformed our entire product development process. Revenue increased 300% in the first year."
+                </blockquote>
+                <div class="flex items-center justify-center gap-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full"></div>
+                    <div class="text-left">
+                        <p class="text-xl font-semibold">Jessica Morgan</p>
+                        <p class="text-gray-300">CEO @ InnovateNow</p>
+                        <p class="text-sm text-gray-400">Series A: $50M raised</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Supporting quotes in smaller format -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 opacity-75">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                    <blockquote class="text-lg mb-4">
+                        "Taylor's leadership during our critical product launch was exceptional. They coordinated across 5 teams flawlessly."
+                    </blockquote>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-blue-500 rounded-full"></div>
+                        <div>
+                            <p class="font-semibold">Mark Davis</p>
+                            <p class="text-sm text-gray-300">Product Director @ Spotify</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                    <blockquote class="text-lg mb-4">
+                        "Working with Taylor feels like having a senior consultant and trusted advisor. Their insights are always spot-on."
+                    </blockquote>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-purple-500 rounded-full"></div>
+                        <div>
+                            <p class="font-semibold">Lisa Chang</p>
+                            <p class="text-sm text-gray-300">Founder @ DataFlow</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom indicator dots -->
+            <div class="flex justify-center gap-3 mt-8">
+                <div class="w-3 h-3 bg-white rounded-full"></div>
+                <div class="w-3 h-3 bg-white/30 rounded-full"></div>
+                <div class="w-3 h-3 bg-white/30 rounded-full"></div>
+                <div class="w-3 h-3 bg-white/30 rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .accordion-content.open {
+            max-height: 500px;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        .chevron.rotated {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900" id="body">
+    
+    <!-- Theme Toggle -->
+    <div class="fixed top-6 right-6 z-50">
+        <button onclick="toggleTheme()" class="p-2 rounded-lg bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors" id="theme-toggle">
+            🌙
+        </button>
+    </div>
+    
+    <div class="max-w-3xl mx-auto py-16 px-6">
+        
+        <div class="mb-12">
+            <h1 class="text-3xl font-medium mb-4">Experience</h1>
+            <p class="text-gray-600">Click to expand details</p>
+        </div>
+        
+        <!-- Accordion Items -->
+        <div class="space-y-2" id="accordion-container">
+            
+            <!-- Item 1 -->
+            <div class="accordion-item border border-gray-200 rounded-lg bg-white">
+                <button class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleAccordion(1)">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="text-lg font-medium">Senior Product Manager @ TechFlow Inc.</span>
+                            <span class="px-2 py-1 bg-gray-200 text-gray-800 text-xs rounded-full">Full-time</span>
+                        </div>
+                        <div class="text-sm text-gray-600">Jan 2023 — Present</div>
+                    </div>
+                    <svg class="chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                </button>
+                <div class="accordion-content" id="content-1">
+                    <div class="px-6 pb-6 border-t border-gray-100">
+                        <p class="text-gray-700 mb-4 mt-4">
+                            Leading product strategy and development for a platform serving 50,000+ active users. Responsible for roadmap planning, feature prioritization, and cross-functional team coordination.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-medium text-gray-900 mb-2">Key Achievements</h4>
+                            <ul class="space-y-1 text-sm text-gray-700">
+                                <li>• Launched 3 major features resulting in 40% increase in user engagement</li>
+                                <li>• Implemented A/B testing framework improving conversion rates by 25%</li>
+                                <li>• Led user research initiatives with 200+ customer interviews</li>
+                                <li>• Reduced time-to-market for new features by 30% through process optimization</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded">Product Strategy</span>
+                            <span class="px-3 py-1 bg-purple-50 text-purple-700 text-sm rounded">Figma</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded">Analytics</span>
+                            <span class="px-3 py-1 bg-orange-50 text-orange-700 text-sm rounded">A/B Testing</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-sm text-blue-600 hover:text-blue-700">
+                            View case study →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 2 -->
+            <div class="accordion-item border border-gray-200 rounded-lg bg-white">
+                <button class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleAccordion(2)">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="text-lg font-medium">UX Designer @ Creative Studios</span>
+                            <span class="px-2 py-1 bg-gray-200 text-gray-800 text-xs rounded-full">Full-time</span>
+                        </div>
+                        <div class="text-sm text-gray-600">Mar 2021 — Dec 2022</div>
+                    </div>
+                    <svg class="chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                </button>
+                <div class="accordion-content" id="content-2">
+                    <div class="px-6 pb-6 border-t border-gray-100">
+                        <p class="text-gray-700 mb-4 mt-4">
+                            Redesigned core user experiences for B2B SaaS platforms. Created comprehensive design systems and conducted user research across multiple client projects.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-medium text-gray-900 mb-2">Key Achievements</h4>
+                            <ul class="space-y-1 text-sm text-gray-700">
+                                <li>• Built design system used across 5+ products, reducing design debt by 60%</li>
+                                <li>• Conducted 50+ user interviews and usability testing sessions</li>
+                                <li>• Redesigned checkout flow improving conversion by 18%</li>
+                                <li>• Mentored 2 junior designers on design thinking methodologies</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-pink-50 text-pink-700 text-sm rounded">UI/UX Design</span>
+                            <span class="px-3 py-1 bg-purple-50 text-purple-700 text-sm rounded">Design Systems</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded">User Research</span>
+                            <span class="px-3 py-1 bg-orange-50 text-orange-700 text-sm rounded">Prototyping</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-sm text-blue-600 hover:text-blue-700">
+                            View portfolio →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 3 -->
+            <div class="accordion-item border border-gray-200 rounded-lg bg-white">
+                <button class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleAccordion(3)">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="text-lg font-medium">Frontend Developer @ StartupXYZ</span>
+                            <span class="px-2 py-1 bg-gray-200 text-gray-800 text-xs rounded-full">Full-time</span>
+                        </div>
+                        <div class="text-sm text-gray-600">Jun 2019 — Feb 2021</div>
+                    </div>
+                    <svg class="chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                </button>
+                <div class="accordion-content" id="content-3">
+                    <div class="px-6 pb-6 border-t border-gray-100">
+                        <p class="text-gray-700 mb-4 mt-4">
+                            Built responsive web applications using modern JavaScript frameworks. Focused on performance optimization and delivering exceptional user experiences.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-medium text-gray-900 mb-2">Key Achievements</h4>
+                            <ul class="space-y-1 text-sm text-gray-700">
+                                <li>• Improved app performance by 50% through code splitting and optimization</li>
+                                <li>• Built reusable component library used across 3 products</li>
+                                <li>• Implemented GraphQL APIs reducing data fetching by 40%</li>
+                                <li>• Collaborated with design team on 15+ feature launches</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded">React</span>
+                            <span class="px-3 py-1 bg-yellow-50 text-yellow-700 text-sm rounded">TypeScript</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded">GraphQL</span>
+                            <span class="px-3 py-1 bg-purple-50 text-purple-700 text-sm rounded">Next.js</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-sm text-blue-600 hover:text-blue-700">
+                            View GitHub →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 4 - Side Project -->
+            <div class="accordion-item border border-gray-200 rounded-lg bg-white">
+                <button class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleAccordion(4)">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="text-lg font-medium">AI Consultant @ Various Startups</span>
+                            <span class="px-2 py-1 bg-gray-200 text-gray-800 text-xs rounded-full">Full-time</span>
+                        </div>
+                        <div class="text-sm text-gray-600">Jan 2022 — Present</div>
+                    </div>
+                    <svg class="chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                </button>
+                <div class="accordion-content" id="content-4">
+                    <div class="px-6 pb-6 border-t border-gray-100">
+                        <p class="text-gray-700 mb-4 mt-4">
+                            Providing strategic AI implementation guidance for early-stage startups. Helping companies integrate machine learning into their product roadmaps and user experiences.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-medium text-gray-900 mb-2">Key Projects</h4>
+                            <ul class="space-y-1 text-sm text-gray-700">
+                                <li>• Advised 8 startups on AI product strategy and implementation</li>
+                                <li>• Designed ML-powered features for 3 SaaS platforms</li>
+                                <li>• Created AI ethics framework adopted by 5 companies</li>
+                                <li>• Generated $200k+ in consulting revenue</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded">AI Strategy</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded">Machine Learning</span>
+                            <span class="px-3 py-1 bg-purple-50 text-purple-700 text-sm rounded">Product Design</span>
+                            <span class="px-3 py-1 bg-orange-50 text-orange-700 text-sm rounded">Consulting</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-sm text-blue-600 hover:text-blue-700">
+                            View testimonials →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Item 5 - Academic/Research -->
+            <div class="accordion-item border border-gray-200 rounded-lg bg-white">
+                <button class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleAccordion(5)">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="text-lg font-medium">Research Assistant @ Stanford HCI Lab</span>
+                            <span class="px-2 py-1 bg-gray-200 text-gray-800 text-xs rounded-full">Full-time</span>
+                        </div>
+                        <div class="text-sm text-gray-600">Sep 2018 — May 2019</div>
+                    </div>
+                    <svg class="chevron w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <polyline points="9,18 15,12 9,6"></polyline>
+                    </svg>
+                </button>
+                <div class="accordion-content" id="content-5">
+                    <div class="px-6 pb-6 border-t border-gray-100">
+                        <p class="text-gray-700 mb-4 mt-4">
+                            Conducted research on human-computer interaction patterns and accessibility in mobile interfaces. Contributed to publications on inclusive design methodologies.
+                        </p>
+                        <div class="mb-4">
+                            <h4 class="font-medium text-gray-900 mb-2">Research Contributions</h4>
+                            <ul class="space-y-1 text-sm text-gray-700">
+                                <li>• Co-authored 2 papers published in CHI and UIST conferences</li>
+                                <li>• Designed and conducted user studies with 100+ participants</li>
+                                <li>• Developed accessibility testing framework for mobile apps</li>
+                                <li>• Presented findings at 3 international HCI conferences</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded">HCI Research</span>
+                            <span class="px-3 py-1 bg-blue-50 text-blue-700 text-sm rounded">User Studies</span>
+                            <span class="px-3 py-1 bg-purple-50 text-purple-700 text-sm rounded">Accessibility</span>
+                            <span class="px-3 py-1 bg-orange-50 text-orange-700 text-sm rounded">Data Analysis</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-sm text-blue-600 hover:text-blue-700">
+                            View publications →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <script>
+        let isDark = false;
+        
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const chevron = content.previousElementSibling.querySelector('.chevron');
+            
+            // Close all other accordions
+            document.querySelectorAll('.accordion-content').forEach(item => {
+                if (item.id !== `content-${id}`) {
+                    item.classList.remove('open');
+                    const otherChevron = item.previousElementSibling.querySelector('.chevron');
+                    otherChevron.classList.remove('rotated');
+                }
+            });
+            
+            // Toggle current accordion
+            content.classList.toggle('open');
+            chevron.classList.toggle('rotated');
+        }
+        
+        function toggleTheme() {
+            isDark = !isDark;
+            const body = document.getElementById('body');
+            const themeToggle = document.getElementById('theme-toggle');
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            const headers = document.querySelectorAll('.accordion-header');
+            
+            if (isDark) {
+                // Dark theme
+                body.className = 'bg-gray-900 text-gray-100';
+                themeToggle.innerHTML = '☀️';
+                themeToggle.className = 'p-2 rounded-lg bg-gray-800 border border-gray-700 text-gray-300 hover:bg-gray-700 transition-colors';
+                
+                accordionItems.forEach(item => {
+                    item.className = item.className.replace('border-gray-200 bg-white', 'border-gray-700 bg-gray-800');
+                });
+                
+                headers.forEach(header => {
+                    header.className = header.className.replace('hover:bg-gray-50', 'hover:bg-gray-700');
+                });
+                
+                // Update text colors
+                document.querySelectorAll('.text-gray-600').forEach(el => {
+                    el.classList.remove('text-gray-600');
+                    el.classList.add('text-gray-400');
+                });
+                
+                document.querySelectorAll('.text-gray-700').forEach(el => {
+                    el.classList.remove('text-gray-700');
+                    el.classList.add('text-gray-300');
+                });
+                
+                document.querySelectorAll('.text-gray-900').forEach(el => {
+                    el.classList.remove('text-gray-900');
+                    el.classList.add('text-gray-100');
+                });
+                
+                document.querySelectorAll('.border-gray-100').forEach(el => {
+                    el.classList.remove('border-gray-100');
+                    el.classList.add('border-gray-700');
+                });
+                
+            } else {
+                // Light theme
+                body.className = 'bg-gray-50 text-gray-900';
+                themeToggle.innerHTML = '🌙';
+                themeToggle.className = 'p-2 rounded-lg bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors';
+                
+                accordionItems.forEach(item => {
+                    item.className = item.className.replace('border-gray-700 bg-gray-800', 'border-gray-200 bg-white');
+                });
+                
+                headers.forEach(header => {
+                    header.className = header.className.replace('hover:bg-gray-700', 'hover:bg-gray-50');
+                });
+                
+                // Update text colors back
+                document.querySelectorAll('.text-gray-400').forEach(el => {
+                    if (!el.classList.contains('text-gray-400')) return;
+                    el.classList.remove('text-gray-400');
+                    el.classList.add('text-gray-600');
+                });
+                
+                document.querySelectorAll('.text-gray-300').forEach(el => {
+                    if (!el.classList.contains('text-gray-300')) return;
+                    el.classList.remove('text-gray-300');
+                    el.classList.add('text-gray-700');
+                });
+                
+                document.querySelectorAll('.text-gray-100').forEach(el => {
+                    if (!el.classList.contains('text-gray-100')) return;
+                    el.classList.remove('text-gray-100');
+                    el.classList.add('text-gray-900');
+                });
+                
+                document.querySelectorAll('.border-gray-700').forEach(el => {
+                    if (!el.classList.contains('border-gray-700')) return;
+                    el.classList.remove('border-gray-700');
+                    el.classList.add('border-gray-100');
+                });
+            }
+        }
+    </script>
+    
+</body>
+</html>

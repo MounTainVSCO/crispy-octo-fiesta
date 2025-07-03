@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Portfolio - Digital Syllabus</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --navy: #2c3e50;
+            --oxblood: #8b2635;
+            --text-dark: #2c2c2c;
+            --text-medium: #555;
+            --text-light: #777;
+            --border: #e1e5e9;
+            --accent: #1a365d;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Fixed Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--navy);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--navy);
+            transition: width 0.3s ease;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 40px 60px;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 80px;
+            padding-bottom: 60px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .hero h1 {
+            font-family: 'EB Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .hero .subtitle {
+            font-style: italic;
+            color: var(--text-medium);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .hero .tagline {
+            font-style: italic;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Course Description */
+        .course-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-medium);
+            font-style: italic;
+            text-align: justify;
+        }
+
+        /* Publications */
+        .publication {
+            margin-bottom: 25px;
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .publication:last-child {
+            border-bottom: none;
+        }
+
+        .publication h3 {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .publication h3 a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .publication h3 a:hover {
+            border-bottom-color: var(--navy);
+        }
+
+        .publication .authors {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .publication .venue {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .publication .description {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Research Interests */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .interest-item {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .interest-item::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--navy);
+            font-size: 0.8rem;
+        }
+
+        /* Projects/Assignments */
+        .assignment {
+            margin-bottom: 30px;
+            padding: 25px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .assignment:last-child {
+            border-bottom: none;
+        }
+
+        .assignment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .assignment h3 {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-right: 15px;
+            font-weight: 500;
+        }
+
+        .assignment h3::before {
+            content: '📌 ';
+            margin-right: 8px;
+        }
+
+        .status-tag {
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .status-submitted {
+            background: #e8f5e8;
+            color: #2d5a2d;
+        }
+
+        .status-progress {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .assignment .summary {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .assignment .link {
+            color: var(--navy);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .assignment .link:hover {
+            border-bottom-color: var(--navy);
+        }
+
+        /* Office Hours */
+        .office-hours {
+            background: var(--light-gray);
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .office-hours-intro {
+            font-style: italic;
+            color: var(--text-medium);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .contact-list {
+            list-style: none;
+            margin: 0;
+        }
+
+        .contact-list li {
+            margin-bottom: 8px;
+        }
+
+        .contact-list a {
+            color: var(--navy);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-list a:hover {
+            border-bottom-color: var(--navy);
+        }
+
+        /* Course Calendar */
+        .calendar-item {
+            display: flex;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .calendar-week {
+            font-weight: 500;
+            color: var(--navy);
+            min-width: 80px;
+            margin-right: 20px;
+        }
+
+        .calendar-event {
+            color: var(--text-medium);
+        }
+
+        /* CV Download */
+        .cv-download {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .cv-link {
+            display: inline-block;
+            color: var(--navy);
+            text-decoration: none;
+            font-size: 1rem;
+            border: 1px solid var(--navy);
+            padding: 12px 24px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .cv-link:hover {
+            background: var(--navy);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 80px 20px 40px;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .assignment-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .assignment h3 {
+                margin-bottom: 8px;
+            }
+        }
+
+        .note {
+            background: #f5f5f5;
+            color: #333;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            border-left: 4px solid #888;
+        }
+        
+        .info {
+            background: #f0f0f0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#description">Course Description</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Office Hours</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Dr. Elena Rodriguez</h1>
+            <p class="subtitle">Academic Portfolio / Digital Syllabus</p>
+            <p class="tagline">"Still learning. Always revising."</p>
+        </section>
+
+        <!-- Course Description -->
+        <section class="section" id="description">
+            <h2>Course Description</h2>
+            <p class="course-description">
+                This syllabus serves as a portfolio of my academic work, research interests, and intellectual journey in cognitive science and human-computer interaction. Please feel free to explore the sections below or contact me for a full CV. My work investigates how digital interfaces shape human cognition and decision-making processes.
+            </p>
+        </section>
+
+        <!-- Required Readings / Publications -->
+        <section class="section" id="publications">
+            <h2>Required Readings / Publications</h2>
+            
+            <div class="publication">
+                <h3><a href="#">Cognitive Load in Digital Interfaces: A Framework for Ethical Design</a></h3>
+                <p class="authors">Elena Rodriguez, Michael Chen, Sarah Thompson</p>
+                <p class="venue">CHI '24: Proceedings of the ACM Conference on Human Factors, 2024</p>
+                <p class="description">Explores how interface complexity affects decision-making quality and proposes ethical guidelines for reducing cognitive burden in digital products.</p>
+            </div>
+
+            <div class="publication">
+                <h3><a href="#">Attention Economics and User Agency in Social Media Platforms</a></h3>
+                <p class="authors">Elena Rodriguez</p>
+                <p class="venue">Journal of Digital Ethics, Vol. 3, No. 2, 2023</p>
+                <p class="description">Investigates the tension between platform engagement strategies and user autonomy, with implications for regulatory frameworks.</p>
+            </div>
+
+            <div class="publication">
+                <h3><a href="#">Memory Formation in Digital Environments: Implications for Learning Design</a></h3>
+                <p class="authors">Elena Rodriguez, David Park, Lisa Wang</p>
+                <p class="venue">Computers & Education, 2023</p>
+                <p class="description">Examines how digital interface design influences memory consolidation and retention in educational contexts.</p>
+            </div>
+
+            <div class="publication">
+                <h3><a href="#">The Ethics of Persuasive Design: A Cognitive Science Perspective</a></h3>
+                <p class="authors">Elena Rodriguez, Alex Johnson</p>
+                <p class="venue">ACM Transactions on Computer-Human Interaction, 2022</p>
+                <p class="description">Analyzes the ethical implications of design patterns that leverage cognitive biases to influence user behavior.</p>
+            </div>
+        </section>
+
+        <!-- Topics Covered / Research Interests -->
+        <section class="section" id="research">
+            <h2>Topics Covered / Research Interests</h2>
+            <div class="interests-grid">
+                <div class="interest-item">Cognitive Load Theory</div>
+                <div class="interest-item">Digital Ethics</div>
+                <div class="interest-item">Attention & Memory</div>
+                <div class="interest-item">Persuasive Design</div>
+                <div class="interest-item">Human-AI Interaction</div>
+                <div class="interest-item">Information Architecture</div>
+                <div class="interest-item">Behavioral Economics</div>
+                <div class="interest-item">Interface Psychology</div>
+            </div>
+        </section>
+
+        <!-- Assignments / Projects -->
+        <section class="section" id="projects">
+            <h2>Assignments / Projects</h2>
+
+            <div class="assignment">
+                <div class="assignment-header">
+                    <h3>Ethical Design Assessment Framework</h3>
+                    <span class="status-tag status-submitted">Submitted</span>
+                </div>
+                <p class="summary">
+                    A comprehensive toolkit for evaluating the ethical implications of digital interface decisions. Includes rubrics, case studies, and implementation guidelines for design teams.
+                </p>
+                <a href="#" class="link">View framework documentation →</a>
+            </div>
+
+            <div class="assignment">
+                <div class="assignment-header">
+                    <h3>Cognitive Load Measurement Tool</h3>
+                    <span class="status-tag status-progress">In Progress</span>
+                </div>
+                <p class="summary">
+                    An open-source Python library for researchers to quantify cognitive load in digital interfaces using eye-tracking data and behavioral metrics.
+                </p>
+                <a href="#" class="link">GitHub repository →</a>
+            </div>
+
+            <div class="assignment">
+                <div class="assignment-header">
+                    <h3>Attention Economy White Paper</h3>
+                    <span class="status-tag status-submitted">Submitted</span>
+                </div>
+                <p class="summary">
+                    Policy recommendations for regulating attention-capture mechanisms in social media and digital platforms, informed by cognitive science research.
+                </p>
+                <a href="#" class="link">Read white paper →</a>
+            </div>
+
+            <div class="assignment">
+                <div class="assignment-header">
+                    <h3>Memory-Friendly Learning Interface</h3>
+                    <span class="status-tag status-progress">In Progress</span>
+                </div>
+                <p class="summary">
+                    Prototype educational interface designed using cognitive principles to optimize information retention and recall. Currently in user testing phase.
+                </p>
+                <a href="#" class="link">View Figma prototype →</a>
+            </div>
+        </section>
+
+        <!-- Course Calendar -->
+        <section class="section" id="calendar">
+            <h2>Course Calendar</h2>
+            
+            <div class="calendar-item">
+                <div class="calendar-week">Sep 2024:</div>
+                <div class="calendar-event">CHI Conference presentation, Hamburg</div>
+            </div>
+            <div class="calendar-item">
+                <div class="calendar-week">Nov 2024:</div>
+                <div class="calendar-event">Ethics in AI symposium keynote, MIT</div>
+            </div>
+            <div class="calendar-item">
+                <div class="calendar-week">Jan 2025:</div>
+                <div class="calendar-event">Research sabbatical begins, Oxford</div>
+            </div>
+            <div class="calendar-item">
+                <div class="calendar-week">Mar 2025:</div>
+                <div class="calendar-event">Journal paper submission deadline</div>
+            </div>
+            <div class="calendar-item">
+                <div class="calendar-week">May 2025:</div>
+                <div class="calendar-event">Digital Ethics workshop, Stanford</div>
+            </div>
+        </section>
+
+        <!-- Office Hours / Contact -->
+        <section class="section" id="contact">
+            <h2>Office Hours</h2>
+            <div class="office-hours">
+                <p class="office-hours-intro">
+                    You can find me in inboxes, across time zones, and occasionally on campus. 
+                    I welcome thoughtful correspondence about research collaborations, 
+                    speaking opportunities, or questions about cognitive science and design ethics.
+                </p>
+                <ul class="contact-list">
+                    <li><strong>Email:</strong> <a href="mailto:elena.rodriguez@university.edu">elena.rodriguez@university.edu</a></li>
+                    <li><strong>LinkedIn:</strong> <a href="#">/in/elena-rodriguez-cogsci</a></li>
+                    <li><strong>Google Scholar:</strong> <a href="#">Elena Rodriguez Publications</a></li>
+                    <li><strong>Twitter:</strong> <a href="#">@elena_cogsci</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CV Download -->
+        <section class="cv-download">
+            <a href="#" class="cv-link">Download Full CV →</a>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active state to navigation based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop <= 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

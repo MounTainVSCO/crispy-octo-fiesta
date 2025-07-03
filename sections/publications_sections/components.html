@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications Section Components</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="bg-gray-50 font-inter">
+    
+    <!-- Publications 1: Clean List View -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-white border border-gray-200 rounded-lg">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6">Publications</h2>
+        <div class="space-y-6">
+            <div class="border-b border-gray-100 pb-6 last:border-b-0">
+                <h3 class="text-lg font-medium text-gray-900 mb-2 hover:text-gray-600 cursor-pointer">
+                    Designing for Accessibility: A Comprehensive Guide to Inclusive UX
+                </h3>
+                <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                    <span>UX Magazine</span>
+                    <span>•</span>
+                    <span>March 2024</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed text-sm">
+                    An in-depth exploration of accessibility principles in digital design, covering WCAG guidelines, 
+                    testing methodologies, and real-world implementation strategies.
+                </p>
+            </div>
+            
+            <div class="border-b border-gray-100 pb-6 last:border-b-0">
+                <h3 class="text-lg font-medium text-gray-900 mb-2 hover:text-gray-600 cursor-pointer">
+                    The Evolution of Design Systems: From Atoms to Ecosystems
+                </h3>
+                <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                    <span>Medium</span>
+                    <span>•</span>
+                    <span>January 2024</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed text-sm">
+                    Analyzing the transformation of design systems from simple style guides to comprehensive 
+                    design ecosystems, with case studies from major tech companies.
+                </p>
+            </div>
+            
+            <div class="border-b border-gray-100 pb-6 last:border-b-0">
+                <h3 class="text-lg font-medium text-gray-900 mb-2 hover:text-gray-600 cursor-pointer">
+                    User Research in Remote Teams: Maintaining Quality Insights
+                </h3>
+                <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                    <span>Design Better</span>
+                    <span>•</span>
+                    <span>November 2023</span>
+                </div>
+                <p class="text-gray-600 leading-relaxed text-sm">
+                    Practical strategies for conducting effective user research in distributed teams, including 
+                    tool recommendations and methodology adaptations.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications 2: Card Grid -->
+    <section class="max-w-4xl mx-auto p-8 mb-12">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6">Recent Writing</h2>
+        <div class="grid gap-4">
+            <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-sm transition-shadow">
+                <div class="flex justify-between items-start mb-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-6 h-6 bg-gray-100 rounded flex items-center justify-center">
+                            <i class="fab fa-medium text-gray-600 text-sm"></i>
+                        </div>
+                        <span class="text-sm text-gray-500">Medium • February 2024</span>
+                    </div>
+                    <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Product</span>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900 mb-3">
+                    Building Product Culture: Lessons from 5 Years at Meta
+                </h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                    How to foster a product-driven mindset across engineering, design, and business teams. 
+                    Real examples from launching major features and optimizing core algorithms.
+                </p>
+                <div class="flex justify-between items-center">
+                    <span class="text-xs text-gray-500">8 min read</span>
+                    <button class="text-gray-600 hover:text-gray-900 text-sm">
+                        Read →
+                    </button>
+                </div>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-sm transition-shadow">
+                <div class="flex justify-between items-start mb-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-6 h-6 bg-gray-100 rounded flex items-center justify-center">
+                            <i class="fas fa-file-alt text-gray-600 text-sm"></i>
+                        </div>
+                        <span class="text-sm text-gray-500">Substack • January 2024</span>
+                    </div>
+                    <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Leadership</span>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900 mb-3">
+                    The Async Product Manager: Leading Without Meetings
+                </h3>
+                <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                    A framework for managing products and teams in async-first environments. Tools, processes, 
+                    and communication strategies that scale across time zones.
+                </p>
+                <div class="flex justify-between items-center">
+                    <span class="text-xs text-gray-500">12 min read</span>
+                    <button class="text-gray-600 hover:text-gray-900 text-sm">
+                        Read →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications 3: Academic Format -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-white border border-gray-200 rounded-lg">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6">Research Publications</h2>
+        <div class="space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">
+                        Machine Learning Approaches to Personalized Content Recommendation Systems
+                    </h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        This paper presents a comprehensive survey of machine learning techniques for content 
+                        recommendation systems, with a focus on deep learning approaches and their application 
+                        to personalization at scale. We analyze performance metrics across 15 different algorithms.
+                    </p>
+                </div>
+                <div>
+                    <div class="text-sm text-gray-500 space-y-1">
+                        <p><span class="font-medium">Journal:</span> ACM Computing Surveys</p>
+                        <p><span class="font-medium">Date:</span> December 2023</p>
+                        <p><span class="font-medium">Authors:</span> Chen, L., Rodriguez, M., Kumar, A.</p>
+                        <p><span class="font-medium">DOI:</span> 10.1145/3567890.123456</p>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <button class="bg-gray-900 text-white px-3 py-1.5 rounded text-xs hover:bg-gray-800">
+                            PDF
+                        </button>
+                        <button class="border border-gray-300 text-gray-700 px-3 py-1.5 rounded text-xs hover:bg-gray-50">
+                            Cite
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2">
+                        <h3 class="text-lg font-medium text-gray-900 mb-3">
+                            Ethical Considerations in AI-Driven User Interface Design
+                        </h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            An examination of ethical frameworks for AI-powered interface design, focusing on 
+                            transparency, user agency, and bias mitigation. We conducted interviews with 120 
+                            designers and engineers to understand current practices.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="text-sm text-gray-500 space-y-1">
+                            <p><span class="font-medium">Conference:</span> CHI 2023</p>
+                            <p><span class="font-medium">Date:</span> April 2023</p>
+                            <p><span class="font-medium">Authors:</span> Chen, L., Williams, S.</p>
+                            <p><span class="font-medium">Citations:</span> 47</p>
+                        </div>
+                        <div class="flex gap-2 mt-4">
+                            <button class="bg-gray-900 text-white px-3 py-1.5 rounded text-xs hover:bg-gray-800">
+                                PDF
+                            </button>
+                            <button class="border border-gray-300 text-gray-700 px-3 py-1.5 rounded text-xs hover:bg-gray-50">
+                                Cite
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications 4: Minimal Article List -->
+    <section class="max-w-4xl mx-auto p-8 mb-12">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6">Articles</h2>
+        <div class="bg-white border border-gray-200 rounded-lg divide-y divide-gray-200">
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">
+                            Why Every Product Team Needs a Design Ops Function
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            After scaling design teams at three different startups, I've learned that design operations 
+                            isn't a luxury—it's essential for maintaining quality and velocity as you grow.
+                        </p>
+                        <div class="flex items-center gap-4 text-xs text-gray-500">
+                            <span>Medium</span>
+                            <span>March 15, 2024</span>
+                            <span>7 min read</span>
+                        </div>
+                    </div>
+                    <button class="ml-4 text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">
+                            The Hidden Cost of Poor Onboarding UX
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            A data-driven analysis of how onboarding experience impacts user retention, featuring 
+                            case studies from 50+ SaaS companies and actionable improvement strategies.
+                        </p>
+                        <div class="flex items-center gap-4 text-xs text-gray-500">
+                            <span>LinkedIn</span>
+                            <span>February 28, 2024</span>
+                            <span>5 min read</span>
+                        </div>
+                    </div>
+                    <button class="ml-4 text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="p-6">
+                <div class="flex justify-between items-start">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">
+                            Building Accessible Components from Day One
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Practical guidelines for integrating accessibility into your component library workflow, 
+                            with code examples and testing strategies that scale.
+                        </p>
+                        <div class="flex items-center gap-4 text-xs text-gray-500">
+                            <span>A List Apart</span>
+                            <span>January 12, 2024</span>
+                            <span>10 min read</span>
+                        </div>
+                    </div>
+                    <button class="ml-4 text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications 5: Featured + Archive Style -->
+    <section class="max-w-4xl mx-auto p-8 mb-12">
+        <div class="bg-white border border-gray-200 rounded-lg p-8 mb-6">
+            <div class="flex items-start gap-4 mb-4">
+                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">Featured</span>
+                <span class="text-sm text-gray-500">Design Systems Weekly • March 2024</span>
+            </div>
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+                The Future of Design Systems: AI-Generated Components
+            </h2>
+            <p class="text-gray-600 leading-relaxed mb-6">
+                Exploring how artificial intelligence will transform design systems, from automated component 
+                generation to context-aware theming that adapts to user preferences and accessibility needs.
+            </p>
+            <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">12 min read</span>
+                <button class="bg-gray-900 text-white px-4 py-2 rounded text-sm hover:bg-gray-800">
+                    Read Article
+                </button>
+            </div>
+        </div>
+        
+        <div>
+            <h3 class="text-lg font-medium text-gray-900 mb-4">More Articles</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-medium text-gray-900 mb-2">Designing for Voice Interfaces</h4>
+                    <p class="text-sm text-gray-600 mb-2">UX Collective • February 2024</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-medium text-gray-900 mb-2">Micro-Interactions That Matter</h4>
+                    <p class="text-sm text-gray-600 mb-2">Smashing Magazine • January 2024</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-medium text-gray-900 mb-2">Color Psychology in Digital Products</h4>
+                    <p class="text-sm text-gray-600 mb-2">Adobe XD Ideas • December 2023</p>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h4 class="font-medium text-gray-900 mb-2">Performance-First Design Systems</h4>
+                    <p class="text-sm text-gray-600 mb-2">CSS-Tricks • November 2023</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications 6: Notion-Style Layout -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-white border border-gray-200 rounded-lg font-mono">
+        <h2 class="text-lg font-semibold text-gray-900 mb-6 font-inter">Writing</h2>
+        <div class="space-y-4">
+            <div class="flex items-start gap-4 py-2 hover:bg-gray-50 rounded px-2 -mx-2">
+                <div class="w-4 h-4 mt-1 bg-blue-100 rounded"></div>
+                <div class="flex-1">
+                    <h3 class="font-medium text-gray-900 text-sm">User Research in the Age of Remote Work</h3>
+                    <div class="flex items-center gap-4 text-xs text-gray-500 mt-1">
+                        <span>Harvard Business Review</span>
+                        <span>January 2024</span>
+                        <span>Co-authored</span>
+                    </div>
+                </div>
+                <button class="text-gray-400 hover:text-gray-600 text-xs">
+                    <i class="fas fa-external-link-alt"></i>
+                </button>
+            </div>
+            
+            <div class="flex items-start gap-4 py-2 hover:bg-gray-50 rounded px-2 -mx-2">
+                <div class="w-4 h-4 mt-1 bg-green-100 rounded"></div>
+                <div class="flex-1">
+                    <h3 class="font-medium text-gray-900 text-sm">Scaling Design: From Startup to Enterprise</h3>
+                    <div class="flex items-center gap-4 text-xs text-gray-500 mt-1">
+                        <span>Design Better</span>
+                        <span>March 2024</span>
+                        <span>Featured</span>
+                    </div>
+                </div>
+                <button class="text-gray-400 hover:text-gray-600 text-xs">
+                    <i class="fas fa-external-link-alt"></i>
+                </button>
+            </div>
+            
+            <div class="flex items-start gap-4 py-2 hover:bg-gray-50 rounded px-2 -mx-2">
+                <div class="w-4 h-4 mt-1 bg-purple-100 rounded"></div>
+                <div class="flex-1">
+                    <h3 class="font-medium text-gray-900 text-sm">The Complete Guide to Design Tokens</h3>
+                    <div class="flex items-center gap-4 text-xs text-gray-500 mt-1">
+                        <span>UX Magazine</span>
+                        <span>February 2024</span>
+                        <span>Tutorial</span>
+                    </div>
+                </div>
+                <button class="text-gray-400 hover:text-gray-600 text-xs">
+                    <i class="fas fa-external-link-alt"></i>
+                </button>
+            </div>
+            
+            <div class="flex items-start gap-4 py-2 hover:bg-gray-50 rounded px-2 -mx-2">
+                <div class="w-4 h-4 mt-1 bg-orange-100 rounded"></div>
+                <div class="flex-1">
+                    <h3 class="font-medium text-gray-900 text-sm">Building Empathy Through User Interviews</h3>
+                    <div class="flex items-center gap-4 text-xs text-gray-500 mt-1">
+                        <span>Medium</span>
+                        <span>January 2024</span>
+                        <span>Research</span>
+                    </div>
+                </div>
+                <button class="text-gray-400 hover:text-gray-600 text-xs">
+                    <i class="fas fa-external-link-alt"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications 7: Timeline Layout -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-white border border-gray-200 rounded-lg">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6">Publication History</h2>
+        
+        <div class="space-y-8">
+            <div>
+                <h3 class="text-sm font-medium text-gray-500 mb-4 uppercase tracking-wide">2024</h3>
+                <div class="space-y-4">
+                    <div class="flex gap-4">
+                        <div class="text-sm text-gray-500 min-w-16">Mar</div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">AI-Powered Design Tools: Enhancing Creativity</h4>
+                            <p class="text-sm text-gray-600">Design Systems Weekly</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-sm text-gray-500 min-w-16">Feb</div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">The Psychology of Color in Digital Products</h4>
+                            <p class="text-sm text-gray-600">Adobe XD Ideas</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-sm text-gray-500 min-w-16">Jan</div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Building Accessible Form Interactions</h4>
+                            <p class="text-sm text-gray-600">A List Apart</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-6">
+                <h3 class="text-sm font-medium text-gray-500 mb-4 uppercase tracking-wide">2023</h3>
+                <div class="space-y-4">
+                    <div class="flex gap-4">
+                        <div class="text-sm text-gray-500 min-w-16">Dec</div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Modern CSS Layout Patterns for Components</h4>
+                            <p class="text-sm text-gray-600">CSS-Tricks</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-sm text-gray-500 min-w-16">Nov</div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Performance-First Design Systems</h4>
+                            <p class="text-sm text-gray-600">Smashing Magazine</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-sm text-gray-500 min-w-16">Oct</div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">User Research Methods for Remote Teams</h4>
+                            <p class="text-sm text-gray-600">UX Collective</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications 8: Table Format -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-white border border-gray-200 rounded-lg">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6">Publications</h2>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="border-b border-gray-200">
+                        <th class="text-left py-3 font-medium text-gray-900">Title</th>
+                        <th class="text-left py-3 font-medium text-gray-900">Platform</th>
+                        <th class="text-left py-3 font-medium text-gray-900">Date</th>
+                        <th class="text-left py-3 font-medium text-gray-900">Type</th>
+                        <th class="text-right py-3 font-medium text-gray-900"></th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-4 font-medium text-gray-900">
+                            Machine Learning for Content Recommendations
+                        </td>
+                        <td class="py-4 text-gray-600">ACM Computing Surveys</td>
+                        <td class="py-4 text-gray-600">Dec 2023</td>
+                        <td class="py-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Research</span>
+                        </td>
+                        <td class="py-4 text-right">
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-4 font-medium text-gray-900">
+                            Ethical AI in Interface Design
+                        </td>
+                        <td class="py-4 text-gray-600">CHI 2023</td>
+                        <td class="py-4 text-gray-600">Apr 2023</td>
+                        <td class="py-4">
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Conference</span>
+                        </td>
+                        <td class="py-4 text-right">
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-4 font-medium text-gray-900">
+                            Design Systems at Scale
+                        </td>
+                        <td class="py-4 text-gray-600">Medium</td>
+                        <td class="py-4 text-gray-600">Mar 2024</td>
+                        <td class="py-4">
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Article</span>
+                        </td>
+                        <td class="py-4 text-right">
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="py-4 font-medium text-gray-900">
+                            Accessibility in Modern Web Apps
+                        </td>
+                        <td class="py-4 text-gray-600">A List Apart</td>
+                        <td class="py-4 text-gray-600">Jan 2024</td>
+                        <td class="py-4">
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Tutorial</span>
+                        </td>
+                        <td class="py-4 text-right">
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Publications 9: Dark Theme Minimal -->
+    <section class="max-w-4xl mx-auto p-8 mb-12 bg-gray-950 text-white border border-gray-800 rounded-lg">
+        <h2 class="text-xl font-semibold mb-6">Publications</h2>
+        <div class="space-y-6">
+            <div class="border-l-2 border-gray-700 pl-4 hover:border-gray-500 transition-colors">
+                <h3 class="text-lg font-medium text-white mb-2">
+                    The Future of Design Systems
+                </h3>
+                <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+                    <span>Design Systems Weekly</span>
+                    <span>•</span>
+                    <span>March 2024</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Exploring how AI and machine learning will reshape how we build and maintain design systems.
+                </p>
+            </div>
+            
+            <div class="border-l-2 border-gray-700 pl-4 hover:border-gray-500 transition-colors">
+                <h3 class="text-lg font-medium text-white mb-2">
+                    Performance Optimization in React Components
+                </h3>
+                <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+                    <span>Dev.to</span>
+                    <span>•</span>
+                    <span>February 2024</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    Practical techniques for optimizing React performance, from memo to useMemo and beyond.
+                </p>
+            </div>
+            
+            <div class="border-l-2 border-gray-700 pl-4 hover:border-gray-500 transition-colors">
+                <h3 class="text-lg font-medium text-white mb-2">
+                    Building Design Tokens That Scale
+                </h3>
+                <div class="flex items-center gap-3 text-sm text-gray-400 mb-2">
+                    <span>CSS-Tricks</span>
+                    <span>•</span>
+                    <span>January 2024</span>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed">
+                    A comprehensive guide to implementing design tokens across platforms and teams.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications 10: Compact Grid -->
+    <section class="max-w-4xl mx-auto p-8 mb-12">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6">Writing Portfolio</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+                <h3 class="font-medium text-gray-900 mb-2 text-sm">
+                    User Research Methods for Remote Teams
+                </h3>
+                <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                    <span>UX Collective</span>
+                    <span>•</span>
+                    <span>Mar 2024</span>
+                </div>
+                <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">Research</span>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+                <h3 class="font-medium text-gray-900 mb-2 text-sm">
+                    CSS Container Queries in Practice
+                </h3>
+                <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                    <span>Smashing Magazine</span>
+                    <span>•</span>
+                    <span>Feb 2024</span>
+                </div>
+                <span class="bg-green-50 text-green-700 px-2 py-1 rounded text-xs">Tutorial</span>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+                <h3 class="font-medium text-gray-900 mb-2 text-sm">
+                    Accessible Color Systems
+                </h3>
+                <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                    <span>A List Apart</span>
+                    <span>•</span>
+                    <span>Jan 2024</span>
+                </div>
+                <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded text-xs">Guide</span>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+                <h3 class="font-medium text-gray-900 mb-2 text-sm">
+                    Product Strategy in Remote Teams
+                </h3>
+                <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                    <span>Medium</span>
+                    <span>•</span>
+                    <span>Dec 2023</span>
+                </div>
+                <span class="bg-orange-50 text-orange-700 px-2 py-1 rounded text-xs">Strategy</span>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+                <h3 class="font-medium text-gray-900 mb-2 text-sm">
+                    Micro-interactions in Design Systems
+                </h3>
+                <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                    <span>Design Better</span>
+                    <span>•</span>
+                    <span>Nov 2023</span>
+                </div>
+                <span class="bg-pink-50 text-pink-700 px-2 py-1 rounded text-xs">Design</span>
+            </div><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Chen - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Profile Section -->
+    <section class="bg-white border-b border-gray-200">
+        <div class="max-w-4xl mx-auto px-6 py-12">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                <div class="w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex-shrink-0 flex items-center justify-center text-white text-3xl font-bold">
+                    AC
+                </div>
+                <div class="text-center md:text-left flex-1">
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Alex Chen</h1>
+                    <p class="text-xl text-blue-600 font-medium mb-4">Aspiring UX Designer</p>
+                    <p class="text-gray-600 leading-relaxed mb-6 max-w-2xl">
+                        Recent HCI graduate passionate about creating inclusive digital experiences. I love solving complex problems through user research and thoughtful design. Currently diving deep into accessibility and design systems.
+                    </p>
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 inline-block">
+                        <p class="text-blue-800 font-medium">
+                            🎯 Currently seeking UX design internships and entry-level positions
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="max-w-4xl mx-auto px-6 py-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8">Skills & Tools</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Design Tools</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-white border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 flex items-center gap-2">
+                        <i class="fab fa-figma text-purple-600"></i>
+                        Figma
+                    </span>
+                    <span class="bg-white border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 flex items-center gap-2">
+                        <i class="fas fa-palette text-blue-600"></i>
+                        Adobe XD
+                    </span>
+                    <span class="bg-white border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 flex items-center gap-2">
+                        <i class="fas fa-pencil-ruler text-orange-600"></i>
+                        Sketch
+                    </span>
+                    <span class="bg-white border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 flex items-center gap-2">
+                        <i class="fas fa-play text-red-600"></i>
+                        Principle
+                    </span>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Research & Analysis</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-white border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium text-gray-700">
+                        User Interviews
+                    </span>
+                    <span class="bg-white border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium text-gray-700">
+                        Usability Testing
+                    </span>
+                    <span class="bg-white border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium text-gray-700">
+                        Persona Development
+                    </span>
+                    <span class="bg-white border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium text-gray-700">
+                        Journey Mapping
+                    </span>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Technical Skills</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-white border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 flex items-center gap-2">
+                        <i class="fab fa-html5 text-orange-600"></i>
+                        HTML/CSS
+                    </span>
+                    <span class="bg-white border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 flex items-center gap-2">
+                        <i class="fab fa-js text-yellow-600"></i>
+                        JavaScript
+                    </span>
+                    <span class="bg-white border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium text-gray-700">
+                        Responsive Design
+                    </span>
+                    <span class="bg-white border border-gray-200 px-3 py-2 rounded-lg text-sm font-medium text-gray-700">
+                        Accessibility (WCAG)
+                    </span>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Soft Skills</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-blue-50 border border-blue-200 px-3 py-2 rounded-lg text-sm font-medium text-blue-800">
+                        Collaboration
+                    </span>
+                    <span class="bg-green-50 border border-green-200 px-3 py-2 rounded-lg text-sm font-medium text-green-800">
+                        Problem Solving
+                    </span>
+                    <span class="bg-purple-50 border border-purple-200 px-3 py-2 rounded-lg text-sm font-medium text-purple-800">
+                        Empathy
+                    </span>
+                    <span class="bg-orange-50 border border-orange-200 px-3 py-2 rounded-lg text-sm font-medium text-orange-800">
+                        Communication
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="bg-white py-12">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Projects</h2>
+            <div class="grid gap-8">
+                <!-- Project 1 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="bg-gradient-to-r from-blue-100 to-purple-100 h-48 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-mobile-alt text-4xl text-gray-600 mb-2"></i>
+                            <p class="text-gray-600 font-medium">Mobile App Mockup</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900">EcoTrack - Sustainability App</h3>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">Class Project</span>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Designed a mobile app to help college students track their environmental impact. Conducted user research with 20+ students, created personas, and developed a complete design system. Focus on gamification and social features to encourage sustainable behaviors.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Figma</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">User Research</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Prototyping</span>
+                            </div>
+                            <button class="text-blue-600 hover:text-blue-800 font-medium text-sm">
+                                View Case Study →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="bg-gradient-to-r from-orange-100 to-pink-100 h-48 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-desktop text-4xl text-gray-600 mb-2"></i>
+                            <p class="text-gray-600 font-medium">Website Redesign</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900">Local Library Website Redesign</h3>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">Volunteer Work</span>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Redesigned the user experience for my local library's website to improve book discovery and event registration. Conducted accessibility audit and implemented WCAG 2.1 guidelines. Result: 40% increase in online event registrations.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">HTML/CSS</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Accessibility</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">WordPress</span>
+                            </div>
+                            <button class="text-blue-600 hover:text-blue-800 font-medium text-sm">
+                                View Project →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="bg-gradient-to-r from-green-100 to-teal-100 h-48 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-chart-bar text-4xl text-gray-600 mb-2"></i>
+                            <p class="text-gray-600 font-medium">Data Visualization</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold text-gray-900">Campus Mental Health Dashboard</h3>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs font-medium">Capstone Project</span>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed mb-4">
+                            Created an interactive dashboard for campus counseling services to visualize student mental health trends. Collaborated with psychology department and IT to ensure data privacy while providing actionable insights for resource allocation.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex gap-2">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">D3.js</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Data Analysis</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Privacy Design</span>
+                            </div>
+                            <button class="text-blue-600 hover:text-blue-800 font-medium text-sm">
+                                View Case Study →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="max-w-4xl mx-auto px-6 py-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8">Education</h2>
+        <div class="bg-white border border-gray-200 rounded-lg p-6">
+            <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-graduation-cap text-blue-600"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900">Bachelor of Science in Human-Computer Interaction</h3>
+                    <p class="text-blue-600 font-medium mb-2">University of Washington • 2020-2024</p>
+                    <p class="text-gray-600 mb-4">
+                        Relevant Coursework: User Interface Design, Usability Testing, Information Architecture, 
+                        Research Methods, Psychology of HCI, Accessible Design
+                    </p>
+                    <div class="flex items-center gap-4 text-sm">
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded font-medium">GPA: 3.7/4.0</span>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded font-medium">Dean's List 2023</span>
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded font-medium">UX Club President</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="bg-white py-12">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Certifications & Learning</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-orange-100 rounded flex items-center justify-center flex-shrink-0">
+                            <i class="fab fa-google text-orange-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-1">Google UX Design Certificate</h3>
+                            <p class="text-sm text-gray-600 mb-2">Coursera • Completed March 2024</p>
+                            <div class="flex gap-2">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Design Thinking</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Prototyping</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded flex items-center justify-center flex-shrink-0">
+                            <i class="fab fa-figma text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-1">Figma Academy</h3>
+                            <p class="text-sm text-gray-600 mb-2">Figma • Completed January 2024</p>
+                            <div class="flex gap-2">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Design Systems</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Components</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-green-100 rounded flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-universal-access text-green-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-1">Web Accessibility Fundamentals</h3>
+                            <p class="text-sm text-gray-600 mb-2">edX • Completed February 2024</p>
+                            <div class="flex gap-2">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">WCAG 2.1</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Screen Readers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-purple-100 rounded flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-code text-purple-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-1">Responsive Web Design</h3>
+                            <p class="text-sm text-gray-600 mb-2">freeCodeCamp • Completed December 2023</p>
+                            <div class="flex gap-2">
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">CSS Grid</span>
+                                <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">Flexbox</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="max-w-4xl mx-auto px-6 py-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8">About Me</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">What drives me</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    I'm passionate about making technology accessible to everyone. Growing up with a visually impaired grandmother taught me the importance of inclusive design. I believe that good UX isn't just about making things look pretty—it's about making sure everyone can use and benefit from digital products.
+                </p>
+            </div>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">When I'm not designing</h3>
+                <div class="space-y-3 text-gray-600">
+                    <p class="flex items-center gap-3">
+                        <span class="text-lg">🎸</span>
+                        Learning guitar (currently butchering "Wonderwall")
+                    </p>
+                    <p class="flex items-center gap-3">
+                        <span class="text-lg">📚</span>
+                        Reading sci-fi novels and design books
+                    </p>
+                    <p class="flex items-center gap-3">
+                        <span class="text-lg">🥾</span>
+                        Hiking the Pacific Northwest trails
+                    </p>
+                    <p class="flex items-center gap-3">
+                        <span class="text-lg">☕</span>
+                        Perfecting my pour-over coffee technique
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="bg-gray-900 text-white py-12">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">Let's Connect!</h2>
+            <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+                I'm actively looking for UX design internships and entry-level positions where I can grow, 
+                learn, and contribute to meaningful projects. Let's chat about opportunities!
+            </p>
+            
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="mailto:alex.chen@email.com" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-medium transition-colors">
+                    <i class="fas fa-envelope"></i>
+                    alex.chen@email.com
+                </a>
+                <a href="#" class="flex items-center gap-2 border border-gray-600 hover:border-gray-500 px-6 py-3 rounded-lg font-medium transition-colors">
+                    <i class="fas fa-download"></i>
+                    Download Resume
+                </a>
+            </div>
+            
+            <div class="flex justify-center gap-6">
+                <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
+                    <i class="fab fa-linkedin text-xl"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
+                    <i class="fab fa-dribbble text-xl"></i>
+                </a>
+                <a href="#" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
+                    <i class="fab fa-behance text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+            
+            <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+                <h3 class="font-medium text-gray-900 mb-2 text-sm">
+                    TypeScript for Design Systems
+                </h3>
+                <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                    <span>Dev.to</span>
+                    <span>•</span>
+                    <span>Oct 2023</span>
+                </div>
+                <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded text-xs">Technical</span>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

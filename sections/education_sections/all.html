@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Education Components</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 222.2 84% 4.9%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 222.2 84% 4.9%;
+            --primary: 222.2 47.4% 11.2%;
+            --primary-foreground: 210 40% 98%;
+            --secondary: 210 40% 96%;
+            --secondary-foreground: 222.2 84% 4.9%;
+            --muted: 210 40% 96%;
+            --muted-foreground: 215.4 16.3% 46.9%;
+            --accent: 210 40% 96%;
+            --accent-foreground: 222.2 84% 4.9%;
+            --destructive: 0 72.22% 50.59%;
+            --destructive-foreground: 210 40% 98%;
+            --border: 214.3 31.8% 91.4%;
+            --input: 214.3 31.8% 91.4%;
+            --ring: 222.2 84% 4.9%;
+            --radius: 0.5rem;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: hsl(var(--background));
+            color: hsl(var(--foreground));
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.5rem;
+        }
+
+        .page-description {
+            color: hsl(var(--muted-foreground));
+            font-size: 1rem;
+        }
+
+        .components-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .component-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .section-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+        }
+
+        .section-subtitle {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        /* Card Base */
+        .card {
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: calc(var(--radius) + 2px);
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        /* Traditional Education Cards */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .education-card {
+            padding: 2rem;
+        }
+
+        .education-header {
+            display: flex;
+            items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .university-logo {
+            width: 3rem;
+            height: 3rem;
+            border-radius: calc(var(--radius) + 2px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .stanford { background: linear-gradient(135deg, #8C1515, #B83A4B); }
+        .mit { background: linear-gradient(135deg, #A31F34, #8C1515); }
+        .berkeley { background: linear-gradient(135deg, #003262, #3B7EA1); }
+        .harvard { background: linear-gradient(135deg, #A41034, #C90016); }
+        .community { background: linear-gradient(135deg, #2563eb, #3b82f6); }
+
+        .education-info {
+            flex: 1;
+        }
+
+        .degree-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+
+        .university-name {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-period {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 1rem;
+        }
+
+        .education-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            font-weight: 500;
+        }
+
+        .detail-value {
+            font-size: 0.875rem;
+            color: hsl(var(--foreground));
+            font-weight: 500;
+        }
+
+        .coursework-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .course-tag {
+            background: hsl(var(--secondary));
+            color: hsl(var(--secondary-foreground));
+            padding: 0.25rem 0.75rem;
+            border-radius: calc(var(--radius));
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Timeline Layout */
+        .education-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 0.75rem;
+            top: 1rem;
+            bottom: 1rem;
+            width: 2px;
+            background: linear-gradient(to bottom, hsl(var(--primary)), hsl(var(--muted)));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -1.75rem;
+            top: 1.5rem;
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background: hsl(var(--primary));
+            border: 3px solid hsl(var(--background));
+            box-shadow: 0 0 0 2px hsl(var(--border));
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .timeline-main {
+            flex: 1;
+        }
+
+        .timeline-degree {
+            font-size: 1rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-school {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+            font-weight: 500;
+        }
+
+        .timeline-dates {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .timeline-description {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        /* Compact List */
+        .compact-education {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .compact-education-item {
+            padding: 1.25rem;
+            display: flex;
+            items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .compact-education-item:hover {
+            background: hsl(var(--accent));
+        }
+
+        .compact-main {
+            display: flex;
+            items: center;
+            gap: 1rem;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .compact-logo {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .compact-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .compact-degree {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.125rem;
+        }
+
+        .compact-school {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .compact-year {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* Academic Achievement Showcase */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .achievement-card {
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+        }
+
+        .achievement-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .achievement-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-subtitle {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 1rem;
+        }
+
+        .achievement-description {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            line-height: 1.5;
+        }
+
+        /* Skills & Coursework Matrix */
+        .skills-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skills-card {
+            padding: 1.5rem;
+        }
+
+        .skills-header {
+            display: flex;
+            items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+        }
+
+        .skills-info h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.25rem;
+        }
+
+        .skills-info p {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .skills-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .skill-category {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .category-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .category-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        .skill-chip {
+            background: hsl(var(--secondary));
+            color: hsl(var(--secondary-foreground));
+            padding: 0.125rem 0.5rem;
+            border-radius: calc(var(--radius) - 2px);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* GPA & Honors Component */
+        .honors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .honors-card {
+            padding: 1.5rem;
+            border-left: 4px solid hsl(var(--primary));
+        }
+
+        .honors-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .honors-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+        }
+
+        .honors-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: hsl(var(--primary));
+        }
+
+        .honors-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .honor-item {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .honor-item::before {
+            content: '•';
+            color: hsl(var(--primary));
+            font-weight: bold;
+        }
+
+        /* Thesis/Project Spotlight */
+        .project-spotlight {
+            padding: 2rem;
+            background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
+        }
+
+        .project-header {
+            display: flex;
+            items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: calc(var(--radius) + 2px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            flex-shrink: 0;
+        }
+
+        .project-info {
+            flex: 1;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            padding: 0.25rem 0.75rem;
+            border-radius: calc(var(--radius));
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Expandable Curriculum */
+        .curriculum-container {
+            border: 1px solid hsl(var(--border));
+            border-radius: calc(var(--radius) + 2px);
+            overflow: hidden;
+        }
+
+        .curriculum-item {
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .curriculum-item:last-child {
+            border-bottom: none;
+        }
+
+        .curriculum-trigger {
+            width: 100%;
+            padding: 1.25rem;
+            display: flex;
+            items: center;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.2s ease;
+        }
+
+        .curriculum-trigger:hover {
+            background: hsl(var(--accent));
+        }
+
+        .curriculum-main {
+            flex: 1;
+        }
+
+        .curriculum-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.25rem;
+        }
+
+        .curriculum-subtitle {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .curriculum-icon {
+            width: 1rem;
+            height: 1rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .curriculum-content {
+            padding: 0 1.25rem 1.25rem;
+            display: none;
+            background: hsl(var(--accent) / 0.3);
+        }
+
+        .curriculum-content.open {
+            display: block;
+        }
+
+        .curriculum-description {
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .curriculum-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        /* Education Hero Card */
+        .education-hero {
+            padding: 3rem;
+            background: linear-gradient(135deg, hsl(var(--primary) / 0.05), hsl(var(--accent) / 0.1));
+            border: 2px solid hsl(var(--border));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-logo {
+            width: 4rem;
+            height: 4rem;
+            border-radius: calc(var(--radius) + 4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(135deg, #8C1515, #B83A4B);
+        }
+
+        .hero-main {
+            flex: 1;
+        }
+
+        .hero-degree {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-school {
+            font-size: 1rem;
+            color: hsl(var(--muted-foreground));
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .hero-highlight {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+
+        .hero-stat {
+            text-align: right;
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: hsl(var(--primary));
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+            font-weight: 500;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            border: 1px solid transparent;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+
+        .btn-primary {
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+        }
+
+        .btn-primary:hover {
+            background: hsl(var(--primary) / 0.9);
+        }
+
+        .btn-secondary {
+            background: hsl(var(--secondary));
+            color: hsl(var(--secondary-foreground));
+        }
+
+        .btn-secondary:hover {
+            background: hsl(var(--secondary) / 0.8);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: hsl(var(--foreground));
+        }
+
+        .btn-ghost:hover {
+            background: hsl(var(--accent));
+        }
+
+        @media (max-width: 768px) {
+            .education-grid,
+            .achievement-grid,
+            .skills-matrix,
+            .honors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            
+            .hero-stats {
+                align-items: center;
+            }
+            
+            .compact-main {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            
+            .timeline-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">Education</h1>
+            <p class="page-description">Academic background and continuous learning journey</p>
+        </div>
+
+        <div class="components-grid">
+            <!-- Traditional Education Cards -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Detailed Education Cards</h2>
+                    <p class="section-subtitle">Comprehensive academic background with course details</p>
+                </div>
+                
+                <div class="education-grid">
+                    <div class="card education-card">
+                        <div class="education-header">
+                            <div class="university-logo stanford">SU</div>
+                            <div class="education-info">
+                                <div class="degree-title">Master of Science in Computer Science</div>
+                                <div class="university-name">Stanford University</div>
+                                <div class="education-period">September 2022 - June 2024</div>
+                            </div>
+                        </div>
+                        <div class="education-details">
+                            <div class="detail-row">
+                                <span class="detail-label">GPA</span>
+                                <span class="detail-value">3.8/4.0</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Specialization</span>
+                                <span class="detail-value">Artificial Intelligence</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Thesis</span>
+                                <span class="detail-value">Machine Learning for Healthcare</span>
+                            </div>
+                        </div>
+                        <div class="coursework-tags">
+                            <span class="course-tag">Deep Learning</span>
+                            <span class="course-tag">Computer Vision</span>
+                            <span class="course-tag">Natural Language Processing</span>
+                            <span class="course-tag">Reinforcement Learning</span>
+                        </div>
+                    </div>
+
+                    <div class="card education-card">
+                        <div class="education-header">
+                            <div class="university-logo berkeley">UC</div>
+                            <div class="education-info">
+                                <div class="degree-title">Bachelor of Science in Electrical Engineering</div>
+                                <div class="university-name">UC Berkeley</div>
+                                <div class="education-period">August 2018 - May 2022</div>
+                            </div>
+                        </div>
+                        <div class="education-details">
+                            <div class="detail-row">
+                                <span class="detail-label">GPA</span>
+                                <span class="detail-value">3.7/4.0</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Honors</span>
+                                <span class="detail-value">Magna Cum Laude</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Capstone</span>
+                                <span class="detail-value">IoT Sensor Network Design</span>
+                            </div>
+                        </div>
+                        <div class="coursework-tags">
+                            <span class="course-tag">Circuit Design</span>
+                            <span class="course-tag">Signal Processing</span>
+                            <span class="course-tag">Embedded Systems</span>
+                            <span class="course-tag">Data Structures</span>
+                            <span class="course-tag">Algorithms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Timeline */
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Academic Timeline</h2>
+                    <p class="section-subtitle">Educational journey from most recent to earliest</p>
+                </div>
+                
+                <div class="education-timeline">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="card timeline-content">
+                            <div class="timeline-description">
+                                Graduated Magna Cum Laude with comprehensive foundation in electrical engineering principles, circuit design, and programming. Senior capstone project focused on IoT sensor networks for environmental monitoring.
+                            </div>
+                            <div class="coursework-tags">
+                                <span class="course-tag">Circuit Analysis</span>
+                                <span class="course-tag">Digital Systems</span>
+                                <span class="course-tag">Programming</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="card timeline-content">
+                            <div class="timeline-header">
+                                <div class="timeline-main">
+                                    <div class="timeline-degree">High School Diploma</div>
+                                    <div class="timeline-school">Lincoln High School</div>
+                                </div>
+                                <div class="timeline-dates">2014 - 2018</div>
+                            </div>
+                            <div class="timeline-description">
+                                Valedictorian with perfect attendance. Captain of the robotics team that placed 2nd in state championships. Advanced Placement courses in Calculus, Physics, and Computer Science.
+                            </div>
+                            <div class="coursework-tags">
+                                <span class="course-tag">AP Calculus</span>
+                                <span class="course-tag">AP Physics</span>
+                                <span class="course-tag">AP Computer Science</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compact Education List -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Education Summary</h2>
+                    <p class="section-subtitle">Clean overview of academic credentials</p>
+                </div>
+                
+                <div class="card">
+                    <div class="compact-education">
+                        <div class="compact-education-item">
+                            <div class="compact-main">
+                                <div class="compact-logo stanford">SU</div>
+                                <div class="compact-info">
+                                    <div class="compact-degree">Master of Science in Computer Science</div>
+                                    <div class="compact-school">Stanford University</div>
+                                </div>
+                            </div>
+                            <div class="compact-year">2024</div>
+                        </div>
+                        
+                        <div class="compact-education-item">
+                            <div class="compact-main">
+                                <div class="compact-logo berkeley">UC</div>
+                                <div class="compact-info">
+                                    <div class="compact-degree">Bachelor of Science in Electrical Engineering</div>
+                                    <div class="compact-school">UC Berkeley</div>
+                                </div>
+                            </div>
+                            <div class="compact-year">2022</div>
+                        </div>
+                        
+                        <div class="compact-education-item">
+                            <div class="compact-main">
+                                <div class="compact-logo community">CC</div>
+                                <div class="compact-info">
+                                    <div class="compact-degree">Associate in Mathematics</div>
+                                    <div class="compact-school">City Community College</div>
+                                </div>
+                            </div>
+                            <div class="compact-year">2020</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic Achievements -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Academic Achievements</h2>
+                    <p class="section-subtitle">Notable accomplishments and recognitions</p>
+                </div>
+                
+                <div class="achievement-grid">
+                    <div class="card achievement-card">
+                        <div class="achievement-icon">🏆</div>
+                        <div class="achievement-title">Magna Cum Laude</div>
+                        <div class="achievement-subtitle">UC Berkeley, 2022</div>
+                        <div class="achievement-description">
+                            Graduated with high honors, maintaining a 3.7+ GPA throughout undergraduate studies while participating in research and extracurricular activities.
+                        </div>
+                    </div>
+                    
+                    <div class="card achievement-card">
+                        <div class="achievement-icon">📚</div>
+                        <div class="achievement-title">Dean's List</div>
+                        <div class="achievement-subtitle">6 Consecutive Semesters</div>
+                        <div class="achievement-description">
+                            Consistently achieved academic excellence by maintaining GPA above 3.5, demonstrating sustained commitment to scholarly pursuits.
+                        </div>
+                    </div>
+                    
+                    <div class="card achievement-card">
+                        <div class="achievement-icon">🔬</div>
+                        <div class="achievement-title">Research Excellence Award</div>
+                        <div class="achievement-subtitle">Stanford AI Lab, 2023</div>
+                        <div class="achievement-description">
+                            Recognized for outstanding contribution to machine learning research in healthcare applications, resulting in two published papers.
+                        </div>
+                    </div>
+                    
+                    <div class="card achievement-card">
+                        <div class="achievement-icon">🎯</div>
+                        <div class="achievement-title">Valedictorian</div>
+                        <div class="achievement-subtitle">Lincoln High School, 2018</div>
+                        <div class="achievement-description">
+                            Graduated as top student in class of 400+ with perfect attendance and leadership roles in multiple organizations.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills & Coursework Matrix -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Academic Expertise</h2>
+                    <p class="section-subtitle">Skills and knowledge areas developed through formal education</p>
+                </div>
+                
+                <div class="skills-matrix">
+                    <div class="card skills-card">
+                        <div class="skills-header">
+                            <div class="skills-icon">🤖</div>
+                            <div class="skills-info">
+                                <h3>Artificial Intelligence</h3>
+                                <p>Graduate-level coursework and research</p>
+                            </div>
+                        </div>
+                        <div class="skills-categories">
+                            <div class="skill-category">
+                                <div class="category-title">Core Courses</div>
+                                <div class="category-skills">
+                                    <span class="skill-chip">Machine Learning</span>
+                                    <span class="skill-chip">Deep Learning</span>
+                                    <span class="skill-chip">Computer Vision</span>
+                                    <span class="skill-chip">NLP</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <div class="category-title">Tools & Frameworks</div>
+                                <div class="category-skills">
+                                    <span class="skill-chip">TensorFlow</span>
+                                    <span class="skill-chip">PyTorch</span>
+                                    <span class="skill-chip">scikit-learn</span>
+                                    <span class="skill-chip">OpenCV</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card skills-card">
+                        <div class="skills-header">
+                            <div class="skills-icon">⚡</div>
+                            <div class="skills-info">
+                                <h3>Electrical Engineering</h3>
+                                <p>Comprehensive undergraduate foundation</p>
+                            </div>
+                        </div>
+                        <div class="skills-categories">
+                            <div class="skill-category">
+                                <div class="category-title">Core Areas</div>
+                                <div class="category-skills">
+                                    <span class="skill-chip">Circuit Design</span>
+                                    <span class="skill-chip">Signal Processing</span>
+                                    <span class="skill-chip">Control Systems</span>
+                                    <span class="skill-chip">Electronics</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <div class="category-title">Software Skills</div>
+                                <div class="category-skills">
+                                    <span class="skill-chip">MATLAB</span>
+                                    <span class="skill-chip">Verilog</span>
+                                    <span class="skill-chip">SPICE</span>
+                                    <span class="skill-chip">LabVIEW</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card skills-card">
+                        <div class="skills-header">
+                            <div class="skills-icon">💻</div>
+                            <div class="skills-info">
+                                <h3>Computer Science</h3>
+                                <p>Programming and software development</p>
+                            </div>
+                        </div>
+                        <div class="skills-categories">
+                            <div class="skill-category">
+                                <div class="category-title">Programming</div>
+                                <div class="category-skills">
+                                    <span class="skill-chip">Python</span>
+                                    <span class="skill-chip">Java</span>
+                                    <span class="skill-chip">C++</span>
+                                    <span class="skill-chip">JavaScript</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <div class="category-title">Concepts</div>
+                                <div class="category-skills">
+                                    <span class="skill-chip">Algorithms</span>
+                                    <span class="skill-chip">Data Structures</span>
+                                    <span class="skill-chip">Database Systems</span>
+                                    <span class="skill-chip">Software Engineering</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GPA & Honors Component -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Academic Performance</h2>
+                    <p class="section-subtitle">Quantitative academic achievements and recognitions</p>
+                </div>
+                
+                <div class="honors-grid">
+                    <div class="card honors-card">
+                        <div class="honors-header">
+                            <div class="honors-title">Graduate GPA</div>
+                            <div class="honors-value">3.8</div>
+                        </div>
+                        <div class="honors-details">
+                            <div class="honor-item">Stanford University</div>
+                            <div class="honor-item">M.S. Computer Science</div>
+                            <div class="honor-item">AI Specialization</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card honors-card">
+                        <div class="honors-header">
+                            <div class="honors-title">Undergraduate GPA</div>
+                            <div class="honors-value">3.7</div>
+                        </div>
+                        <div class="honors-details">
+                            <div class="honor-item">UC Berkeley</div>
+                            <div class="honor-item">Magna Cum Laude</div>
+                            <div class="honor-item">Dean's List 6x</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card honors-card">
+                        <div class="honors-header">
+                            <div class="honors-title">Research Papers</div>
+                            <div class="honors-value">3</div>
+                        </div>
+                        <div class="honors-details">
+                            <div class="honor-item">First Author (2)</div>
+                            <div class="honor-item">Co-Author (1)</div>
+                            <div class="honor-item">Peer Reviewed</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card honors-card">
+                        <div class="honors-header">
+                            <div class="honors-title">Scholarships</div>
+                            <div class="honors-value">$25K</div>
+                        </div>
+                        <div class="honors-details">
+                            <div class="honor-item">Merit-based awards</div>
+                            <div class="honor-item">Research fellowship</div>
+                            <div class="honor-item">Academic excellence</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thesis/Project Spotlight -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Research & Projects</h2>
+                    <p class="section-subtitle">Significant academic research and capstone projects</p>
+                </div>
+                
+                <div class="card project-spotlight">
+                    <div class="project-header">
+                        <div class="project-icon">🧬</div>
+                        <div class="project-info">
+                            <div class="project-title">Deep Learning for Medical Image Analysis</div>
+                            <div class="project-subtitle">Master's Thesis • Stanford University • 2024</div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Developed novel convolutional neural network architectures for automated detection of anomalies in medical imaging data. The research focused on improving diagnostic accuracy while reducing false positive rates, with applications in radiology and pathology. Achieved 94.2% accuracy on benchmark datasets, surpassing existing state-of-the-art methods by 3.8%.
+                    </div>
+                    <div class="project-technologies">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Keras</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">DICOM</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">scikit-learn</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expandable Curriculum -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Detailed Coursework</h2>
+                    <p class="section-subtitle">Expand to view course descriptions and skills gained</p>
+                </div>
+                
+                <div class="curriculum-container card">
+                    <div class="curriculum-item">
+                        <button class="curriculum-trigger" onclick="toggleCurriculum(this)">
+                            <div class="curriculum-main">
+                                <div class="curriculum-title">Machine Learning (CS 229)</div>
+                                <div class="curriculum-subtitle">Graduate • Stanford University • A+ Grade</div>
+                            </div>
+                            <svg class="curriculum-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="curriculum-content">
+                            <div class="curriculum-description">
+                                Comprehensive introduction to machine learning algorithms and statistical pattern recognition. Covered supervised and unsupervised learning, neural networks, support vector machines, clustering, and reinforcement learning. Final project involved implementing and comparing multiple algorithms on real-world datasets.
+                            </div>
+                            <div class="curriculum-skills">
+                                <span class="skill-chip">Supervised Learning</span>
+                                <span class="skill-chip">Unsupervised Learning</span>
+                                <span class="skill-chip">Neural Networks</span>
+                                <span class="skill-chip">SVM</span>
+                                <span class="skill-chip">Feature Engineering</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="curriculum-item">
+                        <button class="curriculum-trigger" onclick="toggleCurriculum(this)">
+                            <div class="curriculum-main">
+                                <div class="curriculum-title">Deep Learning (CS 230)</div>
+                                <div class="curriculum-subtitle">Graduate • Stanford University • A Grade</div>
+                            </div>
+                            <svg class="curriculum-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="curriculum-content">
+                            <div class="curriculum-description">
+                                Advanced study of deep neural networks and their applications. Explored convolutional neural networks for computer vision, recurrent neural networks for sequence modeling, and generative adversarial networks. Hands-on experience with TensorFlow and PyTorch frameworks.
+                            </div>
+                            <div class="curriculum-skills">
+                                <span class="skill-chip">CNNs</span>
+                                <span class="skill-chip">RNNs</span>
+                                <span class="skill-chip">GANs</span>
+                                <span class="skill-chip">TensorFlow</span>
+                                <span class="skill-chip">PyTorch</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="curriculum-item">
+                        <button class="curriculum-trigger" onclick="toggleCurriculum(this)">
+                            <div class="curriculum-main">
+                                <div class="curriculum-title">Computer Vision (CS 231N)</div>
+                                <div class="curriculum-subtitle">Graduate • Stanford University • A- Grade</div>
+                            </div>
+                            <svg class="curriculum-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="curriculum-content">
+                            <div class="curriculum-description">
+                                Comprehensive study of computer vision algorithms and applications. Topics included image processing, feature detection, object recognition, and scene understanding. Final project implemented a real-time object detection system using YOLO architecture.
+                            </div>
+                            <div class="curriculum-skills">
+                                <span class="skill-chip">Image Processing</span>
+                                <span class="skill-chip">Object Detection</span>
+                                <span class="skill-chip">YOLO</span>
+                                <span class="skill-chip">OpenCV</span>
+                                <span class="skill-chip">Feature Extraction</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="curriculum-item">
+                        <button class="curriculum-trigger" onclick="toggleCurriculum(this)">
+                            <div class="curriculum-main">
+                                <div class="curriculum-title">Data Structures & Algorithms</div>
+                                <div class="curriculum-subtitle">Undergraduate • UC Berkeley • A Grade</div>
+                            </div>
+                            <svg class="curriculum-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="curriculum-content">
+                            <div class="curriculum-description">
+                                Fundamental computer science course covering essential data structures and algorithmic thinking. Implemented various data structures from scratch and analyzed time/space complexity. Programming assignments in Java focused on efficiency and optimal solutions.
+                            </div>
+                            <div class="curriculum-skills">
+                                <span class="skill-chip">Big O Analysis</span>
+                                <span class="skill-chip">Trees & Graphs</span>
+                                <span class="skill-chip">Sorting Algorithms</span>
+                                <span class="skill-chip">Dynamic Programming</span>
+                                <span class="skill-chip">Java Programming</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Hero Card -->
+            <div class="component-section">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Education</h2>
+                    <p class="section-subtitle">Highlighting primary academic achievement</p>
+                </div>
+                
+                <div class="card education-hero">
+                    <div class="hero-content">
+                        <div class="hero-logo">SU</div>
+                        <div class="hero-main">
+                            <div class="hero-degree">Master of Science in Computer Science</div>
+                            <div class="hero-school">Stanford University, California</div>
+                            <div class="hero-highlights">
+                                <div class="hero-highlight">
+                                    <span>🎯</span>
+                                    <span>Specialization in Artificial Intelligence</span>
+                                </div>
+                                <div class="hero-highlight">
+                                    <span>🔬</span>
+                                    <span>Research in Healthcare ML</span>
+                                </div>
+                                <div class="hero-highlight">
+                                    <span>📚</span>
+                                    <span>3 Published Papers</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <div class="stat-value">3.8</div>
+                                <div class="stat-label">GPA</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="stat-value">2024</div>
+                                <div class="stat-label">Graduated</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleCurriculum(trigger) {
+            const content = trigger.nextElementSibling;
+            const icon = trigger.querySelector('.curriculum-icon');
+            const isOpen = content.classList.contains('open');
+            
+            if (isOpen) {
+                content.classList.remove('open');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe components for fade-in animation
+        document.querySelectorAll('.component-section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Add hover effects for interactive elements
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borja Hormigos - Product Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'base-color': '#0047b2',
+                        'light-bg': '#f8f9fa'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-in': 'slideIn 0.3s ease-out'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        .cd-headline.clip .cd-words-wrapper {
+            overflow: hidden;
+            display: inline-block;
+        }
+        .cd-headline.clip .cd-words-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: #333;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        .cd-words-wrapper b {
+            display: none;
+        }
+        .cd-words-wrapper b.is-visible {
+            display: inline-block;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e5e7eb;
+        }
+        .timeline .item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        .timeline .item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #0047b2;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #e5e7eb;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <!-- Menu Toggle -->
+    <div class="fixed top-4 left-4 z-50 lg:hidden">
+        <button id="menuToggle" class="w-10 h-10 bg-base-color rounded flex flex-col justify-center items-center space-y-1">
+            <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+            <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+            <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+        </button>
+    </div>
+
+    <!-- Header Left / Sidebar -->
+    <div class="fixed left-0 top-0 h-full w-80 bg-white shadow-xl transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-40" id="sidebar">
+        <!-- Logo -->
+        <div class="bg-base-color p-6 text-center">
+            <a href="#" class="text-white text-3xl font-bold">BH</a>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="p-6">
+            <div class="absolute top-4 right-4 lg:hidden">
+                <button id="closeMenu" class="w-8 h-8 bg-base-color rounded flex items-center justify-center">
+                    <i class="fas fa-times text-white"></i>
+                </button>
+            </div>
+            <ul class="space-y-4 mt-8 lg:mt-0">
+                <li><a href="#home" class="block py-3 px-4 text-gray-700 hover:text-base-color hover:bg-gray-50 rounded transition-colors">Home</a></li>
+                <li><a href="#about" class="block py-3 px-4 text-base-color bg-gray-50 rounded">About</a></li>
+                <li><a href="#skills" class="block py-3 px-4 text-gray-700 hover:text-base-color hover:bg-gray-50 rounded transition-colors">Skills</a></li>
+                <li><a href="#products" class="block py-3 px-4 text-gray-700 hover:text-base-color hover:bg-gray-50 rounded transition-colors">Products</a></li>
+                <li><a href="#contact" class="block py-3 px-4 text-gray-700 hover:text-base-color hover:bg-gray-50 rounded transition-colors">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="lg:ml-80">
+        <!-- Home Section -->
+        <section id="home" class="min-h-screen bg-light-bg flex items-center relative" style="background-image: linear-gradient(rgba(248, 249, 250, 0.8), rgba(248, 249, 250, 0.8)), url('assets/img/bg/bg.jpg'); background-size: cover; background-position: center;">
+            <div class="container mx-auto px-6">
+                <!-- Language Selector -->
+                <div class="absolute top-6 right-6">
+                    <a href="/" class="text-gray-800 font-bold text-sm">EN</a>
+                </div>
+
+                <div class="max-w-4xl">
+                    <!-- Banner Content -->
+                    <div class="mb-12">
+                        <h6 class="text-gray-800 text-lg mb-4">Hi I'm Borja,</h6>
+                        <h1 class="text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
+                            <span class="cd-headline clip">
+                                <span class="cd-words-wrapper relative">
+                                    <b class="is-visible">A Product Manager</b>
+                                    <b class="is-hidden">An Agile Professional</b>
+                                    <b class="is-hidden">A Solution Seeker</b>
+                                </span>
+                            </span>
+                        </h1>
+                        <p class="text-gray-800 text-lg max-w-md mb-8">
+                            I'm a product manager and an agile professional with more than 15 years of experience in different industries.
+                        </p>
+                        <a href="#about" class="inline-flex items-center px-6 py-3 bg-base-color text-white rounded-lg hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-user mr-2"></i>
+                            More About Me
+                        </a>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <p class="text-gray-800 font-bold mb-1">Email</p>
+                            <p class="text-gray-800"><a href="mailto:borja@hormigos.com" class="hover:text-base-color">borja@hormigos.com</a></p>
+                        </div>
+                        <div>
+                            <p class="text-gray-800 font-bold mb-1">LinkedIn</p>
+                            <p class="text-gray-800"><a href="https://www.linkedin.com/in/borjahormigos/" target="_blank" class="hover:text-base-color">in/borjahormigos</a></p>
+                        </div>
+                        <div>
+                            <p class="text-gray-800 font-bold mb-1">Location</p>
+                            <p class="text-gray-800"><a href="#" target="_blank" class="hover:text-base-color">Madrid, Spain</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <!-- Section Title -->
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">About me</h2>
+                </div>
+
+                <!-- Hero & Info -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                    <div>
+                        <div class="relative">
+                            <img src="assets/img/about/hero.jpg" alt="Portrait of Borja Hormigos" class="w-full h-auto rounded-lg shadow-lg">
+                            <small class="text-gray-500 text-xs mt-2 block">
+                                Photo by <a href="#" target="_blank" class="text-gray-700 hover:text-base-color">Austin Distel</a> on <a href="#" target="_blank" class="text-gray-700 hover:text-base-color">Unsplash</a>
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div>
+                            <h5 class="text-2xl font-semibold text-gray-800 mb-6">Let me introduce myself,</h5>
+                            <p class="text-gray-800 mb-4">
+                                After working in leadership positions for 15 years, first as CEO of my own companies and most recently as product manager of SantanderX, I've gained extensive experience coordinating highly motivated, profession teams comprising UX, UI, Content, Developers, DevOps, BI, and QA engineers.
+                            </p>
+                            <p class="text-gray-800 mb-8">
+                                I am passionate about technology applied to business, committed to data-driven product assessment and a strong believer in agile methodologies. I enjoy collaborating with clients and users (stakeholders) and I quickly understand their vision and the difficulties they face. I'm a persistent and efficient negotiator and natural solution seeker.
+                            </p>
+                            
+                            <!-- Personal Info -->
+                            <div class="space-y-2 mb-8">
+                                <div class="flex"><span class="font-semibold text-gray-800 w-24">Name:</span> <span class="text-gray-800">Borja Hormigos</span></div>
+                                <div class="flex"><span class="font-semibold text-gray-800 w-24">Age:</span> <span class="text-gray-800">39</span></div>
+                                <div class="flex"><span class="font-semibold text-gray-800 w-24">Email:</span> <span class="text-gray-800"><a href="mailto:borja@hormigos.com" class="hover:text-base-color">borja@hormigos.com</a></span></div>
+                                <div class="flex"><span class="font-semibold text-gray-800 w-24">Nationality:</span> <span class="text-gray-800">Spanish</span></div>
+                                <div class="flex"><span class="font-semibold text-gray-800 w-24">Location:</span> <span class="text-gray-800"><a href="#" target="_blank" class="hover:text-base-color">Madrid, Spain</a></span></div>
+                                <div class="flex"><span class="font-semibold text-gray-800 w-24">Position:</span> <span class="text-gray-800">Senior Product Manager</span></div>
+                            </div>
+
+                            <!-- CV Download Buttons -->
+                            <div class="flex flex-wrap gap-4">
+                                <button class="inline-flex items-center px-6 py-3 bg-base-color text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                    <i class="fas fa-cloud-download-alt mr-2"></i>
+                                    General CV
+                                </button>
+                                <button class="inline-flex items-center px-6 py-3 bg-base-color text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                    <i class="fas fa-cloud-download-alt mr-2"></i>
+                                    Product Manager CV
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features/Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                    <div class="text-center">
+                        <div class="text-4xl text-gray-800 mb-4">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <p class="text-gray-800 font-medium">+15 Years of Experience</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl text-gray-800 mb-4">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <p class="text-gray-800 font-medium">+100 Satisfied Clients</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl text-gray-800 mb-4">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <p class="text-gray-800 font-medium">+1K Agile Ceremonies</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl text-gray-800 mb-4">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <p class="text-gray-800 font-medium">+5K Hours with Stakeholders</p>
+                    </div>
+                </div>
+
+                <!-- Experience Timeline -->
+                <div class="mb-16">
+                    <h5 class="text-2xl font-semibold text-gray-800 mb-8">My Experience</h5>
+                    <div class="timeline">
+                        <div class="item">
+                            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                                <h6 class="text-lg font-semibold text-gray-800 mb-2">
+                                    Senior Product Manager at <a href="https://www.santanderx.com" target="_blank" class="text-gray-600 hover:text-base-color">Santanderx.com</a>, B2B2C
+                                </h6>
+                                <p class="text-gray-800 mb-1">
+                                    <a href="#" target="_blank" class="hover:text-base-color">Santander Universities</a>
+                                </p>
+                                <small class="text-gray-500">September 2017 - Present</small>
+                                <p class="text-gray-700 mt-4">
+                                    During my 2 years as product manager of SX, I followed the Essential SAFe methodology and worked with 8 member Agile teams using SCRUM guided by the Spotify framework with 2-week sprints. I was also responsible for coordinating with transversal teams such as legal, translation and marketing.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="item">
+                            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                                <h6 class="text-lg font-semibold text-gray-800 mb-2">
+                                    CEO & Product Manager at <a href="#" target="_blank" class="text-gray-600 hover:text-base-color">Itemtify.com</a>, B2B2C
+                                </h6>
+                                <p class="text-gray-800 mb-1">Itemtify</p>
+                                <small class="text-gray-500">February 2014 - September 2017</small>
+                                <p class="text-gray-700 mt-4">
+                                    As a SMB CEO, I was involved in all aspects of the company, gaining experience as a designer, developer, vendor and manager. I established marketing strategies requiring little investment and created a system to test features before production.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                                <h6 class="text-lg font-semibold text-gray-800 mb-2">
+                                    1st Business Angel & Advisor at <a href="https://www.24symbols.com/" target="_blank" class="text-gray-600 hover:text-base-color">24symbols.com</a>, B2B2C
+                                </h6>
+                                <p class="text-gray-800 mb-1">24Symbols</p>
+                                <small class="text-gray-500">November 2010 – December 2013</small>
+                                <p class="text-gray-700 mt-4">
+                                    As part of the board of members, my role was to guide the founders on defining their go-to-market strategy and business model, attract investors, and present the product to institutions. In 3 years we grew quickly and reached 1M users in 7 countries.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                                <h6 class="text-lg font-semibold text-gray-800 mb-2">
+                                    Co-CEO, Sales & Project Manager at Quantumtech.es, B2B
+                                </h6>
+                                <p class="text-gray-800 mb-1">
+                                    <a href="#" target="_blank" class="hover:text-base-color">Quantum Tech, SAP Business One (ERP) Gold Partner</a>
+                                </p>
+                                <small class="text-gray-500">September 2005 - January 2013</small>
+                                <p class="text-gray-700 mt-4">
+                                    As a certified reseller of SAP Business One for SMBs, Quantum followed a standard disaggregated business model focused on customer relationship management. Our decision to create a SaaS AddOn to manage chaotic warehousing gave us an advantage in a competitive market.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Timeline -->
+                <div>
+                    <h5 class="text-2xl font-semibold text-gray-800 mb-8">My Education</h5>
+                    <div class="timeline">
+                        <div class="item">
+                            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                                <h6 class="text-lg font-semibold text-gray-800 mb-2">Computer Engineering - Madrid, Spain</h6>
+                                <p class="text-gray-800 mb-1">Universidad Antonio de Nebrija</p>
+                                <small class="text-gray-500">1999 - 2004</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-light-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">My Skills</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center">
+                        <div class="w-16 h-16 bg-base-color text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">01</div>
+                        <h5 class="text-xl font-semibold text-gray-800 mb-4">Strategic Thinking</h5>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center">
+                        <div class="w-16 h-16 bg-base-color text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">02</div>
+                        <h5 class="text-xl font-semibold text-gray-800 mb-4">Creative Thinking</h5>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center">
+                        <div class="w-16 h-16 bg-base-color text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">03</div>
+                        <h5 class="text-xl font-semibold text-gray-800 mb-4">Excellent Communicator</h5>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center">
+                        <div class="w-16 h-16 bg-base-color text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">04</div>
+                        <h5 class="text-xl font-semibold text-gray-800 mb-4">Command of Agile Methodologies</h5>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center">
+                        <div class="w-16 h-16 bg-base-color text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">05</div>
+                        <h5 class="text-xl font-semibold text-gray-800 mb-4">Understanding of UX/UI Design</h5>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center">
+                        <div class="w-16 h-16 bg-base-color text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">06</div>
+                        <h5 class="text-xl font-semibold text-gray-800 mb-4">Data-Driven Analysis</h5>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center">
+                        <div class="w-16 h-16 bg-base-color text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">07</div>
+                        <h5 class="text-xl font-semibold text-gray-800 mb-4">Software Architect</h5>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center">
+                        <div class="w-16 h-16 bg-base-color text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">08</div>
+                        <h5 class="text-xl font-semibold text-gray-800 mb-4">SaaS & DaaS Development</h5>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center">
+                        <div class="w-16 h-16 bg-base-color text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">09</div>
+                        <h5 class="text-xl font-semibold text-gray-800 mb-4">Business Experience</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">My professional pride</h2>
+                    <p class="text-gray-600">I've had the pleasure of working with very talented teams to build exciting products.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100">
+                        <div class="aspect-video bg-gray-200">
+                            <img src="assets/img/blog/2.jpg" alt="Santander X Tomorrow Challenge" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-8">
+                            <small class="text-gray-500">2021 • #MarketPlace, #Entrepreneurship, #B2B2C</small>
+                            <h5 class="text-2xl font-semibold text-gray-800 mt-2 mb-4">
+                                <a href="#" class="hover:text-base-color">Santander X</a>
+                            </h5>
+                            <p class="text-gray-700 mb-6">Working to give you the chance to push forward your ideas wherever and whenever you decide.</p>
+                            <a href="https://www.santanderx.com/" target="_blank" class="inline-flex items-center px-6 py-3 bg-base-color text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                <span class="mr-2">Visit</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100">
+                        <div class="aspect-video bg-gray-200">
+                            <img src="assets/img/blog/1.jpg" alt="24Symbols landing page" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-8">
+                            <small class="text-gray-500">2013 • #MarketPlace, #Freemium, #B2C</small>
+                            <h5 class="text-2xl font-semibold text-gray-800 mt-2 mb-4">
+                                <a href="#" class="hover:text-base-color">24Symbols</a>
+                            </h5>
+                            <p class="text-gray-700 mb-6">Enjoy now more than a million e-books on all your digital devices.</p>
+                            <a href="https://www.24symbols.com/" target="_blank" class="inline-flex items-center px-6 py-3 bg-base-color text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                <span class="mr-2">Visit</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-light-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Contact Me</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div>
+                        <form class="space-y-6">
+                            <div class="hidden bg-gray-100 border border-gray-400 text-gray-700 px-4 py-3 rounded" role="alert">
+                                Thank you for contacting me!
+                            </div>
+                            <div>
+                                <input type="text" name="name" placeholder="Name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-base-color focus:border-transparent">
+                            </div>
+                            <div>
+                                <input type="email" name="email" placeholder="Email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-base-color focus:border-transparent">
+                            </div>
+                            <div>
+                                <textarea name="message" rows="5" placeholder="Message" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-base-color focus:border-transparent"></textarea>
+                            </div>
+                            <button type="submit" class="inline-flex items-center px-6 py-3 bg-base-color text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Send
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div>
+                        <h5 class="text-2xl font-semibold text-gray-800 mb-8">Let's talk!</h5>
+                        <div class="space-y-6">
+                            <div>
+                                <p class="text-gray-800 font-semibold mb-2">Email:</p>
+                                <p class="text-gray-700 flex items-center">
+                                    <i class="fas fa-envelope text-base-color mr-3"></i>
+                                    <a href="mailto:borja@hormigos.com" class="hover:text-base-color">borja@hormigos.com</a>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-gray-800 font-semibold mb-2">Skype:</p>
+                                <p class="text-gray-700 flex items-center">
+                                    <i class="fab fa-skype text-base-color mr-3"></i>
+                                    <a href="skype:borja_448?chat" class="hover:text-base-color">live:borja_448</a>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-gray-800 font-semibold mb-2">LinkedIn:</p>
+                                <p class="text-gray-700 flex items-center">
+                                    <i class="fab fa-linkedin text-base-color mr-3"></i>
+                                    <a href="https://www.linkedin.com/in/borjahormigos/" target="_blank" class="hover:text-base-color">in/borjahormigos</a>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-gray-800 font-semibold mb-2">Location:</p>
+                                <p class="text-gray-700 flex items-center">
+                                    <i class="fas fa-map-marker-alt text-base-color mr-3"></i>
+                                    <a href="#" target="_blank" class="hover:text-base-color">Madrid, Spain</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 bg-light-bg border-t border-gray-200">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <p class="text-gray-700">©2021 Borja Hormigos, All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Overlay for mobile menu -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden"></div>
+
+    <script>
+        // Mobile menu functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function openMenu() {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeMenuFn() {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuFn);
+        overlay.addEventListener('click', closeMenuFn);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    if (window.innerWidth < 1024) {
+                        closeMenuFn();
+                    }
+                }
+            });
+        });
+
+        // Animated headline functionality
+        const words = document.querySelectorAll('.cd-words-wrapper b');
+        let currentWord = 0;
+        
+        setInterval(() => {
+            words[currentWord].classList.remove('is-visible');
+            words[currentWord].classList.add('is-hidden');
+            currentWord = (currentWord + 1) % words.length;
+            words[currentWord].classList.remove('is-hidden');
+            words[currentWord].classList.add('is-visible');
+        }, 3000);
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-base-color', 'bg-gray-50');
+                link.classList.add('text-gray-700');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.remove('text-gray-700');
+                    link.classList.add('text-base-color', 'bg-gray-50');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

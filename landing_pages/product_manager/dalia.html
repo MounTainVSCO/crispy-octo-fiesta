@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dalia Abo Sheasha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fira Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .nameplate {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav {
+            margin-bottom: 20px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #d4af37;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .social-icons a {
+            color: #666;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #d4af37;
+        }
+
+        /* Hero Image */
+        .hero-image {
+            width: 100%;
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect width="1200" height="600" fill="%23f0f0f0"/><text x="600" y="250" text-anchor="middle" font-family="Arial" font-size="24" fill="%23666">Dalia speaking into podcast microphone</text><text x="600" y="290" text-anchor="middle" font-family="Arial" font-size="16" fill="%23999">Professional podcast recording setup</text></svg>');
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 80px;
+            border-radius: 8px;
+        }
+
+        /* About Me Section */
+        .about-section {
+            background-color: #fafafa;
+            padding: 80px 0;
+            margin-bottom: 80px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #222;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .about-images {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .about-image {
+            height: 120px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Content Grid */
+        .content-section {
+            padding: 60px 0;
+        }
+
+        .content-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #222;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .content-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .content-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .content-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .content-card a {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .content-card a:hover {
+            color: #b8941f;
+        }
+
+        .content-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .gold-button {
+            background: #d4af37;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .gold-button:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Image Break */
+        .image-break {
+            width: 100%;
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect width="1200" height="500" fill="%23f5f5f5"/><text x="600" y="220" text-anchor="middle" font-family="Arial" font-size="20" fill="%23666">Dalia working at multi-monitor setup</text><text x="600" y="260" text-anchor="middle" font-family="Arial" font-size="14" fill="%23999">Rear view of focused work environment</text></svg>');
+            background-size: cover;
+            background-position: center;
+            margin: 80px 0;
+            border-radius: 8px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #fafafa;
+            padding: 80px 0;
+        }
+
+        .contact-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #222;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Fira Sans', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-group textarea::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+
+        .form-submit {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #fff;
+            padding: 40px 0;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-left {
+            font-family: 'Playfair Display', serif;
+            color: #666;
+        }
+
+        .footer-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: #d4af37;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nameplate {
+                font-size: 2rem;
+            }
+
+            .nav ul {
+                gap: 20px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-nav ul {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="nameplate">Dalia Abo Sheasha</h1>
+            
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#tutorials">Tutorials</a></li>
+                    <li><a href="#talks">Talks</a></li>
+                    <li><a href="#blogs">Blogs</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="social-icons">
+                <a href="#" aria-label="LinkedIn">📧</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+                <a href="#" aria-label="GitHub">💻</a>
+                <a href="#" aria-label="Email">✉️</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Image -->
+    <div class="container">
+        <div class="hero-image"></div>
+    </div>
+
+    <!-- About Me Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>
+                        I'm currently a Product Manager at Atlassian, where I focus on developer tools and creating meaningful experiences for technical teams. My background spans both technical development and UX design, giving me a unique perspective on building products that truly serve their users.
+                    </p>
+                    <p>
+                        I'm passionate about making technology more accessible and inclusive. Through my talks, tutorials, and writing, I aim to empower others in the tech community by sharing knowledge and fostering clarity in complex technical concepts.
+                    </p>
+                </div>
+                <div class="about-images">
+                    <div class="about-image">Professional headshot</div>
+                    <div class="about-image">Conference speaking</div>
+                    <div class="about-image">Live tech demo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Grid -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Content</h2>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>Intro to Docker</h3>
+                    <p>A comprehensive guide to getting started with containerization. Perfect for developers looking to understand Docker fundamentals and best practices.</p>
+                    <a href="#">Watch Video</a>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Migrating Beyond Java 8</h3>
+                    <p>Practical strategies and considerations for upgrading Java applications. Real-world insights from production migrations and lessons learned.</p>
+                    <a href="#">Read Blog</a>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Hibernate with JPA</h3>
+                    <p>Deep dive into object-relational mapping with Hibernate. Advanced techniques, performance optimization, and common pitfalls to avoid.</p>
+                    <a href="#">Watch Video</a>
+                </div>
+            </div>
+
+            <div class="content-buttons">
+                <a href="#" class="gold-button">View All Talks</a>
+                <a href="#" class="gold-button">View All Tutorials</a>
+                <a href="#" class="gold-button">View All Blogs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Break -->
+    <div class="container">
+        <div class="image-break"></div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="I typically look at messages. Please feel free to speak your message here and I'll get back to you asap." required></textarea>
+                </div>
+                
+                <div class="form-submit">
+                    <button type="submit" class="gold-button">Contact Me</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span>Dalia Abo Sheasha ©</span>
+                </div>
+                
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#tutorials">Tutorials</a></li>
+                        <li><a href="#talks">Talks</a></li>
+                        <li><a href="#blogs">Blogs</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tag Cloud Wall - Skills Component</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        .tag-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .tag-float:nth-child(odd) {
+            animation-delay: -2s;
+        }
+        
+        .tag-float:nth-child(3n) {
+            animation-delay: -4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+        
+        .tag-jitter {
+            animation: jitter 0.3s ease-in-out;
+        }
+        
+        @keyframes jitter {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            75% { transform: translateX(2px); }
+        }
+        
+        .tag-breathe {
+            animation: breathe 4s ease-in-out infinite;
+        }
+        
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .tooltip {
+            transform: translateX(-50%) translateY(-100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .tag:hover .tooltip {
+            opacity: 1;
+        }
+        
+        .theme-mono { --accent: #000; --bg: #f8f9fa; --text: #495057; }
+        .theme-neon { --accent: #00ff88; --bg: #0a0a0a; --text: #ffffff; }
+        .theme-rainbow { --accent: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5, #ffbe0b); --bg: #ffffff; --text: #333333; }
+        .theme-warm { --accent: #ff6b35; --bg: #fdf6e3; --text: #8b4513; }
+        .theme-cool { --accent: #4ecdc4; --bg: #f0f8ff; --text: #2c3e50; }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Theme Controls -->
+    <div class="fixed top-4 right-4 z-50 bg-white rounded-lg shadow-lg p-4 space-y-2">
+        <div class="text-sm font-medium text-gray-700 mb-2">Themes</div>
+        <div class="flex flex-wrap gap-2">
+            <button onclick="setTheme('mono')" class="w-6 h-6 rounded-full bg-gray-800 border-2 border-transparent hover:border-gray-400"></button>
+            <button onclick="setTheme('neon')" class="w-6 h-6 rounded-full bg-green-400 border-2 border-transparent hover:border-green-600"></button>
+            <button onclick="setTheme('rainbow')" class="w-6 h-6 rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 border-2 border-transparent hover:border-gray-400"></button>
+            <button onclick="setTheme('warm')" class="w-6 h-6 rounded-full bg-orange-500 border-2 border-transparent hover:border-orange-600"></button>
+            <button onclick="setTheme('cool')" class="w-6 h-6 rounded-full bg-teal-400 border-2 border-transparent hover:border-teal-600"></button>
+        </div>
+        
+        <div class="text-sm font-medium text-gray-700 mb-2 mt-4">Layout</div>
+        <div class="flex gap-2">
+            <button id="chaotic-btn" onclick="setLayout('chaotic')" class="px-3 py-1 text-xs bg-gray-200 rounded-full hover:bg-gray-300 transition-colors">Chaotic</button>
+            <button id="structured-btn" onclick="setLayout('structured')" class="px-3 py-1 text-xs bg-gray-200 rounded-full hover:bg-gray-300 transition-colors">Structured</button>
+        </div>
+        
+        <div class="text-sm font-medium text-gray-700 mb-2 mt-4">Animation</div>
+        <div class="flex gap-2">
+            <button onclick="setAnimation('none')" class="px-3 py-1 text-xs bg-gray-200 rounded-full hover:bg-gray-300 transition-colors">Static</button>
+            <button onclick="setAnimation('float')" class="px-3 py-1 text-xs bg-gray-200 rounded-full hover:bg-gray-300 transition-colors">Float</button>
+            <button onclick="setAnimation('breathe')" class="px-3 py-1 text-xs bg-gray-200 rounded-full hover:bg-gray-300 transition-colors">Breathe</button>
+        </div>
+    </div>
+
+    <!-- Main Skills Section -->
+    <section id="skills-section" class="theme-mono w-full min-h-screen py-16 px-6 transition-all duration-500" style="background-color: var(--bg); color: var(--text);">
+        <div class="max-w-6xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4 tracking-tight">Skills & Vibes</h2>
+                <p class="text-xl opacity-70 max-w-2xl mx-auto">A living, breathing wall of what I can do — part resume, part identity flex</p>
+            </div>
+
+            <!-- Toggle for Categories -->
+            <div class="flex justify-center mb-12">
+                <button id="category-toggle" onclick="toggleCategories()" class="px-6 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300">
+                    <span id="toggle-text">Group by Category</span>
+                </button>
+            </div>
+
+            <!-- Skills Container -->
+            <div id="skills-container" class="chaotic-layout">
+                <!-- Chaotic Layout (Default) -->
+                <div id="chaotic-tags" class="flex flex-wrap justify-center items-center gap-3 leading-relaxed">
+                    <!-- High Priority / Large Tags -->
+                    <span class="tag text-4xl font-bold cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        JavaScript 🚀
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            5+ years • Used in 12 projects
+                        </div>
+                    </span>
+                    
+                    <span class="tag text-3xl font-semibold cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        React ⚛️
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            4+ years • Frontend specialist
+                        </div>
+                    </span>
+                    
+                    <span class="tag text-4xl font-bold cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        UI/UX Design ✨
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            6+ years • Figma power user
+                        </div>
+                    </span>
+
+                    <!-- Medium Priority -->
+                    <span class="tag text-2xl font-medium cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        Python 🐍
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            3+ years • Data analysis
+                        </div>
+                    </span>
+                    
+                    <span class="tag text-xl font-medium cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        Node.js
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            3+ years • Backend APIs
+                        </div>
+                    </span>
+                    
+                    <span class="tag text-2xl font-medium cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        problem solving 🧩
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            Core strength • Creative solutions
+                        </div>
+                    </span>
+
+                    <span class="tag text-xl font-normal cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        TypeScript
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            2+ years • Type safety advocate
+                        </div>
+                    </span>
+
+                    <span class="tag text-3xl font-semibold cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        storytelling 📚
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            Natural talent • Presentations
+                        </div>
+                    </span>
+
+                    <!-- Small Priority -->
+                    <span class="tag text-lg font-light opacity-75 cursor-pointer hover:scale-110 hover:opacity-100 transform transition-all duration-300 relative">
+                        MongoDB
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            2+ years • NoSQL databases
+                        </div>
+                    </span>
+                    
+                    <span class="tag text-xl font-medium cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        coffee addiction ☕
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            Expert level • Fuel for creativity
+                        </div>
+                    </span>
+                    
+                    <span class="tag text-lg font-normal cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        Git & GitHub
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            4+ years • Version control master
+                        </div>
+                    </span>
+
+                    <span class="tag text-2xl font-medium cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        TEAM PLAYER 🤝
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            Collaborative • Mentor others
+                        </div>
+                    </span>
+
+                    <span class="tag text-lg font-light opacity-75 cursor-pointer hover:scale-110 hover:opacity-100 transform transition-all duration-300 relative">
+                        Docker
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            1+ year • Containerization
+                        </div>
+                    </span>
+
+                    <span class="tag text-xl font-medium cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        curiosity 🔍
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            Always learning • Growth mindset
+                        </div>
+                    </span>
+
+                    <span class="tag text-lg font-normal cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        Tailwind CSS
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            3+ years • Utility-first styling
+                        </div>
+                    </span>
+
+                    <span class="tag text-xl font-medium cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        midnight coding 🌙
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            Night owl • Deep focus sessions
+                        </div>
+                    </span>
+
+                    <span class="tag text-lg font-light opacity-75 cursor-pointer hover:scale-110 hover:opacity-100 transform transition-all duration-300 relative">
+                        AWS
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            Learning • Cloud deployment
+                        </div>
+                    </span>
+
+                    <span class="tag text-2xl font-medium cursor-pointer hover:scale-110 transform transition-all duration-300 relative">
+                        pixel perfection 🎯
+                        <div class="tooltip absolute left-1/2 bottom-full mb-2 px-3 py-1 bg-black text-white text-sm rounded-lg whitespace-nowrap">
+                            Design obsession • Attention to detail
+                        </div>
+                    </span>
+                </div>
+
+                <!-- Structured Layout (Hidden by default) -->
+                <div id="structured-tags" class="hidden space-y-12">
+                    <!-- Technical Skills -->
+                    <div class="category-group">
+                        <h3 class="text-2xl font-semibold mb-6 opacity-60">Technical Skills</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">JavaScript</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">React</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">Python</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">Node.js</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">TypeScript</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">MongoDB</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">Git & GitHub</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">Docker</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">AWS</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">Tailwind CSS</span>
+                        </div>
+                    </div>
+
+                    <!-- Design Skills -->
+                    <div class="category-group">
+                        <h3 class="text-2xl font-semibold mb-6 opacity-60">Design & Creative</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">UI/UX Design</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">pixel perfection</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">storytelling</span>
+                        </div>
+                    </div>
+
+                    <!-- Soft Skills & Personality -->
+                    <div class="category-group">
+                        <h3 class="text-2xl font-semibold mb-6 opacity-60">Soft Skills & Vibes</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">problem solving</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">TEAM PLAYER</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">curiosity</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">coffee addiction</span>
+                            <span class="tag-structured px-4 py-2 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 cursor-pointer">midnight coding</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Mode Toggle -->
+            <div class="flex justify-center mt-16">
+                <button onclick="toggleEditMode()" class="px-6 py-3 border border-current rounded-full hover:bg-current hover:text-white transition-all duration-300 font-medium">
+                    <span id="edit-text">✏️ Edit Skills</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let currentTheme = 'mono';
+        let currentLayout = 'chaotic';
+        let currentAnimation = 'none';
+        let isEditMode = false;
+        let showCategories = false;
+
+        function setTheme(theme) {
+            currentTheme = theme;
+            const section = document.getElementById('skills-section');
+            section.className = section.className.replace(/theme-\w+/, `theme-${theme}`);
+            
+            // Update active theme button
+            document.querySelectorAll('button[onclick^="setTheme"]').forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-offset-2');
+            });
+            event.target.classList.add('ring-2', 'ring-offset-2', 'ring-gray-400');
+        }
+
+        function setLayout(layout) {
+            currentLayout = layout;
+            const chaoticTags = document.getElementById('chaotic-tags');
+            const structuredTags = document.getElementById('structured-tags');
+            
+            if (layout === 'chaotic') {
+                chaoticTags.classList.remove('hidden');
+                structuredTags.classList.add('hidden');
+                document.getElementById('chaotic-btn').classList.add('bg-gray-800', 'text-white');
+                document.getElementById('structured-btn').classList.remove('bg-gray-800', 'text-white');
+            } else {
+                chaoticTags.classList.add('hidden');
+                structuredTags.classList.remove('hidden');
+                document.getElementById('structured-btn').classList.add('bg-gray-800', 'text-white');
+                document.getElementById('chaotic-btn').classList.remove('bg-gray-800', 'text-white');
+            }
+        }
+
+        function setAnimation(animation) {
+            currentAnimation = animation;
+            const tags = document.querySelectorAll('.tag');
+            
+            tags.forEach(tag => {
+                tag.classList.remove('tag-float', 'tag-breathe');
+                if (animation === 'float') {
+                    tag.classList.add('tag-float');
+                } else if (animation === 'breathe') {
+                    tag.classList.add('tag-breathe');
+                }
+            });
+        }
+
+        function toggleCategories() {
+            showCategories = !showCategories;
+            const toggleText = document.getElementById('toggle-text');
+            
+            if (showCategories) {
+                setLayout('structured');
+                toggleText.textContent = 'Show Chaotic View';
+            } else {
+                setLayout('chaotic');
+                toggleText.textContent = 'Group by Category';
+            }
+        }
+
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            const editText = document.getElementById('edit-text');
+            const tags = document.querySelectorAll('.tag, .tag-structured');
+            
+            if (isEditMode) {
+                editText.textContent = '✅ Done Editing';
+                tags.forEach(tag => {
+                    tag.style.border = '2px dashed #ccc';
+                    tag.style.background = 'rgba(0,0,0,0.05)';
+                    tag.addEventListener('click', editTag);
+                });
+            } else {
+                editText.textContent = '✏️ Edit Skills';
+                tags.forEach(tag => {
+                    tag.style.border = '';
+                    tag.style.background = '';
+                    tag.removeEventListener('click', editTag);
+                });
+            }
+        }
+
+        function editTag(event) {
+            if (!isEditMode) return;
+            
+            const tag = event.target;
+            const currentText = tag.textContent.trim();
+            const newText = prompt('Edit skill:', currentText);
+            
+            if (newText && newText !== currentText) {
+                tag.textContent = newText;
+            }
+        }
+
+        // Add jitter effect on hover
+        document.addEventListener('DOMContentLoaded', function() {
+            const tags = document.querySelectorAll('.tag');
+            tags.forEach(tag => {
+                tag.addEventListener('mouseenter', function() {
+                    if (Math.random() > 0.7) { // 30% chance for jitter
+                        this.classList.add('tag-jitter');
+                        setTimeout(() => {
+                            this.classList.remove('tag-jitter');
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Initialize default theme
+        setTheme('mono');
+        setLayout('chaotic');
+    </script>
+</body>
+</html>

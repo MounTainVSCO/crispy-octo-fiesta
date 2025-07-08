@@ -1,0 +1,232 @@
+@media (max-width: 500px) {
+    /* Base Theme */
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f9fc;
+    color: #1f2937;
+    height: 100%;
+
+    }
+
+    html {
+    height: 100%;
+    }
+
+    h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+    }
+
+    /* Top Navigation */
+    .topbar {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr 1fr 1fr;
+    background-color: #1e293b; /* dark slate */
+    color: #f1f5f9;
+    height: 60px;
+    align-items: center;
+    justify-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* Center Hero Section */
+    .center {
+    display: grid;
+    grid-template-rows: 3fr 2fr 2fr;
+    grid-template-columns: 5fr 1fr 2fr;
+    gap: 10px;
+    padding: 2rem;
+    position: relative;
+    background-color: white;
+    }
+
+    /* Text Block */
+    #name {
+    color: #0f172a;
+    grid-row: 1 / 2;
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: flex-end;
+    background-color: transparent;
+    }
+
+    #desc {
+    color: #475569;
+    grid-row: 2 / 3;
+    font-size: 1.25rem;
+    background-color: transparent;
+    }
+
+    /* Start Button */
+    #start {
+    grid-row: 3 / 4;
+    background-color: #10b981;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 10px;
+    align-self: center;
+    justify-self: start;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    }
+
+    #start:hover {
+    background-color: #059669;
+    }
+
+    /* Profile Image */
+    #prof {
+    grid-column: 3 / 4;
+    grid-row: 1 / 4;
+    align-self: center;
+    justify-self: center;
+    height: 25vw;
+    width: 25vw;
+    max-width: 300px;
+    border-radius: 10000px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Contact Grid */
+    .contacts {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    padding: 2rem;
+    background-color: #e2e8f0;
+    place-items: center;
+    }
+
+    /* GitHub Icon Fix */
+    .ri-github-line {
+    grid-column-start: 6;
+    grid-column-end:7;
+    }
+}
+@media (min-width: 501px){
+    /* Base Theme */
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f9fc;
+    color: #1f2937;
+    height: 100%;
+    
+    }
+
+    html {
+    height: 100%;
+    }
+
+    h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+    }
+
+    /* Top Navigation */
+    .topbar {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr 1fr 1fr;
+    background-color: #1e293b; /* dark slate */
+    color: #f1f5f9;
+    height: 60px;
+    align-items: center;
+    justify-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* Center Hero Section */
+    .center {
+    display: grid;
+    grid-template-rows: 3fr 2fr 2fr;
+    grid-template-columns: 5fr 1fr 2fr;
+    gap: 10px;
+    padding: 2rem;
+    position: relative;
+    background-color: white;
+    padding-left: 15%;
+    padding-right: 15%;
+    }
+
+    /* Text Block */
+    #name {
+    color: #0f172a;
+    grid-row: 1 / 2;
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: flex-end;
+    background-color: transparent;
+    }
+
+    #desc {
+    color: #475569;
+    grid-row: 2 / 3;
+    font-size: 1.25rem;
+    background-color: transparent;
+    }
+
+    /* Start Button */
+    #start {
+    grid-row: 3 / 4;
+    background-color: #10b981;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 10px;
+    align-self: center;
+    justify-self: start;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    }
+
+    #start:hover {
+    background-color: #059669;
+    }
+
+    /* Profile Image */
+    #prof {
+    grid-column: 3 / 4;
+    grid-row: 1 / 4;
+    align-self: center;
+    justify-self: center;
+    height: 25vw;
+    width: 25vw;
+    border-radius: 10000px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Contact Grid */
+    .contacts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 2rem;
+    place-items: center;
+    margin-right: 10%;
+    margin-left: 10%;
+    }
+
+    /* GitHub Icon Fix */
+    .ri-github-line {
+    grid-column-start: 6;
+    grid-column-end:7;
+    }
+
+}
+
+a{
+    text-decoration: none;
+    font-size:1.5rem;
+    color: inherit;
+}
+
+
+    #hom{
+        grid-column: 2/3;
+    }
